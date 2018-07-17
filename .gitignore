@@ -10,3 +10,15 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
+# editors
+.idea
+
+# node
+node_modules
+
+# OS
+.DS_Store
+
+# vuepress
+.vuepress/dist
