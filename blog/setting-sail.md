@@ -2,7 +2,7 @@
 
 ## Why am I doing this?
 
-It has been a while that I haven't been learning computer science topics. I was a developer for several years but I decided to try something else two and an half years ago. I was still building some tools but they are quite trivial comparing to what developers are doing. In the past 2 years I know that I still like programming. I'd like to come back again.
+I was a developer for several years but I decided to try something else two and an half years ago. I am still coding some tools but they are quite trivial comparing to what developers are doing. In the past 2 years I know that I still like programming. I'd like to be serious about it again.
 
 Computer Science is vast and it's growing fast. Well the fundamental are not changing much and they are the keys. I'd like to spend some time to review all those fundamental topics which I've forgotten or I've never learnt.
 
@@ -20,5 +20,7 @@ I like Golang, efficient and fun to use. I will use Go in this journey.
 
 Learning by teaching is another key for effective learning.
 
-Combine these four elements, my plan is using Jupyter and Golang to build a Algorithm Visualization notes for myself and share the whole building process. In the end I will be ramp up again with Algorithms again and hopeful get something useful for others as well.
+Combine these four elements, my plan is using Jupyter and Golang to build a Algorithm Visualization notes for myself and share the whole building process. In the end I will be ramp up again with Algorithms and hopeful get something useful for others as well.
+
+After doing some research, it seems the Jupyter + Go visualizer approach is a bit harder to accomplish. Will make it simple by using Gopherjs to display in browser. Think to extend [Go Play Space](https://goplay.space/) for the algorithm visualization part.
 
