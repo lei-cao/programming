@@ -10,6 +10,7 @@ module.exports = {
     themeConfig: {
         nav: [
             {text: 'Home', link: '/'},
+            {text: 'Algorithms', link: '/algorithms/'},
             {text: 'Blog', link: '/blog/'},
         ],
         sidebar: {
@@ -19,7 +20,8 @@ module.exports = {
                     collapsable: false,
                     children: [
                         '',
-                        'setting-sail'
+                        'setting-sail',
+                        'algorithm-visualization'
                     ]
                 }
             ]
