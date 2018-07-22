@@ -1,0 +1,2 @@
+# Decorator in Go
+

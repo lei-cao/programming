@@ -21,4 +21,4 @@ node_modules
 .DS_Store
 
 # vuepress
-.vuepress/dist
+notes/.vuepress/dist
