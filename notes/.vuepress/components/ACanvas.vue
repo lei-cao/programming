@@ -13,12 +13,12 @@ export default {
     mounted() {
         var avEl = document.getElementById('av')
         if (avEl !== null) {
-            var a = window.av.New()
+            var a = window.algorithm.Algorithm()
             a.Show()
         }
         const plugin = document.createElement('script')
         plugin.onload = function () {
-            var a = window.av.New()
+            var a = window.algorithm.Algorithm()
             a.Show()
         };
         plugin.setAttribute(

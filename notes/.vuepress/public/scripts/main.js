@@ -21096,7 +21096,7 @@ $packages["github.com/lei-cao/learn/sort"] = (function() {
 	return $pkg;
 })();
 $packages["main"] = (function() {
-	var $pkg = {}, $init, fmt, js, sort, Visualizer, ptrType, funcType, mapType, sliceType, sliceType$1, sliceType$2, ptrType$1, nums, _r, main, New;
+	var $pkg = {}, $init, fmt, js, sort, Visualizer, ptrType, funcType, mapType, sliceType, sliceType$1, sliceType$2, ptrType$1, nums, _r, main, Algorithm;
 	fmt = $packages["fmt"];
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	sort = $packages["github.com/lei-cao/learn/sort"];
@@ -21114,7 +21114,7 @@ $packages["main"] = (function() {
 	sliceType$2 = $sliceType($emptyInterface);
 	ptrType$1 = $ptrType(Visualizer);
 	main = function() {
-		$global.av = $externalize($makeMap($String.keyFor, [{ k: "New", v: new funcType(New) }]), mapType);
+		$global.algorithm = $externalize($makeMap($String.keyFor, [{ k: "Algorithm", v: new funcType(Algorithm) }]), mapType);
 	};
 	Visualizer.ptr.prototype.Show = function() {
 		var v;
@@ -21167,10 +21167,10 @@ $packages["main"] = (function() {
 		}), []);
 	};
 	Visualizer.prototype.Show = function() { return this.$val.Show(); };
-	New = function() {
+	Algorithm = function() {
 		return js.MakeWrapper(new Visualizer.ptr());
 	};
-	$pkg.New = New;
+	$pkg.Algorithm = Algorithm;
 	ptrType$1.methods = [{prop: "Show", name: "Show", pkg: "", typ: $funcType([], [], false)}];
 	Visualizer.init("", []);
 	$init = function() {
