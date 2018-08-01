@@ -11,11 +11,11 @@ var barSpace = 2
 var heightUnit = 5
 
 func createCanvas(id string, length int) *js.Object {
-	body := js.Global.Get("document").Call("getElementById", "body")
+	body := js.Global.Get("document").Call("getElementById", id)
 	obj := js.Global.Get("document").Call("createElement", "canvas")
-	obj.Set("id", id)
 	obj.Set("width", strconv.Itoa(canvasWidth(length)))
 	obj.Set("height", strconv.Itoa(canvasHeight(length)))
+	body.Set("innerHTML", "")
 	body.Call("appendChild", obj)
 	return obj
 }
@@ -36,12 +36,12 @@ func draw(nums []int, i int, j int, obj *js.Object) {
 		if k == j {
 			ctx.FillStyle = "blue"
 		}
-		ctx.FillRect(float64(x+(barWidth + barSpace)*k), float64(canvasHeight(len(nums))-v*5), float64(barWidth), float64(v*heightUnit));
+		ctx.FillRect(float64(x+(barWidth+barSpace)*k), float64(canvasHeight(len(nums))-v*5), float64(barWidth), float64(v*heightUnit))
 	}
 }
 
 func canvasWidth(length int) int {
-	return barWidth * length + (length-1)*barSpace
+	return barWidth*length + (length-1)*barSpace
 }
 
 func canvasHeight(length int) int {

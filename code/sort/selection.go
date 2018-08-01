@@ -5,8 +5,8 @@ import "time"
 type SelectionSort struct {
 }
 
-func (s *SelectionSort) Sort(nums []int) {
-	obj := createCanvas("Sort", len(nums))
+func (s *SelectionSort) Sort(nums []int, id string) {
+	obj := createCanvas(id, len(nums))
 
 	draw(nums, 0, 0, obj)
 	for i := 0; i < len(nums); i++ {

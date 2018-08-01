@@ -6,14 +6,13 @@ import (
 )
 
 type Sort interface {
-	Sort(nums []int)
+	Sort(nums []int, id string)
 }
 
-func DoSort(nums []int, sorter Sort, c chan bool) {
+func DoSort(nums []int, sorter Sort, id string) {
 	tmp := make([]int, len(nums))
 	copy(tmp, nums)
-	sorter.Sort(tmp)
-	c<-true
+	sorter.Sort(tmp, id)
 }
 
 func Shuffle(size int) []int {

@@ -1,8 +1,8 @@
 package sort
 
 import (
-	"time"
 	"fmt"
+	"time"
 )
 
 type Search interface {

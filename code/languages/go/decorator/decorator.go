@@ -2,9 +2,9 @@ package decorator
 
 import (
 	"fmt"
-	"time"
-	"runtime"
 	"reflect"
+	"runtime"
+	"time"
 )
 
 type FooFunc func(int, int, int) int

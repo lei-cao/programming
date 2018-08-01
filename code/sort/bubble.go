@@ -5,8 +5,8 @@ import "time"
 type BubbleSort struct {
 }
 
-func (s *BubbleSort) Sort(nums []int) {
-	obj := createCanvas("bubbleSort", len(nums))
+func (s *BubbleSort) Sort(nums []int, id string) {
+	obj := createCanvas(id, len(nums))
 
 	draw(nums, 0, 0, obj)
 	for i := 0; i < len(nums); i++ {
@@ -23,8 +23,8 @@ func (s *BubbleSort) Sort(nums []int) {
 type BubbleSortSwapped struct {
 }
 
-func (s *BubbleSortSwapped) Sort(nums []int) {
-	obj := createCanvas("bubbleSort", len(nums))
+func (s *BubbleSortSwapped) Sort(nums []int, id string) {
+	obj := createCanvas(id, len(nums))
 
 	draw(nums, 0, 0, obj)
 	for i := 0; i < len(nums); i++ {
@@ -37,7 +37,7 @@ func (s *BubbleSortSwapped) Sort(nums []int) {
 			draw(nums, i, j, obj)
 			time.Sleep(1 * time.Millisecond)
 		}
-		if ! swapped {
+		if !swapped {
 			break
 		}
 	}

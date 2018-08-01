@@ -1,8 +1,8 @@
 package decorator
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestGenricDecorator(t *testing.T) {

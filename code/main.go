@@ -1,15 +1,19 @@
 package main
 
 import (
-	"github.com/lei-cao/learn/sort"
-	"fmt"
 	"github.com/gopherjs/gopherjs/js"
+	"github.com/lei-cao/learning-cs-again/code/sort"
 )
 
 var nums = sort.Shuffle(30)
 
+var visualizers map[string]sort.Sort
+
 func main() {
-	//js.Module.Get("exports").Set("Algorithm", Algorithm)
+	visualizers = map[string]sort.Sort{}
+	visualizers["bubble"] = new(sort.BubbleSort)
+	visualizers["bubble_swapped"] = new(sort.BubbleSortSwapped)
+	visualizers["selection"] = new(sort.SelectionSort)
 
 	js.Global.Set("algorithm", map[string]interface{}{
 		"Algorithm": Algorithm,
@@ -17,44 +21,16 @@ func main() {
 }
 
 type Visualizer struct {
-
 }
 
-func (v *Visualizer) Show() {
+func (v *Visualizer) Display(id string) {
 	go func() {
-
-		sorters := [] sort.Sort{
-			new(sort.BubbleSort),
-			new(sort.BubbleSort),
-			new(sort.BubbleSortSwapped),
+		if s, ok := visualizers[id]; ok {
+			sort.DoSort(nums, s, id)
 		}
-		ch := make(chan bool, len(sorters))
-		for _, sorter := range sorters {
-			go sort.DoSort(nums, sorter, ch)
-		}
-
-		searchers := [] sort.Search{
-			new(sort.DefaultSearch),
-		}
-		sch := make(chan int, len(searchers))
-		for _, searcher := range searchers {
-			go sort.DoSearch(searcher, 14, nums, sch)
-		}
-		for _ = range sorters {
-			fmt.Println(<-ch)
-		}
-		for _ = range searchers {
-			fmt.Println(<-sch)
-		}
-		close(ch)
-		close(sch)
-
 	}()
 }
 
-
-func Algorithm() *js.Object{
-	return js.MakeWrapper(&Visualizer{})
+func Algorithm() *js.Object {
+	return js.MakeWrapper(new(Visualizer))
 }
-
-
