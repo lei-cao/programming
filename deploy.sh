@@ -4,10 +4,10 @@
 set -e
 
 # build
-npm run docs:build
+npm run notes:build
 
 # navigate into the build output directory
-cd .vuepress/dist
+cd notes/.vuepress/dist
 
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME

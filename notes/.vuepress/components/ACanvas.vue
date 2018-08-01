@@ -4,7 +4,6 @@
 </template>
 
 <script>
-
 export default {
     name: "ACanvas",
     props: {
@@ -33,7 +32,7 @@ export default {
 
         plugin.setAttribute(
             'src',
-            this.$withBase('/scripts/main.js')
+            this.$withBase('/scripts/main.js?' + Date.now())
         )
         plugin.setAttribute(
             'id',
