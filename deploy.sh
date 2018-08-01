@@ -4,7 +4,7 @@
 set -e
 
 # build
-npm run notes:build
+yarn notes:build
 
 # navigate into the build output directory
 cd notes/.vuepress/dist
