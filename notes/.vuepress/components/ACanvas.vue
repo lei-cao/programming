@@ -1,5 +1,5 @@
 <template>
-    <div id="body">
+    <div :id="id">
     </div>
 </template>
 
@@ -11,26 +11,44 @@ export default {
         id: String
     },
     mounted() {
+        var that = this
         var avEl = document.getElementById('av')
         if (avEl !== null) {
-            var a = window.algorithm.Algorithm()
-            a.Show()
+            if (avEl.hasAttribute('finished')) {
+                var a = window.algorithm.Algorithm()
+                a.Display(that.id)
+            } else {
+                avEl.addEventListener('load', function () {
+                    avEl.setAttribute(
+                        'finished',
+                        'true'
+                    )
+                    var a = window.algorithm.Algorithm()
+                    a.Display(that.id)
+                })
+            }
+            return
         }
         const plugin = document.createElement('script')
-        plugin.onload = function () {
-            var a = window.algorithm.Algorithm()
-            a.Show()
-        };
+
         plugin.setAttribute(
             'src',
             this.$withBase('/scripts/main.js')
-        );
+        )
         plugin.setAttribute(
             'id',
             'av'
-        );
-        plugin.async = true;
-        document.head.appendChild(plugin);
+        )
+        plugin.addEventListener('load', function () {
+            plugin.setAttribute(
+                'finished',
+                'true'
+            )
+            var a = window.algorithm.Algorithm()
+            a.Display(that.id)
+        })
+        // plugin.async = true;
+        document.head.appendChild(plugin)
     }
 }
 </script>
