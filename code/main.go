@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gopherjs/gopherjs/js"
 	"github.com/lei-cao/learning-cs-again/code/sort"
+	"github.com/lei-cao/learning-cs-again/code/play"
 )
 
 var nums = sort.Shuffle(30)
@@ -16,7 +17,9 @@ func main() {
 	visualizers["selection"] = new(sort.SelectionSort)
 
 	js.Global.Set("algorithm", map[string]interface{}{
-		"Algorithm": Algorithm,
+		"Algorithm":  Algorithm,
+		"Controller": Controller,
+		"ControllerConfig": ControllerConfig,
 	})
 }
 
@@ -33,4 +36,12 @@ func (v *Visualizer) Display(id string) {
 
 func Algorithm() *js.Object {
 	return js.MakeWrapper(new(Visualizer))
+}
+
+func Controller() *js.Object {
+	return js.MakeWrapper(new(controller.Controller))
+}
+
+func ControllerConfig() *js.Object {
+	return js.MakeWrapper(new(controller.ControllerConfig))
 }

@@ -21,7 +21,8 @@ module.exports = {
                     children: [
                         '',
                         'setting-sail',
-                        'algorithm-visualization'
+                        'algorithm-visualization',
+                        'algorithm-visualization-refactoring'
                     ]
                 }
             ]
