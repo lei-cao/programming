@@ -1,11 +1,11 @@
 <template>
     <div>
-
         <div :id="id" class="canvas">
         </div>
 
         <button @click="stop">Stop</button>
         <button @click="resume">Resume</button>
+        <button @click="nextStep"> > </button>
         <input v-model="size"/>
         <button @click="restart">Restart</button>
         <ClientOnly>
@@ -16,8 +16,6 @@
                 @callback="updateSpeed"
             ></vue-slider>
         </ClientOnly>
-
-
     </div>
 </template>
 
@@ -70,13 +68,15 @@ export default {
             that.config.SetSize(that.size)
             this.controller = window.algorithm.Controller()
             this.controller.Init(that.id, that.config)
-            this.controller.Run()
         },
         stop() {
             this.controller.Stop()
         },
         resume() {
-            this.controller.Run()
+            this.controller.Resume()
+        },
+        nextStep() {
+            this.controller.NextStep()
         },
         restart() {
             this.controller.Stop()
