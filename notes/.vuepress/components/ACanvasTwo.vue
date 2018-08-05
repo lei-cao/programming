@@ -80,8 +80,9 @@ export default {
             that.config = window.algorithm.ControllerConfig()
             that.config.SetVelocity(that.velocity)
             that.config.SetSize(that.size)
+            that.config.SetId(that.id)
             this.controller = window.algorithm.Controller()
-            this.controller.Init(that.id, that.config)
+            this.controller.Init(that.config)
         },
         stop() {
             this.controller.Stop()

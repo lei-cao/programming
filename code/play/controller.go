@@ -1,15 +1,12 @@
 package controller
 
 import (
-	"github.com/lei-cao/learning-cs-again/code/sort"
 	"github.com/gopherjs/gopherjs/js"
 	"github.com/oskca/gopherjs-canvas"
 	"time"
+	"github.com/lei-cao/learning-cs-again/code/sort"
 )
 
-var barWidth = 8
-var barSpace = 2
-var heightUnit = 5
 // default size for the slice being solved
 var defaultSize = 10
 var velocity float64
@@ -40,9 +37,11 @@ type Controller struct {
 	now            int
 	then           int
 	elapsed        int
+	nums []int
 }
 
 type ControllerConfig struct {
+	Id string `json:"id"`
 	Velocity float64 `json:"velocity"`
 	Size     int     `json:"size"`
 }
@@ -56,13 +55,17 @@ func (c *ControllerConfig) SetSize(size int) {
 	c.Size = size
 }
 
+func (c *ControllerConfig) SetId(id string) {
+	c.Id = id
+}
+
 // Update config. Being called by JS
 func (c *Controller) UpdateConfig(config *ControllerConfig) {
 	c.Config = config
 }
 
 // Init the visualizer controller
-func (c *Controller) Init(id string, config *ControllerConfig) {
+func (c *Controller) Init(config *ControllerConfig) {
 	c.Config = config
 	c.AutoUpdate = true
 	c.Steps = &Step{}
@@ -77,33 +80,30 @@ func (c *Controller) Init(id string, config *ControllerConfig) {
 	}
 
 	c.Screen.Rectangles = []*Rectangle{}
-	var nums = sort.Shuffle(c.Config.Size)
+	c.nums = sort.Shuffle(c.Config.Size)
 
-	for k, v := range nums {
+	for k, v := range c.nums {
 		r := NewRect(c.Config.Size, k, v)
 		c.Screen.Rectangles = append(c.Screen.Rectangles, r)
 	}
 	c.Screen.FinishedDrawing = map[int]bool{}
-	var numSteps int
-	for i := 0; i < c.Config.Size; i++ {
-		for j := 0; j < c.Config.Size-1; j++ {
-			step := &Step{}
-			step.A = j
-			step.B = j + 1
-			if nums[j] > nums[j+1] {
-				nums[j], nums[j+1] = nums[j+1], nums[j]
-				step.DoSwap = true
-			}
-			c.LastStep.Next = step
-			c.LastStep = step
-			numSteps ++
-		}
-	}
 
-	obj := createCanvas(id, c.Config.Size)
+	c.ApplyAlgorithm(config)
+
+	obj := createCanvas(c.Config.Id, c.Config.Size)
 	c.C = canvas.New(obj)
 	c.Ctx = c.C.GetContext2D()
+	c.Screen.Ctx = c.Ctx
 	c.startAnimating()
+}
+
+func (c *Controller) ApplyAlgorithm(config *ControllerConfig) {
+	switch config.Id {
+	case "bubble":
+		c.BubbleSort()
+	case "selection":
+		c.SelectionSort()
+	}
 }
 
 // Stop auto running. Switch to manual control
@@ -141,26 +141,16 @@ func (c *Controller) NextStep() {
 
 // Update the screen states based on current step
 func (c *Controller) update() {
-	a := c.Screen.Rectangles[c.CurrentStep.A]
-	b := c.Screen.Rectangles[c.CurrentStep.B]
-	a.IsA = true
-	b.IsB = true
-	a.Waiting = 2
-	//b.Waiting = 1
-	c.Screen.AIndex = c.CurrentStep.A
-	c.Screen.BIndex = c.CurrentStep.B
 	if c.CurrentStep.DoSwap {
-		a.ToIndex = c.CurrentStep.B
-		b.ToIndex = c.CurrentStep.A
-
-		c.Screen.Rectangles[c.CurrentStep.A] = b
-		c.Screen.Rectangles[c.CurrentStep.B] = a
+		c.Screen.swap(c.CurrentStep.A, c.CurrentStep.B)
+	} else {
+		c.Screen.pass(c.CurrentStep.A, c.CurrentStep.B)
 	}
 }
 
 // Draw the screen
 func (c *Controller) draw() {
-	c.Screen.draw(c.Ctx, c.fpdInterval)
+	c.Screen.Draw(c.fpdInterval)
 	if c.Screen.Ready {
 		if c.AutoUpdate {
 			c.NextStep()

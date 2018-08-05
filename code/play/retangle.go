@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"github.com/oskca/gopherjs-canvas"
 	"math"
 )
 
@@ -17,14 +16,12 @@ type Rectangle struct {
 	Top     float64
 	Width   float64
 	Height  float64
-	Moving  bool
 	Waiting int
 }
 
-func (r *Rectangle) Draw(ctx *canvas.Context2D, delta float64) bool {
+func (r *Rectangle) Update(delta float64) bool {
 	var finished bool
 	if math.Abs(r.Left-r.toLeft()) > 0.01 {
-		r.Moving = true
 		move := velocity * delta / 1000
 		if r.Index > r.ToIndex {
 			if r.Left-move < r.toLeft() {
@@ -48,19 +45,7 @@ func (r *Rectangle) Draw(ctx *canvas.Context2D, delta float64) bool {
 		}
 	}
 
-	r.draw(ctx)
 	return finished
-}
-
-func (r *Rectangle) draw(ctx *canvas.Context2D) {
-	ctx.FillStyle = "#B9314F"
-	if r.IsA {
-		ctx.FillStyle = "#2E86AB"
-	} else if r.IsB {
-		//ctx.FillStyle = "#12355B"
-		ctx.FillStyle = "green"
-	}
-	ctx.FillRect(r.Left, r.Top, r.Width, r.Height)
 }
 
 func (r *Rectangle) toLeft() float64 {

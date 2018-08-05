@@ -2,7 +2,8 @@
 
 Making a new version of the visualizer. Still based on `canvas`. Used `requestAnimationFrame` for better animations.
 
-<ACanvasTwo id="play"/>
+<ACanvasTwo id="bubble"/>
+<ACanvasTwo id="selection"/>
 
 Added speed control. Will add more controls for it.
 
