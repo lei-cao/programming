@@ -3,8 +3,8 @@ package controller
 import (
 	"github.com/lei-cao/learning-cs-again/code/sort"
 	"github.com/gopherjs/gopherjs/js"
-	"strconv"
 	"github.com/oskca/gopherjs-canvas"
+	"time"
 )
 
 var barWidth = 8
@@ -12,12 +12,14 @@ var barSpace = 2
 var heightUnit = 5
 // default size for the slice being solved
 var defaultSize = 10
+var velocity float64
 
 // Hold the operation steps queue
 type Step struct {
-	A    int
-	B    int
-	Next *Step
+	A      int
+	B      int
+	DoSwap bool
+	Next   *Step
 }
 
 // The visualizer controller
@@ -32,16 +34,22 @@ type Controller struct {
 	Config         *ControllerConfig
 	Screen         *Screen
 	animationFrame *js.Object
-	StopChan       chan bool
+	fps            int
+	fpdInterval    float64
+	startTime      int
+	now            int
+	then           int
+	elapsed        int
 }
 
 type ControllerConfig struct {
-	Speed int `json:"speed"`
-	Size  int `json:"size"`
+	Velocity float64 `json:"velocity"`
+	Size     int     `json:"size"`
 }
 
-func (c *ControllerConfig) SetSpeed(speed int) {
-	c.Speed = speed
+func (c *ControllerConfig) SetVelocity(v float64) {
+	c.Velocity = v
+	velocity = c.Velocity
 }
 
 func (c *ControllerConfig) SetSize(size int) {
@@ -61,7 +69,9 @@ func (c *Controller) Init(id string, config *ControllerConfig) {
 	c.LastStep = c.Steps
 	c.CurrentStep = c.Steps
 	c.Screen = new(Screen)
-	c.StopChan = make(chan bool)
+	c.fps = 60
+	// 10 pixel per second
+	velocity = config.Velocity
 	if config.Size == 0 {
 		c.Config.Size = defaultSize
 	}
@@ -79,10 +89,10 @@ func (c *Controller) Init(id string, config *ControllerConfig) {
 		for j := 0; j < c.Config.Size-1; j++ {
 			step := &Step{}
 			step.A = j
-			step.B = j
+			step.B = j + 1
 			if nums[j] > nums[j+1] {
 				nums[j], nums[j+1] = nums[j+1], nums[j]
-				step.B = j + 1
+				step.DoSwap = true
 			}
 			c.LastStep.Next = step
 			c.LastStep = step
@@ -93,7 +103,7 @@ func (c *Controller) Init(id string, config *ControllerConfig) {
 	obj := createCanvas(id, c.Config.Size)
 	c.C = canvas.New(obj)
 	c.Ctx = c.C.GetContext2D()
-	c.animate()
+	c.startAnimating()
 }
 
 // Stop auto running. Switch to manual control
@@ -107,7 +117,7 @@ func (c *Controller) Stop() {
 func (c *Controller) Resume() {
 	if !c.AutoUpdate {
 		c.AutoUpdate = true
-		c.animate()
+		c.startAnimating()
 	}
 }
 
@@ -118,8 +128,12 @@ func (c *Controller) NextStep() {
 		js.Global.Call("cancelAnimationFrame", c.animationFrame)
 		return
 	}
+
 	if !c.Animating {
-		c.animate()
+		c.startAnimating()
+	}
+	if !c.Screen.Ready {
+		return
 	}
 	c.CurrentStep = c.CurrentStep.Next
 	c.update()
@@ -131,16 +145,22 @@ func (c *Controller) update() {
 	b := c.Screen.Rectangles[c.CurrentStep.B]
 	a.IsA = true
 	b.IsB = true
-	a.ToIndex = c.CurrentStep.B
-	b.ToIndex = c.CurrentStep.A
+	a.Waiting = 2
+	//b.Waiting = 1
+	c.Screen.AIndex = c.CurrentStep.A
+	c.Screen.BIndex = c.CurrentStep.B
+	if c.CurrentStep.DoSwap {
+		a.ToIndex = c.CurrentStep.B
+		b.ToIndex = c.CurrentStep.A
 
-	c.Screen.Rectangles[c.CurrentStep.A] = b
-	c.Screen.Rectangles[c.CurrentStep.B] = a
+		c.Screen.Rectangles[c.CurrentStep.A] = b
+		c.Screen.Rectangles[c.CurrentStep.B] = a
+	}
 }
 
 // Draw the screen
 func (c *Controller) draw() {
-	c.Screen.draw(c.Ctx)
+	c.Screen.draw(c.Ctx, c.fpdInterval)
 	if c.Screen.Ready {
 		if c.AutoUpdate {
 			c.NextStep()
@@ -151,111 +171,22 @@ func (c *Controller) draw() {
 	}
 }
 
+func (c *Controller) startAnimating() {
+	c.fpdInterval = 1000 / float64(c.fps)
+	c.then = int(time.Now().UnixNano())
+	c.startTime = c.then
+	c.animate()
+}
+
 func (c *Controller) animate() {
 	c.animationFrame = js.Global.Call("requestAnimationFrame", c.animate)
-	c.Animating = true
-	c.Ctx.ClearRect(0, 0, float64(canvasWidth(c.Config.Size)), float64(canvasHeight(c.Config.Size)))
-	c.draw()
-}
+	c.now = int(time.Now().UnixNano())
+	c.elapsed = c.now - c.then
+	if c.elapsed > int(c.fpdInterval) {
+		c.then = c.now - (c.elapsed % int(c.fpdInterval))
 
-// The screen including the elements on the canvas
-// Maintain the ready for next state
-type Screen struct {
-	Rectangles      []*Rectangle
-	FinishedDrawing map[int]bool
-	Ready           bool
-}
-
-func (s *Screen) draw(ctx *canvas.Context2D) {
-	for k, r := range s.Rectangles {
-		s.FinishedDrawing[k] = r.Draw(ctx)
+		c.Animating = true
+		c.Ctx.ClearRect(0, 0, float64(canvasWidth(c.Config.Size)), float64(canvasHeight(c.Config.Size)))
+		c.draw()
 	}
-	for _, finished := range s.FinishedDrawing {
-		if !finished {
-			s.Ready = false
-			return
-		}
-	}
-	s.Ready = true
-}
-
-// Represent the element in the problem slice
-type Rectangle struct {
-	Index   int
-	ToIndex int
-	IsA     bool
-	IsB     bool
-	Total   int
-	Value   int
-	Left    float64
-	Top     float64
-	Width   float64
-	Height  float64
-	Moving  bool
-}
-
-func (r *Rectangle) Draw(ctx *canvas.Context2D) bool {
-	var finished bool
-	if r.Left != r.toLeft() {
-		r.Moving = true
-		if r.Index > r.ToIndex {
-			r.Left -= 2
-		} else if r.Index < r.ToIndex {
-			r.Left += 2
-		}
-	} else {
-		r.Index = r.ToIndex
-		r.IsA = false
-		r.IsB = false
-		finished = true
-	}
-
-	r.draw(ctx)
-	return finished
-}
-
-func (r *Rectangle) draw(ctx *canvas.Context2D) {
-	ctx.FillStyle = "#B9314F"
-	if r.IsA {
-		ctx.FillStyle = "#2E86AB"
-	}
-	if r.IsB {
-		ctx.FillStyle = "#12355B"
-	}
-	ctx.FillRect(r.Left, r.Top, r.Width, r.Height)
-}
-
-func (r *Rectangle) toLeft() float64 {
-	return float64((barWidth + barSpace) * r.ToIndex)
-}
-
-func NewRect(total int, index int, value int) *Rectangle {
-	r := new(Rectangle)
-	r.Index = index
-	r.ToIndex = index
-	r.Total = total
-	r.Value = value
-	r.Left = float64((barWidth + barSpace) * index)
-	r.Top = float64(canvasHeight(total) - value*heightUnit)
-	r.Width = float64(barWidth)
-	r.Height = float64(value * heightUnit)
-	return r
-}
-
-func createCanvas(id string, size int) *js.Object {
-	body := js.Global.Get("document").Call("getElementById", id)
-	obj := js.Global.Get("document").Call("createElement", "canvas")
-	obj.Set("width", strconv.Itoa(canvasWidth(size)))
-	obj.Set("height", strconv.Itoa(canvasHeight(size)))
-	body.Set("innerHTML", "")
-	body.Call("appendChild", obj)
-	return obj
-}
-
-func canvasWidth(size int) int {
-	return barWidth*size + (size-1)*barSpace
-}
-
-func canvasHeight(size int) int {
-	return size * heightUnit
 }

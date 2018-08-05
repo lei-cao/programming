@@ -11,9 +11,9 @@
         <ClientOnly>
             <vue-slider
                 ref="slider"
-                v-model="speed"
+                v-model="velocity"
                 v-bind="options"
-                @callback="updateSpeed"
+                @callback="updateVelocity"
             ></vue-slider>
         </ClientOnly>
     </div>
@@ -30,41 +30,55 @@ export default {
     },
     data () {
         return {
-            speed: 200,
+            velocity: 30,
             size: 30,
             options: {
-                min: 100,
-                max: 2000,
-                width: "50%",
+                value: 30,
+                min: 10,
+                max: 10000,
+                data: [
+                    10,
+                    20,
+                    30,
+                    50,
+                    80,
+                    150,
+                    300,
+                    500,
+                    1000,
+                    7000,
+                    10000
+                ],
+                width: '50%',
                 height: 10,
-                interval: 100,
-                formatter: "Speed {value}",
-                tooltipDir: "bottom",
+                interval: 10,
+                formatter: 'Velocity {value}',
+                tooltipDir: 'bottom',
                 bgStyle: {
-                    "backgroundColor": "#fff",
-                    "boxShadow": "inset 0.5px 0.5px 3px 1px rgba(0,0,0,.36)"
+                    'backgroundColor': '#fff',
+                    'boxShadow': 'inset 0.5px 0.5px 3px 1px rgba(0,0,0,.36)'
                 },
                 tooltipStyle: {
-                    "backgroundColor": "#666",
-                    "borderColor": "#666"
+                    'backgroundColor': '#666',
+                    'borderColor': '#666'
                 },
                 processStyle: {
-                    "backgroundColor": "#999"
+                    'backgroundColor': '#999'
                 }
             },
-            config: {speed: 200, size: 10},
+            config: {velocity: 30, size: 30},
             controller: null
         }
     },
     methods: {
-        updateSpeed: function () {
-            this.config.SetSpeed(this.speed)
+        updateVelocity: function () {
+            this.config.SetVelocity(this.velocity)
             this.controller.UpdateConfig(this.config)
         },
         init() {
             var that = this
             that.config = window.algorithm.ControllerConfig()
-            that.config.SetSpeed(that.speed)
+            that.config.SetVelocity(that.velocity)
             that.config.SetSize(that.size)
             this.controller = window.algorithm.Controller()
             this.controller.Init(that.id, that.config)
