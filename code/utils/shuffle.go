@@ -1,19 +1,9 @@
-package sort
+package utils
 
 import (
 	"math/rand"
 	"time"
 )
-
-type Sort interface {
-	Sort(nums []int, id string)
-}
-
-func DoSort(nums []int, sorter Sort, id string) {
-	tmp := make([]int, len(nums))
-	copy(tmp, nums)
-	sorter.Sort(tmp, id)
-}
 
 func Shuffle(size int) []int {
 	rand.Seed(time.Now().UnixNano())

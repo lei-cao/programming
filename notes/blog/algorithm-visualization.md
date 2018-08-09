@@ -2,7 +2,7 @@
 
 I made a very simple canvas app for visualising some basic sorting algorithms by [GopherJS](https://github.com/gopherjs/gopherjs)
 
-<<< @/code/sort/bubble.go
+<<< @/code/v1/sort/bubble.go
 
 Then I just loaded it in a Vue Component. Hacky.. But works now.
 
@@ -24,7 +24,7 @@ Then I just loaded it in a Vue Component. Hacky.. But works now.
 
 ### Selection sort
 
-<<< @/code/sort/selection.go
+<<< @/code/v1/sort/selection.go
 
 <ACanvas id="selection"/>
 

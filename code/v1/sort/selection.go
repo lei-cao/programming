@@ -15,7 +15,7 @@ func (s *SelectionSort) Sort(nums []int, id string) {
 				nums[i], nums[j] = nums[j], nums[i]
 			}
 			draw(nums, i, j, obj)
-			time.Sleep(1 * time.Millisecond)
+			time.Sleep(100 * time.Millisecond)
 		}
 	}
 }

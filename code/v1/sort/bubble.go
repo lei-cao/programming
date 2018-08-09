@@ -15,7 +15,7 @@ func (s *BubbleSort) Sort(nums []int, id string) {
 				nums[j], nums[j+1] = nums[j+1], nums[j]
 			}
 			draw(nums, i, j, obj)
-			time.Sleep(1 * time.Millisecond)
+			time.Sleep(100 * time.Millisecond)
 		}
 	}
 }
@@ -35,7 +35,7 @@ func (s *BubbleSortSwapped) Sort(nums []int, id string) {
 				swapped = true
 			}
 			draw(nums, i, j, obj)
-			time.Sleep(1 * time.Millisecond)
+			time.Sleep(100 * time.Millisecond)
 		}
 		if !swapped {
 			break

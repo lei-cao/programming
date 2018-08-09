@@ -5,7 +5,7 @@ import (
 	"github.com/oskca/gopherjs-canvas"
 	"time"
 	"math"
-	"github.com/lei-cao/learning-cs-again/code/sort"
+	"github.com/lei-cao/learning-cs-again/code/utils"
 )
 
 // default size for the slice being solved
@@ -101,7 +101,7 @@ func (c *Controller) Init(config *ControllerConfig) {
 	}
 
 	c.Screen.Rectangles = []*Rectangle{}
-	c.nums = sort.Shuffle(c.Config.Size)
+	c.nums = utils.Shuffle(c.Config.Size)
 
 	for k, v := range c.nums {
 		r := NewRect(c.Config.Size, k, v, c.Ctx)
