@@ -7,7 +7,7 @@ type ColorScheme struct {
 	BColor          string
 }
 
-var defaultColor = ColorScheme{
+var DefaultColor = ColorScheme{
 	"#012A36",
 	"#A8A7A0",
 	"#2AB7B7",

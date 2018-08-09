@@ -13,7 +13,6 @@ type Animator interface {
 	UpdateDuration(duration float64)
 	SetScreen(screener Screener)
 	SetSteps(step Stepper)
-	AddStep(a, b int, doSwap bool)
 	Stop()
 	Resume()
 	NextStep()
@@ -42,10 +41,6 @@ type Animation struct {
 	duration       float64
 	timing         func(progress float64) float64
 	animationFrame *js.Object
-}
-
-func (a *Animation) AddStep(ia, ib int, doSwap bool) {
-	a.steps.AddStep(ia, ib, doSwap)
 }
 
 func (a *Animation) UpdateDuration(duration float64) {

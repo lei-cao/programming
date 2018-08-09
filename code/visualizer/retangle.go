@@ -4,15 +4,19 @@ import (
 	"github.com/oskca/gopherjs-canvas"
 )
 
+var BarWidth = 8
+var BarSpace = 2
+var HeightUnit = 5
+
 func NewRect(total int, index int, value int, ctx *canvas.Context2D) *Rectangle {
 	r := new(Rectangle)
 	r.Ctx = ctx
 	r.Index = index
 	r.ToIndex = index
-	r.Left = float64((barWidth + barSpace) * index)
-	r.Top = float64(canvasHeight(total) - value*heightUnit)
-	r.Width = float64(barWidth)
-	r.Height = float64(value * heightUnit)
+	r.Left = float64((BarWidth + BarSpace) * index)
+	r.Top = float64(maxHeight(total) - value*HeightUnit)
+	r.Width = float64(BarWidth)
+	r.Height = float64(value * HeightUnit)
 	return r
 }
 
@@ -55,15 +59,19 @@ func (r *Rectangle) update(progress float64) bool {
 }
 
 func (r *Rectangle) draw() {
-	r.Ctx.FillStyle = defaultColor.BarColor
+	r.Ctx.FillStyle = DefaultColor.BarColor
 	if r.IsA {
-		r.Ctx.FillStyle = defaultColor.AColor
+		r.Ctx.FillStyle = DefaultColor.AColor
 	} else if r.IsB {
-		r.Ctx.FillStyle = defaultColor.BColor
+		r.Ctx.FillStyle = DefaultColor.BColor
 	}
 	r.Ctx.FillRect(r.Left, r.Top, r.Width, r.Height)
 }
 
 func (r *Rectangle) toLeft() float64 {
-	return float64((barWidth + barSpace) * r.ToIndex)
+	return float64((BarWidth + BarSpace) * r.ToIndex)
+}
+
+func maxHeight(size int) int {
+	return size * HeightUnit
 }

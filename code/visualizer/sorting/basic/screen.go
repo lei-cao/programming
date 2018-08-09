@@ -1,14 +1,11 @@
-package visualizer
+package basic
 
 import (
 	"github.com/gopherjs/gopherjs/js"
 	"strconv"
 	"github.com/oskca/gopherjs-canvas"
+	"github.com/lei-cao/learning-cs-again/code/visualizer"
 )
-
-var barWidth = 8
-var barSpace = 2
-var heightUnit = 5
 
 func NewScreen(id string, size int, nums []int) *Screen {
 	s := new(Screen)
@@ -19,10 +16,10 @@ func NewScreen(id string, size int, nums []int) *Screen {
 	s.c = canvas.New(obj)
 	s.ctx = s.c.GetContext2D()
 
-	s.rectangles = []*Rectangle{}
+	s.rectangles = []*visualizer.Rectangle{}
 
 	for k, v := range nums {
-		r := NewRect(size, k, v, s.ctx)
+		r := visualizer.NewRect(size, k, v, s.ctx)
 		s.rectangles = append(s.rectangles, r)
 	}
 	s.finishedDrawing = map[int]bool{}
@@ -36,7 +33,7 @@ type Screen struct {
 	size            int
 	c               *canvas.Canvas
 	ctx             *canvas.Context2D
-	rectangles      []*Rectangle
+	rectangles      []*visualizer.Rectangle
 	finishedDrawing map[int]bool
 	ready           bool
 	aIndex          int
@@ -55,7 +52,7 @@ func (s *Screen) Draw(progress float64) {
 	s.draw(progress)
 }
 
-func (s *Screen) Update(i Stepper) {
+func (s *Screen) Update(i visualizer.Stepper) {
 	if i.DoSwap() {
 		s.Swap(i.A(), i.B())
 	} else {
@@ -88,7 +85,7 @@ func (s *Screen) Pass(ia, ib int) {
 }
 
 func (s *Screen) draw(progress float64) {
-	s.ctx.FillStyle = defaultColor.BackgroundColor
+	s.ctx.FillStyle = visualizer.DefaultColor.BackgroundColor
 	s.ctx.FillRect(0, 0, float64(s.c.Width), float64(s.c.Height))
 	for k, r := range s.rectangles {
 		r.IsB = false
@@ -121,9 +118,9 @@ func createCanvas(id string, size int) *js.Object {
 }
 
 func canvasWidth(size int) int {
-	return barWidth*size + (size-1)*barSpace
+	return visualizer.BarWidth*size + (size-1)*visualizer.BarSpace
 }
 
 func canvasHeight(size int) int {
-	return size * heightUnit
+	return size * visualizer.HeightUnit
 }

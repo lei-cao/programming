@@ -4,6 +4,7 @@ import (
 	"github.com/lei-cao/learning-cs-again/code/visualizer"
 	"github.com/lei-cao/learning-cs-again/code/utils"
 	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting"
+	"github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basic"
 )
 
 // default size for the slice being solved
@@ -33,7 +34,6 @@ type Controller struct {
 	config    *ControllerConfig
 	sorter    sorting.Sorter
 	nums      []int
-	numsB     []int
 }
 
 // Update config. Being called by JS
@@ -56,7 +56,7 @@ func (c *Controller) Init(config *ControllerConfig) {
 
 	// Initial states for screen
 	c.nums = utils.Shuffle(c.config.Size)
-	s := visualizer.NewScreen(c.config.Id, c.config.Size, c.nums)
+	s := basic.NewScreen(c.config.Id, c.config.Size, c.nums)
 	c.animation.SetScreen(s)
 
 	// Apply algorithms, set steps
