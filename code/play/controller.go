@@ -1,10 +1,10 @@
-package controller
+package play
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-	"github.com/oskca/gopherjs-canvas"
 	"time"
 	"math"
+	"github.com/lei-cao/learning-cs-again/code/visualizer"
 	"github.com/lei-cao/learning-cs-again/code/utils"
 )
 
@@ -17,20 +17,6 @@ type Step struct {
 	B      int
 	DoSwap bool
 	Next   *Step
-}
-
-type ColorScheme struct {
-	BackgroundColor string
-	BarColor        string
-	AColor          string
-	BColor          string
-}
-
-var defaultColor = ColorScheme{
-	"#012A36",
-	"#A8A7A0",
-	"#2AB7B7",
-	"#0E7C7B",
 }
 
 type ControllerConfig struct {
@@ -53,15 +39,13 @@ func (c *ControllerConfig) SetId(id string) {
 
 // The visualizer controller
 type Controller struct {
-	C              *canvas.Canvas
-	Ctx            *canvas.Context2D
 	Steps          *Step
 	LastStep       *Step
 	CurrentStep    *Step
 	AutoUpdate     bool
 	Animating      bool
 	Config         *ControllerConfig
-	Screen         *Screen
+	Screen         *visualizer.Screen
 	animationFrame *js.Object
 	fps            int
 	fpdInterval    float64
@@ -70,7 +54,7 @@ type Controller struct {
 	then           float64
 	elapsed        float64
 	nums           []int
-	numsB           []int
+	numsB          []int
 	Duration       float64
 	Timing         func(timeFraction float64) float64
 }
@@ -88,26 +72,15 @@ func (c *Controller) Init(config *ControllerConfig) {
 	c.Steps = &Step{}
 	c.LastStep = c.Steps
 	c.CurrentStep = c.Steps
-	c.Screen = new(Screen)
 	c.Duration = config.Duration
 	c.fps = 60
-	obj := createCanvas(c.Config.Id, c.Config.Size)
-	c.C = canvas.New(obj)
-	c.Ctx = c.C.GetContext2D()
-	c.Screen.C = c.C
-	c.Screen.Ctx = c.Ctx
+
 	if config.Size == 0 {
 		c.Config.Size = defaultSize
 	}
 
-	c.Screen.Rectangles = []*Rectangle{}
 	c.nums = utils.Shuffle(c.Config.Size)
-
-	for k, v := range c.nums {
-		r := NewRect(c.Config.Size, k, v, c.Ctx)
-		c.Screen.Rectangles = append(c.Screen.Rectangles, r)
-	}
-	c.Screen.FinishedDrawing = map[int]bool{}
+	c.Screen = visualizer.NewScreen(c.Config.Id, c.Config.Size, c.nums)
 
 	c.ApplyAlgorithm(config)
 
@@ -166,9 +139,9 @@ func (c *Controller) NextStep() {
 // Update the screen states based on current step
 func (c *Controller) update() {
 	if c.CurrentStep.DoSwap {
-		c.Screen.swap(c.CurrentStep.A, c.CurrentStep.B)
+		c.Screen.Swap(c.CurrentStep.A, c.CurrentStep.B)
 	} else {
-		c.Screen.pass(c.CurrentStep.A, c.CurrentStep.B)
+		c.Screen.Pass(c.CurrentStep.A, c.CurrentStep.B)
 	}
 }
 
@@ -211,7 +184,7 @@ func (c *Controller) animate(timestamp float64) {
 		}
 		c.then = c.now - math.Mod(c.elapsed, c.fpdInterval)
 
-		c.Ctx.ClearRect(0, 0, float64(canvasWidth(c.Config.Size)), float64(canvasHeight(c.Config.Size)))
+		c.Screen.Clear()
 		c.draw(c.Timing(timeFraction))
 	}
 }

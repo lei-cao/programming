@@ -1,4 +1,4 @@
-package controller
+package play
 
 func (c *Controller) BubbleSort() {
 	for i := 0; i < c.Config.Size; i++ {

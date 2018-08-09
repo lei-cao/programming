@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-	"github.com/lei-cao/learning-cs-again/code/play"
-	"github.com/lei-cao/learning-cs-again/code/v1/visualizer"
+	v2 "github.com/lei-cao/learning-cs-again/code/play"
+	v1 "github.com/lei-cao/learning-cs-again/code/v1/visualizer"
 )
 
 func main() {
@@ -16,13 +16,13 @@ func main() {
 }
 
 func Algorithm() *js.Object {
-	return js.MakeWrapper(new(visualizer.Visualizer))
+	return js.MakeWrapper(new(v1.Visualizer))
 }
 
 func Controller() *js.Object {
-	return js.MakeWrapper(new(controller.Controller))
+	return js.MakeWrapper(new(v2.Controller))
 }
 
 func ControllerConfig() *js.Object {
-	return js.MakeWrapper(new(controller.ControllerConfig))
+	return js.MakeWrapper(new(v2.ControllerConfig))
 }

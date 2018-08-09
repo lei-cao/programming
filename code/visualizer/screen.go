@@ -1,4 +1,4 @@
-package controller
+package visualizer
 
 import (
 	"github.com/gopherjs/gopherjs/js"
@@ -10,10 +10,31 @@ var barWidth = 8
 var barSpace = 2
 var heightUnit = 5
 
+func NewScreen(id string, size int, nums []int) *Screen {
+	s := new(Screen)
+	s.id = id
+	s.size = size
+
+	obj := CreateCanvas(s.id, s.size)
+	s.C = canvas.New(obj)
+	s.Ctx = s.C.GetContext2D()
+
+	s.Rectangles = []*Rectangle{}
+
+	for k, v := range nums {
+		r := NewRect(size, k, v, s.Ctx)
+		s.Rectangles = append(s.Rectangles, r)
+	}
+	s.FinishedDrawing = map[int]bool{}
+	return s
+}
+
 // The screen including the elements on the canvas
 // Maintain the ready for next state
 type Screen struct {
-	C              *canvas.Canvas
+	id              string
+	size            int
+	C               *canvas.Canvas
 	Ctx             *canvas.Context2D
 	Rectangles      []*Rectangle
 	FinishedDrawing map[int]bool
@@ -22,13 +43,17 @@ type Screen struct {
 	BIndex          int
 }
 
+func (s *Screen) Clear() {
+	s.Ctx.ClearRect(0, 0, float64(canvasWidth(s.size)), float64(canvasHeight(s.size)))
+}
+
 func (s *Screen) Draw(timestamp float64) {
 	s.draw(timestamp)
 }
 
 func (s *Screen) draw(timestamp float64) {
 	s.Ctx.FillStyle = defaultColor.BackgroundColor
-	s.Ctx.FillRect(0,0, float64(s.C.Width), float64(s.C.Height))
+	s.Ctx.FillRect(0, 0, float64(s.C.Width), float64(s.C.Height))
 	for k, r := range s.Rectangles {
 		r.IsB = false
 		r.IsA = false
@@ -49,7 +74,7 @@ func (s *Screen) draw(timestamp float64) {
 	s.Ready = true
 }
 
-func (s *Screen) swap(ia, ib int) {
+func (s *Screen) Swap(ia, ib int) {
 	a := s.Rectangles[ia]
 	b := s.Rectangles[ib]
 	a.IsA = true
@@ -64,7 +89,7 @@ func (s *Screen) swap(ia, ib int) {
 	s.Rectangles[ib] = a
 }
 
-func (s *Screen) pass(ia, ib int) {
+func (s *Screen) Pass(ia, ib int) {
 	a := s.Rectangles[ia]
 	b := s.Rectangles[ib]
 	a.IsA = true
@@ -73,7 +98,7 @@ func (s *Screen) pass(ia, ib int) {
 	s.BIndex = ib
 }
 
-func createCanvas(id string, size int) *js.Object {
+func CreateCanvas(id string, size int) *js.Object {
 	body := js.Global.Get("document").Call("getElementById", id)
 	obj := js.Global.Get("document").Call("createElement", "canvas")
 	obj.Set("width", strconv.Itoa(canvasWidth(size)))

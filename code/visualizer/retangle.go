@@ -1,4 +1,4 @@
-package controller
+package visualizer
 
 import (
 	"github.com/oskca/gopherjs-canvas"
@@ -18,15 +18,15 @@ func NewRect(total int, index int, value int, ctx *canvas.Context2D) *Rectangle 
 
 // Represent the element in the problem slice
 type Rectangle struct {
-	Ctx      *canvas.Context2D
-	Index    int
-	ToIndex  int
-	IsA      bool
-	IsB      bool
-	Left     float64
-	Top      float64
-	Width    float64
-	Height   float64
+	Ctx     *canvas.Context2D
+	Index   int
+	ToIndex int
+	IsA     bool
+	IsB     bool
+	Left    float64
+	Top     float64
+	Width   float64
+	Height  float64
 }
 
 func (r *Rectangle) Animate(timestamp float64) bool {
@@ -67,4 +67,3 @@ func (r *Rectangle) draw() {
 func (r *Rectangle) toLeft() float64 {
 	return float64((barWidth + barSpace) * r.ToIndex)
 }
-
