@@ -64,6 +64,39 @@ func (c *Controller) partition(lo, hi int) int {
 	return i + 1
 }
 
+func (c *Controller) TopDownMergeSort() {
+	var b []int = make([]int, len(c.nums))
+	copy(b, c.nums)
+	c.numsB = b
+	c.topDownSplitMerge(c.numsB, 0, len(c.nums), c.nums)
+}
+
+func (c *Controller) topDownSplitMerge(b []int, iBegin int, iEnd int, a []int) {
+	if iEnd-iBegin < 2 {
+		return
+	}
+	iMid := (iBegin + iEnd) / 2
+	c.topDownSplitMerge(a, iBegin, iMid, b)
+	c.topDownSplitMerge(a, iMid, iEnd, b)
+	c.topDownMerge(b, iBegin, iMid, iEnd, a)
+}
+
+func (c *Controller) topDownMerge(a []int, iBegin int, iMid int, iEnd int, b []int) {
+	i := iBegin
+	j := iMid
+	for k := iBegin; k < iEnd; k++ {
+		if i < iMid && (j >= iEnd || a[i] <= a[j]) {
+			b[k] = a[i]
+			i += 1
+			c.swap(k, i)
+		} else {
+			b[k] = a[j]
+			c.swap(k, j)
+			j += 1
+		}
+	}
+}
+
 func (c *Controller) pass(a, b int) {
 	step := &Step{A: a, B: b}
 	c.LastStep.Next = step

@@ -14,5 +14,8 @@ Making a new version of the visualizer. Still based on `canvas`. Used `requestAn
 ## Quick Sort
 <ACanvasTwo id="quick"/>
 
+## Top Down Merge Sort
+<ACanvasTwo id="topDownMergeSort"/>
+
 Added speed control. Will add more controls for it.
 

@@ -18123,7 +18123,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/sort"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
-	var $pkg = {}, $init, js, sort, canvas, math, strconv, time, Step, ColorScheme, ControllerConfig, Controller, Rectangle, Screen, ptrType, ptrType$1, ptrType$2, ptrType$3, sliceType, funcType, ptrType$4, ptrType$5, sliceType$1, ptrType$6, ptrType$7, funcType$1, mapType, defaultSize, defaultColor, barWidth, barSpace, heightUnit, makeTimestamp, NewRect, createCanvas, canvasWidth, canvasHeight;
+	var $pkg = {}, $init, js, sort, canvas, math, strconv, time, Step, ColorScheme, ControllerConfig, Controller, Rectangle, Screen, ptrType, ptrType$1, ptrType$2, ptrType$3, sliceType, funcType, sliceType$1, ptrType$4, ptrType$5, ptrType$6, ptrType$7, funcType$1, mapType, defaultSize, defaultColor, barWidth, barSpace, heightUnit, makeTimestamp, NewRect, createCanvas, canvasWidth, canvasHeight;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	sort = $packages["github.com/lei-cao/learning-cs-again/code/sort"];
 	canvas = $packages["github.com/oskca/gopherjs-canvas"];
@@ -18266,9 +18266,9 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 	ptrType$3 = $ptrType(Rectangle);
 	sliceType = $sliceType(ptrType$3);
 	funcType = $funcType([$Float64], [], false);
+	sliceType$1 = $sliceType($Int);
 	ptrType$4 = $ptrType(ControllerConfig);
 	ptrType$5 = $ptrType(Screen);
-	sliceType$1 = $sliceType($Int);
 	ptrType$6 = $ptrType(Controller);
 	ptrType$7 = $ptrType(js.Object);
 	funcType$1 = $funcType([$Float64], [$Float64], false);
@@ -18350,6 +18350,8 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 			c.InsertionSort();
 		} else if (_1 === ("quick")) {
 			c.QuickSort();
+		} else if (_1 === ("topDownMergeSort")) {
+			c.TopDownMergeSort();
 		}
 	};
 	Controller.prototype.ApplyAlgorithm = function(config) { return this.$val.ApplyAlgorithm(config); };
@@ -18697,6 +18699,48 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		return i + 1 >> 0;
 	};
 	Controller.prototype.partition = function(lo, hi) { return this.$val.partition(lo, hi); };
+	Controller.ptr.prototype.TopDownMergeSort = function() {
+		var b, c;
+		c = this;
+		b = $makeSlice(sliceType$1, c.nums.$length);
+		$copySlice(b, c.nums);
+		c.numsB = b;
+		c.topDownSplitMerge(c.numsB, 0, c.nums.$length, c.nums);
+	};
+	Controller.prototype.TopDownMergeSort = function() { return this.$val.TopDownMergeSort(); };
+	Controller.ptr.prototype.topDownSplitMerge = function(b, iBegin, iEnd, a) {
+		var _q, a, b, c, iBegin, iEnd, iMid;
+		c = this;
+		if ((iEnd - iBegin >> 0) < 2) {
+			return;
+		}
+		iMid = (_q = ((iBegin + iEnd >> 0)) / 2, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >> 0 : $throwRuntimeError("integer divide by zero"));
+		c.topDownSplitMerge(a, iBegin, iMid, b);
+		c.topDownSplitMerge(a, iMid, iEnd, b);
+		c.topDownMerge(b, iBegin, iMid, iEnd, a);
+	};
+	Controller.prototype.topDownSplitMerge = function(b, iBegin, iEnd, a) { return this.$val.topDownSplitMerge(b, iBegin, iEnd, a); };
+	Controller.ptr.prototype.topDownMerge = function(a, iBegin, iMid, iEnd, b) {
+		var a, b, c, i, iBegin, iEnd, iMid, j, k;
+		c = this;
+		i = iBegin;
+		j = iMid;
+		k = iBegin;
+		while (true) {
+			if (!(k < iEnd)) { break; }
+			if (i < iMid && (j >= iEnd || ((i < 0 || i >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + i]) <= ((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]))) {
+				((k < 0 || k >= b.$length) ? ($throwRuntimeError("index out of range"), undefined) : b.$array[b.$offset + k] = ((i < 0 || i >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + i]));
+				i = i + (1) >> 0;
+				c.swap(k, i);
+			} else {
+				((k < 0 || k >= b.$length) ? ($throwRuntimeError("index out of range"), undefined) : b.$array[b.$offset + k] = ((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]));
+				c.swap(k, j);
+				j = j + (1) >> 0;
+			}
+			k = k + (1) >> 0;
+		}
+	};
+	Controller.prototype.topDownMerge = function(a, iBegin, iMid, iEnd, b) { return this.$val.topDownMerge(a, iBegin, iMid, iEnd, b); };
 	Controller.ptr.prototype.pass = function(a, b) {
 		var a, b, c, step;
 		c = this;
@@ -18718,7 +18762,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 	};
 	Controller.prototype.swap = function(a, b) { return this.$val.swap(a, b); };
 	ptrType$4.methods = [{prop: "SetDuration", name: "SetDuration", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "SetSize", name: "SetSize", pkg: "", typ: $funcType([$Int], [], false)}, {prop: "SetId", name: "SetId", pkg: "", typ: $funcType([$String], [], false)}];
-	ptrType$6.methods = [{prop: "UpdateConfig", name: "UpdateConfig", pkg: "", typ: $funcType([ptrType$4], [], false)}, {prop: "Init", name: "Init", pkg: "", typ: $funcType([ptrType$4], [], false)}, {prop: "ApplyAlgorithm", name: "ApplyAlgorithm", pkg: "", typ: $funcType([ptrType$4], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [], false)}, {prop: "startAnimating", name: "startAnimating", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "animate", name: "animate", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [], false)}, {prop: "BubbleSort", name: "BubbleSort", pkg: "", typ: $funcType([], [], false)}, {prop: "SelectionSort", name: "SelectionSort", pkg: "", typ: $funcType([], [], false)}, {prop: "InsertionSort", name: "InsertionSort", pkg: "", typ: $funcType([], [], false)}, {prop: "QuickSort", name: "QuickSort", pkg: "", typ: $funcType([], [], false)}, {prop: "quickSort", name: "quickSort", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}, {prop: "partition", name: "partition", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [$Int], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}, {prop: "swap", name: "swap", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}];
+	ptrType$6.methods = [{prop: "UpdateConfig", name: "UpdateConfig", pkg: "", typ: $funcType([ptrType$4], [], false)}, {prop: "Init", name: "Init", pkg: "", typ: $funcType([ptrType$4], [], false)}, {prop: "ApplyAlgorithm", name: "ApplyAlgorithm", pkg: "", typ: $funcType([ptrType$4], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [], false)}, {prop: "startAnimating", name: "startAnimating", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "animate", name: "animate", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [], false)}, {prop: "BubbleSort", name: "BubbleSort", pkg: "", typ: $funcType([], [], false)}, {prop: "SelectionSort", name: "SelectionSort", pkg: "", typ: $funcType([], [], false)}, {prop: "InsertionSort", name: "InsertionSort", pkg: "", typ: $funcType([], [], false)}, {prop: "QuickSort", name: "QuickSort", pkg: "", typ: $funcType([], [], false)}, {prop: "quickSort", name: "quickSort", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}, {prop: "partition", name: "partition", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [$Int], false)}, {prop: "TopDownMergeSort", name: "TopDownMergeSort", pkg: "", typ: $funcType([], [], false)}, {prop: "topDownSplitMerge", name: "topDownSplitMerge", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([sliceType$1, $Int, $Int, sliceType$1], [], false)}, {prop: "topDownMerge", name: "topDownMerge", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([sliceType$1, $Int, $Int, $Int, sliceType$1], [], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}, {prop: "swap", name: "swap", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}];
 	ptrType$3.methods = [{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [$Bool], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "toLeft", name: "toLeft", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [$Float64], false)}];
 	ptrType$5.methods = [{prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [], false)}, {prop: "swap", name: "swap", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}];
 	Step.init("", [{prop: "A", name: "A", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "B", name: "B", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "DoSwap", name: "DoSwap", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Next", name: "Next", anonymous: false, exported: true, typ: ptrType, tag: ""}]);

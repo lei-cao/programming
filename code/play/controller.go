@@ -124,6 +124,8 @@ func (c *Controller) ApplyAlgorithm(config *ControllerConfig) {
 		c.InsertionSort()
 	case "quick":
 		c.QuickSort()
+	case "topDownMergeSort":
+		c.TopDownMergeSort()
 	}
 }
 
