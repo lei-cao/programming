@@ -38,9 +38,13 @@ type Screen struct {
 	Ctx             *canvas.Context2D
 	Rectangles      []*Rectangle
 	FinishedDrawing map[int]bool
-	Ready           bool
+	ready           bool
 	AIndex          int
 	BIndex          int
+}
+
+func (s *Screen) Ready() bool {
+	return s.ready
 }
 
 func (s *Screen) Clear() {
@@ -49,6 +53,14 @@ func (s *Screen) Clear() {
 
 func (s *Screen) Draw(timestamp float64) {
 	s.draw(timestamp)
+}
+
+func (s *Screen) Update(i Stepper) {
+	if i.DoSwap() {
+		s.Swap(i.A(), i.B())
+	} else {
+		s.Pass(i.A(), i.B())
+	}
 }
 
 func (s *Screen) draw(timestamp float64) {
@@ -67,11 +79,11 @@ func (s *Screen) draw(timestamp float64) {
 	}
 	for _, finished := range s.FinishedDrawing {
 		if !finished {
-			s.Ready = false
+			s.ready = false
 			return
 		}
 	}
-	s.Ready = true
+	s.ready = true
 }
 
 func (s *Screen) Swap(ia, ib int) {

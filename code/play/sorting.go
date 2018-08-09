@@ -98,14 +98,10 @@ func (c *Controller) topDownMerge(a []int, iBegin int, iMid int, iEnd int, b []i
 }
 
 func (c *Controller) pass(a, b int) {
-	step := &Step{A: a, B: b}
-	c.LastStep.Next = step
-	c.LastStep = step
+	c.Steps.AddStep(a, b, false)
 }
 
 func (c *Controller) swap(a, b int) {
-	step := &Step{A: a, B: b, DoSwap: true}
+	c.Steps.AddStep(a, b, true)
 	c.nums[a], c.nums[b] = c.nums[b], c.nums[a]
-	c.LastStep.Next = step
-	c.LastStep = step
 }

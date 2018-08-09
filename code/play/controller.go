@@ -11,13 +11,6 @@ import (
 // default size for the slice being solved
 var defaultSize = 10
 
-// Hold the operation steps queue
-type Step struct {
-	A      int
-	B      int
-	DoSwap bool
-	Next   *Step
-}
 
 type ControllerConfig struct {
 	Id       string  `json:"id"`
@@ -39,13 +32,11 @@ func (c *ControllerConfig) SetId(id string) {
 
 // The visualizer controller
 type Controller struct {
-	Steps          *Step
-	LastStep       *Step
-	CurrentStep    *Step
+	Steps          visualizer.Stepper
+	Screen         visualizer.Screener
 	AutoUpdate     bool
 	Animating      bool
 	Config         *ControllerConfig
-	Screen         *visualizer.Screen
 	animationFrame *js.Object
 	fps            int
 	fpdInterval    float64
@@ -69,9 +60,7 @@ func (c *Controller) UpdateConfig(config *ControllerConfig) {
 func (c *Controller) Init(config *ControllerConfig) {
 	c.Config = config
 	c.AutoUpdate = true
-	c.Steps = &Step{}
-	c.LastStep = c.Steps
-	c.CurrentStep = c.Steps
+	c.Steps = visualizer.NewStep()
 	c.Duration = config.Duration
 	c.fps = 60
 
@@ -80,7 +69,8 @@ func (c *Controller) Init(config *ControllerConfig) {
 	}
 
 	c.nums = utils.Shuffle(c.Config.Size)
-	c.Screen = visualizer.NewScreen(c.Config.Id, c.Config.Size, c.nums)
+	s := visualizer.NewScreen(c.Config.Id, c.Config.Size, c.nums)
+	c.Screen = s
 
 	c.ApplyAlgorithm(config)
 
@@ -120,7 +110,7 @@ func (c *Controller) Resume() {
 // Do next step from the steps queue
 // Being triggered manually or automatically
 func (c *Controller) NextStep() {
-	if c.CurrentStep.Next == nil {
+	if c.Steps.Finished() {
 		js.Global.Call("cancelAnimationFrame", c.animationFrame)
 		return
 	}
@@ -128,27 +118,22 @@ func (c *Controller) NextStep() {
 	if !c.Animating {
 		c.startAnimating()
 	}
-	if !c.Screen.Ready {
+	if !c.Screen.Ready() {
 		return
 	}
 	c.startTime = makeTimestamp()
-	c.CurrentStep = c.CurrentStep.Next
 	c.update()
 }
 
 // Update the screen states based on current step
 func (c *Controller) update() {
-	if c.CurrentStep.DoSwap {
-		c.Screen.Swap(c.CurrentStep.A, c.CurrentStep.B)
-	} else {
-		c.Screen.Pass(c.CurrentStep.A, c.CurrentStep.B)
-	}
+	c.Screen.Update(c.Steps.NextStep())
 }
 
 // Draw the screen
 func (c *Controller) draw(timestamp float64) {
 	c.Screen.Draw(timestamp)
-	if c.Screen.Ready {
+	if c.Screen.Ready() {
 		if c.AutoUpdate {
 			c.NextStep()
 		} else {

@@ -10662,7 +10662,7 @@ $packages["strconv"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() {
-	var $pkg = {}, $init, js, canvas, strconv, ColorScheme, Rectangle, Screen, ptrType, ptrType$1, ptrType$2, sliceType, ptrType$3, mapType, defaultColor, barWidth, barSpace, heightUnit, NewRect, NewScreen, CreateCanvas, canvasWidth, canvasHeight;
+	var $pkg = {}, $init, js, canvas, strconv, ColorScheme, Screener, Stepper, Swapper, Rectangle, Screen, Step, ptrType, ptrType$1, ptrType$2, sliceType, ptrType$3, ptrType$4, mapType, defaultColor, barWidth, barSpace, heightUnit, NewRect, NewScreen, CreateCanvas, canvasWidth, canvasHeight, NewStep;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	canvas = $packages["github.com/oskca/gopherjs-canvas"];
 	strconv = $packages["strconv"];
@@ -10680,6 +10680,9 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 		this.AColor = AColor_;
 		this.BColor = BColor_;
 	});
+	Screener = $pkg.Screener = $newType(8, $kindInterface, "visualizer.Screener", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, null);
+	Stepper = $pkg.Stepper = $newType(8, $kindInterface, "visualizer.Stepper", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, null);
+	Swapper = $pkg.Swapper = $newType(8, $kindInterface, "visualizer.Swapper", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, null);
 	Rectangle = $pkg.Rectangle = $newType(0, $kindStruct, "visualizer.Rectangle", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, function(Ctx_, Index_, ToIndex_, IsA_, IsB_, Left_, Top_, Width_, Height_) {
 		this.$val = this;
 		if (arguments.length === 0) {
@@ -10704,7 +10707,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 		this.Width = Width_;
 		this.Height = Height_;
 	});
-	Screen = $pkg.Screen = $newType(0, $kindStruct, "visualizer.Screen", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, function(id_, size_, C_, Ctx_, Rectangles_, FinishedDrawing_, Ready_, AIndex_, BIndex_) {
+	Screen = $pkg.Screen = $newType(0, $kindStruct, "visualizer.Screen", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, function(id_, size_, C_, Ctx_, Rectangles_, FinishedDrawing_, ready_, AIndex_, BIndex_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.id = "";
@@ -10713,7 +10716,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 			this.Ctx = ptrType.nil;
 			this.Rectangles = sliceType.nil;
 			this.FinishedDrawing = false;
-			this.Ready = false;
+			this.ready = false;
 			this.AIndex = 0;
 			this.BIndex = 0;
 			return;
@@ -10724,15 +10727,36 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 		this.Ctx = Ctx_;
 		this.Rectangles = Rectangles_;
 		this.FinishedDrawing = FinishedDrawing_;
-		this.Ready = Ready_;
+		this.ready = ready_;
 		this.AIndex = AIndex_;
 		this.BIndex = BIndex_;
+	});
+	Step = $pkg.Step = $newType(0, $kindStruct, "visualizer.Step", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, function(Swapper_, a_, b_, doSwap_, next_, last_, current_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Swapper = $ifaceNil;
+			this.a = 0;
+			this.b = 0;
+			this.doSwap = false;
+			this.next = ptrType$3.nil;
+			this.last = ptrType$3.nil;
+			this.current = ptrType$3.nil;
+			return;
+		}
+		this.Swapper = Swapper_;
+		this.a = a_;
+		this.b = b_;
+		this.doSwap = doSwap_;
+		this.next = next_;
+		this.last = last_;
+		this.current = current_;
 	});
 	ptrType = $ptrType(canvas.Context2D);
 	ptrType$1 = $ptrType(canvas.Canvas);
 	ptrType$2 = $ptrType(Rectangle);
 	sliceType = $sliceType(ptrType$2);
-	ptrType$3 = $ptrType(Screen);
+	ptrType$3 = $ptrType(Step);
+	ptrType$4 = $ptrType(Screen);
 	mapType = $mapType($Int, $Bool);
 	NewRect = function(total, index, value, ctx) {
 		var ctx, index, r, total, value;
@@ -10813,6 +10837,12 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 		return s;
 	};
 	$pkg.NewScreen = NewScreen;
+	Screen.ptr.prototype.Ready = function() {
+		var s;
+		s = this;
+		return s.ready;
+	};
+	Screen.prototype.Ready = function() { return this.$val.Ready(); };
 	Screen.ptr.prototype.Clear = function() {
 		var s;
 		s = this;
@@ -10825,6 +10855,31 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 		s.draw(timestamp);
 	};
 	Screen.prototype.Draw = function(timestamp) { return this.$val.Draw(timestamp); };
+	Screen.ptr.prototype.Update = function(i) {
+		var _arg, _arg$1, _arg$2, _arg$3, _r, _r$1, _r$2, _r$3, _r$4, i, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; i = $f.i; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		s = this;
+		_r = i.DoSwap(); /* */ $s = 4; case 4: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		/* */ if (_r) { $s = 1; continue; }
+		/* */ $s = 2; continue;
+		/* if (_r) { */ case 1:
+			_r$1 = i.A(); /* */ $s = 5; case 5: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+			_arg = _r$1;
+			_r$2 = i.B(); /* */ $s = 6; case 6: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			_arg$1 = _r$2;
+			$r = s.Swap(_arg, _arg$1); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$s = 3; continue;
+		/* } else { */ case 2:
+			_r$3 = i.A(); /* */ $s = 8; case 8: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+			_arg$2 = _r$3;
+			_r$4 = i.B(); /* */ $s = 9; case 9: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+			_arg$3 = _r$4;
+			$r = s.Pass(_arg$2, _arg$3); /* */ $s = 10; case 10: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* } */ case 3:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Screen.ptr.prototype.Update }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f.i = i; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	Screen.prototype.Update = function(i) { return this.$val.Update(i); };
 	Screen.ptr.prototype.draw = function(timestamp) {
 		var _entry, _i, _i$1, _key, _keys, _ref, _ref$1, finished, k, r, s, timestamp;
 		s = this;
@@ -10859,12 +10914,12 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 			}
 			finished = _entry.v;
 			if (!finished) {
-				s.Ready = false;
+				s.ready = false;
 				return;
 			}
 			_i$1++;
 		}
-		s.Ready = true;
+		s.ready = true;
 	};
 	Screen.prototype.draw = function(timestamp) { return this.$val.draw(timestamp); };
 	Screen.ptr.prototype.Swap = function(ia, ib) {
@@ -10912,11 +10967,72 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 		var size;
 		return $imul(size, heightUnit);
 	};
+	NewStep = function() {
+		var s;
+		s = new Step.ptr($ifaceNil, 0, 0, false, ptrType$3.nil, ptrType$3.nil, ptrType$3.nil);
+		s.last = s;
+		s.current = s;
+		return s;
+	};
+	$pkg.NewStep = NewStep;
+	Step.ptr.prototype.AddStep = function(a, b, doSwap) {
+		var a, b, doSwap, s, step;
+		s = this;
+		step = new Step.ptr($ifaceNil, a, b, doSwap, ptrType$3.nil, ptrType$3.nil, ptrType$3.nil);
+		s.last.next = step;
+		s.last = step;
+	};
+	Step.prototype.AddStep = function(a, b, doSwap) { return this.$val.AddStep(a, b, doSwap); };
+	Step.ptr.prototype.Finished = function() {
+		var s;
+		s = this;
+		return s.current.next === ptrType$3.nil;
+	};
+	Step.prototype.Finished = function() { return this.$val.Finished(); };
+	Step.ptr.prototype.NextStep = function() {
+		var s;
+		s = this;
+		if (s.Finished()) {
+			return $ifaceNil;
+		}
+		s.current = s.current.next;
+		return s.current;
+	};
+	Step.prototype.NextStep = function() { return this.$val.NextStep(); };
+	Step.ptr.prototype.CurrentStep = function() {
+		var s;
+		s = this;
+		return s.current;
+	};
+	Step.prototype.CurrentStep = function() { return this.$val.CurrentStep(); };
+	Step.ptr.prototype.A = function() {
+		var s;
+		s = this;
+		return s.a;
+	};
+	Step.prototype.A = function() { return this.$val.A(); };
+	Step.ptr.prototype.B = function() {
+		var s;
+		s = this;
+		return s.b;
+	};
+	Step.prototype.B = function() { return this.$val.B(); };
+	Step.ptr.prototype.DoSwap = function() {
+		var s;
+		s = this;
+		return s.doSwap;
+	};
+	Step.prototype.DoSwap = function() { return this.$val.DoSwap(); };
 	ptrType$2.methods = [{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer", typ: $funcType([$Float64], [$Bool], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer", typ: $funcType([], [], false)}, {prop: "toLeft", name: "toLeft", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer", typ: $funcType([], [$Float64], false)}];
-	ptrType$3.methods = [{prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer", typ: $funcType([$Float64], [], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}];
+	ptrType$4.methods = [{prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer", typ: $funcType([$Float64], [], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}];
+	ptrType$3.methods = [{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([$Int, $Int, $Bool], [], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [Stepper], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [Stepper], false)}, {prop: "A", name: "A", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "B", name: "B", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "DoSwap", name: "DoSwap", pkg: "", typ: $funcType([], [$Bool], false)}];
 	ColorScheme.init("", [{prop: "BackgroundColor", name: "BackgroundColor", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "BarColor", name: "BarColor", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "AColor", name: "AColor", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "BColor", name: "BColor", anonymous: false, exported: true, typ: $String, tag: ""}]);
+	Screener.init([{prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([Stepper], [], false)}]);
+	Stepper.init([{prop: "A", name: "A", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([$Int, $Int, $Bool], [], false)}, {prop: "B", name: "B", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [Stepper], false)}, {prop: "DoSwap", name: "DoSwap", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [Stepper], false)}]);
+	Swapper.init([{prop: "A", name: "A", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "B", name: "B", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "DoSwap", name: "DoSwap", pkg: "", typ: $funcType([], [$Bool], false)}]);
 	Rectangle.init("", [{prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "Index", name: "Index", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "ToIndex", name: "ToIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IsA", name: "IsA", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "IsB", name: "IsB", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Left", name: "Left", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Top", name: "Top", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Float64, tag: ""}]);
-	Screen.init("github.com/lei-cao/learning-cs-again/code/visualizer", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "C", name: "C", anonymous: false, exported: true, typ: ptrType$1, tag: ""}, {prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "Rectangles", name: "Rectangles", anonymous: false, exported: true, typ: sliceType, tag: ""}, {prop: "FinishedDrawing", name: "FinishedDrawing", anonymous: false, exported: true, typ: mapType, tag: ""}, {prop: "Ready", name: "Ready", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "AIndex", name: "AIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "BIndex", name: "BIndex", anonymous: false, exported: true, typ: $Int, tag: ""}]);
+	Screen.init("github.com/lei-cao/learning-cs-again/code/visualizer", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "C", name: "C", anonymous: false, exported: true, typ: ptrType$1, tag: ""}, {prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "Rectangles", name: "Rectangles", anonymous: false, exported: true, typ: sliceType, tag: ""}, {prop: "FinishedDrawing", name: "FinishedDrawing", anonymous: false, exported: true, typ: mapType, tag: ""}, {prop: "ready", name: "ready", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "AIndex", name: "AIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "BIndex", name: "BIndex", anonymous: false, exported: true, typ: $Int, tag: ""}]);
+	Step.init("github.com/lei-cao/learning-cs-again/code/visualizer", [{prop: "Swapper", name: "Swapper", anonymous: true, exported: true, typ: Swapper, tag: ""}, {prop: "a", name: "a", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "b", name: "b", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "doSwap", name: "doSwap", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "next", name: "next", anonymous: false, exported: false, typ: ptrType$3, tag: ""}, {prop: "last", name: "last", anonymous: false, exported: false, typ: ptrType$3, tag: ""}, {prop: "current", name: "current", anonymous: false, exported: false, typ: ptrType$3, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -10933,26 +11049,12 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 	return $pkg;
 })();
 $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
-	var $pkg = {}, $init, js, utils, visualizer, math, time, Step, ControllerConfig, Controller, ptrType, funcType, sliceType, ptrType$1, ptrType$2, ptrType$3, ptrType$4, funcType$1, defaultSize, makeTimestamp;
+	var $pkg = {}, $init, js, utils, visualizer, math, time, ControllerConfig, Controller, funcType, sliceType, ptrType, ptrType$1, ptrType$2, funcType$1, defaultSize, makeTimestamp;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	utils = $packages["github.com/lei-cao/learning-cs-again/code/utils"];
 	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
 	math = $packages["math"];
 	time = $packages["time"];
-	Step = $pkg.Step = $newType(0, $kindStruct, "play.Step", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(A_, B_, DoSwap_, Next_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.A = 0;
-			this.B = 0;
-			this.DoSwap = false;
-			this.Next = ptrType.nil;
-			return;
-		}
-		this.A = A_;
-		this.B = B_;
-		this.DoSwap = DoSwap_;
-		this.Next = Next_;
-	});
 	ControllerConfig = $pkg.ControllerConfig = $newType(0, $kindStruct, "play.ControllerConfig", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(Id_, Duration_, Size_) {
 		this.$val = this;
 		if (arguments.length === 0) {
@@ -10965,16 +11067,14 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		this.Duration = Duration_;
 		this.Size = Size_;
 	});
-	Controller = $pkg.Controller = $newType(0, $kindStruct, "play.Controller", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(Steps_, LastStep_, CurrentStep_, AutoUpdate_, Animating_, Config_, Screen_, animationFrame_, fps_, fpdInterval_, startTime_, now_, then_, elapsed_, nums_, numsB_, Duration_, Timing_) {
+	Controller = $pkg.Controller = $newType(0, $kindStruct, "play.Controller", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(Steps_, Screen_, AutoUpdate_, Animating_, Config_, animationFrame_, fps_, fpdInterval_, startTime_, now_, then_, elapsed_, nums_, numsB_, Duration_, Timing_) {
 		this.$val = this;
 		if (arguments.length === 0) {
-			this.Steps = ptrType.nil;
-			this.LastStep = ptrType.nil;
-			this.CurrentStep = ptrType.nil;
+			this.Steps = $ifaceNil;
+			this.Screen = $ifaceNil;
 			this.AutoUpdate = false;
 			this.Animating = false;
-			this.Config = ptrType$1.nil;
-			this.Screen = ptrType$2.nil;
+			this.Config = ptrType.nil;
 			this.animationFrame = null;
 			this.fps = 0;
 			this.fpdInterval = 0;
@@ -10989,12 +11089,10 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 			return;
 		}
 		this.Steps = Steps_;
-		this.LastStep = LastStep_;
-		this.CurrentStep = CurrentStep_;
+		this.Screen = Screen_;
 		this.AutoUpdate = AutoUpdate_;
 		this.Animating = Animating_;
 		this.Config = Config_;
-		this.Screen = Screen_;
 		this.animationFrame = animationFrame_;
 		this.fps = fps_;
 		this.fpdInterval = fpdInterval_;
@@ -11007,13 +11105,11 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		this.Duration = Duration_;
 		this.Timing = Timing_;
 	});
-	ptrType = $ptrType(Step);
 	funcType = $funcType([$Float64], [], false);
 	sliceType = $sliceType($Int);
-	ptrType$1 = $ptrType(ControllerConfig);
-	ptrType$2 = $ptrType(visualizer.Screen);
-	ptrType$3 = $ptrType(Controller);
-	ptrType$4 = $ptrType(js.Object);
+	ptrType = $ptrType(ControllerConfig);
+	ptrType$1 = $ptrType(Controller);
+	ptrType$2 = $ptrType(js.Object);
 	funcType$1 = $funcType([$Float64], [$Float64], false);
 	ControllerConfig.ptr.prototype.SetDuration = function(s) {
 		var c, s;
@@ -11041,14 +11137,12 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 	};
 	Controller.prototype.UpdateConfig = function(config) { return this.$val.UpdateConfig(config); };
 	Controller.ptr.prototype.Init = function(config) {
-		var _r, c, config, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; c = $f.c; config = $f.config; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var _r, c, config, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; c = $f.c; config = $f.config; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
 		c.Config = config;
 		c.AutoUpdate = true;
-		c.Steps = new Step.ptr(0, 0, false, ptrType.nil);
-		c.LastStep = c.Steps;
-		c.CurrentStep = c.Steps;
+		c.Steps = visualizer.NewStep();
 		c.Duration = config.Duration;
 		c.fps = 60;
 		if (config.Size === 0) {
@@ -11056,28 +11150,43 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		}
 		_r = utils.Shuffle(c.Config.Size); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 		c.nums = _r;
-		c.Screen = visualizer.NewScreen(c.Config.Id, c.Config.Size, c.nums);
-		c.ApplyAlgorithm(config);
+		s = visualizer.NewScreen(c.Config.Id, c.Config.Size, c.nums);
+		c.Screen = s;
+		$r = c.ApplyAlgorithm(config); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		c.startAnimating();
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.Init }; } $f._r = _r; $f.c = c; $f.config = config; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.Init }; } $f._r = _r; $f.c = c; $f.config = config; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.Init = function(config) { return this.$val.Init(config); };
 	Controller.ptr.prototype.ApplyAlgorithm = function(config) {
-		var _1, c, config;
+		var _1, c, config, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _1 = $f._1; c = $f.c; config = $f.config; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
-		_1 = config.Id;
-		if (_1 === ("bubble")) {
-			c.BubbleSort();
-		} else if (_1 === ("selection")) {
-			c.SelectionSort();
-		} else if (_1 === ("insertion")) {
-			c.InsertionSort();
-		} else if (_1 === ("quick")) {
-			c.QuickSort();
-		} else if (_1 === ("topDownMergeSort")) {
-			c.TopDownMergeSort();
-		}
+			_1 = config.Id;
+			/* */ if (_1 === ("bubble")) { $s = 2; continue; }
+			/* */ if (_1 === ("selection")) { $s = 3; continue; }
+			/* */ if (_1 === ("insertion")) { $s = 4; continue; }
+			/* */ if (_1 === ("quick")) { $s = 5; continue; }
+			/* */ if (_1 === ("topDownMergeSort")) { $s = 6; continue; }
+			/* */ $s = 7; continue;
+			/* if (_1 === ("bubble")) { */ case 2:
+				$r = c.BubbleSort(); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = 7; continue;
+			/* } else if (_1 === ("selection")) { */ case 3:
+				$r = c.SelectionSort(); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = 7; continue;
+			/* } else if (_1 === ("insertion")) { */ case 4:
+				$r = c.InsertionSort(); /* */ $s = 10; case 10: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = 7; continue;
+			/* } else if (_1 === ("quick")) { */ case 5:
+				$r = c.QuickSort(); /* */ $s = 11; case 11: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = 7; continue;
+			/* } else if (_1 === ("topDownMergeSort")) { */ case 6:
+				$r = c.TopDownMergeSort(); /* */ $s = 12; case 12: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			/* } */ case 7:
+		case 1:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.ApplyAlgorithm }; } $f._1 = _1; $f.c = c; $f.config = config; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.ApplyAlgorithm = function(config) { return this.$val.ApplyAlgorithm(config); };
 	Controller.ptr.prototype.Stop = function() {
@@ -11098,44 +11207,61 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 	};
 	Controller.prototype.Resume = function() { return this.$val.Resume(); };
 	Controller.ptr.prototype.NextStep = function() {
-		var c;
+		var _r, _r$1, c, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; c = $f.c; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
-		if (c.CurrentStep.Next === ptrType.nil) {
+		_r = c.Steps.Finished(); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		/* */ if (_r) { $s = 1; continue; }
+		/* */ $s = 2; continue;
+		/* if (_r) { */ case 1:
 			$global.cancelAnimationFrame(c.animationFrame);
-			return;
-		}
+			$s = -1; return;
+		/* } */ case 2:
 		if (!c.Animating) {
 			c.startAnimating();
 		}
-		if (!c.Screen.Ready) {
-			return;
-		}
+		_r$1 = c.Screen.Ready(); /* */ $s = 6; case 6: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		/* */ if (!_r$1) { $s = 4; continue; }
+		/* */ $s = 5; continue;
+		/* if (!_r$1) { */ case 4:
+			$s = -1; return;
+		/* } */ case 5:
 		c.startTime = makeTimestamp();
-		c.CurrentStep = c.CurrentStep.Next;
-		c.update();
+		$r = c.update(); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.NextStep }; } $f._r = _r; $f._r$1 = _r$1; $f.c = c; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.NextStep = function() { return this.$val.NextStep(); };
 	Controller.ptr.prototype.update = function() {
-		var c;
+		var _r, c, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; c = $f.c; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
-		if (c.CurrentStep.DoSwap) {
-			c.Screen.Swap(c.CurrentStep.A, c.CurrentStep.B);
-		} else {
-			c.Screen.Pass(c.CurrentStep.A, c.CurrentStep.B);
-		}
+		_r = c.Steps.NextStep(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		$r = c.Screen.Update(_r); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.update }; } $f._r = _r; $f.c = c; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.update = function() { return this.$val.update(); };
 	Controller.ptr.prototype.draw = function(timestamp) {
-		var c, timestamp;
+		var _r, c, timestamp, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; c = $f.c; timestamp = $f.timestamp; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
-		c.Screen.Draw(timestamp);
-		if (c.Screen.Ready) {
-			if (c.AutoUpdate) {
-				c.NextStep();
-			} else {
+		$r = c.Screen.Draw(timestamp); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		_r = c.Screen.Ready(); /* */ $s = 4; case 4: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		/* */ if (_r) { $s = 2; continue; }
+		/* */ $s = 3; continue;
+		/* if (_r) { */ case 2:
+			/* */ if (c.AutoUpdate) { $s = 5; continue; }
+			/* */ $s = 6; continue;
+			/* if (c.AutoUpdate) { */ case 5:
+				$r = c.NextStep(); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = 7; continue;
+			/* } else { */ case 6:
 				c.Stop();
-			}
-		}
+			/* } */ case 7:
+		/* } */ case 3:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.draw }; } $f._r = _r; $f.c = c; $f.timestamp = timestamp; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.draw = function(timestamp) { return this.$val.draw(timestamp); };
 	Controller.ptr.prototype.startAnimating = function() {
@@ -11168,9 +11294,9 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 				timeFraction = 1;
 			}
 			c.then = c.now - math.Mod(c.elapsed, c.fpdInterval);
-			c.Screen.Clear();
-			_r = c.Timing(timeFraction); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-			$r = c.draw(_r); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$r = c.Screen.Clear(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			_r = c.Timing(timeFraction); /* */ $s = 4; case 4: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			$r = c.draw(_r); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		/* } */ case 2:
 		$s = -1; return;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.animate }; } $f._r = _r; $f.c = c; $f.timeFraction = timeFraction; $f.timestamp = timestamp; $f.$s = $s; $f.$r = $r; return $f;
@@ -11180,169 +11306,214 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		return ($flatten64($clone(time.Now(), time.Time).UnixNano())) / 1e+06;
 	};
 	Controller.ptr.prototype.BubbleSort = function() {
-		var c, i, j, x, x$1, x$2;
+		var c, i, j, x, x$1, x$2, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; c = $f.c; i = $f.i; j = $f.j; x = $f.x; x$1 = $f.x$1; x$2 = $f.x$2; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
 		i = 0;
-		while (true) {
-			if (!(i < c.Config.Size)) { break; }
+		/* while (true) { */ case 1:
+			/* if (!(i < c.Config.Size)) { break; } */ if(!(i < c.Config.Size)) { $s = 2; continue; }
 			j = 0;
-			while (true) {
-				if (!(j < (c.Config.Size - 1 >> 0))) { break; }
-				if ((x = c.nums, ((j < 0 || j >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + j])) > (x$1 = c.nums, x$2 = j + 1 >> 0, ((x$2 < 0 || x$2 >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + x$2]))) {
-					c.swap(j, j + 1 >> 0);
-				} else {
-					c.pass(j, j + 1 >> 0);
-				}
+			/* while (true) { */ case 3:
+				/* if (!(j < (c.Config.Size - 1 >> 0))) { break; } */ if(!(j < (c.Config.Size - 1 >> 0))) { $s = 4; continue; }
+				/* */ if ((x = c.nums, ((j < 0 || j >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + j])) > (x$1 = c.nums, x$2 = j + 1 >> 0, ((x$2 < 0 || x$2 >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + x$2]))) { $s = 5; continue; }
+				/* */ $s = 6; continue;
+				/* if ((x = c.nums, ((j < 0 || j >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + j])) > (x$1 = c.nums, x$2 = j + 1 >> 0, ((x$2 < 0 || x$2 >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + x$2]))) { */ case 5:
+					$r = c.swap(j, j + 1 >> 0); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$s = 7; continue;
+				/* } else { */ case 6:
+					$r = c.pass(j, j + 1 >> 0); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				/* } */ case 7:
 				j = j + (1) >> 0;
-			}
+			/* } */ $s = 3; continue; case 4:
 			i = i + (1) >> 0;
-		}
+		/* } */ $s = 1; continue; case 2:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.BubbleSort }; } $f.c = c; $f.i = i; $f.j = j; $f.x = x; $f.x$1 = x$1; $f.x$2 = x$2; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.BubbleSort = function() { return this.$val.BubbleSort(); };
 	Controller.ptr.prototype.SelectionSort = function() {
-		var c, i, j, x, x$1;
+		var c, i, j, x, x$1, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; c = $f.c; i = $f.i; j = $f.j; x = $f.x; x$1 = $f.x$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
 		i = 0;
-		while (true) {
-			if (!(i < c.Config.Size)) { break; }
+		/* while (true) { */ case 1:
+			/* if (!(i < c.Config.Size)) { break; } */ if(!(i < c.Config.Size)) { $s = 2; continue; }
 			j = i + 1 >> 0;
-			while (true) {
-				if (!(j < c.Config.Size)) { break; }
-				if ((x = c.nums, ((i < 0 || i >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + i])) > (x$1 = c.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j]))) {
-					c.swap(i, j);
-				} else {
-					c.pass(i, j);
-				}
+			/* while (true) { */ case 3:
+				/* if (!(j < c.Config.Size)) { break; } */ if(!(j < c.Config.Size)) { $s = 4; continue; }
+				/* */ if ((x = c.nums, ((i < 0 || i >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + i])) > (x$1 = c.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j]))) { $s = 5; continue; }
+				/* */ $s = 6; continue;
+				/* if ((x = c.nums, ((i < 0 || i >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + i])) > (x$1 = c.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j]))) { */ case 5:
+					$r = c.swap(i, j); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$s = 7; continue;
+				/* } else { */ case 6:
+					$r = c.pass(i, j); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				/* } */ case 7:
 				j = j + (1) >> 0;
-			}
+			/* } */ $s = 3; continue; case 4:
 			i = i + (1) >> 0;
-		}
+		/* } */ $s = 1; continue; case 2:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.SelectionSort }; } $f.c = c; $f.i = i; $f.j = j; $f.x = x; $f.x$1 = x$1; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.SelectionSort = function() { return this.$val.SelectionSort(); };
 	Controller.ptr.prototype.InsertionSort = function() {
-		var c, i, j, temp, x, x$1;
+		var c, i, j, temp, x, x$1, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; c = $f.c; i = $f.i; j = $f.j; temp = $f.temp; x = $f.x; x$1 = $f.x$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
 		i = 0;
-		while (true) {
-			if (!(i < c.Config.Size)) { break; }
+		/* while (true) { */ case 1:
+			/* if (!(i < c.Config.Size)) { break; } */ if(!(i < c.Config.Size)) { $s = 2; continue; }
 			temp = (x = c.nums, ((i < 0 || i >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + i]));
 			j = i - 1 >> 0;
-			while (true) {
-				if (!(j >= 0)) { break; }
-				if ((x$1 = c.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])) > temp) {
-					c.swap(j + 1 >> 0, j);
-				} else {
-					c.pass(j + 1 >> 0, j);
-				}
+			/* while (true) { */ case 3:
+				/* if (!(j >= 0)) { break; } */ if(!(j >= 0)) { $s = 4; continue; }
+				/* */ if ((x$1 = c.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])) > temp) { $s = 5; continue; }
+				/* */ $s = 6; continue;
+				/* if ((x$1 = c.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])) > temp) { */ case 5:
+					$r = c.swap(j + 1 >> 0, j); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$s = 7; continue;
+				/* } else { */ case 6:
+					$r = c.pass(j + 1 >> 0, j); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				/* } */ case 7:
 				j = j - (1) >> 0;
-			}
+			/* } */ $s = 3; continue; case 4:
 			i = i + (1) >> 0;
-		}
+		/* } */ $s = 1; continue; case 2:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.InsertionSort }; } $f.c = c; $f.i = i; $f.j = j; $f.temp = temp; $f.x = x; $f.x$1 = x$1; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.InsertionSort = function() { return this.$val.InsertionSort(); };
 	Controller.ptr.prototype.QuickSort = function() {
-		var c;
+		var c, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; c = $f.c; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
-		c.quickSort(0, c.nums.$length - 1 >> 0);
+		$r = c.quickSort(0, c.nums.$length - 1 >> 0); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.QuickSort }; } $f.c = c; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.QuickSort = function() { return this.$val.QuickSort(); };
 	Controller.ptr.prototype.quickSort = function(lo, hi) {
-		var c, hi, lo, p;
+		var _r, c, hi, lo, p, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; c = $f.c; hi = $f.hi; lo = $f.lo; p = $f.p; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
-		if (lo < hi) {
-			p = c.partition(lo, hi);
-			c.quickSort(lo, p - 1 >> 0);
-			c.quickSort(p + 1 >> 0, hi);
-		}
+		/* */ if (lo < hi) { $s = 1; continue; }
+		/* */ $s = 2; continue;
+		/* if (lo < hi) { */ case 1:
+			_r = c.partition(lo, hi); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			p = _r;
+			$r = c.quickSort(lo, p - 1 >> 0); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$r = c.quickSort(p + 1 >> 0, hi); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* } */ case 2:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.quickSort }; } $f._r = _r; $f.c = c; $f.hi = hi; $f.lo = lo; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.quickSort = function(lo, hi) { return this.$val.quickSort(lo, hi); };
 	Controller.ptr.prototype.partition = function(lo, hi) {
-		var c, hi, i, j, lo, pivot, x, x$1;
+		var c, hi, i, j, lo, pivot, x, x$1, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; c = $f.c; hi = $f.hi; i = $f.i; j = $f.j; lo = $f.lo; pivot = $f.pivot; x = $f.x; x$1 = $f.x$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
 		pivot = (x = c.nums, ((hi < 0 || hi >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + hi]));
 		i = lo - 1 >> 0;
 		j = lo;
-		while (true) {
-			if (!(j < hi)) { break; }
-			if ((x$1 = c.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])) < pivot) {
+		/* while (true) { */ case 1:
+			/* if (!(j < hi)) { break; } */ if(!(j < hi)) { $s = 2; continue; }
+			/* */ if ((x$1 = c.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])) < pivot) { $s = 3; continue; }
+			/* */ $s = 4; continue;
+			/* if ((x$1 = c.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])) < pivot) { */ case 3:
 				i = i + (1) >> 0;
-				c.swap(i, j);
-			} else {
-				c.pass(hi, j);
-			}
+				$r = c.swap(i, j); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = 5; continue;
+			/* } else { */ case 4:
+				$r = c.pass(hi, j); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			/* } */ case 5:
 			j = j + (1) >> 0;
-		}
-		c.swap(hi, i + 1 >> 0);
-		return i + 1 >> 0;
+		/* } */ $s = 1; continue; case 2:
+		$r = c.swap(hi, i + 1 >> 0); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return i + 1 >> 0;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.partition }; } $f.c = c; $f.hi = hi; $f.i = i; $f.j = j; $f.lo = lo; $f.pivot = pivot; $f.x = x; $f.x$1 = x$1; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.partition = function(lo, hi) { return this.$val.partition(lo, hi); };
 	Controller.ptr.prototype.TopDownMergeSort = function() {
-		var b, c;
+		var b, c, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; b = $f.b; c = $f.c; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
 		b = $makeSlice(sliceType, c.nums.$length);
 		$copySlice(b, c.nums);
 		c.numsB = b;
-		c.topDownSplitMerge(c.numsB, 0, c.nums.$length, c.nums);
+		$r = c.topDownSplitMerge(c.numsB, 0, c.nums.$length, c.nums); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.TopDownMergeSort }; } $f.b = b; $f.c = c; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.TopDownMergeSort = function() { return this.$val.TopDownMergeSort(); };
 	Controller.ptr.prototype.topDownSplitMerge = function(b, iBegin, iEnd, a) {
-		var _q, a, b, c, iBegin, iEnd, iMid;
+		var _q, a, b, c, iBegin, iEnd, iMid, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _q = $f._q; a = $f.a; b = $f.b; c = $f.c; iBegin = $f.iBegin; iEnd = $f.iEnd; iMid = $f.iMid; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
 		if ((iEnd - iBegin >> 0) < 2) {
-			return;
+			$s = -1; return;
 		}
 		iMid = (_q = ((iBegin + iEnd >> 0)) / 2, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >> 0 : $throwRuntimeError("integer divide by zero"));
-		c.topDownSplitMerge(a, iBegin, iMid, b);
-		c.topDownSplitMerge(a, iMid, iEnd, b);
-		c.topDownMerge(b, iBegin, iMid, iEnd, a);
+		$r = c.topDownSplitMerge(a, iBegin, iMid, b); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = c.topDownSplitMerge(a, iMid, iEnd, b); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = c.topDownMerge(b, iBegin, iMid, iEnd, a); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.topDownSplitMerge }; } $f._q = _q; $f.a = a; $f.b = b; $f.c = c; $f.iBegin = iBegin; $f.iEnd = iEnd; $f.iMid = iMid; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.topDownSplitMerge = function(b, iBegin, iEnd, a) { return this.$val.topDownSplitMerge(b, iBegin, iEnd, a); };
 	Controller.ptr.prototype.topDownMerge = function(a, iBegin, iMid, iEnd, b) {
-		var a, b, c, i, iBegin, iEnd, iMid, j, k;
+		var a, b, c, i, iBegin, iEnd, iMid, j, k, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; b = $f.b; c = $f.c; i = $f.i; iBegin = $f.iBegin; iEnd = $f.iEnd; iMid = $f.iMid; j = $f.j; k = $f.k; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
 		i = iBegin;
 		j = iMid;
 		k = iBegin;
-		while (true) {
-			if (!(k < iEnd)) { break; }
-			if (i < iMid && (j >= iEnd || ((i < 0 || i >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + i]) <= ((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]))) {
+		/* while (true) { */ case 1:
+			/* if (!(k < iEnd)) { break; } */ if(!(k < iEnd)) { $s = 2; continue; }
+			/* */ if (i < iMid && (j >= iEnd || ((i < 0 || i >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + i]) <= ((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]))) { $s = 3; continue; }
+			/* */ $s = 4; continue;
+			/* if (i < iMid && (j >= iEnd || ((i < 0 || i >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + i]) <= ((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]))) { */ case 3:
 				((k < 0 || k >= b.$length) ? ($throwRuntimeError("index out of range"), undefined) : b.$array[b.$offset + k] = ((i < 0 || i >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + i]));
 				i = i + (1) >> 0;
-				c.swap(k, i);
-			} else {
+				$r = c.swap(k, i); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = 5; continue;
+			/* } else { */ case 4:
 				((k < 0 || k >= b.$length) ? ($throwRuntimeError("index out of range"), undefined) : b.$array[b.$offset + k] = ((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]));
-				c.swap(k, j);
+				$r = c.swap(k, j); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				j = j + (1) >> 0;
-			}
+			/* } */ case 5:
 			k = k + (1) >> 0;
-		}
+		/* } */ $s = 1; continue; case 2:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.topDownMerge }; } $f.a = a; $f.b = b; $f.c = c; $f.i = i; $f.iBegin = iBegin; $f.iEnd = iEnd; $f.iMid = iMid; $f.j = j; $f.k = k; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.topDownMerge = function(a, iBegin, iMid, iEnd, b) { return this.$val.topDownMerge(a, iBegin, iMid, iEnd, b); };
 	Controller.ptr.prototype.pass = function(a, b) {
-		var a, b, c, step;
+		var a, b, c, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; b = $f.b; c = $f.c; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
-		step = new Step.ptr(a, b, false, ptrType.nil);
-		c.LastStep.Next = step;
-		c.LastStep = step;
+		$r = c.Steps.AddStep(a, b, false); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.pass }; } $f.a = a; $f.b = b; $f.c = c; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.pass = function(a, b) { return this.$val.pass(a, b); };
 	Controller.ptr.prototype.swap = function(a, b) {
-		var _tmp, _tmp$1, a, b, c, step, x, x$1, x$2, x$3;
+		var _tmp, _tmp$1, a, b, c, x, x$1, x$2, x$3, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _tmp = $f._tmp; _tmp$1 = $f._tmp$1; a = $f.a; b = $f.b; c = $f.c; x = $f.x; x$1 = $f.x$1; x$2 = $f.x$2; x$3 = $f.x$3; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
-		step = new Step.ptr(a, b, true, ptrType.nil);
+		$r = c.Steps.AddStep(a, b, true); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		_tmp = (x = c.nums, ((b < 0 || b >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + b]));
 		_tmp$1 = (x$1 = c.nums, ((a < 0 || a >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + a]));
 		(x$2 = c.nums, ((a < 0 || a >= x$2.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$2.$array[x$2.$offset + a] = _tmp));
 		(x$3 = c.nums, ((b < 0 || b >= x$3.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$3.$array[x$3.$offset + b] = _tmp$1));
-		c.LastStep.Next = step;
-		c.LastStep = step;
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.swap }; } $f._tmp = _tmp; $f._tmp$1 = _tmp$1; $f.a = a; $f.b = b; $f.c = c; $f.x = x; $f.x$1 = x$1; $f.x$2 = x$2; $f.x$3 = x$3; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.swap = function(a, b) { return this.$val.swap(a, b); };
-	ptrType$1.methods = [{prop: "SetDuration", name: "SetDuration", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "SetSize", name: "SetSize", pkg: "", typ: $funcType([$Int], [], false)}, {prop: "SetId", name: "SetId", pkg: "", typ: $funcType([$String], [], false)}];
-	ptrType$3.methods = [{prop: "UpdateConfig", name: "UpdateConfig", pkg: "", typ: $funcType([ptrType$1], [], false)}, {prop: "Init", name: "Init", pkg: "", typ: $funcType([ptrType$1], [], false)}, {prop: "ApplyAlgorithm", name: "ApplyAlgorithm", pkg: "", typ: $funcType([ptrType$1], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [], false)}, {prop: "startAnimating", name: "startAnimating", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "animate", name: "animate", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [], false)}, {prop: "BubbleSort", name: "BubbleSort", pkg: "", typ: $funcType([], [], false)}, {prop: "SelectionSort", name: "SelectionSort", pkg: "", typ: $funcType([], [], false)}, {prop: "InsertionSort", name: "InsertionSort", pkg: "", typ: $funcType([], [], false)}, {prop: "QuickSort", name: "QuickSort", pkg: "", typ: $funcType([], [], false)}, {prop: "quickSort", name: "quickSort", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}, {prop: "partition", name: "partition", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [$Int], false)}, {prop: "TopDownMergeSort", name: "TopDownMergeSort", pkg: "", typ: $funcType([], [], false)}, {prop: "topDownSplitMerge", name: "topDownSplitMerge", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([sliceType, $Int, $Int, sliceType], [], false)}, {prop: "topDownMerge", name: "topDownMerge", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([sliceType, $Int, $Int, $Int, sliceType], [], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}, {prop: "swap", name: "swap", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}];
-	Step.init("", [{prop: "A", name: "A", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "B", name: "B", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "DoSwap", name: "DoSwap", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Next", name: "Next", anonymous: false, exported: true, typ: ptrType, tag: ""}]);
+	ptrType.methods = [{prop: "SetDuration", name: "SetDuration", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "SetSize", name: "SetSize", pkg: "", typ: $funcType([$Int], [], false)}, {prop: "SetId", name: "SetId", pkg: "", typ: $funcType([$String], [], false)}];
+	ptrType$1.methods = [{prop: "UpdateConfig", name: "UpdateConfig", pkg: "", typ: $funcType([ptrType], [], false)}, {prop: "Init", name: "Init", pkg: "", typ: $funcType([ptrType], [], false)}, {prop: "ApplyAlgorithm", name: "ApplyAlgorithm", pkg: "", typ: $funcType([ptrType], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [], false)}, {prop: "startAnimating", name: "startAnimating", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "animate", name: "animate", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [], false)}, {prop: "BubbleSort", name: "BubbleSort", pkg: "", typ: $funcType([], [], false)}, {prop: "SelectionSort", name: "SelectionSort", pkg: "", typ: $funcType([], [], false)}, {prop: "InsertionSort", name: "InsertionSort", pkg: "", typ: $funcType([], [], false)}, {prop: "QuickSort", name: "QuickSort", pkg: "", typ: $funcType([], [], false)}, {prop: "quickSort", name: "quickSort", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}, {prop: "partition", name: "partition", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [$Int], false)}, {prop: "TopDownMergeSort", name: "TopDownMergeSort", pkg: "", typ: $funcType([], [], false)}, {prop: "topDownSplitMerge", name: "topDownSplitMerge", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([sliceType, $Int, $Int, sliceType], [], false)}, {prop: "topDownMerge", name: "topDownMerge", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([sliceType, $Int, $Int, $Int, sliceType], [], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}, {prop: "swap", name: "swap", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}];
 	ControllerConfig.init("", [{prop: "Id", name: "Id", anonymous: false, exported: true, typ: $String, tag: "json:\"id\""}, {prop: "Duration", name: "Duration", anonymous: false, exported: true, typ: $Float64, tag: "json:\"duration\""}, {prop: "Size", name: "Size", anonymous: false, exported: true, typ: $Int, tag: "json:\"size\""}]);
-	Controller.init("github.com/lei-cao/learning-cs-again/code/play", [{prop: "Steps", name: "Steps", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "LastStep", name: "LastStep", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "CurrentStep", name: "CurrentStep", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "AutoUpdate", name: "AutoUpdate", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Animating", name: "Animating", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Config", name: "Config", anonymous: false, exported: true, typ: ptrType$1, tag: ""}, {prop: "Screen", name: "Screen", anonymous: false, exported: true, typ: ptrType$2, tag: ""}, {prop: "animationFrame", name: "animationFrame", anonymous: false, exported: false, typ: ptrType$4, tag: ""}, {prop: "fps", name: "fps", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "fpdInterval", name: "fpdInterval", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "startTime", name: "startTime", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "now", name: "now", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "then", name: "then", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "elapsed", name: "elapsed", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType, tag: ""}, {prop: "numsB", name: "numsB", anonymous: false, exported: false, typ: sliceType, tag: ""}, {prop: "Duration", name: "Duration", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Timing", name: "Timing", anonymous: false, exported: true, typ: funcType$1, tag: ""}]);
+	Controller.init("github.com/lei-cao/learning-cs-again/code/play", [{prop: "Steps", name: "Steps", anonymous: false, exported: true, typ: visualizer.Stepper, tag: ""}, {prop: "Screen", name: "Screen", anonymous: false, exported: true, typ: visualizer.Screener, tag: ""}, {prop: "AutoUpdate", name: "AutoUpdate", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Animating", name: "Animating", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Config", name: "Config", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "animationFrame", name: "animationFrame", anonymous: false, exported: false, typ: ptrType$2, tag: ""}, {prop: "fps", name: "fps", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "fpdInterval", name: "fpdInterval", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "startTime", name: "startTime", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "now", name: "now", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "then", name: "then", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "elapsed", name: "elapsed", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType, tag: ""}, {prop: "numsB", name: "numsB", anonymous: false, exported: false, typ: sliceType, tag: ""}, {prop: "Duration", name: "Duration", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Timing", name: "Timing", anonymous: false, exported: true, typ: funcType$1, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -18877,16 +19048,14 @@ $packages["github.com/lei-cao/learning-cs-again/code/v1/visualizer"] = (function
 	return $pkg;
 })();
 $packages["main"] = (function() {
-	var $pkg = {}, $init, js, play, visualizer, ptrType, funcType, mapType, ptrType$1, ptrType$2, ptrType$3, sliceType, main, Algorithm, Controller, ControllerConfig;
+	var $pkg = {}, $init, js, play, visualizer, ptrType, funcType, mapType, ptrType$1, sliceType, main, Algorithm, Controller, ControllerConfig;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	play = $packages["github.com/lei-cao/learning-cs-again/code/play"];
 	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/v1/visualizer"];
 	ptrType = $ptrType(js.Object);
 	funcType = $funcType([], [ptrType], false);
 	mapType = $mapType($String, $emptyInterface);
-	ptrType$1 = $ptrType(play.Step);
-	ptrType$2 = $ptrType(play.ControllerConfig);
-	ptrType$3 = $ptrType($packages["github.com/lei-cao/learning-cs-again/code/visualizer"].Screen);
+	ptrType$1 = $ptrType(play.ControllerConfig);
 	sliceType = $sliceType($Int);
 	main = function() {
 		$global.algorithm = $externalize($makeMap($String.keyFor, [{ k: "Algorithm", v: new funcType(Algorithm) }, { k: "Controller", v: new funcType(Controller) }, { k: "ControllerConfig", v: new funcType(ControllerConfig) }]), mapType);
@@ -18896,7 +19065,7 @@ $packages["main"] = (function() {
 	};
 	$pkg.Algorithm = Algorithm;
 	Controller = function() {
-		return js.MakeWrapper(new play.Controller.ptr(ptrType$1.nil, ptrType$1.nil, ptrType$1.nil, false, false, ptrType$2.nil, ptrType$3.nil, null, 0, 0, 0, 0, 0, 0, sliceType.nil, sliceType.nil, 0, $throwNilPointerError));
+		return js.MakeWrapper(new play.Controller.ptr($ifaceNil, $ifaceNil, false, false, ptrType$1.nil, null, 0, 0, 0, 0, 0, 0, sliceType.nil, sliceType.nil, 0, $throwNilPointerError));
 	};
 	$pkg.Controller = Controller;
 	ControllerConfig = function() {
