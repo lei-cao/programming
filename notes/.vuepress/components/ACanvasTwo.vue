@@ -11,9 +11,9 @@
         <ClientOnly>
             <vue-slider
                 ref="slider"
-                v-model="velocity"
+                v-model="duration"
                 v-bind="options"
-                @callback="updateVelocity"
+                @callback="updateDuration"
             ></vue-slider>
         </ClientOnly>
     </div>
@@ -30,29 +30,25 @@ export default {
     },
     data () {
         return {
-            velocity: 30,
+            duration: 300,
             size: 30,
             options: {
                 value: 30,
                 min: 10,
-                max: 10000,
+                max: 2000,
                 data: [
                     10,
-                    20,
-                    30,
                     50,
-                    80,
-                    150,
+                    100,
                     300,
                     500,
                     1000,
-                    7000,
-                    10000
+                    2000
                 ],
                 width: '50%',
                 height: 10,
                 interval: 10,
-                formatter: 'Velocity {value}',
+                formatter: 'Duration {value}',
                 tooltipDir: 'bottom',
                 bgStyle: {
                     'backgroundColor': '#fff',
@@ -66,19 +62,19 @@ export default {
                     'backgroundColor': '#999'
                 }
             },
-            config: {velocity: 30, size: 30},
+            config: {},
             controller: null
         }
     },
     methods: {
-        updateVelocity: function () {
-            this.config.SetVelocity(this.velocity)
+        updateDuration: function () {
+            this.config.SetDuration(this.duration)
             this.controller.UpdateConfig(this.config)
         },
         init() {
             var that = this
             that.config = window.algorithm.ControllerConfig()
-            that.config.SetVelocity(that.velocity)
+            that.config.SetDuration(that.duration)
             that.config.SetSize(that.size)
             that.config.SetId(that.id)
             this.controller = window.algorithm.Controller()

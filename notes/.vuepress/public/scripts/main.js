@@ -3383,7 +3383,7 @@ $packages["io"] = (function() {
 	return $pkg;
 })();
 $packages["math"] = (function() {
-	var $pkg = {}, $init, js, arrayType, arrayType$1, arrayType$2, structType, math, zero, nan, buf, Exp, Log, init, Float64bits, Float64frombits, Abs;
+	var $pkg = {}, $init, js, arrayType, arrayType$1, arrayType$2, structType, math, zero, posInf, negInf, nan, buf, Exp, Log, Mod, Pow, init;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	arrayType = $arrayType($Uint32, 2);
 	arrayType$1 = $arrayType($Float32, 2);
@@ -3402,6 +3402,19 @@ $packages["math"] = (function() {
 		return $parseFloat(math.log(x));
 	};
 	$pkg.Log = Log;
+	Mod = function(x, y) {
+		var x, y;
+		return $parseFloat($mod(x, y));
+	};
+	$pkg.Mod = Mod;
+	Pow = function(x, y) {
+		var x, y;
+		if ((x === 1) || ((x === -1) && ((y === posInf) || (y === negInf)))) {
+			return 1;
+		}
+		return $parseFloat(math.pow(x, y));
+	};
+	$pkg.Pow = Pow;
 	init = function() {
 		var ab;
 		ab = new ($global.ArrayBuffer)(8);
@@ -3409,24 +3422,6 @@ $packages["math"] = (function() {
 		buf.float32array = new ($global.Float32Array)(ab);
 		buf.float64array = new ($global.Float64Array)(ab);
 	};
-	Float64bits = function(f) {
-		var f, x, x$1;
-		buf.float64array[0] = f;
-		return (x = $shiftLeft64((new $Uint64(0, buf.uint32array[1])), 32), x$1 = (new $Uint64(0, buf.uint32array[0])), new $Uint64(x.$high + x$1.$high, x.$low + x$1.$low));
-	};
-	$pkg.Float64bits = Float64bits;
-	Float64frombits = function(b) {
-		var b;
-		buf.uint32array[0] = ((b.$low >>> 0));
-		buf.uint32array[1] = (($shiftRightUint64(b, 32).$low >>> 0));
-		return buf.float64array[0];
-	};
-	$pkg.Float64frombits = Float64frombits;
-	Abs = function(x) {
-		var x, x$1;
-		return Float64frombits((x$1 = Float64bits(x), new $Uint64(x$1.$high & ~2147483648, (x$1.$low & ~0) >>> 0)));
-	};
-	$pkg.Abs = Abs;
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -3434,6 +3429,8 @@ $packages["math"] = (function() {
 		buf = new structType.ptr(arrayType.zero(), arrayType$1.zero(), arrayType$2.zero());
 		math = $global.Math;
 		zero = 0;
+		posInf = 1 / zero;
+		negInf = -1 / zero;
 		nan = 0 / zero;
 		init();
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
@@ -18126,7 +18123,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/sort"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
-	var $pkg = {}, $init, js, sort, canvas, math, strconv, time, Step, Controller, ControllerConfig, Rectangle, Screen, ptrType, ptrType$1, ptrType$2, sliceType, funcType, ptrType$3, ptrType$4, ptrType$5, sliceType$1, ptrType$6, ptrType$7, mapType, defaultSize, velocity, barWidth, barSpace, heightUnit, NewRect, createCanvas, canvasWidth, canvasHeight;
+	var $pkg = {}, $init, js, sort, canvas, math, strconv, time, Step, ColorScheme, ControllerConfig, Controller, Rectangle, Screen, ptrType, ptrType$1, ptrType$2, ptrType$3, sliceType, funcType, ptrType$4, ptrType$5, sliceType$1, ptrType$6, ptrType$7, funcType$1, mapType, defaultSize, defaultColor, barWidth, barSpace, heightUnit, makeTimestamp, NewRect, createCanvas, canvasWidth, canvasHeight;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	sort = $packages["github.com/lei-cao/learning-cs-again/code/sort"];
 	canvas = $packages["github.com/oskca/gopherjs-canvas"];
@@ -18147,11 +18144,37 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		this.DoSwap = DoSwap_;
 		this.Next = Next_;
 	});
-	Controller = $pkg.Controller = $newType(0, $kindStruct, "controller.Controller", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(C_, Ctx_, Steps_, LastStep_, CurrentStep_, AutoUpdate_, Animating_, Config_, Screen_, animationFrame_, fps_, fpdInterval_, startTime_, now_, then_, elapsed_, nums_) {
+	ColorScheme = $pkg.ColorScheme = $newType(0, $kindStruct, "controller.ColorScheme", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(BackgroundColor_, BarColor_, AColor_, BColor_) {
 		this.$val = this;
 		if (arguments.length === 0) {
-			this.C = ptrType$3.nil;
-			this.Ctx = ptrType$1.nil;
+			this.BackgroundColor = "";
+			this.BarColor = "";
+			this.AColor = "";
+			this.BColor = "";
+			return;
+		}
+		this.BackgroundColor = BackgroundColor_;
+		this.BarColor = BarColor_;
+		this.AColor = AColor_;
+		this.BColor = BColor_;
+	});
+	ControllerConfig = $pkg.ControllerConfig = $newType(0, $kindStruct, "controller.ControllerConfig", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(Id_, Duration_, Size_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Id = "";
+			this.Duration = 0;
+			this.Size = 0;
+			return;
+		}
+		this.Id = Id_;
+		this.Duration = Duration_;
+		this.Size = Size_;
+	});
+	Controller = $pkg.Controller = $newType(0, $kindStruct, "controller.Controller", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(C_, Ctx_, Steps_, LastStep_, CurrentStep_, AutoUpdate_, Animating_, Config_, Screen_, animationFrame_, fps_, fpdInterval_, startTime_, now_, then_, elapsed_, nums_, numsB_, Duration_, Timing_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.C = ptrType$1.nil;
+			this.Ctx = ptrType$2.nil;
 			this.Steps = ptrType.nil;
 			this.LastStep = ptrType.nil;
 			this.CurrentStep = ptrType.nil;
@@ -18167,6 +18190,9 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 			this.then = 0;
 			this.elapsed = 0;
 			this.nums = sliceType$1.nil;
+			this.numsB = sliceType$1.nil;
+			this.Duration = 0;
+			this.Timing = $throwNilPointerError;
 			return;
 		}
 		this.C = C_;
@@ -18186,51 +18212,39 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		this.then = then_;
 		this.elapsed = elapsed_;
 		this.nums = nums_;
+		this.numsB = numsB_;
+		this.Duration = Duration_;
+		this.Timing = Timing_;
 	});
-	ControllerConfig = $pkg.ControllerConfig = $newType(0, $kindStruct, "controller.ControllerConfig", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(Id_, Velocity_, Size_) {
+	Rectangle = $pkg.Rectangle = $newType(0, $kindStruct, "controller.Rectangle", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(Ctx_, Index_, ToIndex_, IsA_, IsB_, Left_, Top_, Width_, Height_) {
 		this.$val = this;
 		if (arguments.length === 0) {
-			this.Id = "";
-			this.Velocity = 0;
-			this.Size = 0;
-			return;
-		}
-		this.Id = Id_;
-		this.Velocity = Velocity_;
-		this.Size = Size_;
-	});
-	Rectangle = $pkg.Rectangle = $newType(0, $kindStruct, "controller.Rectangle", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(Index_, ToIndex_, IsA_, IsB_, Total_, Value_, Left_, Top_, Width_, Height_, Waiting_) {
-		this.$val = this;
-		if (arguments.length === 0) {
+			this.Ctx = ptrType$2.nil;
 			this.Index = 0;
 			this.ToIndex = 0;
 			this.IsA = false;
 			this.IsB = false;
-			this.Total = 0;
-			this.Value = 0;
 			this.Left = 0;
 			this.Top = 0;
 			this.Width = 0;
 			this.Height = 0;
-			this.Waiting = 0;
 			return;
 		}
+		this.Ctx = Ctx_;
 		this.Index = Index_;
 		this.ToIndex = ToIndex_;
 		this.IsA = IsA_;
 		this.IsB = IsB_;
-		this.Total = Total_;
-		this.Value = Value_;
 		this.Left = Left_;
 		this.Top = Top_;
 		this.Width = Width_;
 		this.Height = Height_;
-		this.Waiting = Waiting_;
 	});
-	Screen = $pkg.Screen = $newType(0, $kindStruct, "controller.Screen", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(Ctx_, Rectangles_, FinishedDrawing_, Ready_, AIndex_, BIndex_) {
+	Screen = $pkg.Screen = $newType(0, $kindStruct, "controller.Screen", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(C_, Ctx_, Rectangles_, FinishedDrawing_, Ready_, AIndex_, BIndex_) {
 		this.$val = this;
 		if (arguments.length === 0) {
-			this.Ctx = ptrType$1.nil;
+			this.C = ptrType$1.nil;
+			this.Ctx = ptrType$2.nil;
 			this.Rectangles = sliceType.nil;
 			this.FinishedDrawing = false;
 			this.Ready = false;
@@ -18238,6 +18252,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 			this.BIndex = 0;
 			return;
 		}
+		this.C = C_;
 		this.Ctx = Ctx_;
 		this.Rectangles = Rectangles_;
 		this.FinishedDrawing = FinishedDrawing_;
@@ -18246,24 +18261,24 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		this.BIndex = BIndex_;
 	});
 	ptrType = $ptrType(Step);
-	ptrType$1 = $ptrType(canvas.Context2D);
-	ptrType$2 = $ptrType(Rectangle);
-	sliceType = $sliceType(ptrType$2);
-	funcType = $funcType([], [], false);
-	ptrType$3 = $ptrType(canvas.Canvas);
+	ptrType$1 = $ptrType(canvas.Canvas);
+	ptrType$2 = $ptrType(canvas.Context2D);
+	ptrType$3 = $ptrType(Rectangle);
+	sliceType = $sliceType(ptrType$3);
+	funcType = $funcType([$Float64], [], false);
 	ptrType$4 = $ptrType(ControllerConfig);
 	ptrType$5 = $ptrType(Screen);
 	sliceType$1 = $sliceType($Int);
 	ptrType$6 = $ptrType(Controller);
 	ptrType$7 = $ptrType(js.Object);
+	funcType$1 = $funcType([$Float64], [$Float64], false);
 	mapType = $mapType($Int, $Bool);
-	ControllerConfig.ptr.prototype.SetVelocity = function(v) {
-		var c, v;
+	ControllerConfig.ptr.prototype.SetDuration = function(s) {
+		var c, s;
 		c = this;
-		c.Velocity = v;
-		velocity = c.Velocity;
+		c.Duration = s;
 	};
-	ControllerConfig.prototype.SetVelocity = function(v) { return this.$val.SetVelocity(v); };
+	ControllerConfig.prototype.SetDuration = function(s) { return this.$val.SetDuration(s); };
 	ControllerConfig.ptr.prototype.SetSize = function(size) {
 		var c, size;
 		c = this;
@@ -18280,6 +18295,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		var c, config;
 		c = this;
 		c.Config = config;
+		c.Duration = config.Duration;
 	};
 	Controller.prototype.UpdateConfig = function(config) { return this.$val.UpdateConfig(config); };
 	Controller.ptr.prototype.Init = function(config) {
@@ -18291,9 +18307,14 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		c.Steps = new Step.ptr(0, 0, false, ptrType.nil);
 		c.LastStep = c.Steps;
 		c.CurrentStep = c.Steps;
-		c.Screen = new Screen.ptr(ptrType$1.nil, sliceType.nil, false, false, 0, 0);
+		c.Screen = new Screen.ptr(ptrType$1.nil, ptrType$2.nil, sliceType.nil, false, false, 0, 0);
+		c.Duration = config.Duration;
 		c.fps = 60;
-		velocity = config.Velocity;
+		obj = createCanvas(c.Config.Id, c.Config.Size);
+		c.C = canvas.New(obj);
+		c.Ctx = c.C.GetContext2D();
+		c.Screen.C = c.C;
+		c.Screen.Ctx = c.Ctx;
 		if (config.Size === 0) {
 			c.Config.Size = defaultSize;
 		}
@@ -18306,16 +18327,12 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 			if (!(_i < _ref.$length)) { break; }
 			k = _i;
 			v = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
-			r = NewRect(c.Config.Size, k, v);
+			r = NewRect(c.Config.Size, k, v, c.Ctx);
 			c.Screen.Rectangles = $append(c.Screen.Rectangles, r);
 			_i++;
 		}
 		c.Screen.FinishedDrawing = $makeMap($Int.keyFor, []);
 		c.ApplyAlgorithm(config);
-		obj = createCanvas(c.Config.Id, c.Config.Size);
-		c.C = canvas.New(obj);
-		c.Ctx = c.C.GetContext2D();
-		c.Screen.Ctx = c.Ctx;
 		c.startAnimating();
 		$s = -1; return;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.Init }; } $f._i = _i; $f._r = _r; $f._ref = _ref; $f.c = c; $f.config = config; $f.k = k; $f.obj = obj; $f.r = r; $f.v = v; $f.$s = $s; $f.$r = $r; return $f;
@@ -18329,6 +18346,10 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 			c.BubbleSort();
 		} else if (_1 === ("selection")) {
 			c.SelectionSort();
+		} else if (_1 === ("insertion")) {
+			c.InsertionSort();
+		} else if (_1 === ("quick")) {
+			c.QuickSort();
 		}
 	};
 	Controller.prototype.ApplyAlgorithm = function(config) { return this.$val.ApplyAlgorithm(config); };
@@ -18362,6 +18383,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		if (!c.Screen.Ready) {
 			return;
 		}
+		c.startTime = makeTimestamp();
 		c.CurrentStep = c.CurrentStep.Next;
 		c.update();
 	};
@@ -18376,10 +18398,10 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		}
 	};
 	Controller.prototype.update = function() { return this.$val.update(); };
-	Controller.ptr.prototype.draw = function() {
-		var c;
+	Controller.ptr.prototype.draw = function(timestamp) {
+		var c, timestamp;
 		c = this;
-		c.Screen.Draw(c.fpdInterval);
+		c.Screen.Draw(timestamp);
 		if (c.Screen.Ready) {
 			if (c.AutoUpdate) {
 				c.NextStep();
@@ -18388,73 +18410,54 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 			}
 		}
 	};
-	Controller.prototype.draw = function() { return this.$val.draw(); };
+	Controller.prototype.draw = function(timestamp) { return this.$val.draw(timestamp); };
 	Controller.ptr.prototype.startAnimating = function() {
-		var c, x;
+		var c;
 		c = this;
 		c.fpdInterval = 1000 / (c.fps);
-		c.then = (((x = $clone(time.Now(), time.Time).UnixNano(), x.$low + ((x.$high >> 31) * 4294967296)) >> 0));
+		c.then = makeTimestamp();
 		c.startTime = c.then;
-		c.animate();
+		c.Timing = (function(timeFraction) {
+			var timeFraction, x;
+			x = 0.5;
+			return math.Pow(timeFraction, 2) * ((x + 1) * timeFraction - x);
+		});
+		c.animationFrame = $global.requestAnimationFrame($externalize($methodVal(c, "animate"), funcType));
 	};
 	Controller.prototype.startAnimating = function() { return this.$val.startAnimating(); };
-	Controller.ptr.prototype.animate = function() {
-		var _r, c, x;
+	Controller.ptr.prototype.animate = function(timestamp) {
+		var _r, c, timeFraction, timestamp, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; c = $f.c; timeFraction = $f.timeFraction; timestamp = $f.timestamp; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
 		c.animationFrame = $global.requestAnimationFrame($externalize($methodVal(c, "animate"), funcType));
-		c.now = (((x = $clone(time.Now(), time.Time).UnixNano(), x.$low + ((x.$high >> 31) * 4294967296)) >> 0));
-		c.elapsed = c.now - c.then >> 0;
-		if (c.elapsed > ((c.fpdInterval >> 0))) {
-			c.then = c.now - ((_r = c.elapsed % ((c.fpdInterval >> 0)), _r === _r ? _r : $throwRuntimeError("integer divide by zero"))) >> 0;
-			c.Animating = true;
+		c.now = makeTimestamp();
+		c.elapsed = c.now - c.then;
+		c.Animating = true;
+		/* */ if (c.elapsed > c.fpdInterval) { $s = 1; continue; }
+		/* */ $s = 2; continue;
+		/* if (c.elapsed > c.fpdInterval) { */ case 1:
+			timeFraction = (c.now - c.startTime) / c.Duration;
+			if (timeFraction > 1) {
+				timeFraction = 1;
+			}
+			c.then = c.now - math.Mod(c.elapsed, c.fpdInterval);
 			c.Ctx.ClearRect(0, 0, (canvasWidth(c.Config.Size)), (canvasHeight(c.Config.Size)));
-			c.draw();
-		}
+			_r = c.Timing(timeFraction); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			$r = c.draw(_r); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* } */ case 2:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.animate }; } $f._r = _r; $f.c = c; $f.timeFraction = timeFraction; $f.timestamp = timestamp; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	Controller.prototype.animate = function() { return this.$val.animate(); };
-	Rectangle.ptr.prototype.Update = function(delta) {
-		var delta, finished, move, r;
-		r = this;
-		finished = false;
-		if (math.Abs(r.Left - r.toLeft()) > 0.01) {
-			move = velocity * delta / 1000;
-			if (r.Index > r.ToIndex) {
-				if (r.Left - move < r.toLeft()) {
-					r.Left = r.toLeft();
-				} else {
-					r.Left = r.Left - (move);
-				}
-			} else if (r.Index < r.ToIndex) {
-				if (r.Left + move > r.toLeft()) {
-					r.Left = r.toLeft();
-				} else {
-					r.Left = r.Left + (move);
-				}
-			}
-		} else {
-			r.Index = r.ToIndex;
-			if (r.Waiting > 0) {
-				r.Waiting = r.Waiting - 1 >> 0;
-			} else {
-				finished = true;
-			}
-		}
-		return finished;
+	Controller.prototype.animate = function(timestamp) { return this.$val.animate(timestamp); };
+	makeTimestamp = function() {
+		return ($flatten64($clone(time.Now(), time.Time).UnixNano())) / 1e+06;
 	};
-	Rectangle.prototype.Update = function(delta) { return this.$val.Update(delta); };
-	Rectangle.ptr.prototype.toLeft = function() {
-		var r;
-		r = this;
-		return (($imul(((barWidth + barSpace >> 0)), r.ToIndex)));
-	};
-	Rectangle.prototype.toLeft = function() { return this.$val.toLeft(); };
-	NewRect = function(total, index, value) {
-		var index, r, total, value;
-		r = new Rectangle.ptr(0, 0, false, false, 0, 0, 0, 0, 0, 0, 0);
+	NewRect = function(total, index, value, ctx) {
+		var ctx, index, r, total, value;
+		r = new Rectangle.ptr(ptrType$2.nil, 0, 0, false, false, 0, 0, 0, 0);
+		r.Ctx = ctx;
 		r.Index = index;
 		r.ToIndex = index;
-		r.Total = total;
-		r.Value = value;
 		r.Left = (($imul(((barWidth + barSpace >> 0)), index)));
 		r.Top = ((canvasHeight(total) - ($imul(value, heightUnit)) >> 0));
 		r.Width = (barWidth);
@@ -18462,15 +18465,60 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		return r;
 	};
 	$pkg.NewRect = NewRect;
-	Screen.ptr.prototype.Draw = function(delta) {
-		var delta, s;
-		s = this;
-		s.draw(delta);
+	Rectangle.ptr.prototype.Animate = function(timestamp) {
+		var finished, r, timestamp;
+		r = this;
+		finished = r.update(timestamp);
+		r.draw();
+		return finished;
 	};
-	Screen.prototype.Draw = function(delta) { return this.$val.Draw(delta); };
-	Screen.ptr.prototype.draw = function(delta) {
-		var _entry, _i, _i$1, _key, _keys, _ref, _ref$1, delta, finished, k, r, s;
+	Rectangle.prototype.Animate = function(timestamp) { return this.$val.Animate(timestamp); };
+	Rectangle.ptr.prototype.update = function(progress) {
+		var finished, progress, r;
+		r = this;
+		finished = false;
+		if (r.Left - r.toLeft() > 0) {
+			r.Left = r.Left - ((r.Left - r.toLeft()) * progress);
+		} else if (r.Left - r.toLeft() < 0) {
+			r.Left = r.Left + ((r.toLeft() - r.Left) * progress);
+		} else {
+			r.Index = r.ToIndex;
+		}
+		if (progress === 1) {
+			finished = true;
+		}
+		return finished;
+	};
+	Rectangle.prototype.update = function(progress) { return this.$val.update(progress); };
+	Rectangle.ptr.prototype.draw = function() {
+		var r;
+		r = this;
+		r.Ctx.Object.fillStyle = $externalize(new $String(defaultColor.BarColor), $emptyInterface);
+		if (r.IsA) {
+			r.Ctx.Object.fillStyle = $externalize(new $String(defaultColor.AColor), $emptyInterface);
+		} else if (r.IsB) {
+			r.Ctx.Object.fillStyle = $externalize(new $String(defaultColor.BColor), $emptyInterface);
+		}
+		r.Ctx.FillRect(r.Left, r.Top, r.Width, r.Height);
+	};
+	Rectangle.prototype.draw = function() { return this.$val.draw(); };
+	Rectangle.ptr.prototype.toLeft = function() {
+		var r;
+		r = this;
+		return (($imul(((barWidth + barSpace >> 0)), r.ToIndex)));
+	};
+	Rectangle.prototype.toLeft = function() { return this.$val.toLeft(); };
+	Screen.ptr.prototype.Draw = function(timestamp) {
+		var s, timestamp;
 		s = this;
+		s.draw(timestamp);
+	};
+	Screen.prototype.Draw = function(timestamp) { return this.$val.Draw(timestamp); };
+	Screen.ptr.prototype.draw = function(timestamp) {
+		var _entry, _i, _i$1, _key, _keys, _ref, _ref$1, finished, k, r, s, timestamp;
+		s = this;
+		s.Ctx.Object.fillStyle = $externalize(new $String(defaultColor.BackgroundColor), $emptyInterface);
+		s.Ctx.FillRect(0, 0, (($parseInt(s.C.Element.Node.EventTarget.Object.width) >> 0)), (($parseInt(s.C.Element.Node.EventTarget.Object.height) >> 0)));
 		_ref = s.Rectangles;
 		_i = 0;
 		while (true) {
@@ -18485,8 +18533,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 			if (s.BIndex === r.Index) {
 				r.IsB = true;
 			}
-			_key = k; (s.FinishedDrawing || $throwRuntimeError("assignment to entry in nil map"))[$Int.keyFor(_key)] = { k: _key, v: r.Update(delta) };
-			s.drawRect(r);
+			_key = k; (s.FinishedDrawing || $throwRuntimeError("assignment to entry in nil map"))[$Int.keyFor(_key)] = { k: _key, v: r.Animate(timestamp) };
 			_i++;
 		}
 		_ref$1 = s.FinishedDrawing;
@@ -18508,19 +18555,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		}
 		s.Ready = true;
 	};
-	Screen.prototype.draw = function(delta) { return this.$val.draw(delta); };
-	Screen.ptr.prototype.drawRect = function(r) {
-		var r, s;
-		s = this;
-		s.Ctx.Object.fillStyle = $externalize(new $String("#B9314F"), $emptyInterface);
-		if (r.IsA) {
-			s.Ctx.Object.fillStyle = $externalize(new $String("#2E86AB"), $emptyInterface);
-		} else if (r.IsB) {
-			s.Ctx.Object.fillStyle = $externalize(new $String("green"), $emptyInterface);
-		}
-		s.Ctx.FillRect(r.Left, r.Top, r.Width, r.Height);
-	};
-	Screen.prototype.drawRect = function(r) { return this.$val.drawRect(r); };
+	Screen.prototype.draw = function(timestamp) { return this.$val.draw(timestamp); };
 	Screen.ptr.prototype.swap = function(ia, ib) {
 		var a, b, ia, ib, s, x, x$1, x$2, x$3;
 		s = this;
@@ -18543,7 +18578,6 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		b = (x$1 = s.Rectangles, ((ib < 0 || ib >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + ib]));
 		a.IsA = true;
 		b.IsB = true;
-		a.Waiting = 2;
 		s.AIndex = ia;
 		s.BIndex = ib;
 	};
@@ -18567,7 +18601,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		return $imul(size, heightUnit);
 	};
 	Controller.ptr.prototype.BubbleSort = function() {
-		var _tmp, _tmp$1, c, i, j, step, x, x$1, x$2, x$3, x$4, x$5, x$6, x$7, x$8;
+		var c, i, j, x, x$1, x$2;
 		c = this;
 		i = 0;
 		while (true) {
@@ -18575,18 +18609,11 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 			j = 0;
 			while (true) {
 				if (!(j < (c.Config.Size - 1 >> 0))) { break; }
-				step = new Step.ptr(0, 0, false, ptrType.nil);
-				step.A = j;
-				step.B = j + 1 >> 0;
 				if ((x = c.nums, ((j < 0 || j >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + j])) > (x$1 = c.nums, x$2 = j + 1 >> 0, ((x$2 < 0 || x$2 >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + x$2]))) {
-					_tmp = (x$3 = c.nums, x$4 = j + 1 >> 0, ((x$4 < 0 || x$4 >= x$3.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$3.$array[x$3.$offset + x$4]));
-					_tmp$1 = (x$5 = c.nums, ((j < 0 || j >= x$5.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$5.$array[x$5.$offset + j]));
-					(x$6 = c.nums, ((j < 0 || j >= x$6.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$6.$array[x$6.$offset + j] = _tmp));
-					(x$7 = c.nums, x$8 = j + 1 >> 0, ((x$8 < 0 || x$8 >= x$7.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$7.$array[x$7.$offset + x$8] = _tmp$1));
-					step.DoSwap = true;
+					c.swap(j, j + 1 >> 0);
+				} else {
+					c.pass(j, j + 1 >> 0);
 				}
-				c.LastStep.Next = step;
-				c.LastStep = step;
 				j = j + (1) >> 0;
 			}
 			i = i + (1) >> 0;
@@ -18594,41 +18621,112 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 	};
 	Controller.prototype.BubbleSort = function() { return this.$val.BubbleSort(); };
 	Controller.ptr.prototype.SelectionSort = function() {
-		var _tmp, _tmp$1, c, i, j, step, x, x$1, x$2, x$3, x$4, x$5;
+		var c, i, j, x, x$1;
 		c = this;
 		i = 0;
 		while (true) {
 			if (!(i < c.Config.Size)) { break; }
 			j = i + 1 >> 0;
 			while (true) {
-				if (!(j < c.nums.$length)) { break; }
-				step = new Step.ptr(0, 0, false, ptrType.nil);
-				step.A = i;
-				step.B = j;
+				if (!(j < c.Config.Size)) { break; }
 				if ((x = c.nums, ((i < 0 || i >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + i])) > (x$1 = c.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j]))) {
-					_tmp = (x$2 = c.nums, ((j < 0 || j >= x$2.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$2.$array[x$2.$offset + j]));
-					_tmp$1 = (x$3 = c.nums, ((i < 0 || i >= x$3.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$3.$array[x$3.$offset + i]));
-					(x$4 = c.nums, ((i < 0 || i >= x$4.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$4.$array[x$4.$offset + i] = _tmp));
-					(x$5 = c.nums, ((j < 0 || j >= x$5.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$5.$array[x$5.$offset + j] = _tmp$1));
-					step.DoSwap = true;
+					c.swap(i, j);
+				} else {
+					c.pass(i, j);
 				}
-				c.LastStep.Next = step;
-				c.LastStep = step;
 				j = j + (1) >> 0;
 			}
 			i = i + (1) >> 0;
 		}
 	};
 	Controller.prototype.SelectionSort = function() { return this.$val.SelectionSort(); };
-	ptrType$6.methods = [{prop: "UpdateConfig", name: "UpdateConfig", pkg: "", typ: $funcType([ptrType$4], [], false)}, {prop: "Init", name: "Init", pkg: "", typ: $funcType([ptrType$4], [], false)}, {prop: "ApplyAlgorithm", name: "ApplyAlgorithm", pkg: "", typ: $funcType([ptrType$4], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "startAnimating", name: "startAnimating", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "animate", name: "animate", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "BubbleSort", name: "BubbleSort", pkg: "", typ: $funcType([], [], false)}, {prop: "SelectionSort", name: "SelectionSort", pkg: "", typ: $funcType([], [], false)}];
-	ptrType$4.methods = [{prop: "SetVelocity", name: "SetVelocity", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "SetSize", name: "SetSize", pkg: "", typ: $funcType([$Int], [], false)}, {prop: "SetId", name: "SetId", pkg: "", typ: $funcType([$String], [], false)}];
-	ptrType$2.methods = [{prop: "Update", name: "Update", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "toLeft", name: "toLeft", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [$Float64], false)}];
-	ptrType$5.methods = [{prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [], false)}, {prop: "drawRect", name: "drawRect", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([ptrType$2], [], false)}, {prop: "swap", name: "swap", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}];
+	Controller.ptr.prototype.InsertionSort = function() {
+		var c, i, j, temp, x, x$1;
+		c = this;
+		i = 0;
+		while (true) {
+			if (!(i < c.Config.Size)) { break; }
+			temp = (x = c.nums, ((i < 0 || i >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + i]));
+			j = i - 1 >> 0;
+			while (true) {
+				if (!(j >= 0)) { break; }
+				if ((x$1 = c.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])) > temp) {
+					c.swap(j + 1 >> 0, j);
+				} else {
+					c.pass(j + 1 >> 0, j);
+				}
+				j = j - (1) >> 0;
+			}
+			i = i + (1) >> 0;
+		}
+	};
+	Controller.prototype.InsertionSort = function() { return this.$val.InsertionSort(); };
+	Controller.ptr.prototype.QuickSort = function() {
+		var c;
+		c = this;
+		c.quickSort(0, c.nums.$length - 1 >> 0);
+	};
+	Controller.prototype.QuickSort = function() { return this.$val.QuickSort(); };
+	Controller.ptr.prototype.quickSort = function(lo, hi) {
+		var c, hi, lo, p;
+		c = this;
+		if (lo < hi) {
+			p = c.partition(lo, hi);
+			c.quickSort(lo, p - 1 >> 0);
+			c.quickSort(p + 1 >> 0, hi);
+		}
+	};
+	Controller.prototype.quickSort = function(lo, hi) { return this.$val.quickSort(lo, hi); };
+	Controller.ptr.prototype.partition = function(lo, hi) {
+		var c, hi, i, j, lo, pivot, x, x$1;
+		c = this;
+		pivot = (x = c.nums, ((hi < 0 || hi >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + hi]));
+		i = lo - 1 >> 0;
+		j = lo;
+		while (true) {
+			if (!(j < hi)) { break; }
+			if ((x$1 = c.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])) < pivot) {
+				i = i + (1) >> 0;
+				c.swap(i, j);
+			} else {
+				c.pass(hi, j);
+			}
+			j = j + (1) >> 0;
+		}
+		c.swap(hi, i + 1 >> 0);
+		return i + 1 >> 0;
+	};
+	Controller.prototype.partition = function(lo, hi) { return this.$val.partition(lo, hi); };
+	Controller.ptr.prototype.pass = function(a, b) {
+		var a, b, c, step;
+		c = this;
+		step = new Step.ptr(a, b, false, ptrType.nil);
+		c.LastStep.Next = step;
+		c.LastStep = step;
+	};
+	Controller.prototype.pass = function(a, b) { return this.$val.pass(a, b); };
+	Controller.ptr.prototype.swap = function(a, b) {
+		var _tmp, _tmp$1, a, b, c, step, x, x$1, x$2, x$3;
+		c = this;
+		step = new Step.ptr(a, b, true, ptrType.nil);
+		_tmp = (x = c.nums, ((b < 0 || b >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + b]));
+		_tmp$1 = (x$1 = c.nums, ((a < 0 || a >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + a]));
+		(x$2 = c.nums, ((a < 0 || a >= x$2.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$2.$array[x$2.$offset + a] = _tmp));
+		(x$3 = c.nums, ((b < 0 || b >= x$3.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$3.$array[x$3.$offset + b] = _tmp$1));
+		c.LastStep.Next = step;
+		c.LastStep = step;
+	};
+	Controller.prototype.swap = function(a, b) { return this.$val.swap(a, b); };
+	ptrType$4.methods = [{prop: "SetDuration", name: "SetDuration", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "SetSize", name: "SetSize", pkg: "", typ: $funcType([$Int], [], false)}, {prop: "SetId", name: "SetId", pkg: "", typ: $funcType([$String], [], false)}];
+	ptrType$6.methods = [{prop: "UpdateConfig", name: "UpdateConfig", pkg: "", typ: $funcType([ptrType$4], [], false)}, {prop: "Init", name: "Init", pkg: "", typ: $funcType([ptrType$4], [], false)}, {prop: "ApplyAlgorithm", name: "ApplyAlgorithm", pkg: "", typ: $funcType([ptrType$4], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [], false)}, {prop: "startAnimating", name: "startAnimating", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "animate", name: "animate", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [], false)}, {prop: "BubbleSort", name: "BubbleSort", pkg: "", typ: $funcType([], [], false)}, {prop: "SelectionSort", name: "SelectionSort", pkg: "", typ: $funcType([], [], false)}, {prop: "InsertionSort", name: "InsertionSort", pkg: "", typ: $funcType([], [], false)}, {prop: "QuickSort", name: "QuickSort", pkg: "", typ: $funcType([], [], false)}, {prop: "quickSort", name: "quickSort", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}, {prop: "partition", name: "partition", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [$Int], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}, {prop: "swap", name: "swap", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}];
+	ptrType$3.methods = [{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [$Bool], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [], false)}, {prop: "toLeft", name: "toLeft", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([], [$Float64], false)}];
+	ptrType$5.methods = [{prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Float64], [], false)}, {prop: "swap", name: "swap", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([$Int, $Int], [], false)}];
 	Step.init("", [{prop: "A", name: "A", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "B", name: "B", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "DoSwap", name: "DoSwap", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Next", name: "Next", anonymous: false, exported: true, typ: ptrType, tag: ""}]);
-	Controller.init("github.com/lei-cao/learning-cs-again/code/play", [{prop: "C", name: "C", anonymous: false, exported: true, typ: ptrType$3, tag: ""}, {prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType$1, tag: ""}, {prop: "Steps", name: "Steps", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "LastStep", name: "LastStep", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "CurrentStep", name: "CurrentStep", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "AutoUpdate", name: "AutoUpdate", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Animating", name: "Animating", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Config", name: "Config", anonymous: false, exported: true, typ: ptrType$4, tag: ""}, {prop: "Screen", name: "Screen", anonymous: false, exported: true, typ: ptrType$5, tag: ""}, {prop: "animationFrame", name: "animationFrame", anonymous: false, exported: false, typ: ptrType$7, tag: ""}, {prop: "fps", name: "fps", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "fpdInterval", name: "fpdInterval", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "startTime", name: "startTime", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "now", name: "now", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "then", name: "then", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "elapsed", name: "elapsed", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType$1, tag: ""}]);
-	ControllerConfig.init("", [{prop: "Id", name: "Id", anonymous: false, exported: true, typ: $String, tag: "json:\"id\""}, {prop: "Velocity", name: "Velocity", anonymous: false, exported: true, typ: $Float64, tag: "json:\"velocity\""}, {prop: "Size", name: "Size", anonymous: false, exported: true, typ: $Int, tag: "json:\"size\""}]);
-	Rectangle.init("", [{prop: "Index", name: "Index", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "ToIndex", name: "ToIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IsA", name: "IsA", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "IsB", name: "IsB", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Total", name: "Total", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "Value", name: "Value", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "Left", name: "Left", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Top", name: "Top", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Waiting", name: "Waiting", anonymous: false, exported: true, typ: $Int, tag: ""}]);
-	Screen.init("", [{prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType$1, tag: ""}, {prop: "Rectangles", name: "Rectangles", anonymous: false, exported: true, typ: sliceType, tag: ""}, {prop: "FinishedDrawing", name: "FinishedDrawing", anonymous: false, exported: true, typ: mapType, tag: ""}, {prop: "Ready", name: "Ready", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "AIndex", name: "AIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "BIndex", name: "BIndex", anonymous: false, exported: true, typ: $Int, tag: ""}]);
+	ColorScheme.init("", [{prop: "BackgroundColor", name: "BackgroundColor", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "BarColor", name: "BarColor", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "AColor", name: "AColor", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "BColor", name: "BColor", anonymous: false, exported: true, typ: $String, tag: ""}]);
+	ControllerConfig.init("", [{prop: "Id", name: "Id", anonymous: false, exported: true, typ: $String, tag: "json:\"id\""}, {prop: "Duration", name: "Duration", anonymous: false, exported: true, typ: $Float64, tag: "json:\"duration\""}, {prop: "Size", name: "Size", anonymous: false, exported: true, typ: $Int, tag: "json:\"size\""}]);
+	Controller.init("github.com/lei-cao/learning-cs-again/code/play", [{prop: "C", name: "C", anonymous: false, exported: true, typ: ptrType$1, tag: ""}, {prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType$2, tag: ""}, {prop: "Steps", name: "Steps", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "LastStep", name: "LastStep", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "CurrentStep", name: "CurrentStep", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "AutoUpdate", name: "AutoUpdate", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Animating", name: "Animating", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Config", name: "Config", anonymous: false, exported: true, typ: ptrType$4, tag: ""}, {prop: "Screen", name: "Screen", anonymous: false, exported: true, typ: ptrType$5, tag: ""}, {prop: "animationFrame", name: "animationFrame", anonymous: false, exported: false, typ: ptrType$7, tag: ""}, {prop: "fps", name: "fps", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "fpdInterval", name: "fpdInterval", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "startTime", name: "startTime", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "now", name: "now", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "then", name: "then", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "elapsed", name: "elapsed", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType$1, tag: ""}, {prop: "numsB", name: "numsB", anonymous: false, exported: false, typ: sliceType$1, tag: ""}, {prop: "Duration", name: "Duration", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Timing", name: "Timing", anonymous: false, exported: true, typ: funcType$1, tag: ""}]);
+	Rectangle.init("", [{prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType$2, tag: ""}, {prop: "Index", name: "Index", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "ToIndex", name: "ToIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IsA", name: "IsA", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "IsB", name: "IsB", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Left", name: "Left", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Top", name: "Top", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Float64, tag: ""}]);
+	Screen.init("", [{prop: "C", name: "C", anonymous: false, exported: true, typ: ptrType$1, tag: ""}, {prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType$2, tag: ""}, {prop: "Rectangles", name: "Rectangles", anonymous: false, exported: true, typ: sliceType, tag: ""}, {prop: "FinishedDrawing", name: "FinishedDrawing", anonymous: false, exported: true, typ: mapType, tag: ""}, {prop: "Ready", name: "Ready", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "AIndex", name: "AIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "BIndex", name: "BIndex", anonymous: false, exported: true, typ: $Int, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -18638,8 +18736,8 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		$r = math.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = strconv.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = time.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		velocity = 0;
 		defaultSize = 10;
+		defaultColor = new ColorScheme.ptr("#012A36", "#A8A7A0", "#2AB7B7", "#0E7C7B");
 		barWidth = 8;
 		barSpace = 2;
 		heightUnit = 5;
@@ -18701,7 +18799,7 @@ $packages["main"] = (function() {
 	};
 	$pkg.Algorithm = Algorithm;
 	Controller = function() {
-		return js.MakeWrapper(new controller.Controller.ptr(ptrType$1.nil, ptrType$2.nil, ptrType$3.nil, ptrType$3.nil, ptrType$3.nil, false, false, ptrType$4.nil, ptrType$5.nil, null, 0, 0, 0, 0, 0, 0, sliceType.nil));
+		return js.MakeWrapper(new controller.Controller.ptr(ptrType$1.nil, ptrType$2.nil, ptrType$3.nil, ptrType$3.nil, ptrType$3.nil, false, false, ptrType$4.nil, ptrType$5.nil, null, 0, 0, 0, 0, 0, 0, sliceType.nil, sliceType.nil, 0, $throwNilPointerError));
 	};
 	$pkg.Controller = Controller;
 	ControllerConfig = function() {

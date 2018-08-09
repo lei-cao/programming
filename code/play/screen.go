@@ -13,7 +13,8 @@ var heightUnit = 5
 // The screen including the elements on the canvas
 // Maintain the ready for next state
 type Screen struct {
-	Ctx            *canvas.Context2D
+	C              *canvas.Canvas
+	Ctx             *canvas.Context2D
 	Rectangles      []*Rectangle
 	FinishedDrawing map[int]bool
 	Ready           bool
@@ -21,11 +22,13 @@ type Screen struct {
 	BIndex          int
 }
 
-func (s *Screen) Draw(delta float64) {
-	s.draw(delta)
+func (s *Screen) Draw(timestamp float64) {
+	s.draw(timestamp)
 }
 
-func (s *Screen) draw(delta float64) {
+func (s *Screen) draw(timestamp float64) {
+	s.Ctx.FillStyle = defaultColor.BackgroundColor
+	s.Ctx.FillRect(0,0, float64(s.C.Width), float64(s.C.Height))
 	for k, r := range s.Rectangles {
 		r.IsB = false
 		r.IsA = false
@@ -35,8 +38,7 @@ func (s *Screen) draw(delta float64) {
 		if s.BIndex == r.Index {
 			r.IsB = true
 		}
-		s.FinishedDrawing[k] = r.Update(delta)
-		s.drawRect(r)
+		s.FinishedDrawing[k] = r.Animate(timestamp)
 	}
 	for _, finished := range s.FinishedDrawing {
 		if !finished {
@@ -45,17 +47,6 @@ func (s *Screen) draw(delta float64) {
 		}
 	}
 	s.Ready = true
-}
-
-func (s *Screen) drawRect(r *Rectangle) {
-	s.Ctx.FillStyle = "#B9314F"
-	if r.IsA {
-		s.Ctx.FillStyle = "#2E86AB"
-	} else if r.IsB {
-		//ctx.FillStyle = "#12355B"
-		s.Ctx.FillStyle = "green"
-	}
-	s.Ctx.FillRect(r.Left, r.Top, r.Width, r.Height)
 }
 
 func (s *Screen) swap(ia, ib int) {
@@ -78,7 +69,6 @@ func (s *Screen) pass(ia, ib int) {
 	b := s.Rectangles[ib]
 	a.IsA = true
 	b.IsB = true
-	a.Waiting = 2
 	s.AIndex = ia
 	s.BIndex = ib
 }
