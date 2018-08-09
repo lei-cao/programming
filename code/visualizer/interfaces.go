@@ -5,7 +5,7 @@ type Screener interface {
 	Update(step Stepper)
 	Swap(ia, ib int)
 	Pass(ia, ib int)
-	Draw(timestamp float64)
+	Draw(progress float64)
 	Clear()
 }
 

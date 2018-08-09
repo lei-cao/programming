@@ -15,17 +15,17 @@ func NewScreen(id string, size int, nums []int) *Screen {
 	s.id = id
 	s.size = size
 
-	obj := CreateCanvas(s.id, s.size)
-	s.C = canvas.New(obj)
-	s.Ctx = s.C.GetContext2D()
+	obj := createCanvas(s.id, s.size)
+	s.c = canvas.New(obj)
+	s.ctx = s.c.GetContext2D()
 
-	s.Rectangles = []*Rectangle{}
+	s.rectangles = []*Rectangle{}
 
 	for k, v := range nums {
-		r := NewRect(size, k, v, s.Ctx)
-		s.Rectangles = append(s.Rectangles, r)
+		r := NewRect(size, k, v, s.ctx)
+		s.rectangles = append(s.rectangles, r)
 	}
-	s.FinishedDrawing = map[int]bool{}
+	s.finishedDrawing = map[int]bool{}
 	return s
 }
 
@@ -34,13 +34,13 @@ func NewScreen(id string, size int, nums []int) *Screen {
 type Screen struct {
 	id              string
 	size            int
-	C               *canvas.Canvas
-	Ctx             *canvas.Context2D
-	Rectangles      []*Rectangle
-	FinishedDrawing map[int]bool
+	c               *canvas.Canvas
+	ctx             *canvas.Context2D
+	rectangles      []*Rectangle
+	finishedDrawing map[int]bool
 	ready           bool
-	AIndex          int
-	BIndex          int
+	aIndex          int
+	bIndex          int
 }
 
 func (s *Screen) Ready() bool {
@@ -48,11 +48,11 @@ func (s *Screen) Ready() bool {
 }
 
 func (s *Screen) Clear() {
-	s.Ctx.ClearRect(0, 0, float64(canvasWidth(s.size)), float64(canvasHeight(s.size)))
+	s.ctx.ClearRect(0, 0, float64(canvasWidth(s.size)), float64(canvasHeight(s.size)))
 }
 
-func (s *Screen) Draw(timestamp float64) {
-	s.draw(timestamp)
+func (s *Screen) Draw(progress float64) {
+	s.draw(progress)
 }
 
 func (s *Screen) Update(i Stepper) {
@@ -63,21 +63,45 @@ func (s *Screen) Update(i Stepper) {
 	}
 }
 
-func (s *Screen) draw(timestamp float64) {
-	s.Ctx.FillStyle = defaultColor.BackgroundColor
-	s.Ctx.FillRect(0, 0, float64(s.C.Width), float64(s.C.Height))
-	for k, r := range s.Rectangles {
+func (s *Screen) Swap(ia, ib int) {
+	a := s.rectangles[ia]
+	b := s.rectangles[ib]
+	a.IsA = true
+	b.IsB = true
+	s.aIndex = ia
+	s.bIndex = ib
+
+	a.ToIndex = ib
+	b.ToIndex = ia
+
+	s.rectangles[ia] = b
+	s.rectangles[ib] = a
+}
+
+func (s *Screen) Pass(ia, ib int) {
+	a := s.rectangles[ia]
+	b := s.rectangles[ib]
+	a.IsA = true
+	b.IsB = true
+	s.aIndex = ia
+	s.bIndex = ib
+}
+
+func (s *Screen) draw(progress float64) {
+	s.ctx.FillStyle = defaultColor.BackgroundColor
+	s.ctx.FillRect(0, 0, float64(s.c.Width), float64(s.c.Height))
+	for k, r := range s.rectangles {
 		r.IsB = false
 		r.IsA = false
-		if s.AIndex == r.Index {
+		if s.aIndex == r.Index {
 			r.IsA = true
 		}
-		if s.BIndex == r.Index {
+		if s.bIndex == r.Index {
 			r.IsB = true
 		}
-		s.FinishedDrawing[k] = r.Animate(timestamp)
+		s.finishedDrawing[k] = r.Animate(progress)
 	}
-	for _, finished := range s.FinishedDrawing {
+	for _, finished := range s.finishedDrawing {
 		if !finished {
 			s.ready = false
 			return
@@ -86,31 +110,7 @@ func (s *Screen) draw(timestamp float64) {
 	s.ready = true
 }
 
-func (s *Screen) Swap(ia, ib int) {
-	a := s.Rectangles[ia]
-	b := s.Rectangles[ib]
-	a.IsA = true
-	b.IsB = true
-	s.AIndex = ia
-	s.BIndex = ib
-
-	a.ToIndex = ib
-	b.ToIndex = ia
-
-	s.Rectangles[ia] = b
-	s.Rectangles[ib] = a
-}
-
-func (s *Screen) Pass(ia, ib int) {
-	a := s.Rectangles[ia]
-	b := s.Rectangles[ib]
-	a.IsA = true
-	b.IsB = true
-	s.AIndex = ia
-	s.BIndex = ib
-}
-
-func CreateCanvas(id string, size int) *js.Object {
+func createCanvas(id string, size int) *js.Object {
 	body := js.Global.Get("document").Call("getElementById", id)
 	obj := js.Global.Get("document").Call("createElement", "canvas")
 	obj.Set("width", strconv.Itoa(canvasWidth(size)))

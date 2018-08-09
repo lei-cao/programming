@@ -29,8 +29,8 @@ type Rectangle struct {
 	Height  float64
 }
 
-func (r *Rectangle) Animate(timestamp float64) bool {
-	finished := r.update(timestamp)
+func (r *Rectangle) Animate(progress float64) bool {
+	finished := r.update(progress)
 	r.draw()
 	return finished
 }
