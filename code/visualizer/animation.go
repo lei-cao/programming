@@ -1,7 +1,6 @@
-package play
+package visualizer
 
 import (
-	"github.com/lei-cao/learning-cs-again/code/visualizer"
 	"github.com/gopherjs/gopherjs/js"
 	"math"
 	"time"
@@ -12,7 +11,7 @@ type Animator interface {
 	Animate(timestamp float64)
 	Draw(progress float64)
 	UpdateDuration(duration float64)
-	SetScreen(screener visualizer.Screener)
+	SetScreen(screener Screener)
 	AddStep(a, b int, doSwap bool)
 	Stop()
 	Resume()
@@ -21,7 +20,7 @@ type Animator interface {
 
 func NewAnimation() Animator {
 	a := new(Animation)
-	a.steps = visualizer.NewStep()
+	a.steps = NewStep()
 	a.autoUpdate = true
 	a.fps = 60
 	a.fpdInterval = 1000 / float64(a.fps)
@@ -29,8 +28,8 @@ func NewAnimation() Animator {
 }
 
 type Animation struct {
-	steps          visualizer.Stepper
-	screen         visualizer.Screener
+	steps          Stepper
+	screen         Screener
 	animating      bool
 	autoUpdate     bool
 	fps            int
@@ -52,7 +51,7 @@ func (a *Animation) UpdateDuration(duration float64) {
 	a.duration = duration
 }
 
-func (a *Animation) SetScreen(screen visualizer.Screener) {
+func (a *Animation) SetScreen(screen Screener) {
 	a.screen = screen
 }
 

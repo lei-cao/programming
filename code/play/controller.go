@@ -28,7 +28,7 @@ func (c *ControllerConfig) SetId(id string) {
 
 // The visualizer controller
 type Controller struct {
-	Animation Animator
+	Animation visualizer.Animator
 	Config    *ControllerConfig
 	nums      []int
 	numsB     []int
@@ -43,7 +43,7 @@ func (c *Controller) UpdateConfig(config *ControllerConfig) {
 // Init the visualizer controller
 func (c *Controller) Init(config *ControllerConfig) {
 	c.Config = config
-	c.Animation = NewAnimation()
+	c.Animation = visualizer.NewAnimation()
 	c.Animation.UpdateDuration(config.Duration)
 
 	if config.Size == 0 {
