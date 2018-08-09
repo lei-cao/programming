@@ -12,6 +12,7 @@ type Animator interface {
 	Draw(progress float64)
 	UpdateDuration(duration float64)
 	SetScreen(screener Screener)
+	SetSteps(step Stepper)
 	AddStep(a, b int, doSwap bool)
 	Stop()
 	Resume()
@@ -53,6 +54,10 @@ func (a *Animation) UpdateDuration(duration float64) {
 
 func (a *Animation) SetScreen(screen Screener) {
 	a.screen = screen
+}
+
+func (a *Animation) SetSteps(step Stepper) {
+	a.steps = step
 }
 
 func (a *Animation) StartAnimating() {

@@ -3,6 +3,7 @@ package play
 import (
 	"github.com/lei-cao/learning-cs-again/code/visualizer"
 	"github.com/lei-cao/learning-cs-again/code/utils"
+	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting"
 )
 
 // default size for the slice being solved
@@ -28,64 +29,71 @@ func (c *ControllerConfig) SetId(id string) {
 
 // The visualizer controller
 type Controller struct {
-	Animation visualizer.Animator
-	Config    *ControllerConfig
+	animation visualizer.Animator
+	config    *ControllerConfig
+	sorter    sorting.Sorter
 	nums      []int
 	numsB     []int
 }
 
 // Update config. Being called by JS
 func (c *Controller) UpdateConfig(config *ControllerConfig) {
-	c.Config = config
-	c.Animation.UpdateDuration(config.Duration)
+	c.config = config
+	c.animation.UpdateDuration(config.Duration)
 }
 
 // Init the visualizer controller
 func (c *Controller) Init(config *ControllerConfig) {
-	c.Config = config
-	c.Animation = visualizer.NewAnimation()
-	c.Animation.UpdateDuration(config.Duration)
+	c.config = config
 
 	if config.Size == 0 {
-		c.Config.Size = defaultSize
+		c.config.Size = defaultSize
 	}
 
-	c.nums = utils.Shuffle(c.Config.Size)
-	s := visualizer.NewScreen(c.Config.Id, c.Config.Size, c.nums)
-	c.Animation.SetScreen(s)
+	// Init animation
+	c.animation = visualizer.NewAnimation()
+	c.animation.UpdateDuration(config.Duration)
 
-	c.ApplyAlgorithm(config)
+	// Initial states for screen
+	c.nums = utils.Shuffle(c.config.Size)
+	s := visualizer.NewScreen(c.config.Id, c.config.Size, c.nums)
+	c.animation.SetScreen(s)
 
-	c.Animation.StartAnimating()
-}
+	// Apply algorithms, set steps
+	c.applyAlgorithm(config)
 
-func (c *Controller) ApplyAlgorithm(config *ControllerConfig) {
-	switch config.Id {
-	case "bubble":
-		c.BubbleSort()
-	case "selection":
-		c.SelectionSort()
-	case "insertion":
-		c.InsertionSort()
-	case "quick":
-		c.QuickSort()
-	case "topDownMergeSort":
-		c.TopDownMergeSort()
-	}
+	c.animation.StartAnimating()
 }
 
 // Stop auto running. Switch to manual control
 func (c *Controller) Stop() {
-	c.Animation.Stop()
+	c.animation.Stop()
 }
 
 // Resume auto running
 func (c *Controller) Resume() {
-	c.Animation.Resume()
+	c.animation.Resume()
 }
 
 // Do next step from the steps queue
 // Being triggered manually or automatically
 func (c *Controller) NextStep() {
-	c.Animation.NextStep()
+	c.animation.NextStep()
+}
+
+func (c *Controller) applyAlgorithm(config *ControllerConfig) {
+	switch config.Id {
+	case "bubble":
+		c.sorter = sorting.NewBubbleSort()
+	case "selection":
+		c.sorter = sorting.NewSelectionSort()
+	case "insertion":
+		c.sorter = sorting.NewInsertionSort()
+	case "quick":
+		c.sorter = sorting.NewQuickSort()
+	case "topDownMergeSort":
+		c.sorter = sorting.NewTopDownMergeSort()
+	}
+	c.sorter.Sort(c.nums)
+	c.animation.SetSteps(c.sorter.Steps())
 }
