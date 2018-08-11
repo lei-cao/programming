@@ -1,10 +1,11 @@
-package visualizer
+package defaults
 
 type ColorScheme struct {
 	BackgroundColor string
 	BarColor        string
 	AColor          string
 	BColor          string
+	CColor          string
 }
 
 var DefaultColor = ColorScheme{
@@ -12,4 +13,5 @@ var DefaultColor = ColorScheme{
 	"#A8A7A0",
 	"#2AB7B7",
 	"#0E7C7B",
+	"#F25243",
 }

@@ -1,4 +1,4 @@
-package sorting
+package basicsort
 
 type BubbleSort struct {
 	BasicSort

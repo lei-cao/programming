@@ -1,10 +1,12 @@
-package basic
+package basicsort
 
 import (
 	"github.com/gopherjs/gopherjs/js"
 	"strconv"
 	"github.com/oskca/gopherjs-canvas"
 	"github.com/lei-cao/learning-cs-again/code/visualizer"
+	"github.com/lei-cao/learning-cs-again/code/visualizer/defaults"
+	basic "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort"
 )
 
 func NewScreen(id string, size int, nums []int) *Screen {
@@ -16,10 +18,10 @@ func NewScreen(id string, size int, nums []int) *Screen {
 	s.c = canvas.New(obj)
 	s.ctx = s.c.GetContext2D()
 
-	s.rectangles = []*visualizer.Rectangle{}
+	s.rectangles = []*Rectangle{}
 
 	for k, v := range nums {
-		r := visualizer.NewRect(size, k, v, s.ctx)
+		r := NewRect(size, k, v, s.ctx)
 		s.rectangles = append(s.rectangles, r)
 	}
 	s.finishedDrawing = map[int]bool{}
@@ -33,7 +35,7 @@ type Screen struct {
 	size            int
 	c               *canvas.Canvas
 	ctx             *canvas.Context2D
-	rectangles      []*visualizer.Rectangle
+	rectangles      []*Rectangle
 	finishedDrawing map[int]bool
 	ready           bool
 	aIndex          int
@@ -52,11 +54,14 @@ func (s *Screen) Draw(progress float64) {
 	s.draw(progress)
 }
 
+// TODO type assertion. Have to?
 func (s *Screen) Update(i visualizer.Stepper) {
-	if i.DoSwap() {
-		s.Swap(i.A(), i.B())
-	} else {
-		s.Pass(i.A(), i.B())
+	if step, ok := i.(*basic.Step); ok {
+		if step.DoSwap() {
+			s.Swap(step.A(), step.B())
+		} else {
+			s.Pass(step.A(), step.B())
+		}
 	}
 }
 
@@ -85,7 +90,7 @@ func (s *Screen) Pass(ia, ib int) {
 }
 
 func (s *Screen) draw(progress float64) {
-	s.ctx.FillStyle = visualizer.DefaultColor.BackgroundColor
+	s.ctx.FillStyle = defaults.DefaultColor.BackgroundColor
 	s.ctx.FillRect(0, 0, float64(s.c.Width), float64(s.c.Height))
 	for k, r := range s.rectangles {
 		r.IsB = false
@@ -118,9 +123,9 @@ func createCanvas(id string, size int) *js.Object {
 }
 
 func canvasWidth(size int) int {
-	return visualizer.BarWidth*size + (size-1)*visualizer.BarSpace
+	return defaults.BarWidth*size + (size-1)*defaults.BarSpace
 }
 
 func canvasHeight(size int) int {
-	return size * visualizer.HeightUnit
+	return size * defaults.HeightUnit
 }

@@ -2378,1537 +2378,6 @@ $packages["runtime"] = (function() {
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/oskca/gopherjs-dom"] = (function() {
-	var $pkg = {}, $init, js, CSSStyleDeclaration, EventTarget, NodeType, NodeList, Node, Doc, Element, HTMLCollection, File, Event, ptrType, ptrType$1, ptrType$2, ptrType$3, ptrType$4, ptrType$5, sliceType, ptrType$6, sliceType$1, ptrType$7, funcType, ptrType$8, mapType, funcType$1, funcType$2, funcType$3, sliceType$3, funcType$4, funcType$5, funcType$6, funcType$7, funcType$8, funcType$9, funcType$10, funcType$11, funcType$12, funcType$13, funcType$14, funcType$15, funcType$16, funcType$17, funcType$18, funcType$19, ptrType$10, funcType$20, funcType$21, funcType$22, funcType$23, funcType$24, funcType$25, funcType$26, WrapEventTarget, WrapNode, WrapElement;
-	js = $packages["github.com/gopherjs/gopherjs/js"];
-	CSSStyleDeclaration = $pkg.CSSStyleDeclaration = $newType(0, $kindStruct, "dom.CSSStyleDeclaration", true, "github.com/oskca/gopherjs-dom", true, function(Object_, CssText_, Length_, ParentRule_, RemoveProperty_, GetPropertyValue_, GetPropertyPriority_, SetProperty_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Object = null;
-			this.CssText = "";
-			this.Length = 0;
-			this.ParentRule = ptrType.nil;
-			this.RemoveProperty = $throwNilPointerError;
-			this.GetPropertyValue = $throwNilPointerError;
-			this.GetPropertyPriority = $throwNilPointerError;
-			this.SetProperty = $throwNilPointerError;
-			return;
-		}
-		this.Object = Object_;
-		this.CssText = CssText_;
-		this.Length = Length_;
-		this.ParentRule = ParentRule_;
-		this.RemoveProperty = RemoveProperty_;
-		this.GetPropertyValue = GetPropertyValue_;
-		this.GetPropertyPriority = GetPropertyPriority_;
-		this.SetProperty = SetProperty_;
-	});
-	EventTarget = $pkg.EventTarget = $newType(0, $kindStruct, "dom.EventTarget", true, "github.com/oskca/gopherjs-dom", true, function(Object_, AddEventListener_, RemoveEventListener_, DispatchEvent_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Object = null;
-			this.AddEventListener = $throwNilPointerError;
-			this.RemoveEventListener = $throwNilPointerError;
-			this.DispatchEvent = $throwNilPointerError;
-			return;
-		}
-		this.Object = Object_;
-		this.AddEventListener = AddEventListener_;
-		this.RemoveEventListener = RemoveEventListener_;
-		this.DispatchEvent = DispatchEvent_;
-	});
-	NodeType = $pkg.NodeType = $newType(4, $kindInt, "dom.NodeType", true, "github.com/oskca/gopherjs-dom", true, null);
-	NodeList = $pkg.NodeList = $newType(0, $kindStruct, "dom.NodeList", true, "github.com/oskca/gopherjs-dom", true, function(Object_, Length_, Item_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Object = null;
-			this.Length = 0;
-			this.Item = $throwNilPointerError;
-			return;
-		}
-		this.Object = Object_;
-		this.Length = Length_;
-		this.Item = Item_;
-	});
-	Node = $pkg.Node = $newType(0, $kindStruct, "dom.Node", true, "github.com/oskca/gopherjs-dom", true, function(EventTarget_, BaseURI_, ChildNodes_, FirstChild_, LastChild_, LocalName_, NamespaceURI_, NextSibling_, NodeName_, NodeType_, NodeValue_, OwnerDocument_, ParentNode_, Prefix_, PreviousSibling_, TextContent_, AppendChild_, CloneNode_, CompareDocumentPosition_, HasChildNodes_, InsertBefore_, IsDefaultNamespace_, IsEqualNode_, IsSameNode_, LookupNamespaceURI_, LookupPrefix_, Normalize_, RemoveChild_, ReplaceChild_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.EventTarget = ptrType$1.nil;
-			this.BaseURI = "";
-			this.ChildNodes = ptrType$2.nil;
-			this.FirstChild = ptrType$3.nil;
-			this.LastChild = ptrType$3.nil;
-			this.LocalName = "";
-			this.NamespaceURI = "";
-			this.NextSibling = ptrType$3.nil;
-			this.NodeName = "";
-			this.NodeType = 0;
-			this.NodeValue = "";
-			this.OwnerDocument = ptrType$4.nil;
-			this.ParentNode = ptrType$3.nil;
-			this.Prefix = "";
-			this.PreviousSibling = ptrType$3.nil;
-			this.TextContent = "";
-			this.AppendChild = $throwNilPointerError;
-			this.CloneNode = $throwNilPointerError;
-			this.CompareDocumentPosition = $throwNilPointerError;
-			this.HasChildNodes = $throwNilPointerError;
-			this.InsertBefore = $throwNilPointerError;
-			this.IsDefaultNamespace = $throwNilPointerError;
-			this.IsEqualNode = $throwNilPointerError;
-			this.IsSameNode = $throwNilPointerError;
-			this.LookupNamespaceURI = $throwNilPointerError;
-			this.LookupPrefix = $throwNilPointerError;
-			this.Normalize = $throwNilPointerError;
-			this.RemoveChild = $throwNilPointerError;
-			this.ReplaceChild = $throwNilPointerError;
-			return;
-		}
-		this.EventTarget = EventTarget_;
-		this.BaseURI = BaseURI_;
-		this.ChildNodes = ChildNodes_;
-		this.FirstChild = FirstChild_;
-		this.LastChild = LastChild_;
-		this.LocalName = LocalName_;
-		this.NamespaceURI = NamespaceURI_;
-		this.NextSibling = NextSibling_;
-		this.NodeName = NodeName_;
-		this.NodeType = NodeType_;
-		this.NodeValue = NodeValue_;
-		this.OwnerDocument = OwnerDocument_;
-		this.ParentNode = ParentNode_;
-		this.Prefix = Prefix_;
-		this.PreviousSibling = PreviousSibling_;
-		this.TextContent = TextContent_;
-		this.AppendChild = AppendChild_;
-		this.CloneNode = CloneNode_;
-		this.CompareDocumentPosition = CompareDocumentPosition_;
-		this.HasChildNodes = HasChildNodes_;
-		this.InsertBefore = InsertBefore_;
-		this.IsDefaultNamespace = IsDefaultNamespace_;
-		this.IsEqualNode = IsEqualNode_;
-		this.IsSameNode = IsSameNode_;
-		this.LookupNamespaceURI = LookupNamespaceURI_;
-		this.LookupPrefix = LookupPrefix_;
-		this.Normalize = Normalize_;
-		this.RemoveChild = RemoveChild_;
-		this.ReplaceChild = ReplaceChild_;
-	});
-	Doc = $pkg.Doc = $newType(0, $kindStruct, "dom.Doc", true, "github.com/oskca/gopherjs-dom", true, function(Node_, CharacterSet_, Async_, Doctype_, DocumentElement_, DocumentURI_, Implementation_, AdoptNode_, CreateComment_, CreateElement_, CreateElementNS_, CreateEvent_, CreateTextNode_, GetElementById_, GetElementsByTagName_, GetElementsByTagNameNS_, ImportNode_, QuerySelector_, QuerySelectorAll_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Node = ptrType$3.nil;
-			this.CharacterSet = "";
-			this.Async = false;
-			this.Doctype = null;
-			this.DocumentElement = ptrType$5.nil;
-			this.DocumentURI = "";
-			this.Implementation = null;
-			this.AdoptNode = $throwNilPointerError;
-			this.CreateComment = $throwNilPointerError;
-			this.CreateElement = $throwNilPointerError;
-			this.CreateElementNS = $throwNilPointerError;
-			this.CreateEvent = $throwNilPointerError;
-			this.CreateTextNode = $throwNilPointerError;
-			this.GetElementById = $throwNilPointerError;
-			this.GetElementsByTagName = $throwNilPointerError;
-			this.GetElementsByTagNameNS = $throwNilPointerError;
-			this.ImportNode = $throwNilPointerError;
-			this.QuerySelector = $throwNilPointerError;
-			this.QuerySelectorAll = $throwNilPointerError;
-			return;
-		}
-		this.Node = Node_;
-		this.CharacterSet = CharacterSet_;
-		this.Async = Async_;
-		this.Doctype = Doctype_;
-		this.DocumentElement = DocumentElement_;
-		this.DocumentURI = DocumentURI_;
-		this.Implementation = Implementation_;
-		this.AdoptNode = AdoptNode_;
-		this.CreateComment = CreateComment_;
-		this.CreateElement = CreateElement_;
-		this.CreateElementNS = CreateElementNS_;
-		this.CreateEvent = CreateEvent_;
-		this.CreateTextNode = CreateTextNode_;
-		this.GetElementById = GetElementById_;
-		this.GetElementsByTagName = GetElementsByTagName_;
-		this.GetElementsByTagNameNS = GetElementsByTagNameNS_;
-		this.ImportNode = ImportNode_;
-		this.QuerySelector = QuerySelector_;
-		this.QuerySelectorAll = QuerySelectorAll_;
-	});
-	Element = $pkg.Element = $newType(0, $kindStruct, "dom.Element", true, "github.com/oskca/gopherjs-dom", true, function(Node_, Id_, InnerHTML_, InnerText_, TagName_, ContentEditable_, Width_, Height_, InnerWidth_, InnerHeight_, PreviousElementSibling_, NextElementSibling_, FirstElementChild_, LastElementChild_, Src_, Style_, ClassName_, ClassList_, SetAttribute_, GetAttribute_, RemoveAttribute_, AppendChild_, RemoveChild_, Remove_, QuerySelector_, QuerySelectorAll_, Click_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Node = ptrType$3.nil;
-			this.Id = "";
-			this.InnerHTML = "";
-			this.InnerText = "";
-			this.TagName = "";
-			this.ContentEditable = false;
-			this.Width = 0;
-			this.Height = 0;
-			this.InnerWidth = 0;
-			this.InnerHeight = 0;
-			this.PreviousElementSibling = ptrType$5.nil;
-			this.NextElementSibling = ptrType$5.nil;
-			this.FirstElementChild = ptrType$5.nil;
-			this.LastElementChild = ptrType$5.nil;
-			this.Src = "";
-			this.Style = ptrType.nil;
-			this.ClassName = "";
-			this.ClassList = sliceType.nil;
-			this.SetAttribute = $throwNilPointerError;
-			this.GetAttribute = $throwNilPointerError;
-			this.RemoveAttribute = $throwNilPointerError;
-			this.AppendChild = $throwNilPointerError;
-			this.RemoveChild = $throwNilPointerError;
-			this.Remove = $throwNilPointerError;
-			this.QuerySelector = $throwNilPointerError;
-			this.QuerySelectorAll = $throwNilPointerError;
-			this.Click = $throwNilPointerError;
-			return;
-		}
-		this.Node = Node_;
-		this.Id = Id_;
-		this.InnerHTML = InnerHTML_;
-		this.InnerText = InnerText_;
-		this.TagName = TagName_;
-		this.ContentEditable = ContentEditable_;
-		this.Width = Width_;
-		this.Height = Height_;
-		this.InnerWidth = InnerWidth_;
-		this.InnerHeight = InnerHeight_;
-		this.PreviousElementSibling = PreviousElementSibling_;
-		this.NextElementSibling = NextElementSibling_;
-		this.FirstElementChild = FirstElementChild_;
-		this.LastElementChild = LastElementChild_;
-		this.Src = Src_;
-		this.Style = Style_;
-		this.ClassName = ClassName_;
-		this.ClassList = ClassList_;
-		this.SetAttribute = SetAttribute_;
-		this.GetAttribute = GetAttribute_;
-		this.RemoveAttribute = RemoveAttribute_;
-		this.AppendChild = AppendChild_;
-		this.RemoveChild = RemoveChild_;
-		this.Remove = Remove_;
-		this.QuerySelector = QuerySelector_;
-		this.QuerySelectorAll = QuerySelectorAll_;
-		this.Click = Click_;
-	});
-	HTMLCollection = $pkg.HTMLCollection = $newType(0, $kindStruct, "dom.HTMLCollection", true, "github.com/oskca/gopherjs-dom", true, function(Object_, Length_, Item_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Object = null;
-			this.Length = 0;
-			this.Item = $throwNilPointerError;
-			return;
-		}
-		this.Object = Object_;
-		this.Length = Length_;
-		this.Item = Item_;
-	});
-	File = $pkg.File = $newType(0, $kindStruct, "dom.File", true, "github.com/oskca/gopherjs-dom", true, function(Object_, LastModifiledData_, Name_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Object = null;
-			this.LastModifiledData = null;
-			this.Name = "";
-			return;
-		}
-		this.Object = Object_;
-		this.LastModifiledData = LastModifiledData_;
-		this.Name = Name_;
-	});
-	Event = $pkg.Event = $newType(0, $kindStruct, "dom.Event", true, "github.com/oskca/gopherjs-dom", true, function(Object_, Type_, Code_, Reason_, WasClean_, DeltaX_, DeltaY_, DeltaZ_, DeltaMode_, AltKey_, CharCode_, CtrlKey_, Key_, KeyIdentifier_, KeyCode_, Locale_, Location_, KeyLocation_, MetaKey_, Repeat_, ShiftKey_, Button_, ClientX_, ClientY_, MovementX_, MovementY_, ScreenX_, ScreenY_, LayerX_, LayerY_, Data_, Bubbles_, Cancelable_, CurrentTarget_, DefaultPrevented_, EventPhase_, Target_, Timestamp_, PreventDefault_, StopImmediatePropagation_, StopPropagation_, GetModifierState_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Object = null;
-			this.Type = "";
-			this.Code = 0;
-			this.Reason = "";
-			this.WasClean = false;
-			this.DeltaX = 0;
-			this.DeltaY = 0;
-			this.DeltaZ = 0;
-			this.DeltaMode = 0;
-			this.AltKey = false;
-			this.CharCode = 0;
-			this.CtrlKey = false;
-			this.Key = "";
-			this.KeyIdentifier = "";
-			this.KeyCode = 0;
-			this.Locale = "";
-			this.Location = 0;
-			this.KeyLocation = 0;
-			this.MetaKey = false;
-			this.Repeat = false;
-			this.ShiftKey = false;
-			this.Button = 0;
-			this.ClientX = 0;
-			this.ClientY = 0;
-			this.MovementX = 0;
-			this.MovementY = 0;
-			this.ScreenX = 0;
-			this.ScreenY = 0;
-			this.LayerX = 0;
-			this.LayerY = 0;
-			this.Data = null;
-			this.Bubbles = false;
-			this.Cancelable = false;
-			this.CurrentTarget = ptrType$5.nil;
-			this.DefaultPrevented = false;
-			this.EventPhase = 0;
-			this.Target = ptrType$5.nil;
-			this.Timestamp = 0;
-			this.PreventDefault = $throwNilPointerError;
-			this.StopImmediatePropagation = $throwNilPointerError;
-			this.StopPropagation = $throwNilPointerError;
-			this.GetModifierState = $throwNilPointerError;
-			return;
-		}
-		this.Object = Object_;
-		this.Type = Type_;
-		this.Code = Code_;
-		this.Reason = Reason_;
-		this.WasClean = WasClean_;
-		this.DeltaX = DeltaX_;
-		this.DeltaY = DeltaY_;
-		this.DeltaZ = DeltaZ_;
-		this.DeltaMode = DeltaMode_;
-		this.AltKey = AltKey_;
-		this.CharCode = CharCode_;
-		this.CtrlKey = CtrlKey_;
-		this.Key = Key_;
-		this.KeyIdentifier = KeyIdentifier_;
-		this.KeyCode = KeyCode_;
-		this.Locale = Locale_;
-		this.Location = Location_;
-		this.KeyLocation = KeyLocation_;
-		this.MetaKey = MetaKey_;
-		this.Repeat = Repeat_;
-		this.ShiftKey = ShiftKey_;
-		this.Button = Button_;
-		this.ClientX = ClientX_;
-		this.ClientY = ClientY_;
-		this.MovementX = MovementX_;
-		this.MovementY = MovementY_;
-		this.ScreenX = ScreenX_;
-		this.ScreenY = ScreenY_;
-		this.LayerX = LayerX_;
-		this.LayerY = LayerY_;
-		this.Data = Data_;
-		this.Bubbles = Bubbles_;
-		this.Cancelable = Cancelable_;
-		this.CurrentTarget = CurrentTarget_;
-		this.DefaultPrevented = DefaultPrevented_;
-		this.EventPhase = EventPhase_;
-		this.Target = Target_;
-		this.Timestamp = Timestamp_;
-		this.PreventDefault = PreventDefault_;
-		this.StopImmediatePropagation = StopImmediatePropagation_;
-		this.StopPropagation = StopPropagation_;
-		this.GetModifierState = GetModifierState_;
-	});
-	ptrType = $ptrType(CSSStyleDeclaration);
-	ptrType$1 = $ptrType(EventTarget);
-	ptrType$2 = $ptrType(NodeList);
-	ptrType$3 = $ptrType(Node);
-	ptrType$4 = $ptrType(Doc);
-	ptrType$5 = $ptrType(Element);
-	sliceType = $sliceType($String);
-	ptrType$6 = $ptrType(File);
-	sliceType$1 = $sliceType(ptrType$6);
-	ptrType$7 = $ptrType(Event);
-	funcType = $funcType([ptrType$7], [], false);
-	ptrType$8 = $ptrType(js.Object);
-	mapType = $mapType($String, $String);
-	funcType$1 = $funcType([$String], [], false);
-	funcType$2 = $funcType([$String], [$String], false);
-	funcType$3 = $funcType([$String, $String, sliceType], [], true);
-	sliceType$3 = $sliceType($Bool);
-	funcType$4 = $funcType([$String, funcType, sliceType$3], [], true);
-	funcType$5 = $funcType([$Int], [Node], false);
-	funcType$6 = $funcType([ptrType$3], [], false);
-	funcType$7 = $funcType([], [ptrType$3], false);
-	funcType$8 = $funcType([ptrType$3], [$Int], false);
-	funcType$9 = $funcType([], [$Bool], false);
-	funcType$10 = $funcType([ptrType$3, ptrType$3], [], false);
-	funcType$11 = $funcType([$String], [$Bool], false);
-	funcType$12 = $funcType([ptrType$3], [$Bool], false);
-	funcType$13 = $funcType([], [$String], false);
-	funcType$14 = $funcType([], [], false);
-	funcType$15 = $funcType([ptrType$3], [ptrType$3], false);
-	funcType$16 = $funcType([$String], [ptrType$3], false);
-	funcType$17 = $funcType([$String], [ptrType$5], false);
-	funcType$18 = $funcType([$String, $String], [ptrType$5], false);
-	funcType$19 = $funcType([$String], [ptrType$7], false);
-	ptrType$10 = $ptrType(HTMLCollection);
-	funcType$20 = $funcType([$String], [ptrType$10], false);
-	funcType$21 = $funcType([$String, $String], [ptrType$10], false);
-	funcType$22 = $funcType([ptrType$3, $Bool], [ptrType$3], false);
-	funcType$23 = $funcType([$String, $emptyInterface], [], false);
-	funcType$24 = $funcType([$String], [ptrType$8], false);
-	funcType$25 = $funcType([ptrType$5], [], false);
-	funcType$26 = $funcType([$Int], [ptrType$5], false);
-	CSSStyleDeclaration.ptr.prototype.ToMap = function() {
-		var N, _key, css, i, m, name, value;
-		css = this;
-		m = {};
-		N = $parseInt(css.Object.length) >> 0;
-		i = 0;
-		while (true) {
-			if (!(i < N)) { break; }
-			name = $internalize(css.Object.index(i), $String);
-			value = $internalize(css.Object.getPropertyValue(), $String);
-			_key = name; (m || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key)] = { k: _key, v: value };
-			i = i + (1) >> 0;
-		}
-		return m;
-	};
-	CSSStyleDeclaration.prototype.ToMap = function() { return this.$val.ToMap(); };
-	WrapEventTarget = function(t) {
-		var t;
-		return new EventTarget.ptr(t, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError);
-	};
-	$pkg.WrapEventTarget = WrapEventTarget;
-	WrapNode = function(n) {
-		var n;
-		return new Node.ptr(WrapEventTarget(n), "", ptrType$2.nil, ptrType$3.nil, ptrType$3.nil, "", "", ptrType$3.nil, "", 0, "", ptrType$4.nil, ptrType$3.nil, "", ptrType$3.nil, "", $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError);
-	};
-	$pkg.WrapNode = WrapNode;
-	WrapElement = function(el) {
-		var el;
-		if (el === undefined || el === null) {
-			return ptrType$5.nil;
-		}
-		return new Element.ptr(WrapNode(el), "", "", "", "", false, 0, 0, 0, 0, ptrType$5.nil, ptrType$5.nil, ptrType$5.nil, ptrType$5.nil, "", ptrType.nil, "", sliceType.nil, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError);
-	};
-	$pkg.WrapElement = WrapElement;
-	Element.ptr.prototype.Files = function() {
-		var _i, _ref, e, files, i, out;
-		e = this;
-		files = e.Node.EventTarget.Object.files;
-		out = $makeSlice(sliceType$1, ($parseInt(files.length) >> 0));
-		_ref = out;
-		_i = 0;
-		while (true) {
-			if (!(_i < _ref.$length)) { break; }
-			i = _i;
-			((i < 0 || i >= out.$length) ? ($throwRuntimeError("index out of range"), undefined) : out.$array[out.$offset + i] = new File.ptr(files.item(i), null, ""));
-			_i++;
-		}
-		return out;
-	};
-	Element.prototype.Files = function() { return this.$val.Files(); };
-	ptrType.methods = [{prop: "ToMap", name: "ToMap", pkg: "", typ: $funcType([], [mapType], false)}];
-	ptrType$5.methods = [{prop: "Files", name: "Files", pkg: "", typ: $funcType([], [sliceType$1], false)}];
-	CSSStyleDeclaration.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$8, tag: ""}, {prop: "CssText", name: "CssText", anonymous: false, exported: true, typ: $String, tag: "js:\"cssText\""}, {prop: "Length", name: "Length", anonymous: false, exported: true, typ: $Int, tag: "js:\"length\""}, {prop: "ParentRule", name: "ParentRule", anonymous: false, exported: true, typ: ptrType, tag: "js:\"parentRule\""}, {prop: "RemoveProperty", name: "RemoveProperty", anonymous: false, exported: true, typ: funcType$1, tag: "js:\"removeProperty\""}, {prop: "GetPropertyValue", name: "GetPropertyValue", anonymous: false, exported: true, typ: funcType$2, tag: "js:\"getPropertyValue\""}, {prop: "GetPropertyPriority", name: "GetPropertyPriority", anonymous: false, exported: true, typ: funcType$2, tag: "js:\"getPropertyPriority\""}, {prop: "SetProperty", name: "SetProperty", anonymous: false, exported: true, typ: funcType$3, tag: "js:\"setProperty\""}]);
-	EventTarget.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$8, tag: ""}, {prop: "AddEventListener", name: "AddEventListener", anonymous: false, exported: true, typ: funcType$4, tag: "js:\"addEventListener\""}, {prop: "RemoveEventListener", name: "RemoveEventListener", anonymous: false, exported: true, typ: funcType$4, tag: "js:\"removeEventListener\""}, {prop: "DispatchEvent", name: "DispatchEvent", anonymous: false, exported: true, typ: funcType, tag: "js:\"dispatchEvent\""}]);
-	NodeList.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$8, tag: ""}, {prop: "Length", name: "Length", anonymous: false, exported: true, typ: $Int, tag: "js:\"length\""}, {prop: "Item", name: "Item", anonymous: false, exported: true, typ: funcType$5, tag: "js:\"item\""}]);
-	Node.init("", [{prop: "EventTarget", name: "EventTarget", anonymous: true, exported: true, typ: ptrType$1, tag: ""}, {prop: "BaseURI", name: "BaseURI", anonymous: false, exported: true, typ: $String, tag: "js:\"baseURI\""}, {prop: "ChildNodes", name: "ChildNodes", anonymous: false, exported: true, typ: ptrType$2, tag: "js:\"childNodes\""}, {prop: "FirstChild", name: "FirstChild", anonymous: false, exported: true, typ: ptrType$3, tag: "js:\"firstChild\""}, {prop: "LastChild", name: "LastChild", anonymous: false, exported: true, typ: ptrType$3, tag: "js:\"lastChild\""}, {prop: "LocalName", name: "LocalName", anonymous: false, exported: true, typ: $String, tag: "js:\"localName\""}, {prop: "NamespaceURI", name: "NamespaceURI", anonymous: false, exported: true, typ: $String, tag: "js:\"namespaceURI\""}, {prop: "NextSibling", name: "NextSibling", anonymous: false, exported: true, typ: ptrType$3, tag: "js:\"nextSibling\""}, {prop: "NodeName", name: "NodeName", anonymous: false, exported: true, typ: $String, tag: "js:\"nodeName\""}, {prop: "NodeType", name: "NodeType", anonymous: false, exported: true, typ: NodeType, tag: "js:\"nodeType\""}, {prop: "NodeValue", name: "NodeValue", anonymous: false, exported: true, typ: $String, tag: "js:\"nodeValue\""}, {prop: "OwnerDocument", name: "OwnerDocument", anonymous: false, exported: true, typ: ptrType$4, tag: "js:\"ownerDocument\""}, {prop: "ParentNode", name: "ParentNode", anonymous: false, exported: true, typ: ptrType$3, tag: "js:\"parentNode\""}, {prop: "Prefix", name: "Prefix", anonymous: false, exported: true, typ: $String, tag: "js:\"prefix\""}, {prop: "PreviousSibling", name: "PreviousSibling", anonymous: false, exported: true, typ: ptrType$3, tag: "js:\"previousSibling\""}, {prop: "TextContent", name: "TextContent", anonymous: false, exported: true, typ: $String, tag: "js:\"textContent\""}, {prop: "AppendChild", name: "AppendChild", anonymous: false, exported: true, typ: funcType$6, tag: "js:\"appendChild\""}, {prop: "CloneNode", name: "CloneNode", anonymous: false, exported: true, typ: funcType$7, tag: "js:\"cloneNode\""}, {prop: "CompareDocumentPosition", name: "CompareDocumentPosition", anonymous: false, exported: true, typ: funcType$8, tag: "js:\"compareDocumentPosition\""}, {prop: "HasChildNodes", name: "HasChildNodes", anonymous: false, exported: true, typ: funcType$9, tag: "js:\"hasChildNodes\""}, {prop: "InsertBefore", name: "InsertBefore", anonymous: false, exported: true, typ: funcType$10, tag: "js:\"insertBefore\""}, {prop: "IsDefaultNamespace", name: "IsDefaultNamespace", anonymous: false, exported: true, typ: funcType$11, tag: "js:\"isDefaultNamespace\""}, {prop: "IsEqualNode", name: "IsEqualNode", anonymous: false, exported: true, typ: funcType$12, tag: "js:\"isEqualNode\""}, {prop: "IsSameNode", name: "IsSameNode", anonymous: false, exported: true, typ: funcType$12, tag: "js:\"isSameNode\""}, {prop: "LookupNamespaceURI", name: "LookupNamespaceURI", anonymous: false, exported: true, typ: funcType$2, tag: "js:\"lookupNamespaceURI\""}, {prop: "LookupPrefix", name: "LookupPrefix", anonymous: false, exported: true, typ: funcType$13, tag: "js:\"lookupPrefix\""}, {prop: "Normalize", name: "Normalize", anonymous: false, exported: true, typ: funcType$14, tag: "js:\"normalize\""}, {prop: "RemoveChild", name: "RemoveChild", anonymous: false, exported: true, typ: funcType$6, tag: "js:\"removeChild\""}, {prop: "ReplaceChild", name: "ReplaceChild", anonymous: false, exported: true, typ: funcType$10, tag: "js:\"replaceChild\""}]);
-	Doc.init("", [{prop: "Node", name: "Node", anonymous: true, exported: true, typ: ptrType$3, tag: ""}, {prop: "CharacterSet", name: "CharacterSet", anonymous: false, exported: true, typ: $String, tag: "js:\"characterSet\""}, {prop: "Async", name: "Async", anonymous: false, exported: true, typ: $Bool, tag: "js:\"async\""}, {prop: "Doctype", name: "Doctype", anonymous: false, exported: true, typ: ptrType$8, tag: "js:\"doctype\""}, {prop: "DocumentElement", name: "DocumentElement", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"documentElement\""}, {prop: "DocumentURI", name: "DocumentURI", anonymous: false, exported: true, typ: $String, tag: "js:\"documentURI\""}, {prop: "Implementation", name: "Implementation", anonymous: false, exported: true, typ: ptrType$8, tag: "js:\"implementation\""}, {prop: "AdoptNode", name: "AdoptNode", anonymous: false, exported: true, typ: funcType$15, tag: "js:\"adoptNode\""}, {prop: "CreateComment", name: "CreateComment", anonymous: false, exported: true, typ: funcType$16, tag: "js:\"createComment\""}, {prop: "CreateElement", name: "CreateElement", anonymous: false, exported: true, typ: funcType$17, tag: "js:\"createElement\""}, {prop: "CreateElementNS", name: "CreateElementNS", anonymous: false, exported: true, typ: funcType$18, tag: "js:\"createElementNS\""}, {prop: "CreateEvent", name: "CreateEvent", anonymous: false, exported: true, typ: funcType$19, tag: "js:\"createEvent\""}, {prop: "CreateTextNode", name: "CreateTextNode", anonymous: false, exported: true, typ: funcType$16, tag: "js:\"createTextNode\""}, {prop: "GetElementById", name: "GetElementById", anonymous: false, exported: true, typ: funcType$17, tag: "js:\"getElementById\""}, {prop: "GetElementsByTagName", name: "GetElementsByTagName", anonymous: false, exported: true, typ: funcType$20, tag: "js:\"getElementsByTagName\""}, {prop: "GetElementsByTagNameNS", name: "GetElementsByTagNameNS", anonymous: false, exported: true, typ: funcType$21, tag: "js:\"getElementsByTagNameNS\""}, {prop: "ImportNode", name: "ImportNode", anonymous: false, exported: true, typ: funcType$22, tag: "js:\"importNode\""}, {prop: "QuerySelector", name: "QuerySelector", anonymous: false, exported: true, typ: funcType$17, tag: "js:\"querySelector\""}, {prop: "QuerySelectorAll", name: "QuerySelectorAll", anonymous: false, exported: true, typ: funcType$20, tag: "js:\"querySelectorAll\""}]);
-	Element.init("", [{prop: "Node", name: "Node", anonymous: true, exported: true, typ: ptrType$3, tag: ""}, {prop: "Id", name: "Id", anonymous: false, exported: true, typ: $String, tag: "js:\"id\""}, {prop: "InnerHTML", name: "InnerHTML", anonymous: false, exported: true, typ: $String, tag: "js:\"innerHTML\""}, {prop: "InnerText", name: "InnerText", anonymous: false, exported: true, typ: $String, tag: "js:\"innerText\""}, {prop: "TagName", name: "TagName", anonymous: false, exported: true, typ: $String, tag: "js:\"tagName\""}, {prop: "ContentEditable", name: "ContentEditable", anonymous: false, exported: true, typ: $Bool, tag: "js:\"contentEditable\""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Int, tag: "js:\"width\""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Int, tag: "js:\"height\""}, {prop: "InnerWidth", name: "InnerWidth", anonymous: false, exported: true, typ: $Int, tag: "js:\"innerWidth\""}, {prop: "InnerHeight", name: "InnerHeight", anonymous: false, exported: true, typ: $Int, tag: "js:\"innerHeight\""}, {prop: "PreviousElementSibling", name: "PreviousElementSibling", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"previousElementSibling\""}, {prop: "NextElementSibling", name: "NextElementSibling", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"nextElementSibling\""}, {prop: "FirstElementChild", name: "FirstElementChild", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"firstElementChild\""}, {prop: "LastElementChild", name: "LastElementChild", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"lastElementChild\""}, {prop: "Src", name: "Src", anonymous: false, exported: true, typ: $String, tag: "js:\"src\""}, {prop: "Style", name: "Style", anonymous: false, exported: true, typ: ptrType, tag: "js:\"style\""}, {prop: "ClassName", name: "ClassName", anonymous: false, exported: true, typ: $String, tag: "js:\"className\""}, {prop: "ClassList", name: "ClassList", anonymous: false, exported: true, typ: sliceType, tag: "js:\"classList\""}, {prop: "SetAttribute", name: "SetAttribute", anonymous: false, exported: true, typ: funcType$23, tag: "js:\"setAttribute\""}, {prop: "GetAttribute", name: "GetAttribute", anonymous: false, exported: true, typ: funcType$24, tag: "js:\"getAttribute\""}, {prop: "RemoveAttribute", name: "RemoveAttribute", anonymous: false, exported: true, typ: funcType$1, tag: "js:\"removeAttribute\""}, {prop: "AppendChild", name: "AppendChild", anonymous: false, exported: true, typ: funcType$25, tag: "js:\"appendChild\""}, {prop: "RemoveChild", name: "RemoveChild", anonymous: false, exported: true, typ: funcType$25, tag: "js:\"removeChild\""}, {prop: "Remove", name: "Remove", anonymous: false, exported: true, typ: funcType$14, tag: "js:\"remove\""}, {prop: "QuerySelector", name: "QuerySelector", anonymous: false, exported: true, typ: funcType$17, tag: "js:\"querySelector\""}, {prop: "QuerySelectorAll", name: "QuerySelectorAll", anonymous: false, exported: true, typ: funcType$20, tag: "js:\"querySelectorAll\""}, {prop: "Click", name: "Click", anonymous: false, exported: true, typ: funcType$14, tag: "js:\"click\""}]);
-	HTMLCollection.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$8, tag: ""}, {prop: "Length", name: "Length", anonymous: false, exported: true, typ: $Int, tag: "js:\"length\""}, {prop: "Item", name: "Item", anonymous: false, exported: true, typ: funcType$26, tag: "js:\"item\""}]);
-	File.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$8, tag: ""}, {prop: "LastModifiledData", name: "LastModifiledData", anonymous: false, exported: true, typ: ptrType$8, tag: "js:\"lastModifiedDate\""}, {prop: "Name", name: "Name", anonymous: false, exported: true, typ: $String, tag: "js:\"name\""}]);
-	Event.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$8, tag: ""}, {prop: "Type", name: "Type", anonymous: false, exported: true, typ: $String, tag: "js:\"type\""}, {prop: "Code", name: "Code", anonymous: false, exported: true, typ: $Int, tag: "js:\"code\""}, {prop: "Reason", name: "Reason", anonymous: false, exported: true, typ: $String, tag: "js:\"reason\""}, {prop: "WasClean", name: "WasClean", anonymous: false, exported: true, typ: $Bool, tag: "js:\"wasClean\""}, {prop: "DeltaX", name: "DeltaX", anonymous: false, exported: true, typ: $Float64, tag: "js:\"deltaX\""}, {prop: "DeltaY", name: "DeltaY", anonymous: false, exported: true, typ: $Float64, tag: "js:\"deltaY\""}, {prop: "DeltaZ", name: "DeltaZ", anonymous: false, exported: true, typ: $Float64, tag: "js:\"deltaZ\""}, {prop: "DeltaMode", name: "DeltaMode", anonymous: false, exported: true, typ: $Int, tag: "js:\"deltaMode\""}, {prop: "AltKey", name: "AltKey", anonymous: false, exported: true, typ: $Bool, tag: "js:\"altKey\""}, {prop: "CharCode", name: "CharCode", anonymous: false, exported: true, typ: $Int, tag: "js:\"charCode\""}, {prop: "CtrlKey", name: "CtrlKey", anonymous: false, exported: true, typ: $Bool, tag: "js:\"ctrlKey\""}, {prop: "Key", name: "Key", anonymous: false, exported: true, typ: $String, tag: "js:\"key\""}, {prop: "KeyIdentifier", name: "KeyIdentifier", anonymous: false, exported: true, typ: $String, tag: "js:\"keyIdentifier\""}, {prop: "KeyCode", name: "KeyCode", anonymous: false, exported: true, typ: $Int, tag: "js:\"keyCode\""}, {prop: "Locale", name: "Locale", anonymous: false, exported: true, typ: $String, tag: "js:\"locale\""}, {prop: "Location", name: "Location", anonymous: false, exported: true, typ: $Int, tag: "js:\"location\""}, {prop: "KeyLocation", name: "KeyLocation", anonymous: false, exported: true, typ: $Int, tag: "js:\"keyLocation\""}, {prop: "MetaKey", name: "MetaKey", anonymous: false, exported: true, typ: $Bool, tag: "js:\"metaKey\""}, {prop: "Repeat", name: "Repeat", anonymous: false, exported: true, typ: $Bool, tag: "js:\"repeat\""}, {prop: "ShiftKey", name: "ShiftKey", anonymous: false, exported: true, typ: $Bool, tag: "js:\"shiftKey\""}, {prop: "Button", name: "Button", anonymous: false, exported: true, typ: $Int, tag: "js:\"button\""}, {prop: "ClientX", name: "ClientX", anonymous: false, exported: true, typ: $Int, tag: "js:\"clientX\""}, {prop: "ClientY", name: "ClientY", anonymous: false, exported: true, typ: $Int, tag: "js:\"clientY\""}, {prop: "MovementX", name: "MovementX", anonymous: false, exported: true, typ: $Int, tag: "js:\"movementX\""}, {prop: "MovementY", name: "MovementY", anonymous: false, exported: true, typ: $Int, tag: "js:\"movementY\""}, {prop: "ScreenX", name: "ScreenX", anonymous: false, exported: true, typ: $Int, tag: "js:\"screenX\""}, {prop: "ScreenY", name: "ScreenY", anonymous: false, exported: true, typ: $Int, tag: "js:\"screenY\""}, {prop: "LayerX", name: "LayerX", anonymous: false, exported: true, typ: $Int, tag: "js:\"layerX\""}, {prop: "LayerY", name: "LayerY", anonymous: false, exported: true, typ: $Int, tag: "js:\"layerY\""}, {prop: "Data", name: "Data", anonymous: false, exported: true, typ: ptrType$8, tag: "js:\"data\""}, {prop: "Bubbles", name: "Bubbles", anonymous: false, exported: true, typ: $Bool, tag: "js:\"bubbles\""}, {prop: "Cancelable", name: "Cancelable", anonymous: false, exported: true, typ: $Bool, tag: "js:\"cancelable\""}, {prop: "CurrentTarget", name: "CurrentTarget", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"currentTarget\""}, {prop: "DefaultPrevented", name: "DefaultPrevented", anonymous: false, exported: true, typ: $Bool, tag: "js:\"defaultPrevented\""}, {prop: "EventPhase", name: "EventPhase", anonymous: false, exported: true, typ: $Int, tag: "js:\"eventPhase\""}, {prop: "Target", name: "Target", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"target\""}, {prop: "Timestamp", name: "Timestamp", anonymous: false, exported: true, typ: $Int, tag: "js:\"timeStamp\""}, {prop: "PreventDefault", name: "PreventDefault", anonymous: false, exported: true, typ: funcType$14, tag: "js:\"preventDefault\""}, {prop: "StopImmediatePropagation", name: "StopImmediatePropagation", anonymous: false, exported: true, typ: funcType$14, tag: "js:\"stopImmediatePropagation\""}, {prop: "StopPropagation", name: "StopPropagation", anonymous: false, exported: true, typ: funcType$14, tag: "js:\"stopPropagation\""}, {prop: "GetModifierState", name: "GetModifierState", anonymous: false, exported: true, typ: funcType$11, tag: "js:\"getModifierState\""}]);
-	$init = function() {
-		$pkg.$init = function() {};
-		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		$r = js.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
-	};
-	$pkg.$init = $init;
-	return $pkg;
-})();
-$packages["image/color"] = (function() {
-	var $pkg = {}, $init, Color, RGBA, RGBA64, NRGBA, NRGBA64, Alpha, Alpha16, Gray, Gray16, modelFunc, YCbCr, NYCbCrA, CMYK, ptrType, funcType, ModelFunc, rgbaModel, rgba64Model, nrgbaModel, nrgba64Model, alphaModel, alpha16Model, grayModel, gray16Model, RGBToYCbCr, yCbCrModel, nYCbCrAModel, RGBToCMYK, cmykModel;
-	Color = $pkg.Color = $newType(8, $kindInterface, "color.Color", true, "image/color", true, null);
-	RGBA = $pkg.RGBA = $newType(0, $kindStruct, "color.RGBA", true, "image/color", true, function(R_, G_, B_, A_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.R = 0;
-			this.G = 0;
-			this.B = 0;
-			this.A = 0;
-			return;
-		}
-		this.R = R_;
-		this.G = G_;
-		this.B = B_;
-		this.A = A_;
-	});
-	RGBA64 = $pkg.RGBA64 = $newType(0, $kindStruct, "color.RGBA64", true, "image/color", true, function(R_, G_, B_, A_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.R = 0;
-			this.G = 0;
-			this.B = 0;
-			this.A = 0;
-			return;
-		}
-		this.R = R_;
-		this.G = G_;
-		this.B = B_;
-		this.A = A_;
-	});
-	NRGBA = $pkg.NRGBA = $newType(0, $kindStruct, "color.NRGBA", true, "image/color", true, function(R_, G_, B_, A_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.R = 0;
-			this.G = 0;
-			this.B = 0;
-			this.A = 0;
-			return;
-		}
-		this.R = R_;
-		this.G = G_;
-		this.B = B_;
-		this.A = A_;
-	});
-	NRGBA64 = $pkg.NRGBA64 = $newType(0, $kindStruct, "color.NRGBA64", true, "image/color", true, function(R_, G_, B_, A_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.R = 0;
-			this.G = 0;
-			this.B = 0;
-			this.A = 0;
-			return;
-		}
-		this.R = R_;
-		this.G = G_;
-		this.B = B_;
-		this.A = A_;
-	});
-	Alpha = $pkg.Alpha = $newType(0, $kindStruct, "color.Alpha", true, "image/color", true, function(A_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.A = 0;
-			return;
-		}
-		this.A = A_;
-	});
-	Alpha16 = $pkg.Alpha16 = $newType(0, $kindStruct, "color.Alpha16", true, "image/color", true, function(A_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.A = 0;
-			return;
-		}
-		this.A = A_;
-	});
-	Gray = $pkg.Gray = $newType(0, $kindStruct, "color.Gray", true, "image/color", true, function(Y_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Y = 0;
-			return;
-		}
-		this.Y = Y_;
-	});
-	Gray16 = $pkg.Gray16 = $newType(0, $kindStruct, "color.Gray16", true, "image/color", true, function(Y_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Y = 0;
-			return;
-		}
-		this.Y = Y_;
-	});
-	modelFunc = $pkg.modelFunc = $newType(0, $kindStruct, "color.modelFunc", true, "image/color", false, function(f_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.f = $throwNilPointerError;
-			return;
-		}
-		this.f = f_;
-	});
-	YCbCr = $pkg.YCbCr = $newType(0, $kindStruct, "color.YCbCr", true, "image/color", true, function(Y_, Cb_, Cr_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Y = 0;
-			this.Cb = 0;
-			this.Cr = 0;
-			return;
-		}
-		this.Y = Y_;
-		this.Cb = Cb_;
-		this.Cr = Cr_;
-	});
-	NYCbCrA = $pkg.NYCbCrA = $newType(0, $kindStruct, "color.NYCbCrA", true, "image/color", true, function(YCbCr_, A_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.YCbCr = new YCbCr.ptr(0, 0, 0);
-			this.A = 0;
-			return;
-		}
-		this.YCbCr = YCbCr_;
-		this.A = A_;
-	});
-	CMYK = $pkg.CMYK = $newType(0, $kindStruct, "color.CMYK", true, "image/color", true, function(C_, M_, Y_, K_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.C = 0;
-			this.M = 0;
-			this.Y = 0;
-			this.K = 0;
-			return;
-		}
-		this.C = C_;
-		this.M = M_;
-		this.Y = Y_;
-		this.K = K_;
-	});
-	ptrType = $ptrType(modelFunc);
-	funcType = $funcType([Color], [Color], false);
-	RGBA.ptr.prototype.RGBA = function() {
-		var a, b, c, g, r;
-		r = 0;
-		g = 0;
-		b = 0;
-		a = 0;
-		c = this;
-		r = ((c.R >>> 0));
-		r = (r | ((r << 8 >>> 0))) >>> 0;
-		g = ((c.G >>> 0));
-		g = (g | ((g << 8 >>> 0))) >>> 0;
-		b = ((c.B >>> 0));
-		b = (b | ((b << 8 >>> 0))) >>> 0;
-		a = ((c.A >>> 0));
-		a = (a | ((a << 8 >>> 0))) >>> 0;
-		return [r, g, b, a];
-	};
-	RGBA.prototype.RGBA = function() { return this.$val.RGBA(); };
-	RGBA64.ptr.prototype.RGBA = function() {
-		var _tmp, _tmp$1, _tmp$2, _tmp$3, a, b, c, g, r;
-		r = 0;
-		g = 0;
-		b = 0;
-		a = 0;
-		c = this;
-		_tmp = ((c.R >>> 0));
-		_tmp$1 = ((c.G >>> 0));
-		_tmp$2 = ((c.B >>> 0));
-		_tmp$3 = ((c.A >>> 0));
-		r = _tmp;
-		g = _tmp$1;
-		b = _tmp$2;
-		a = _tmp$3;
-		return [r, g, b, a];
-	};
-	RGBA64.prototype.RGBA = function() { return this.$val.RGBA(); };
-	NRGBA.ptr.prototype.RGBA = function() {
-		var _q, _q$1, _q$2, a, b, c, g, r;
-		r = 0;
-		g = 0;
-		b = 0;
-		a = 0;
-		c = this;
-		r = ((c.R >>> 0));
-		r = (r | ((r << 8 >>> 0))) >>> 0;
-		r = $imul(r, (((c.A >>> 0)))) >>> 0;
-		r = (_q = r / (255), (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
-		g = ((c.G >>> 0));
-		g = (g | ((g << 8 >>> 0))) >>> 0;
-		g = $imul(g, (((c.A >>> 0)))) >>> 0;
-		g = (_q$1 = g / (255), (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
-		b = ((c.B >>> 0));
-		b = (b | ((b << 8 >>> 0))) >>> 0;
-		b = $imul(b, (((c.A >>> 0)))) >>> 0;
-		b = (_q$2 = b / (255), (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
-		a = ((c.A >>> 0));
-		a = (a | ((a << 8 >>> 0))) >>> 0;
-		return [r, g, b, a];
-	};
-	NRGBA.prototype.RGBA = function() { return this.$val.RGBA(); };
-	NRGBA64.ptr.prototype.RGBA = function() {
-		var _q, _q$1, _q$2, a, b, c, g, r;
-		r = 0;
-		g = 0;
-		b = 0;
-		a = 0;
-		c = this;
-		r = ((c.R >>> 0));
-		r = $imul(r, (((c.A >>> 0)))) >>> 0;
-		r = (_q = r / (65535), (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
-		g = ((c.G >>> 0));
-		g = $imul(g, (((c.A >>> 0)))) >>> 0;
-		g = (_q$1 = g / (65535), (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
-		b = ((c.B >>> 0));
-		b = $imul(b, (((c.A >>> 0)))) >>> 0;
-		b = (_q$2 = b / (65535), (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
-		a = ((c.A >>> 0));
-		return [r, g, b, a];
-	};
-	NRGBA64.prototype.RGBA = function() { return this.$val.RGBA(); };
-	Alpha.ptr.prototype.RGBA = function() {
-		var _tmp, _tmp$1, _tmp$2, _tmp$3, a, b, c, g, r;
-		r = 0;
-		g = 0;
-		b = 0;
-		a = 0;
-		c = this;
-		a = ((c.A >>> 0));
-		a = (a | ((a << 8 >>> 0))) >>> 0;
-		_tmp = a;
-		_tmp$1 = a;
-		_tmp$2 = a;
-		_tmp$3 = a;
-		r = _tmp;
-		g = _tmp$1;
-		b = _tmp$2;
-		a = _tmp$3;
-		return [r, g, b, a];
-	};
-	Alpha.prototype.RGBA = function() { return this.$val.RGBA(); };
-	Alpha16.ptr.prototype.RGBA = function() {
-		var _tmp, _tmp$1, _tmp$2, _tmp$3, a, b, c, g, r;
-		r = 0;
-		g = 0;
-		b = 0;
-		a = 0;
-		c = this;
-		a = ((c.A >>> 0));
-		_tmp = a;
-		_tmp$1 = a;
-		_tmp$2 = a;
-		_tmp$3 = a;
-		r = _tmp;
-		g = _tmp$1;
-		b = _tmp$2;
-		a = _tmp$3;
-		return [r, g, b, a];
-	};
-	Alpha16.prototype.RGBA = function() { return this.$val.RGBA(); };
-	Gray.ptr.prototype.RGBA = function() {
-		var _tmp, _tmp$1, _tmp$2, _tmp$3, a, b, c, g, r, y;
-		r = 0;
-		g = 0;
-		b = 0;
-		a = 0;
-		c = this;
-		y = ((c.Y >>> 0));
-		y = (y | ((y << 8 >>> 0))) >>> 0;
-		_tmp = y;
-		_tmp$1 = y;
-		_tmp$2 = y;
-		_tmp$3 = 65535;
-		r = _tmp;
-		g = _tmp$1;
-		b = _tmp$2;
-		a = _tmp$3;
-		return [r, g, b, a];
-	};
-	Gray.prototype.RGBA = function() { return this.$val.RGBA(); };
-	Gray16.ptr.prototype.RGBA = function() {
-		var _tmp, _tmp$1, _tmp$2, _tmp$3, a, b, c, g, r, y;
-		r = 0;
-		g = 0;
-		b = 0;
-		a = 0;
-		c = this;
-		y = ((c.Y >>> 0));
-		_tmp = y;
-		_tmp$1 = y;
-		_tmp$2 = y;
-		_tmp$3 = 65535;
-		r = _tmp;
-		g = _tmp$1;
-		b = _tmp$2;
-		a = _tmp$3;
-		return [r, g, b, a];
-	};
-	Gray16.prototype.RGBA = function() { return this.$val.RGBA(); };
-	ModelFunc = function(f) {
-		var f;
-		return new modelFunc.ptr(f);
-	};
-	$pkg.ModelFunc = ModelFunc;
-	modelFunc.ptr.prototype.Convert = function(c) {
-		var _r, c, m, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; c = $f.c; m = $f.m; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		m = this;
-		_r = m.f(c); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		$s = -1; return _r;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: modelFunc.ptr.prototype.Convert }; } $f._r = _r; $f.c = c; $f.m = m; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	modelFunc.prototype.Convert = function(c) { return this.$val.Convert(c); };
-	rgbaModel = function(c) {
-		var _r, _tuple, _tuple$1, a, b, c, g, ok, r, x, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_tuple = $assertType(c, RGBA, true);
-		ok = _tuple[1];
-		if (ok) {
-			$s = -1; return c;
-		}
-		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_tuple$1 = _r;
-		r = _tuple$1[0];
-		g = _tuple$1[1];
-		b = _tuple$1[2];
-		a = _tuple$1[3];
-		$s = -1; return (x = new RGBA.ptr((((r >>> 8 >>> 0) << 24 >>> 24)), (((g >>> 8 >>> 0) << 24 >>> 24)), (((b >>> 8 >>> 0) << 24 >>> 24)), (((a >>> 8 >>> 0) << 24 >>> 24))), new x.constructor.elem(x));
-		/* */ } return; } if ($f === undefined) { $f = { $blk: rgbaModel }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	rgba64Model = function(c) {
-		var _r, _tuple, _tuple$1, a, b, c, g, ok, r, x, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_tuple = $assertType(c, RGBA64, true);
-		ok = _tuple[1];
-		if (ok) {
-			$s = -1; return c;
-		}
-		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_tuple$1 = _r;
-		r = _tuple$1[0];
-		g = _tuple$1[1];
-		b = _tuple$1[2];
-		a = _tuple$1[3];
-		$s = -1; return (x = new RGBA64.ptr(((r << 16 >>> 16)), ((g << 16 >>> 16)), ((b << 16 >>> 16)), ((a << 16 >>> 16))), new x.constructor.elem(x));
-		/* */ } return; } if ($f === undefined) { $f = { $blk: rgba64Model }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	nrgbaModel = function(c) {
-		var _q, _q$1, _q$2, _r, _tuple, _tuple$1, a, b, c, g, ok, r, x, x$1, x$2, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _q = $f._q; _q$1 = $f._q$1; _q$2 = $f._q$2; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; x = $f.x; x$1 = $f.x$1; x$2 = $f.x$2; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_tuple = $assertType(c, NRGBA, true);
-		ok = _tuple[1];
-		if (ok) {
-			$s = -1; return c;
-		}
-		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_tuple$1 = _r;
-		r = _tuple$1[0];
-		g = _tuple$1[1];
-		b = _tuple$1[2];
-		a = _tuple$1[3];
-		if (a === 65535) {
-			$s = -1; return (x = new NRGBA.ptr((((r >>> 8 >>> 0) << 24 >>> 24)), (((g >>> 8 >>> 0) << 24 >>> 24)), (((b >>> 8 >>> 0) << 24 >>> 24)), 255), new x.constructor.elem(x));
-		}
-		if (a === 0) {
-			$s = -1; return (x$1 = new NRGBA.ptr(0, 0, 0, 0), new x$1.constructor.elem(x$1));
-		}
-		r = (_q = (($imul(r, 65535) >>> 0)) / a, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
-		g = (_q$1 = (($imul(g, 65535) >>> 0)) / a, (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
-		b = (_q$2 = (($imul(b, 65535) >>> 0)) / a, (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
-		$s = -1; return (x$2 = new NRGBA.ptr((((r >>> 8 >>> 0) << 24 >>> 24)), (((g >>> 8 >>> 0) << 24 >>> 24)), (((b >>> 8 >>> 0) << 24 >>> 24)), (((a >>> 8 >>> 0) << 24 >>> 24))), new x$2.constructor.elem(x$2));
-		/* */ } return; } if ($f === undefined) { $f = { $blk: nrgbaModel }; } $f._q = _q; $f._q$1 = _q$1; $f._q$2 = _q$2; $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.x = x; $f.x$1 = x$1; $f.x$2 = x$2; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	nrgba64Model = function(c) {
-		var _q, _q$1, _q$2, _r, _tuple, _tuple$1, a, b, c, g, ok, r, x, x$1, x$2, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _q = $f._q; _q$1 = $f._q$1; _q$2 = $f._q$2; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; x = $f.x; x$1 = $f.x$1; x$2 = $f.x$2; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_tuple = $assertType(c, NRGBA64, true);
-		ok = _tuple[1];
-		if (ok) {
-			$s = -1; return c;
-		}
-		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_tuple$1 = _r;
-		r = _tuple$1[0];
-		g = _tuple$1[1];
-		b = _tuple$1[2];
-		a = _tuple$1[3];
-		if (a === 65535) {
-			$s = -1; return (x = new NRGBA64.ptr(((r << 16 >>> 16)), ((g << 16 >>> 16)), ((b << 16 >>> 16)), 65535), new x.constructor.elem(x));
-		}
-		if (a === 0) {
-			$s = -1; return (x$1 = new NRGBA64.ptr(0, 0, 0, 0), new x$1.constructor.elem(x$1));
-		}
-		r = (_q = (($imul(r, 65535) >>> 0)) / a, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
-		g = (_q$1 = (($imul(g, 65535) >>> 0)) / a, (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
-		b = (_q$2 = (($imul(b, 65535) >>> 0)) / a, (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
-		$s = -1; return (x$2 = new NRGBA64.ptr(((r << 16 >>> 16)), ((g << 16 >>> 16)), ((b << 16 >>> 16)), ((a << 16 >>> 16))), new x$2.constructor.elem(x$2));
-		/* */ } return; } if ($f === undefined) { $f = { $blk: nrgba64Model }; } $f._q = _q; $f._q$1 = _q$1; $f._q$2 = _q$2; $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.x = x; $f.x$1 = x$1; $f.x$2 = x$2; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	alphaModel = function(c) {
-		var _r, _tuple, _tuple$1, a, c, ok, x, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; c = $f.c; ok = $f.ok; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_tuple = $assertType(c, Alpha, true);
-		ok = _tuple[1];
-		if (ok) {
-			$s = -1; return c;
-		}
-		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_tuple$1 = _r;
-		a = _tuple$1[3];
-		$s = -1; return (x = new Alpha.ptr((((a >>> 8 >>> 0) << 24 >>> 24))), new x.constructor.elem(x));
-		/* */ } return; } if ($f === undefined) { $f = { $blk: alphaModel }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.c = c; $f.ok = ok; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	alpha16Model = function(c) {
-		var _r, _tuple, _tuple$1, a, c, ok, x, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; c = $f.c; ok = $f.ok; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_tuple = $assertType(c, Alpha16, true);
-		ok = _tuple[1];
-		if (ok) {
-			$s = -1; return c;
-		}
-		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_tuple$1 = _r;
-		a = _tuple$1[3];
-		$s = -1; return (x = new Alpha16.ptr(((a << 16 >>> 16))), new x.constructor.elem(x));
-		/* */ } return; } if ($f === undefined) { $f = { $blk: alpha16Model }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.c = c; $f.ok = ok; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	grayModel = function(c) {
-		var _r, _tuple, _tuple$1, b, c, g, ok, r, x, y, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; x = $f.x; y = $f.y; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_tuple = $assertType(c, Gray, true);
-		ok = _tuple[1];
-		if (ok) {
-			$s = -1; return c;
-		}
-		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_tuple$1 = _r;
-		r = _tuple$1[0];
-		g = _tuple$1[1];
-		b = _tuple$1[2];
-		y = ((((($imul(19595, r) >>> 0) + ($imul(38470, g) >>> 0) >>> 0) + ($imul(7471, b) >>> 0) >>> 0) + 32768 >>> 0)) >>> 24 >>> 0;
-		$s = -1; return (x = new Gray.ptr(((y << 24 >>> 24))), new x.constructor.elem(x));
-		/* */ } return; } if ($f === undefined) { $f = { $blk: grayModel }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.x = x; $f.y = y; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	gray16Model = function(c) {
-		var _r, _tuple, _tuple$1, b, c, g, ok, r, x, y, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; x = $f.x; y = $f.y; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_tuple = $assertType(c, Gray16, true);
-		ok = _tuple[1];
-		if (ok) {
-			$s = -1; return c;
-		}
-		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_tuple$1 = _r;
-		r = _tuple$1[0];
-		g = _tuple$1[1];
-		b = _tuple$1[2];
-		y = ((((($imul(19595, r) >>> 0) + ($imul(38470, g) >>> 0) >>> 0) + ($imul(7471, b) >>> 0) >>> 0) + 32768 >>> 0)) >>> 16 >>> 0;
-		$s = -1; return (x = new Gray16.ptr(((y << 16 >>> 16))), new x.constructor.elem(x));
-		/* */ } return; } if ($f === undefined) { $f = { $blk: gray16Model }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.x = x; $f.y = y; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	RGBToYCbCr = function(r, g, b) {
-		var b, b1, cb, cr, g, g1, r, r1, yy;
-		r1 = ((r >> 0));
-		g1 = ((g >> 0));
-		b1 = ((b >> 0));
-		yy = ((((($imul(19595, r1)) + ($imul(38470, g1)) >> 0) + ($imul(7471, b1)) >> 0) + 32768 >> 0)) >> 16 >> 0;
-		cb = ((($imul(-11056, r1)) - ($imul(21712, g1)) >> 0) + ($imul(32768, b1)) >> 0) + 8421376 >> 0;
-		if (((((cb >>> 0)) & 4278190080) >>> 0) === 0) {
-			cb = (cb >> $min((16), 31)) >> 0;
-		} else {
-			cb = ~((cb >> 31 >> 0)) >> 0;
-		}
-		cr = ((($imul(32768, r1)) - ($imul(27440, g1)) >> 0) - ($imul(5328, b1)) >> 0) + 8421376 >> 0;
-		if (((((cr >>> 0)) & 4278190080) >>> 0) === 0) {
-			cr = (cr >> $min((16), 31)) >> 0;
-		} else {
-			cr = ~((cr >> 31 >> 0)) >> 0;
-		}
-		return [((yy << 24 >>> 24)), ((cb << 24 >>> 24)), ((cr << 24 >>> 24))];
-	};
-	$pkg.RGBToYCbCr = RGBToYCbCr;
-	YCbCr.ptr.prototype.RGBA = function() {
-		var b, c, cb1, cr1, g, r, yy1;
-		c = this;
-		yy1 = $imul(((c.Y >> 0)), 65793);
-		cb1 = ((c.Cb >> 0)) - 128 >> 0;
-		cr1 = ((c.Cr >> 0)) - 128 >> 0;
-		r = yy1 + ($imul(91881, cr1)) >> 0;
-		if (((((r >>> 0)) & 4278190080) >>> 0) === 0) {
-			r = (r >> $min((8), 31)) >> 0;
-		} else {
-			r = (~((r >> 31 >> 0)) >> 0) & 65535;
-		}
-		g = (yy1 - ($imul(22554, cb1)) >> 0) - ($imul(46802, cr1)) >> 0;
-		if (((((g >>> 0)) & 4278190080) >>> 0) === 0) {
-			g = (g >> $min((8), 31)) >> 0;
-		} else {
-			g = (~((g >> 31 >> 0)) >> 0) & 65535;
-		}
-		b = yy1 + ($imul(116130, cb1)) >> 0;
-		if (((((b >>> 0)) & 4278190080) >>> 0) === 0) {
-			b = (b >> $min((8), 31)) >> 0;
-		} else {
-			b = (~((b >> 31 >> 0)) >> 0) & 65535;
-		}
-		return [((r >>> 0)), ((g >>> 0)), ((b >>> 0)), 65535];
-	};
-	YCbCr.prototype.RGBA = function() { return this.$val.RGBA(); };
-	yCbCrModel = function(c) {
-		var _r, _tuple, _tuple$1, _tuple$2, b, c, g, ok, r, u, v, x, y, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; _tuple$2 = $f._tuple$2; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; u = $f.u; v = $f.v; x = $f.x; y = $f.y; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_tuple = $assertType(c, YCbCr, true);
-		ok = _tuple[1];
-		if (ok) {
-			$s = -1; return c;
-		}
-		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_tuple$1 = _r;
-		r = _tuple$1[0];
-		g = _tuple$1[1];
-		b = _tuple$1[2];
-		_tuple$2 = RGBToYCbCr((((r >>> 8 >>> 0) << 24 >>> 24)), (((g >>> 8 >>> 0) << 24 >>> 24)), (((b >>> 8 >>> 0) << 24 >>> 24)));
-		y = _tuple$2[0];
-		u = _tuple$2[1];
-		v = _tuple$2[2];
-		$s = -1; return (x = new YCbCr.ptr(y, u, v), new x.constructor.elem(x));
-		/* */ } return; } if ($f === undefined) { $f = { $blk: yCbCrModel }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f._tuple$2 = _tuple$2; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.u = u; $f.v = v; $f.x = x; $f.y = y; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	NYCbCrA.ptr.prototype.RGBA = function() {
-		var _q, _q$1, _q$2, a, b, c, cb1, cr1, g, r, yy1;
-		c = this;
-		yy1 = $imul(((c.YCbCr.Y >> 0)), 65793);
-		cb1 = ((c.YCbCr.Cb >> 0)) - 128 >> 0;
-		cr1 = ((c.YCbCr.Cr >> 0)) - 128 >> 0;
-		r = yy1 + ($imul(91881, cr1)) >> 0;
-		if (((((r >>> 0)) & 4278190080) >>> 0) === 0) {
-			r = (r >> $min((8), 31)) >> 0;
-		} else {
-			r = (~((r >> 31 >> 0)) >> 0) & 65535;
-		}
-		g = (yy1 - ($imul(22554, cb1)) >> 0) - ($imul(46802, cr1)) >> 0;
-		if (((((g >>> 0)) & 4278190080) >>> 0) === 0) {
-			g = (g >> $min((8), 31)) >> 0;
-		} else {
-			g = (~((g >> 31 >> 0)) >> 0) & 65535;
-		}
-		b = yy1 + ($imul(116130, cb1)) >> 0;
-		if (((((b >>> 0)) & 4278190080) >>> 0) === 0) {
-			b = (b >> $min((8), 31)) >> 0;
-		} else {
-			b = (~((b >> 31 >> 0)) >> 0) & 65535;
-		}
-		a = $imul(((c.A >>> 0)), 257) >>> 0;
-		return [(_q = ($imul(((r >>> 0)), a) >>> 0) / 65535, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero")), (_q$1 = ($imul(((g >>> 0)), a) >>> 0) / 65535, (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero")), (_q$2 = ($imul(((b >>> 0)), a) >>> 0) / 65535, (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero")), a];
-	};
-	NYCbCrA.prototype.RGBA = function() { return this.$val.RGBA(); };
-	nYCbCrAModel = function(c) {
-		var _q, _q$1, _q$2, _r, _ref, _tuple, _tuple$1, a, b, c, c$1, c$2, g, r, u, v, x, x$1, y, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _q = $f._q; _q$1 = $f._q$1; _q$2 = $f._q$2; _r = $f._r; _ref = $f._ref; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; b = $f.b; c = $f.c; c$1 = $f.c$1; c$2 = $f.c$2; g = $f.g; r = $f.r; u = $f.u; v = $f.v; x = $f.x; x$1 = $f.x$1; y = $f.y; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_ref = c;
-		if ($assertType(_ref, NYCbCrA, true)[1]) {
-			c$1 = $clone(_ref.$val, NYCbCrA);
-			$s = -1; return new c$1.constructor.elem(c$1);
-		} else if ($assertType(_ref, YCbCr, true)[1]) {
-			c$2 = $clone(_ref.$val, YCbCr);
-			$s = -1; return (x = new NYCbCrA.ptr($clone(c$2, YCbCr), 255), new x.constructor.elem(x));
-		}
-		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_tuple = _r;
-		r = _tuple[0];
-		g = _tuple[1];
-		b = _tuple[2];
-		a = _tuple[3];
-		if (!((a === 0))) {
-			r = (_q = (($imul(r, 65535) >>> 0)) / a, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
-			g = (_q$1 = (($imul(g, 65535) >>> 0)) / a, (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
-			b = (_q$2 = (($imul(b, 65535) >>> 0)) / a, (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
-		}
-		_tuple$1 = RGBToYCbCr((((r >>> 8 >>> 0) << 24 >>> 24)), (((g >>> 8 >>> 0) << 24 >>> 24)), (((b >>> 8 >>> 0) << 24 >>> 24)));
-		y = _tuple$1[0];
-		u = _tuple$1[1];
-		v = _tuple$1[2];
-		$s = -1; return (x$1 = new NYCbCrA.ptr(new YCbCr.ptr(y, u, v), (((a >>> 8 >>> 0) << 24 >>> 24))), new x$1.constructor.elem(x$1));
-		/* */ } return; } if ($f === undefined) { $f = { $blk: nYCbCrAModel }; } $f._q = _q; $f._q$1 = _q$1; $f._q$2 = _q$2; $f._r = _r; $f._ref = _ref; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.b = b; $f.c = c; $f.c$1 = c$1; $f.c$2 = c$2; $f.g = g; $f.r = r; $f.u = u; $f.v = v; $f.x = x; $f.x$1 = x$1; $f.y = y; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	RGBToCMYK = function(r, g, b) {
-		var _q, _q$1, _q$2, b, bb, c, g, gg, m, r, rr, w, y;
-		rr = ((r >>> 0));
-		gg = ((g >>> 0));
-		bb = ((b >>> 0));
-		w = rr;
-		if (w < gg) {
-			w = gg;
-		}
-		if (w < bb) {
-			w = bb;
-		}
-		if (w === 0) {
-			return [0, 0, 0, 255];
-		}
-		c = (_q = ($imul(((w - rr >>> 0)), 255) >>> 0) / w, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
-		m = (_q$1 = ($imul(((w - gg >>> 0)), 255) >>> 0) / w, (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
-		y = (_q$2 = ($imul(((w - bb >>> 0)), 255) >>> 0) / w, (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
-		return [((c << 24 >>> 24)), ((m << 24 >>> 24)), ((y << 24 >>> 24)), (((255 - w >>> 0) << 24 >>> 24))];
-	};
-	$pkg.RGBToCMYK = RGBToCMYK;
-	CMYK.ptr.prototype.RGBA = function() {
-		var _q, _q$1, _q$2, b, c, g, r, w;
-		c = this;
-		w = 65535 - ($imul(((c.K >>> 0)), 257) >>> 0) >>> 0;
-		r = (_q = ($imul(((65535 - ($imul(((c.C >>> 0)), 257) >>> 0) >>> 0)), w) >>> 0) / 65535, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
-		g = (_q$1 = ($imul(((65535 - ($imul(((c.M >>> 0)), 257) >>> 0) >>> 0)), w) >>> 0) / 65535, (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
-		b = (_q$2 = ($imul(((65535 - ($imul(((c.Y >>> 0)), 257) >>> 0) >>> 0)), w) >>> 0) / 65535, (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
-		return [r, g, b, 65535];
-	};
-	CMYK.prototype.RGBA = function() { return this.$val.RGBA(); };
-	cmykModel = function(c) {
-		var _r, _tuple, _tuple$1, _tuple$2, b, c, cc, g, kk, mm, ok, r, x, yy, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; _tuple$2 = $f._tuple$2; b = $f.b; c = $f.c; cc = $f.cc; g = $f.g; kk = $f.kk; mm = $f.mm; ok = $f.ok; r = $f.r; x = $f.x; yy = $f.yy; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_tuple = $assertType(c, CMYK, true);
-		ok = _tuple[1];
-		if (ok) {
-			$s = -1; return c;
-		}
-		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_tuple$1 = _r;
-		r = _tuple$1[0];
-		g = _tuple$1[1];
-		b = _tuple$1[2];
-		_tuple$2 = RGBToCMYK((((r >>> 8 >>> 0) << 24 >>> 24)), (((g >>> 8 >>> 0) << 24 >>> 24)), (((b >>> 8 >>> 0) << 24 >>> 24)));
-		cc = _tuple$2[0];
-		mm = _tuple$2[1];
-		yy = _tuple$2[2];
-		kk = _tuple$2[3];
-		$s = -1; return (x = new CMYK.ptr(cc, mm, yy, kk), new x.constructor.elem(x));
-		/* */ } return; } if ($f === undefined) { $f = { $blk: cmykModel }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f._tuple$2 = _tuple$2; $f.b = b; $f.c = c; $f.cc = cc; $f.g = g; $f.kk = kk; $f.mm = mm; $f.ok = ok; $f.r = r; $f.x = x; $f.yy = yy; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	RGBA.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
-	RGBA64.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
-	NRGBA.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
-	NRGBA64.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
-	Alpha.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
-	Alpha16.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
-	Gray.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
-	Gray16.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
-	ptrType.methods = [{prop: "Convert", name: "Convert", pkg: "", typ: $funcType([Color], [Color], false)}];
-	YCbCr.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
-	NYCbCrA.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
-	CMYK.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
-	Color.init([{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}]);
-	RGBA.init("", [{prop: "R", name: "R", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "G", name: "G", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "B", name: "B", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
-	RGBA64.init("", [{prop: "R", name: "R", anonymous: false, exported: true, typ: $Uint16, tag: ""}, {prop: "G", name: "G", anonymous: false, exported: true, typ: $Uint16, tag: ""}, {prop: "B", name: "B", anonymous: false, exported: true, typ: $Uint16, tag: ""}, {prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint16, tag: ""}]);
-	NRGBA.init("", [{prop: "R", name: "R", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "G", name: "G", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "B", name: "B", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
-	NRGBA64.init("", [{prop: "R", name: "R", anonymous: false, exported: true, typ: $Uint16, tag: ""}, {prop: "G", name: "G", anonymous: false, exported: true, typ: $Uint16, tag: ""}, {prop: "B", name: "B", anonymous: false, exported: true, typ: $Uint16, tag: ""}, {prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint16, tag: ""}]);
-	Alpha.init("", [{prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
-	Alpha16.init("", [{prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint16, tag: ""}]);
-	Gray.init("", [{prop: "Y", name: "Y", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
-	Gray16.init("", [{prop: "Y", name: "Y", anonymous: false, exported: true, typ: $Uint16, tag: ""}]);
-	modelFunc.init("image/color", [{prop: "f", name: "f", anonymous: false, exported: false, typ: funcType, tag: ""}]);
-	YCbCr.init("", [{prop: "Y", name: "Y", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "Cb", name: "Cb", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "Cr", name: "Cr", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
-	NYCbCrA.init("", [{prop: "YCbCr", name: "YCbCr", anonymous: true, exported: true, typ: YCbCr, tag: ""}, {prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
-	CMYK.init("", [{prop: "C", name: "C", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "M", name: "M", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "Y", name: "Y", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "K", name: "K", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
-	$init = function() {
-		$pkg.$init = function() {};
-		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		$pkg.RGBAModel = ModelFunc(rgbaModel);
-		$pkg.RGBA64Model = ModelFunc(rgba64Model);
-		$pkg.NRGBAModel = ModelFunc(nrgbaModel);
-		$pkg.NRGBA64Model = ModelFunc(nrgba64Model);
-		$pkg.AlphaModel = ModelFunc(alphaModel);
-		$pkg.Alpha16Model = ModelFunc(alpha16Model);
-		$pkg.GrayModel = ModelFunc(grayModel);
-		$pkg.Gray16Model = ModelFunc(gray16Model);
-		$pkg.YCbCrModel = ModelFunc(yCbCrModel);
-		$pkg.NYCbCrAModel = ModelFunc(nYCbCrAModel);
-		$pkg.CMYKModel = ModelFunc(cmykModel);
-		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
-	};
-	$pkg.$init = $init;
-	return $pkg;
-})();
-$packages["github.com/oskca/gopherjs-canvas"] = (function() {
-	var $pkg = {}, $init, js, dom, color, Canvas, Context2D, Gradient, Pattern, ImageData, sliceType, sliceType$1, ptrType, sliceType$2, sliceType$3, ptrType$1, ptrType$2, ptrType$3, ptrType$4, ptrType$5, sliceType$4, ptrType$6, ptrType$7, New;
-	js = $packages["github.com/gopherjs/gopherjs/js"];
-	dom = $packages["github.com/oskca/gopherjs-dom"];
-	color = $packages["image/color"];
-	Canvas = $pkg.Canvas = $newType(0, $kindStruct, "canvas.Canvas", true, "github.com/oskca/gopherjs-canvas", true, function(Element_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Element = ptrType.nil;
-			return;
-		}
-		this.Element = Element_;
-	});
-	Context2D = $pkg.Context2D = $newType(0, $kindStruct, "canvas.Context2D", true, "github.com/oskca/gopherjs-canvas", true, function(Object_, StrokeStyle_, FillStyle_, ShadowColor_, ShadowBlur_, ShadowOffsetX_, ShadowOffsetY_, LineCap_, LineJoin_, LineWidth_, MiterLimit_, Font_, TextAlign_, TextBaseline_, GlobalAlpha_, GlobalCompositeOperation_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Object = null;
-			this.StrokeStyle = $ifaceNil;
-			this.FillStyle = $ifaceNil;
-			this.ShadowColor = "";
-			this.ShadowBlur = 0;
-			this.ShadowOffsetX = 0;
-			this.ShadowOffsetY = 0;
-			this.LineCap = "";
-			this.LineJoin = "";
-			this.LineWidth = 0;
-			this.MiterLimit = 0;
-			this.Font = "";
-			this.TextAlign = "";
-			this.TextBaseline = "";
-			this.GlobalAlpha = 0;
-			this.GlobalCompositeOperation = "";
-			return;
-		}
-		this.Object = Object_;
-		this.StrokeStyle = StrokeStyle_;
-		this.FillStyle = FillStyle_;
-		this.ShadowColor = ShadowColor_;
-		this.ShadowBlur = ShadowBlur_;
-		this.ShadowOffsetX = ShadowOffsetX_;
-		this.ShadowOffsetY = ShadowOffsetY_;
-		this.LineCap = LineCap_;
-		this.LineJoin = LineJoin_;
-		this.LineWidth = LineWidth_;
-		this.MiterLimit = MiterLimit_;
-		this.Font = Font_;
-		this.TextAlign = TextAlign_;
-		this.TextBaseline = TextBaseline_;
-		this.GlobalAlpha = GlobalAlpha_;
-		this.GlobalCompositeOperation = GlobalCompositeOperation_;
-	});
-	Gradient = $pkg.Gradient = $newType(0, $kindStruct, "canvas.Gradient", true, "github.com/oskca/gopherjs-canvas", true, function(o_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.o = null;
-			return;
-		}
-		this.o = o_;
-	});
-	Pattern = $pkg.Pattern = $newType(0, $kindStruct, "canvas.Pattern", true, "github.com/oskca/gopherjs-canvas", true, function(o_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.o = null;
-			return;
-		}
-		this.o = o_;
-	});
-	ImageData = $pkg.ImageData = $newType(0, $kindStruct, "canvas.ImageData", true, "github.com/oskca/gopherjs-canvas", true, function(Object_, Data_, Height_, Width_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Object = null;
-			this.Data = null;
-			this.Height = 0;
-			this.Width = 0;
-			return;
-		}
-		this.Object = Object_;
-		this.Data = Data_;
-		this.Height = Height_;
-		this.Width = Width_;
-	});
-	sliceType = $sliceType($String);
-	sliceType$1 = $sliceType($Float64);
-	ptrType = $ptrType(dom.Element);
-	sliceType$2 = $sliceType($Uint8);
-	sliceType$3 = $sliceType($emptyInterface);
-	ptrType$1 = $ptrType(Context2D);
-	ptrType$2 = $ptrType(Canvas);
-	ptrType$3 = $ptrType(Gradient);
-	ptrType$4 = $ptrType(Pattern);
-	ptrType$5 = $ptrType(ImageData);
-	sliceType$4 = $sliceType($Int);
-	ptrType$6 = $ptrType(js.Object);
-	ptrType$7 = $ptrType(color.NRGBA);
-	New = function(el) {
-		var el;
-		return new Canvas.ptr(dom.WrapElement(el));
-	};
-	$pkg.New = New;
-	Canvas.ptr.prototype.GetContext2D = function() {
-		var c, ctx;
-		c = this;
-		ctx = c.Element.Node.EventTarget.Object.getContext($externalize("2d", $String));
-		return new Context2D.ptr(ctx, $ifaceNil, $ifaceNil, "", 0, 0, 0, "", "", 0, 0, "", "", "", 0, "");
-	};
-	Canvas.prototype.GetContext2D = function() { return this.$val.GetContext2D(); };
-	Gradient.ptr.prototype.AddColorStop = function(offset, color$1) {
-		var color$1, g, offset;
-		g = this;
-		g.o.addColorStop(offset, $externalize(color$1, $String));
-	};
-	Gradient.prototype.AddColorStop = function(offset, color$1) { return this.$val.AddColorStop(offset, color$1); };
-	Gradient.ptr.prototype.Value = function() {
-		var g;
-		g = this;
-		return g.o;
-	};
-	Gradient.prototype.Value = function() { return this.$val.Value(); };
-	Context2D.ptr.prototype.CreateLinearGradient = function(x0, y0, x1, y1) {
-		var ctx, o, x0, x1, y0, y1;
-		ctx = this;
-		o = ctx.Object.createLinearGradient(x0, y0, x1, y1);
-		return new Gradient.ptr(o);
-	};
-	Context2D.prototype.CreateLinearGradient = function(x0, y0, x1, y1) { return this.$val.CreateLinearGradient(x0, y0, x1, y1); };
-	Context2D.ptr.prototype.CreateRadialGradient = function(x0, y0, r0, x1, y1, r1) {
-		var ctx, o, r0, r1, x0, x1, y0, y1;
-		ctx = this;
-		o = ctx.Object.createRadialGradient(x0, y0, r0, x1, y1, r1);
-		return new Gradient.ptr(o);
-	};
-	Context2D.prototype.CreateRadialGradient = function(x0, y0, r0, x1, y1, r1) { return this.$val.CreateRadialGradient(x0, y0, r0, x1, y1, r1); };
-	Pattern.ptr.prototype.Value = function() {
-		var p;
-		p = this;
-		return p.o;
-	};
-	Pattern.prototype.Value = function() { return this.$val.Value(); };
-	Context2D.ptr.prototype.CreatePattern = function(image, repetition) {
-		var ctx, image, o, repetition;
-		ctx = this;
-		o = ctx.Object.createPattern(image.Node.EventTarget.Object, $externalize(repetition, $String));
-		return new Pattern.ptr(o);
-	};
-	Context2D.prototype.CreatePattern = function(image, repetition) { return this.$val.CreatePattern(image, repetition); };
-	Context2D.ptr.prototype.SetLineDash = function(distances) {
-		var ctx, distances;
-		ctx = this;
-		ctx.Object.setLineDash($externalize(distances, sliceType$1));
-	};
-	Context2D.prototype.SetLineDash = function(distances) { return this.$val.SetLineDash(distances); };
-	Context2D.ptr.prototype.GetLineDash = function() {
-		var ctx, o;
-		ctx = this;
-		o = ctx.Object.getLineDash();
-		return $assertType($internalize(o, $emptyInterface), sliceType$1);
-	};
-	Context2D.prototype.GetLineDash = function() { return this.$val.GetLineDash(); };
-	Context2D.ptr.prototype.Rect = function(x, y, width, height) {
-		var ctx, height, width, x, y;
-		ctx = this;
-		ctx.Object.rect(x, y, width, height);
-	};
-	Context2D.prototype.Rect = function(x, y, width, height) { return this.$val.Rect(x, y, width, height); };
-	Context2D.ptr.prototype.FillRect = function(left, top, width, height) {
-		var ctx, height, left, top, width;
-		ctx = this;
-		ctx.Object.fillRect(left, top, width, height);
-	};
-	Context2D.prototype.FillRect = function(left, top, width, height) { return this.$val.FillRect(left, top, width, height); };
-	Context2D.ptr.prototype.StrokeRect = function(left, top, width, height) {
-		var ctx, height, left, top, width;
-		ctx = this;
-		ctx.Object.strokeRect(left, top, width, height);
-	};
-	Context2D.prototype.StrokeRect = function(left, top, width, height) { return this.$val.StrokeRect(left, top, width, height); };
-	Context2D.ptr.prototype.ClearRect = function(left, top, width, height) {
-		var ctx, height, left, top, width;
-		ctx = this;
-		ctx.Object.clearRect(left, top, width, height);
-	};
-	Context2D.prototype.ClearRect = function(left, top, width, height) { return this.$val.ClearRect(left, top, width, height); };
-	Context2D.ptr.prototype.Fill = function() {
-		var ctx;
-		ctx = this;
-		ctx.Object.fill();
-	};
-	Context2D.prototype.Fill = function() { return this.$val.Fill(); };
-	Context2D.ptr.prototype.Stroke = function() {
-		var ctx;
-		ctx = this;
-		ctx.Object.stroke();
-	};
-	Context2D.prototype.Stroke = function() { return this.$val.Stroke(); };
-	Context2D.ptr.prototype.BeginPath = function() {
-		var ctx;
-		ctx = this;
-		ctx.Object.beginPath();
-	};
-	Context2D.prototype.BeginPath = function() { return this.$val.BeginPath(); };
-	Context2D.ptr.prototype.MoveTo = function(x, y) {
-		var ctx, x, y;
-		ctx = this;
-		ctx.Object.moveTo(x, y);
-	};
-	Context2D.prototype.MoveTo = function(x, y) { return this.$val.MoveTo(x, y); };
-	Context2D.ptr.prototype.ClosePath = function() {
-		var ctx;
-		ctx = this;
-		ctx.Object.closePath();
-	};
-	Context2D.prototype.ClosePath = function() { return this.$val.ClosePath(); };
-	Context2D.ptr.prototype.LineTo = function(x, y) {
-		var ctx, x, y;
-		ctx = this;
-		ctx.Object.lineTo(x, y);
-	};
-	Context2D.prototype.LineTo = function(x, y) { return this.$val.LineTo(x, y); };
-	Context2D.ptr.prototype.Clip = function() {
-		var ctx;
-		ctx = this;
-		ctx.Object.clip();
-	};
-	Context2D.prototype.Clip = function() { return this.$val.Clip(); };
-	Context2D.ptr.prototype.QuadraticCurveTo = function(cpx, cpy, x, y) {
-		var cpx, cpy, ctx, x, y;
-		ctx = this;
-		ctx.Object.quadraticCurveTo(cpx, cpy, x, y);
-	};
-	Context2D.prototype.QuadraticCurveTo = function(cpx, cpy, x, y) { return this.$val.QuadraticCurveTo(cpx, cpy, x, y); };
-	Context2D.ptr.prototype.BezierCurveTo = function(cp1x, cp1y, cp2x, cp2y, x, y) {
-		var cp1x, cp1y, cp2x, cp2y, ctx, x, y;
-		ctx = this;
-		ctx.Object.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
-	};
-	Context2D.prototype.BezierCurveTo = function(cp1x, cp1y, cp2x, cp2y, x, y) { return this.$val.BezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y); };
-	Context2D.ptr.prototype.Arc = function(x, y, radius, sAngle, eAngle, counterclockwise) {
-		var counterclockwise, ctx, eAngle, radius, sAngle, x, y;
-		ctx = this;
-		ctx.Object.arc(x, y, radius, sAngle, eAngle, $externalize(counterclockwise, $Bool));
-	};
-	Context2D.prototype.Arc = function(x, y, radius, sAngle, eAngle, counterclockwise) { return this.$val.Arc(x, y, radius, sAngle, eAngle, counterclockwise); };
-	Context2D.ptr.prototype.ArcTo = function(x1, y1, x2, y2, r) {
-		var ctx, r, x1, x2, y1, y2;
-		ctx = this;
-		ctx.Object.arcTo(x1, y1, x2, y2, r);
-	};
-	Context2D.prototype.ArcTo = function(x1, y1, x2, y2, r) { return this.$val.ArcTo(x1, y1, x2, y2, r); };
-	Context2D.ptr.prototype.IsPointInPath = function(x, y) {
-		var ctx, x, y;
-		ctx = this;
-		return !!(ctx.Object.isPointInPath(x, y));
-	};
-	Context2D.prototype.IsPointInPath = function(x, y) { return this.$val.IsPointInPath(x, y); };
-	Context2D.ptr.prototype.IsPointInStroke = function(x, y) {
-		var ctx, x, y;
-		ctx = this;
-		return !!(ctx.Object.isPointInStroke(x, y));
-	};
-	Context2D.prototype.IsPointInStroke = function(x, y) { return this.$val.IsPointInStroke(x, y); };
-	Context2D.ptr.prototype.Scale = function(scaleWidth, scaleHeight) {
-		var ctx, scaleHeight, scaleWidth;
-		ctx = this;
-		ctx.Object.scale(scaleWidth, scaleHeight);
-	};
-	Context2D.prototype.Scale = function(scaleWidth, scaleHeight) { return this.$val.Scale(scaleWidth, scaleHeight); };
-	Context2D.ptr.prototype.Rotate = function(angle) {
-		var angle, ctx;
-		ctx = this;
-		ctx.Object.rotate(angle);
-	};
-	Context2D.prototype.Rotate = function(angle) { return this.$val.Rotate(angle); };
-	Context2D.ptr.prototype.Translate = function(x, y) {
-		var ctx, x, y;
-		ctx = this;
-		ctx.Object.translate(x, y);
-	};
-	Context2D.prototype.Translate = function(x, y) { return this.$val.Translate(x, y); };
-	Context2D.ptr.prototype.Transform = function(a, b, c, d, e, f) {
-		var a, b, c, ctx, d, e, f;
-		ctx = this;
-		ctx.Object.transform(a, b, c, d, e, f);
-	};
-	Context2D.prototype.Transform = function(a, b, c, d, e, f) { return this.$val.Transform(a, b, c, d, e, f); };
-	Context2D.ptr.prototype.SetTransform = function(a, b, c, d, e, f) {
-		var a, b, c, ctx, d, e, f;
-		ctx = this;
-		ctx.Object.setTransform(a, b, c, d, e, f);
-	};
-	Context2D.prototype.SetTransform = function(a, b, c, d, e, f) { return this.$val.SetTransform(a, b, c, d, e, f); };
-	Context2D.ptr.prototype.FillText = function(text, x, y, maxWidth) {
-		var ctx, maxWidth, text, x, y;
-		ctx = this;
-		if (maxWidth === -1) {
-			ctx.Object.fillText($externalize(text, $String), x, y);
-			return;
-		}
-		ctx.Object.fillText($externalize(text, $String), x, y, maxWidth);
-	};
-	Context2D.prototype.FillText = function(text, x, y, maxWidth) { return this.$val.FillText(text, x, y, maxWidth); };
-	Context2D.ptr.prototype.StrokeText = function(text, x, y, maxWidth) {
-		var ctx, maxWidth, text, x, y;
-		ctx = this;
-		if (maxWidth === -1) {
-			ctx.Object.strokeText($externalize(text, $String), x, y);
-			return;
-		}
-		ctx.Object.strokeText($externalize(text, $String), x, y, maxWidth);
-	};
-	Context2D.prototype.StrokeText = function(text, x, y, maxWidth) { return this.$val.StrokeText(text, x, y, maxWidth); };
-	Context2D.ptr.prototype.Save = function() {
-		var ctx;
-		ctx = this;
-		ctx.Object.save();
-	};
-	Context2D.prototype.Save = function() { return this.$val.Save(); };
-	Context2D.ptr.prototype.Restore = function() {
-		var ctx;
-		ctx = this;
-		ctx.Object.restore();
-	};
-	Context2D.prototype.Restore = function() { return this.$val.Restore(); };
-	Context2D.ptr.prototype.DrawImage = function(image, dx, dy, dw, dh) {
-		var ctx, dh, dw, dx, dy, image;
-		ctx = this;
-		ctx.Object.drawImage($externalize(image, ptrType), dx, dy, dw, dh);
-	};
-	Context2D.prototype.DrawImage = function(image, dx, dy, dw, dh) { return this.$val.DrawImage(image, dx, dy, dw, dh); };
-	ImageData.ptr.prototype.Bytes = function() {
-		var i;
-		i = this;
-		return $assertType($internalize(new ($global.Uint8Array)(i.Object.data), $emptyInterface), sliceType$2);
-	};
-	ImageData.prototype.Bytes = function() { return this.$val.Bytes(); };
-	ImageData.ptr.prototype.At = function(x, y) {
-		var i, idx, rgba, x, y;
-		i = this;
-		idx = $imul(4, ((($imul(y, ($parseInt(i.Object.width) >> 0))) + x >> 0)));
-		rgba = new color.NRGBA.ptr(0, 0, 0, 0);
-		rgba.R = ((($parseInt(i.Object.data[idx]) >> 0) << 24 >>> 24));
-		rgba.G = ((($parseInt(i.Object.data[(idx + 1 >> 0)]) >> 0) << 24 >>> 24));
-		rgba.B = ((($parseInt(i.Object.data[(idx + 2 >> 0)]) >> 0) << 24 >>> 24));
-		rgba.A = ((($parseInt(i.Object.data[(idx + 3 >> 0)]) >> 0) << 24 >>> 24));
-		console.log("at:", x, y, rgba);
-		return rgba;
-	};
-	ImageData.prototype.At = function(x, y) { return this.$val.At(x, y); };
-	ImageData.ptr.prototype.Set = function(x, y, c) {
-		var c, i, idx, x, y;
-		i = this;
-		idx = $imul(4, ((($imul(y, ($parseInt(i.Object.width) >> 0))) + x >> 0)));
-		i.Object.data[idx] = c.R;
-		i.Object.data[(idx + 1 >> 0)] = c.G;
-		i.Object.data[(idx + 2 >> 0)] = c.B;
-		i.Object.data[(idx + 3 >> 0)] = c.A;
-	};
-	ImageData.prototype.Set = function(x, y, c) { return this.$val.Set(x, y, c); };
-	Context2D.ptr.prototype.CreateImageData = function(width, height) {
-		var ctx, height, im, o, width;
-		ctx = this;
-		o = ctx.Object.createImageData(width, height);
-		im = new ImageData.ptr(o, null, 0, 0);
-		return im;
-	};
-	Context2D.prototype.CreateImageData = function(width, height) { return this.$val.CreateImageData(width, height); };
-	Context2D.ptr.prototype.GetImageData = function(x, y, width, heigth) {
-		var ctx, heigth, o, width, x, y;
-		ctx = this;
-		o = ctx.Object.getImageData(x, y, width, heigth);
-		return new ImageData.ptr(o, null, 0, 0);
-	};
-	Context2D.prototype.GetImageData = function(x, y, width, heigth) { return this.$val.GetImageData(x, y, width, heigth); };
-	Context2D.ptr.prototype.PutImageData = function(imd, x, y, dirtyX) {
-		var _i, _ref, args, ctx, dirtyX, imd, obj, v, x, y;
-		ctx = this;
-		args = new sliceType$3([new $jsObjectPtr(imd.Object), new $Int(x), new $Int(y)]);
-		_ref = dirtyX;
-		_i = 0;
-		while (true) {
-			if (!(_i < _ref.$length)) { break; }
-			v = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
-			args = $append(args, new $Int(v));
-			_i++;
-		}
-		(obj = ctx.Object, obj.putImageData.apply(obj, $externalize(args, sliceType$3)));
-	};
-	Context2D.prototype.PutImageData = function(imd, x, y, dirtyX) { return this.$val.PutImageData(imd, x, y, dirtyX); };
-	ptrType$2.methods = [{prop: "GetContext2D", name: "GetContext2D", pkg: "", typ: $funcType([], [ptrType$1], false)}, {prop: "toDataURL", name: "toDataURL", pkg: "github.com/oskca/gopherjs-canvas", typ: $funcType([sliceType], [$String], true)}];
-	ptrType$1.methods = [{prop: "CreateLinearGradient", name: "CreateLinearGradient", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64], [ptrType$3], false)}, {prop: "CreateRadialGradient", name: "CreateRadialGradient", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64, $Float64, $Float64], [ptrType$3], false)}, {prop: "CreatePattern", name: "CreatePattern", pkg: "", typ: $funcType([ptrType, $String], [ptrType$4], false)}, {prop: "SetLineDash", name: "SetLineDash", pkg: "", typ: $funcType([sliceType$1], [], true)}, {prop: "GetLineDash", name: "GetLineDash", pkg: "", typ: $funcType([], [sliceType$1], false)}, {prop: "Rect", name: "Rect", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "FillRect", name: "FillRect", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "StrokeRect", name: "StrokeRect", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "ClearRect", name: "ClearRect", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "Fill", name: "Fill", pkg: "", typ: $funcType([], [], false)}, {prop: "Stroke", name: "Stroke", pkg: "", typ: $funcType([], [], false)}, {prop: "BeginPath", name: "BeginPath", pkg: "", typ: $funcType([], [], false)}, {prop: "MoveTo", name: "MoveTo", pkg: "", typ: $funcType([$Float64, $Float64], [], false)}, {prop: "ClosePath", name: "ClosePath", pkg: "", typ: $funcType([], [], false)}, {prop: "LineTo", name: "LineTo", pkg: "", typ: $funcType([$Float64, $Float64], [], false)}, {prop: "Clip", name: "Clip", pkg: "", typ: $funcType([], [], false)}, {prop: "QuadraticCurveTo", name: "QuadraticCurveTo", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "BezierCurveTo", name: "BezierCurveTo", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "Arc", name: "Arc", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64, $Float64, $Bool], [], false)}, {prop: "ArcTo", name: "ArcTo", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "IsPointInPath", name: "IsPointInPath", pkg: "", typ: $funcType([$Float64, $Float64], [$Bool], false)}, {prop: "IsPointInStroke", name: "IsPointInStroke", pkg: "", typ: $funcType([$Float64, $Float64], [$Bool], false)}, {prop: "Scale", name: "Scale", pkg: "", typ: $funcType([$Float64, $Float64], [], false)}, {prop: "Rotate", name: "Rotate", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Translate", name: "Translate", pkg: "", typ: $funcType([$Float64, $Float64], [], false)}, {prop: "Transform", name: "Transform", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "SetTransform", name: "SetTransform", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "FillText", name: "FillText", pkg: "", typ: $funcType([$String, $Float64, $Float64, $Float64], [], false)}, {prop: "StrokeText", name: "StrokeText", pkg: "", typ: $funcType([$String, $Float64, $Float64, $Float64], [], false)}, {prop: "Save", name: "Save", pkg: "", typ: $funcType([], [], false)}, {prop: "Restore", name: "Restore", pkg: "", typ: $funcType([], [], false)}, {prop: "DrawImage", name: "DrawImage", pkg: "", typ: $funcType([ptrType, $Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "CreateImageData", name: "CreateImageData", pkg: "", typ: $funcType([$Int, $Int], [ptrType$5], false)}, {prop: "GetImageData", name: "GetImageData", pkg: "", typ: $funcType([$Int, $Int, $Int, $Int], [ptrType$5], false)}, {prop: "PutImageData", name: "PutImageData", pkg: "", typ: $funcType([ptrType$5, $Int, $Int, sliceType$4], [], true)}];
-	ptrType$3.methods = [{prop: "AddColorStop", name: "AddColorStop", pkg: "", typ: $funcType([$Float64, $String], [], false)}, {prop: "Value", name: "Value", pkg: "", typ: $funcType([], [ptrType$6], false)}];
-	ptrType$4.methods = [{prop: "Value", name: "Value", pkg: "", typ: $funcType([], [ptrType$6], false)}];
-	ptrType$5.methods = [{prop: "Bytes", name: "Bytes", pkg: "", typ: $funcType([], [sliceType$2], false)}, {prop: "At", name: "At", pkg: "", typ: $funcType([$Int, $Int], [ptrType$7], false)}, {prop: "Set", name: "Set", pkg: "", typ: $funcType([$Int, $Int, color.NRGBA], [], false)}];
-	Canvas.init("", [{prop: "Element", name: "Element", anonymous: true, exported: true, typ: ptrType, tag: ""}]);
-	Context2D.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$6, tag: ""}, {prop: "StrokeStyle", name: "StrokeStyle", anonymous: false, exported: true, typ: $emptyInterface, tag: "js:\"strokeStyle\""}, {prop: "FillStyle", name: "FillStyle", anonymous: false, exported: true, typ: $emptyInterface, tag: "js:\"fillStyle\""}, {prop: "ShadowColor", name: "ShadowColor", anonymous: false, exported: true, typ: $String, tag: "js:\"shadowColor\""}, {prop: "ShadowBlur", name: "ShadowBlur", anonymous: false, exported: true, typ: $Float64, tag: "js:\"shadowBlur\""}, {prop: "ShadowOffsetX", name: "ShadowOffsetX", anonymous: false, exported: true, typ: $Float64, tag: "js:\"shadowOffsetX\""}, {prop: "ShadowOffsetY", name: "ShadowOffsetY", anonymous: false, exported: true, typ: $Float64, tag: "js:\"shadowOffsetY\""}, {prop: "LineCap", name: "LineCap", anonymous: false, exported: true, typ: $String, tag: "js:\"lineCap\""}, {prop: "LineJoin", name: "LineJoin", anonymous: false, exported: true, typ: $String, tag: "js:\"lineJoin\""}, {prop: "LineWidth", name: "LineWidth", anonymous: false, exported: true, typ: $Float64, tag: "js:\"lineWidth\""}, {prop: "MiterLimit", name: "MiterLimit", anonymous: false, exported: true, typ: $Float64, tag: "js:\"miterLimit\""}, {prop: "Font", name: "Font", anonymous: false, exported: true, typ: $String, tag: "js:\"font\""}, {prop: "TextAlign", name: "TextAlign", anonymous: false, exported: true, typ: $String, tag: "js:\"textAlign\""}, {prop: "TextBaseline", name: "TextBaseline", anonymous: false, exported: true, typ: $String, tag: "js:\"textBaseline\""}, {prop: "GlobalAlpha", name: "GlobalAlpha", anonymous: false, exported: true, typ: $Float64, tag: "js:\"globalAlpha\""}, {prop: "GlobalCompositeOperation", name: "GlobalCompositeOperation", anonymous: false, exported: true, typ: $String, tag: "js:\"globalCompositeOperation\""}]);
-	Gradient.init("github.com/oskca/gopherjs-canvas", [{prop: "o", name: "o", anonymous: false, exported: false, typ: ptrType$6, tag: ""}]);
-	Pattern.init("github.com/oskca/gopherjs-canvas", [{prop: "o", name: "o", anonymous: false, exported: false, typ: ptrType$6, tag: ""}]);
-	ImageData.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$6, tag: ""}, {prop: "Data", name: "Data", anonymous: false, exported: true, typ: ptrType$6, tag: "js:\"data\""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Int, tag: "js:\"height\""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Int, tag: "js:\"width\""}]);
-	$init = function() {
-		$pkg.$init = function() {};
-		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		$r = js.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = dom.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = color.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
-	};
-	$pkg.$init = $init;
-	return $pkg;
-})();
 $packages["math"] = (function() {
 	var $pkg = {}, $init, js, arrayType, arrayType$1, arrayType$2, structType, math, zero, posInf, negInf, nan, buf, Exp, Log, Mod, Pow, init;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
@@ -9506,9 +7975,8 @@ $packages["time"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() {
-	var $pkg = {}, $init, js, canvas, math, time, Animator, Animation, ColorScheme, Screener, Stepper, Swapper, Rectangle, Step, funcType, ptrType, ptrType$1, ptrType$2, funcType$1, ptrType$3, ptrType$4, NewAnimation, makeTimestamp, NewRect, maxHeight, NewStep;
+	var $pkg = {}, $init, js, math, time, Animator, Animation, Screener, Stepper, Step, funcType, ptrType, ptrType$1, funcType$1, ptrType$2, NewAnimation, makeTimestamp, NewFirstStep;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
-	canvas = $packages["github.com/oskca/gopherjs-canvas"];
 	math = $packages["math"];
 	time = $packages["time"];
 	Animator = $pkg.Animator = $newType(8, $kindInterface, "visualizer.Animator", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, null);
@@ -9544,78 +8012,29 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 		this.timing = timing_;
 		this.animationFrame = animationFrame_;
 	});
-	ColorScheme = $pkg.ColorScheme = $newType(0, $kindStruct, "visualizer.ColorScheme", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, function(BackgroundColor_, BarColor_, AColor_, BColor_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.BackgroundColor = "";
-			this.BarColor = "";
-			this.AColor = "";
-			this.BColor = "";
-			return;
-		}
-		this.BackgroundColor = BackgroundColor_;
-		this.BarColor = BarColor_;
-		this.AColor = AColor_;
-		this.BColor = BColor_;
-	});
 	Screener = $pkg.Screener = $newType(8, $kindInterface, "visualizer.Screener", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, null);
 	Stepper = $pkg.Stepper = $newType(8, $kindInterface, "visualizer.Stepper", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, null);
-	Swapper = $pkg.Swapper = $newType(8, $kindInterface, "visualizer.Swapper", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, null);
-	Rectangle = $pkg.Rectangle = $newType(0, $kindStruct, "visualizer.Rectangle", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, function(Ctx_, Index_, ToIndex_, IsA_, IsB_, Left_, Top_, Width_, Height_) {
+	Step = $pkg.Step = $newType(0, $kindStruct, "visualizer.Step", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, function(next_, last_, current_) {
 		this.$val = this;
 		if (arguments.length === 0) {
-			this.Ctx = ptrType.nil;
-			this.Index = 0;
-			this.ToIndex = 0;
-			this.IsA = false;
-			this.IsB = false;
-			this.Left = 0;
-			this.Top = 0;
-			this.Width = 0;
-			this.Height = 0;
+			this.next = ptrType.nil;
+			this.last = ptrType.nil;
+			this.current = ptrType.nil;
 			return;
 		}
-		this.Ctx = Ctx_;
-		this.Index = Index_;
-		this.ToIndex = ToIndex_;
-		this.IsA = IsA_;
-		this.IsB = IsB_;
-		this.Left = Left_;
-		this.Top = Top_;
-		this.Width = Width_;
-		this.Height = Height_;
-	});
-	Step = $pkg.Step = $newType(0, $kindStruct, "visualizer.Step", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, function(Swapper_, a_, b_, doSwap_, next_, last_, current_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Swapper = $ifaceNil;
-			this.a = 0;
-			this.b = 0;
-			this.doSwap = false;
-			this.next = ptrType$1.nil;
-			this.last = ptrType$1.nil;
-			this.current = ptrType$1.nil;
-			return;
-		}
-		this.Swapper = Swapper_;
-		this.a = a_;
-		this.b = b_;
-		this.doSwap = doSwap_;
 		this.next = next_;
 		this.last = last_;
 		this.current = current_;
 	});
 	funcType = $funcType([$Float64], [], false);
-	ptrType = $ptrType(canvas.Context2D);
-	ptrType$1 = $ptrType(Step);
-	ptrType$2 = $ptrType(Animation);
+	ptrType = $ptrType(Step);
+	ptrType$1 = $ptrType(Animation);
 	funcType$1 = $funcType([$Float64], [$Float64], false);
-	ptrType$3 = $ptrType(js.Object);
-	ptrType$4 = $ptrType(Rectangle);
+	ptrType$2 = $ptrType(js.Object);
 	NewAnimation = function() {
 		var a;
 		a = new Animation.ptr($ifaceNil, $ifaceNil, false, false, 0, 0, 0, 0, 0, 0, 0, $throwNilPointerError, null);
-		a.steps = NewStep();
+		a.steps = NewFirstStep();
 		a.autoUpdate = true;
 		a.fps = 60;
 		a.fpdInterval = 1000 / (a.fps);
@@ -9746,86 +8165,32 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 	makeTimestamp = function() {
 		return ($flatten64($clone(time.Now(), time.Time).UnixNano())) / 1e+06;
 	};
-	NewRect = function(total, index, value, ctx) {
-		var ctx, index, r, total, value;
-		r = new Rectangle.ptr(ptrType.nil, 0, 0, false, false, 0, 0, 0, 0);
-		r.Ctx = ctx;
-		r.Index = index;
-		r.ToIndex = index;
-		r.Left = (($imul((($pkg.BarWidth + $pkg.BarSpace >> 0)), index)));
-		r.Top = ((maxHeight(total) - ($imul(value, $pkg.HeightUnit)) >> 0));
-		r.Width = ($pkg.BarWidth);
-		r.Height = (($imul(value, $pkg.HeightUnit)));
-		return r;
-	};
-	$pkg.NewRect = NewRect;
-	Rectangle.ptr.prototype.Animate = function(progress) {
-		var finished, progress, r;
-		r = this;
-		finished = r.update(progress);
-		r.draw();
-		return finished;
-	};
-	Rectangle.prototype.Animate = function(progress) { return this.$val.Animate(progress); };
-	Rectangle.ptr.prototype.update = function(progress) {
-		var finished, progress, r;
-		r = this;
-		finished = false;
-		if (r.Left - r.toLeft() > 0) {
-			r.Left = r.Left - ((r.Left - r.toLeft()) * progress);
-		} else if (r.Left - r.toLeft() < 0) {
-			r.Left = r.Left + ((r.toLeft() - r.Left) * progress);
-		} else {
-			r.Index = r.ToIndex;
-		}
-		if (progress === 1) {
-			finished = true;
-		}
-		return finished;
-	};
-	Rectangle.prototype.update = function(progress) { return this.$val.update(progress); };
-	Rectangle.ptr.prototype.draw = function() {
-		var r;
-		r = this;
-		r.Ctx.Object.fillStyle = $externalize(new $String($pkg.DefaultColor.BarColor), $emptyInterface);
-		if (r.IsA) {
-			r.Ctx.Object.fillStyle = $externalize(new $String($pkg.DefaultColor.AColor), $emptyInterface);
-		} else if (r.IsB) {
-			r.Ctx.Object.fillStyle = $externalize(new $String($pkg.DefaultColor.BColor), $emptyInterface);
-		}
-		r.Ctx.FillRect(r.Left, r.Top, r.Width, r.Height);
-	};
-	Rectangle.prototype.draw = function() { return this.$val.draw(); };
-	Rectangle.ptr.prototype.toLeft = function() {
-		var r;
-		r = this;
-		return (($imul((($pkg.BarWidth + $pkg.BarSpace >> 0)), r.ToIndex)));
-	};
-	Rectangle.prototype.toLeft = function() { return this.$val.toLeft(); };
-	maxHeight = function(size) {
-		var size;
-		return $imul(size, $pkg.HeightUnit);
-	};
-	NewStep = function() {
+	NewFirstStep = function() {
 		var s;
-		s = new Step.ptr($ifaceNil, 0, 0, false, ptrType$1.nil, ptrType$1.nil, ptrType$1.nil);
+		s = new Step.ptr(ptrType.nil, ptrType.nil, ptrType.nil);
 		s.last = s;
 		s.current = s;
 		return s;
 	};
-	$pkg.NewStep = NewStep;
-	Step.ptr.prototype.AddStep = function(a, b, doSwap) {
-		var a, b, doSwap, s, step;
+	$pkg.NewFirstStep = NewFirstStep;
+	Step.ptr.prototype.AddStep = function(stepper) {
+		var _tuple, ok, s, step, stepper;
 		s = this;
-		step = new Step.ptr($ifaceNil, a, b, doSwap, ptrType$1.nil, ptrType$1.nil, ptrType$1.nil);
-		s.last.next = step;
-		s.last = step;
+		_tuple = $assertType(stepper, ptrType, true);
+		step = _tuple[0];
+		ok = _tuple[1];
+		if (ok) {
+			s.last.next = step;
+			s.last = step;
+		} else {
+			console.log("Can't add step");
+		}
 	};
-	Step.prototype.AddStep = function(a, b, doSwap) { return this.$val.AddStep(a, b, doSwap); };
+	Step.prototype.AddStep = function(stepper) { return this.$val.AddStep(stepper); };
 	Step.ptr.prototype.Finished = function() {
 		var s;
 		s = this;
-		return s.current.next === ptrType$1.nil;
+		return s.current.next === ptrType.nil;
 	};
 	Step.prototype.Finished = function() { return this.$val.Finished(); };
 	Step.ptr.prototype.NextStep = function() {
@@ -9844,96 +8209,76 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 		return s.current;
 	};
 	Step.prototype.CurrentStep = function() { return this.$val.CurrentStep(); };
-	Step.ptr.prototype.A = function() {
-		var s;
-		s = this;
-		return s.a;
-	};
-	Step.prototype.A = function() { return this.$val.A(); };
-	Step.ptr.prototype.B = function() {
-		var s;
-		s = this;
-		return s.b;
-	};
-	Step.prototype.B = function() { return this.$val.B(); };
-	Step.ptr.prototype.DoSwap = function() {
-		var s;
-		s = this;
-		return s.doSwap;
-	};
-	Step.prototype.DoSwap = function() { return this.$val.DoSwap(); };
-	ptrType$2.methods = [{prop: "UpdateDuration", name: "UpdateDuration", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "SetScreen", name: "SetScreen", pkg: "", typ: $funcType([Screener], [], false)}, {prop: "SetSteps", name: "SetSteps", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "StartAnimating", name: "StartAnimating", pkg: "", typ: $funcType([], [], false)}, {prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}];
-	ptrType$4.methods = [{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer", typ: $funcType([$Float64], [$Bool], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer", typ: $funcType([], [], false)}, {prop: "toLeft", name: "toLeft", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer", typ: $funcType([], [$Float64], false)}];
-	ptrType$1.methods = [{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([$Int, $Int, $Bool], [], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [Stepper], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [Stepper], false)}, {prop: "A", name: "A", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "B", name: "B", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "DoSwap", name: "DoSwap", pkg: "", typ: $funcType([], [$Bool], false)}];
+	ptrType$1.methods = [{prop: "UpdateDuration", name: "UpdateDuration", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "SetScreen", name: "SetScreen", pkg: "", typ: $funcType([Screener], [], false)}, {prop: "SetSteps", name: "SetSteps", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "StartAnimating", name: "StartAnimating", pkg: "", typ: $funcType([], [], false)}, {prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}];
+	ptrType.methods = [{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [Stepper], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [Stepper], false)}];
 	Animator.init([{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "SetScreen", name: "SetScreen", pkg: "", typ: $funcType([Screener], [], false)}, {prop: "SetSteps", name: "SetSteps", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "StartAnimating", name: "StartAnimating", pkg: "", typ: $funcType([], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "UpdateDuration", name: "UpdateDuration", pkg: "", typ: $funcType([$Float64], [], false)}]);
-	Animation.init("github.com/lei-cao/learning-cs-again/code/visualizer", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: Stepper, tag: ""}, {prop: "screen", name: "screen", anonymous: false, exported: false, typ: Screener, tag: ""}, {prop: "animating", name: "animating", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "autoUpdate", name: "autoUpdate", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "fps", name: "fps", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "fpdInterval", name: "fpdInterval", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "startTime", name: "startTime", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "now", name: "now", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "then", name: "then", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "elapsed", name: "elapsed", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "duration", name: "duration", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "timing", name: "timing", anonymous: false, exported: false, typ: funcType$1, tag: ""}, {prop: "animationFrame", name: "animationFrame", anonymous: false, exported: false, typ: ptrType$3, tag: ""}]);
-	ColorScheme.init("", [{prop: "BackgroundColor", name: "BackgroundColor", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "BarColor", name: "BarColor", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "AColor", name: "AColor", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "BColor", name: "BColor", anonymous: false, exported: true, typ: $String, tag: ""}]);
-	Screener.init([{prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([Stepper], [], false)}]);
-	Stepper.init([{prop: "A", name: "A", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([$Int, $Int, $Bool], [], false)}, {prop: "B", name: "B", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [Stepper], false)}, {prop: "DoSwap", name: "DoSwap", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [Stepper], false)}]);
-	Swapper.init([{prop: "A", name: "A", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "B", name: "B", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "DoSwap", name: "DoSwap", pkg: "", typ: $funcType([], [$Bool], false)}]);
-	Rectangle.init("", [{prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "Index", name: "Index", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "ToIndex", name: "ToIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IsA", name: "IsA", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "IsB", name: "IsB", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Left", name: "Left", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Top", name: "Top", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Float64, tag: ""}]);
-	Step.init("github.com/lei-cao/learning-cs-again/code/visualizer", [{prop: "Swapper", name: "Swapper", anonymous: true, exported: true, typ: Swapper, tag: ""}, {prop: "a", name: "a", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "b", name: "b", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "doSwap", name: "doSwap", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "next", name: "next", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "last", name: "last", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "current", name: "current", anonymous: false, exported: false, typ: ptrType$1, tag: ""}]);
+	Animation.init("github.com/lei-cao/learning-cs-again/code/visualizer", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: Stepper, tag: ""}, {prop: "screen", name: "screen", anonymous: false, exported: false, typ: Screener, tag: ""}, {prop: "animating", name: "animating", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "autoUpdate", name: "autoUpdate", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "fps", name: "fps", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "fpdInterval", name: "fpdInterval", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "startTime", name: "startTime", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "now", name: "now", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "then", name: "then", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "elapsed", name: "elapsed", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "duration", name: "duration", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "timing", name: "timing", anonymous: false, exported: false, typ: funcType$1, tag: ""}, {prop: "animationFrame", name: "animationFrame", anonymous: false, exported: false, typ: ptrType$2, tag: ""}]);
+	Screener.init([{prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([Stepper], [], false)}]);
+	Stepper.init([{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [Stepper], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [Stepper], false)}]);
+	Step.init("github.com/lei-cao/learning-cs-again/code/visualizer", [{prop: "next", name: "next", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "last", name: "last", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "current", name: "current", anonymous: false, exported: false, typ: ptrType, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		$r = js.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = canvas.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = math.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = time.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$pkg.DefaultColor = new ColorScheme.ptr("#012A36", "#A8A7A0", "#2AB7B7", "#0E7C7B");
-		$pkg.BarWidth = 8;
-		$pkg.BarSpace = 2;
-		$pkg.HeightUnit = 5;
+		$r = math.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = time.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.$init = $init;
 	return $pkg;
 })();
 $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting"] = (function() {
-	var $pkg = {}, $init, visualizer, BubbleSort, InsertionSort, TopDownMergeSort, QuickSort, SelectionSort, Sorter, BasicSort, sliceType, ptrType, ptrType$1, ptrType$2, ptrType$3, ptrType$4, ptrType$5, NewBubbleSort, NewInsertionSort, NewTopDownMergeSort, NewQuickSort, NewSelectionSort;
+	var $pkg = {}, $init, visualizer, Sorter, sliceType;
 	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
-	BubbleSort = $pkg.BubbleSort = $newType(0, $kindStruct, "sorting.BubbleSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", true, function(BasicSort_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.BasicSort = new BasicSort.ptr($ifaceNil);
-			return;
-		}
-		this.BasicSort = BasicSort_;
-	});
-	InsertionSort = $pkg.InsertionSort = $newType(0, $kindStruct, "sorting.InsertionSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", true, function(BasicSort_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.BasicSort = new BasicSort.ptr($ifaceNil);
-			return;
-		}
-		this.BasicSort = BasicSort_;
-	});
-	TopDownMergeSort = $pkg.TopDownMergeSort = $newType(0, $kindStruct, "sorting.TopDownMergeSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", true, function(BasicSort_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.BasicSort = new BasicSort.ptr($ifaceNil);
-			return;
-		}
-		this.BasicSort = BasicSort_;
-	});
-	QuickSort = $pkg.QuickSort = $newType(0, $kindStruct, "sorting.QuickSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", true, function(BasicSort_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.BasicSort = new BasicSort.ptr($ifaceNil);
-			return;
-		}
-		this.BasicSort = BasicSort_;
-	});
-	SelectionSort = $pkg.SelectionSort = $newType(0, $kindStruct, "sorting.SelectionSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", true, function(BasicSort_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.BasicSort = new BasicSort.ptr($ifaceNil);
-			return;
-		}
-		this.BasicSort = BasicSort_;
-	});
 	Sorter = $pkg.Sorter = $newType(8, $kindInterface, "sorting.Sorter", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", true, null);
-	BasicSort = $pkg.BasicSort = $newType(0, $kindStruct, "sorting.BasicSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", true, function(steps_) {
+	sliceType = $sliceType($Int);
+	Sorter.init([{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}]);
+	$init = function() {
+		$pkg.$init = function() {};
+		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		$r = visualizer.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.$init = $init;
+	return $pkg;
+})();
+$packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort"] = (function() {
+	var $pkg = {}, $init, sorting, visualizer, BubbleSort, InsertionSort, QuickSort, SelectionSort, BasicSort, Step, ptrType, sliceType, ptrType$1, ptrType$2, ptrType$3, ptrType$4, ptrType$5, NewBubbleSort, NewInsertionSort, NewQuickSort, NewSelectionSort, NewFirstStep, NewStep;
+	sorting = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting"];
+	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
+	BubbleSort = $pkg.BubbleSort = $newType(0, $kindStruct, "basicsort.BubbleSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.BasicSort = new BasicSort.ptr($ifaceNil);
+			return;
+		}
+		this.BasicSort = BasicSort_;
+	});
+	InsertionSort = $pkg.InsertionSort = $newType(0, $kindStruct, "basicsort.InsertionSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.BasicSort = new BasicSort.ptr($ifaceNil);
+			return;
+		}
+		this.BasicSort = BasicSort_;
+	});
+	QuickSort = $pkg.QuickSort = $newType(0, $kindStruct, "basicsort.QuickSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.BasicSort = new BasicSort.ptr($ifaceNil);
+			return;
+		}
+		this.BasicSort = BasicSort_;
+	});
+	SelectionSort = $pkg.SelectionSort = $newType(0, $kindStruct, "basicsort.SelectionSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.BasicSort = new BasicSort.ptr($ifaceNil);
+			return;
+		}
+		this.BasicSort = BasicSort_;
+	});
+	BasicSort = $pkg.BasicSort = $newType(0, $kindStruct, "basicsort.BasicSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", true, function(steps_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.steps = $ifaceNil;
@@ -9941,10 +8286,28 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting"] = (fun
 		}
 		this.steps = steps_;
 	});
+	Step = $pkg.Step = $newType(0, $kindStruct, "basicsort.Step", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", true, function(a_, b_, doSwap_, next_, last_, current_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.a = 0;
+			this.b = 0;
+			this.doSwap = false;
+			this.next = ptrType.nil;
+			this.last = ptrType.nil;
+			this.current = ptrType.nil;
+			return;
+		}
+		this.a = a_;
+		this.b = b_;
+		this.doSwap = doSwap_;
+		this.next = next_;
+		this.last = last_;
+		this.current = current_;
+	});
+	ptrType = $ptrType(Step);
 	sliceType = $sliceType($Int);
-	ptrType = $ptrType(BubbleSort);
-	ptrType$1 = $ptrType(InsertionSort);
-	ptrType$2 = $ptrType(TopDownMergeSort);
+	ptrType$1 = $ptrType(BubbleSort);
+	ptrType$2 = $ptrType(InsertionSort);
 	ptrType$3 = $ptrType(QuickSort);
 	ptrType$4 = $ptrType(SelectionSort);
 	ptrType$5 = $ptrType(BasicSort);
@@ -10001,59 +8364,6 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting"] = (fun
 		/* */ } return; } if ($f === undefined) { $f = { $blk: InsertionSort.ptr.prototype.Sort }; } $f.i = i; $f.j = j; $f.nums = nums; $f.s = s; $f.temp = temp; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	InsertionSort.prototype.Sort = function(nums) { return this.$val.Sort(nums); };
-	TopDownMergeSort.ptr.prototype.Sort = function(nums) {
-		var nums, numsB, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; nums = $f.nums; numsB = $f.numsB; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		s = this;
-		numsB = $makeSlice(sliceType, nums.$length);
-		$copySlice(numsB, nums);
-		$r = s.topDownSplitMerge(numsB, 0, nums.$length, nums); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.Sort }; } $f.nums = nums; $f.numsB = numsB; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	TopDownMergeSort.prototype.Sort = function(nums) { return this.$val.Sort(nums); };
-	TopDownMergeSort.ptr.prototype.topDownSplitMerge = function(b, iBegin, iEnd, a) {
-		var _q, a, b, iBegin, iEnd, iMid, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _q = $f._q; a = $f.a; b = $f.b; iBegin = $f.iBegin; iEnd = $f.iEnd; iMid = $f.iMid; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		s = this;
-		if ((iEnd - iBegin >> 0) < 2) {
-			$s = -1; return;
-		}
-		iMid = (_q = ((iBegin + iEnd >> 0)) / 2, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >> 0 : $throwRuntimeError("integer divide by zero"));
-		$r = s.topDownSplitMerge(a, iBegin, iMid, b); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = s.topDownSplitMerge(a, iMid, iEnd, b); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = s.topDownMerge(b, iBegin, iMid, iEnd, a); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.topDownSplitMerge }; } $f._q = _q; $f.a = a; $f.b = b; $f.iBegin = iBegin; $f.iEnd = iEnd; $f.iMid = iMid; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	TopDownMergeSort.prototype.topDownSplitMerge = function(b, iBegin, iEnd, a) { return this.$val.topDownSplitMerge(b, iBegin, iEnd, a); };
-	TopDownMergeSort.ptr.prototype.topDownMerge = function(a, iBegin, iMid, iEnd, b) {
-		var a, b, i, iBegin, iEnd, iMid, j, k, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; b = $f.b; i = $f.i; iBegin = $f.iBegin; iEnd = $f.iEnd; iMid = $f.iMid; j = $f.j; k = $f.k; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		s = this;
-		i = iBegin;
-		j = iMid;
-		k = iBegin;
-		/* while (true) { */ case 1:
-			/* if (!(k < iEnd)) { break; } */ if(!(k < iEnd)) { $s = 2; continue; }
-			/* */ if (i < iMid && (j >= iEnd || ((i < 0 || i >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + i]) <= ((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]))) { $s = 3; continue; }
-			/* */ $s = 4; continue;
-			/* if (i < iMid && (j >= iEnd || ((i < 0 || i >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + i]) <= ((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]))) { */ case 3:
-				((k < 0 || k >= b.$length) ? ($throwRuntimeError("index out of range"), undefined) : b.$array[b.$offset + k] = ((i < 0 || i >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + i]));
-				i = i + (1) >> 0;
-				$r = s.BasicSort.swap(a, k, i); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-				$s = 5; continue;
-			/* } else { */ case 4:
-				((k < 0 || k >= b.$length) ? ($throwRuntimeError("index out of range"), undefined) : b.$array[b.$offset + k] = ((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]));
-				$r = s.BasicSort.swap(a, k, j); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-				j = j + (1) >> 0;
-			/* } */ case 5:
-			k = k + (1) >> 0;
-		/* } */ $s = 1; continue; case 2:
-		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.topDownMerge }; } $f.a = a; $f.b = b; $f.i = i; $f.iBegin = iBegin; $f.iEnd = iEnd; $f.iMid = iMid; $f.j = j; $f.k = k; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	TopDownMergeSort.prototype.topDownMerge = function(a, iBegin, iMid, iEnd, b) { return this.$val.topDownMerge(a, iBegin, iMid, iEnd, b); };
 	QuickSort.ptr.prototype.Sort = function(nums) {
 		var nums, s, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; nums = $f.nums; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -10133,83 +8443,414 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting"] = (fun
 	NewBubbleSort = function() {
 		var s;
 		s = new BubbleSort.ptr(new BasicSort.ptr($ifaceNil));
-		s.BasicSort.steps = visualizer.NewStep();
+		s.BasicSort.steps = NewFirstStep();
 		return s;
 	};
 	$pkg.NewBubbleSort = NewBubbleSort;
 	NewInsertionSort = function() {
 		var s;
 		s = new InsertionSort.ptr(new BasicSort.ptr($ifaceNil));
-		s.BasicSort.steps = visualizer.NewStep();
+		s.BasicSort.steps = NewFirstStep();
 		return s;
 	};
 	$pkg.NewInsertionSort = NewInsertionSort;
-	NewTopDownMergeSort = function() {
-		var s;
-		s = new TopDownMergeSort.ptr(new BasicSort.ptr($ifaceNil));
-		s.BasicSort.steps = visualizer.NewStep();
-		return s;
-	};
-	$pkg.NewTopDownMergeSort = NewTopDownMergeSort;
 	NewQuickSort = function() {
 		var s;
 		s = new QuickSort.ptr(new BasicSort.ptr($ifaceNil));
-		s.BasicSort.steps = visualizer.NewStep();
+		s.BasicSort.steps = NewFirstStep();
 		return s;
 	};
 	$pkg.NewQuickSort = NewQuickSort;
 	NewSelectionSort = function() {
 		var s;
 		s = new SelectionSort.ptr(new BasicSort.ptr($ifaceNil));
-		s.BasicSort.steps = visualizer.NewStep();
+		s.BasicSort.steps = NewFirstStep();
 		return s;
 	};
 	$pkg.NewSelectionSort = NewSelectionSort;
-	BasicSort.ptr.prototype.swap = function(nums, a, b) {
-		var _tmp, _tmp$1, a, b, nums, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _tmp = $f._tmp; _tmp$1 = $f._tmp$1; a = $f.a; b = $f.b; nums = $f.nums; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		s = this;
-		$r = s.steps.AddStep(a, b, true); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		_tmp = ((b < 0 || b >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + b]);
-		_tmp$1 = ((a < 0 || a >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + a]);
-		((a < 0 || a >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + a] = _tmp);
-		((b < 0 || b >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + b] = _tmp$1);
-		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: BasicSort.ptr.prototype.swap }; } $f._tmp = _tmp; $f._tmp$1 = _tmp$1; $f.a = a; $f.b = b; $f.nums = nums; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	BasicSort.prototype.swap = function(nums, a, b) { return this.$val.swap(nums, a, b); };
-	BasicSort.ptr.prototype.pass = function(a, b) {
-		var a, b, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; b = $f.b; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		s = this;
-		$r = s.steps.AddStep(a, b, false); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: BasicSort.ptr.prototype.pass }; } $f.a = a; $f.b = b; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	BasicSort.prototype.pass = function(a, b) { return this.$val.pass(a, b); };
 	BasicSort.ptr.prototype.Steps = function() {
 		var s;
 		s = this;
 		return s.steps;
 	};
 	BasicSort.prototype.Steps = function() { return this.$val.Steps(); };
-	ptrType.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}];
+	BasicSort.ptr.prototype.swap = function(nums, a, b) {
+		var _tmp, _tmp$1, a, b, nums, s, step, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _tmp = $f._tmp; _tmp$1 = $f._tmp$1; a = $f.a; b = $f.b; nums = $f.nums; s = $f.s; step = $f.step; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		s = this;
+		step = NewStep(a, b, true);
+		$r = s.steps.AddStep(step); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		_tmp = ((b < 0 || b >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + b]);
+		_tmp$1 = ((a < 0 || a >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + a]);
+		((a < 0 || a >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + a] = _tmp);
+		((b < 0 || b >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + b] = _tmp$1);
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: BasicSort.ptr.prototype.swap }; } $f._tmp = _tmp; $f._tmp$1 = _tmp$1; $f.a = a; $f.b = b; $f.nums = nums; $f.s = s; $f.step = step; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	BasicSort.prototype.swap = function(nums, a, b) { return this.$val.swap(nums, a, b); };
+	BasicSort.ptr.prototype.pass = function(a, b) {
+		var a, b, s, step, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; b = $f.b; s = $f.s; step = $f.step; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		s = this;
+		step = NewStep(a, b, false);
+		$r = s.steps.AddStep(step); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: BasicSort.ptr.prototype.pass }; } $f.a = a; $f.b = b; $f.s = s; $f.step = step; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	BasicSort.prototype.pass = function(a, b) { return this.$val.pass(a, b); };
+	NewFirstStep = function() {
+		var s;
+		s = new Step.ptr(0, 0, false, ptrType.nil, ptrType.nil, ptrType.nil);
+		s.last = s;
+		s.current = s;
+		return s;
+	};
+	$pkg.NewFirstStep = NewFirstStep;
+	NewStep = function(a, b, doSwap) {
+		var a, b, doSwap, s;
+		s = new Step.ptr(0, 0, false, ptrType.nil, ptrType.nil, ptrType.nil);
+		s.a = a;
+		s.b = b;
+		s.doSwap = doSwap;
+		return s;
+	};
+	$pkg.NewStep = NewStep;
+	Step.ptr.prototype.AddStep = function(stepper) {
+		var _tuple, ok, s, step, stepper;
+		s = this;
+		_tuple = $assertType(stepper, ptrType, true);
+		step = _tuple[0];
+		ok = _tuple[1];
+		if (ok) {
+			s.last.next = step;
+			s.last = step;
+		} else {
+			console.log("Can't add step");
+		}
+	};
+	Step.prototype.AddStep = function(stepper) { return this.$val.AddStep(stepper); };
+	Step.ptr.prototype.Finished = function() {
+		var s;
+		s = this;
+		return s.current.next === ptrType.nil;
+	};
+	Step.prototype.Finished = function() { return this.$val.Finished(); };
+	Step.ptr.prototype.NextStep = function() {
+		var s;
+		s = this;
+		if (s.Finished()) {
+			return $ifaceNil;
+		}
+		s.current = s.current.next;
+		return s.current;
+	};
+	Step.prototype.NextStep = function() { return this.$val.NextStep(); };
+	Step.ptr.prototype.CurrentStep = function() {
+		var s;
+		s = this;
+		return s.current;
+	};
+	Step.prototype.CurrentStep = function() { return this.$val.CurrentStep(); };
+	Step.ptr.prototype.A = function() {
+		var s;
+		s = this;
+		return s.a;
+	};
+	Step.prototype.A = function() { return this.$val.A(); };
+	Step.ptr.prototype.B = function() {
+		var s;
+		s = this;
+		return s.b;
+	};
+	Step.prototype.B = function() { return this.$val.B(); };
+	Step.ptr.prototype.DoSwap = function() {
+		var s;
+		s = this;
+		return s.doSwap;
+	};
+	Step.prototype.DoSwap = function() { return this.$val.DoSwap(); };
 	ptrType$1.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}];
-	ptrType$2.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "topDownSplitMerge", name: "topDownSplitMerge", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", typ: $funcType([sliceType, $Int, $Int, sliceType], [], false)}, {prop: "topDownMerge", name: "topDownMerge", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", typ: $funcType([sliceType, $Int, $Int, $Int, sliceType], [], false)}];
-	ptrType$3.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "quickSort", name: "quickSort", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", typ: $funcType([sliceType, $Int, $Int], [], false)}, {prop: "partition", name: "partition", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", typ: $funcType([sliceType, $Int, $Int], [$Int], false)}];
+	ptrType$2.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}];
+	ptrType$3.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "quickSort", name: "quickSort", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [], false)}, {prop: "partition", name: "partition", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [$Int], false)}];
 	ptrType$4.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}];
-	ptrType$5.methods = [{prop: "swap", name: "swap", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", typ: $funcType([sliceType, $Int, $Int], [], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", typ: $funcType([$Int, $Int], [], false)}, {prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}];
+	ptrType$5.methods = [{prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "swap", name: "swap", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", typ: $funcType([$Int, $Int], [], false)}];
+	ptrType.methods = [{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "A", name: "A", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "B", name: "B", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "DoSwap", name: "DoSwap", pkg: "", typ: $funcType([], [$Bool], false)}];
 	BubbleSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
 	InsertionSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
-	TopDownMergeSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
 	QuickSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
 	SelectionSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
-	Sorter.init([{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}]);
-	BasicSort.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: visualizer.Stepper, tag: ""}]);
+	BasicSort.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: visualizer.Stepper, tag: ""}]);
+	Step.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", [{prop: "a", name: "a", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "b", name: "b", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "doSwap", name: "doSwap", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "next", name: "next", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "last", name: "last", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "current", name: "current", anonymous: false, exported: false, typ: ptrType, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		$r = visualizer.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = sorting.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = visualizer.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.$init = $init;
+	return $pkg;
+})();
+$packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort"] = (function() {
+	var $pkg = {}, $init, sorting, visualizer, TopDownMergeSort, IntSlice, Step, ptrType, sliceType, ptrType$1, ptrType$2, NewFirstStep, NewTopDownMergeSort;
+	sorting = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting"];
+	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
+	TopDownMergeSort = $pkg.TopDownMergeSort = $newType(0, $kindStruct, "mergesort.TopDownMergeSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", true, function(steps_, from_, to_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.steps = $ifaceNil;
+			this.from = "";
+			this.to = "";
+			return;
+		}
+		this.steps = steps_;
+		this.from = from_;
+		this.to = to_;
+	});
+	IntSlice = $pkg.IntSlice = $newType(0, $kindStruct, "mergesort.IntSlice", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", true, function(nums_, name_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.nums = sliceType.nil;
+			this.name = "";
+			return;
+		}
+		this.nums = nums_;
+		this.name = name_;
+	});
+	Step = $pkg.Step = $newType(0, $kindStruct, "mergesort.Step", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", true, function(IBegin_, IMid_, IEnd_, K_, I_, J_, From_, To_, Assign_, isFirst_, isSplit_, isAssign_, next_, last_, current_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.IBegin = 0;
+			this.IMid = 0;
+			this.IEnd = 0;
+			this.K = 0;
+			this.I = 0;
+			this.J = 0;
+			this.From = "";
+			this.To = "";
+			this.Assign = "";
+			this.isFirst = false;
+			this.isSplit = false;
+			this.isAssign = false;
+			this.next = ptrType.nil;
+			this.last = ptrType.nil;
+			this.current = ptrType.nil;
+			return;
+		}
+		this.IBegin = IBegin_;
+		this.IMid = IMid_;
+		this.IEnd = IEnd_;
+		this.K = K_;
+		this.I = I_;
+		this.J = J_;
+		this.From = From_;
+		this.To = To_;
+		this.Assign = Assign_;
+		this.isFirst = isFirst_;
+		this.isSplit = isSplit_;
+		this.isAssign = isAssign_;
+		this.next = next_;
+		this.last = last_;
+		this.current = current_;
+	});
+	ptrType = $ptrType(Step);
+	sliceType = $sliceType($Int);
+	ptrType$1 = $ptrType(IntSlice);
+	ptrType$2 = $ptrType(TopDownMergeSort);
+	NewFirstStep = function() {
+		var s;
+		s = new Step.ptr(0, 0, 0, 0, 0, 0, "", "", "", false, false, false, ptrType.nil, ptrType.nil, ptrType.nil);
+		s.last = s;
+		s.current = s;
+		return s;
+	};
+	$pkg.NewFirstStep = NewFirstStep;
+	NewTopDownMergeSort = function() {
+		var m;
+		m = new TopDownMergeSort.ptr($ifaceNil, "", "");
+		m.from = "b";
+		m.to = "a";
+		m.steps = NewFirstStep();
+		return m;
+	};
+	$pkg.NewTopDownMergeSort = NewTopDownMergeSort;
+	TopDownMergeSort.ptr.prototype.Steps = function() {
+		var m;
+		m = this;
+		return m.steps;
+	};
+	TopDownMergeSort.prototype.Steps = function() { return this.$val.Steps(); };
+	TopDownMergeSort.ptr.prototype.Sort = function(nums) {
+		var from, m, nums, numsB, to, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; from = $f.from; m = $f.m; nums = $f.nums; numsB = $f.numsB; to = $f.to; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		m = this;
+		numsB = $makeSlice(sliceType, nums.$length);
+		$copySlice(numsB, nums);
+		from = new IntSlice.ptr(nums, "a");
+		to = new IntSlice.ptr(numsB, "b");
+		$r = m.start(0, nums.$length); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = m.topDownSplitMerge(to, from, 0, nums.$length); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.Sort }; } $f.from = from; $f.m = m; $f.nums = nums; $f.numsB = numsB; $f.to = to; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	TopDownMergeSort.prototype.Sort = function(nums) { return this.$val.Sort(nums); };
+	TopDownMergeSort.ptr.prototype.topDownSplitMerge = function(mergeFrom, mergeTo, iBegin, iEnd) {
+		var _q, iBegin, iEnd, iMid, m, mergeFrom, mergeTo, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _q = $f._q; iBegin = $f.iBegin; iEnd = $f.iEnd; iMid = $f.iMid; m = $f.m; mergeFrom = $f.mergeFrom; mergeTo = $f.mergeTo; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		m = this;
+		if ((iEnd - iBegin >> 0) < 2) {
+			$s = -1; return;
+		}
+		iMid = (_q = ((iBegin + iEnd >> 0)) / 2, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >> 0 : $throwRuntimeError("integer divide by zero"));
+		$r = m.split(iBegin, iEnd, mergeFrom.name, mergeTo.name); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = m.topDownSplitMerge(mergeTo, mergeFrom, iBegin, iMid); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = m.topDownSplitMerge(mergeTo, mergeFrom, iMid, iEnd); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = m.topDownMerge(mergeFrom, mergeTo, iBegin, iMid, iEnd); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.topDownSplitMerge }; } $f._q = _q; $f.iBegin = iBegin; $f.iEnd = iEnd; $f.iMid = iMid; $f.m = m; $f.mergeFrom = mergeFrom; $f.mergeTo = mergeTo; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	TopDownMergeSort.prototype.topDownSplitMerge = function(mergeFrom, mergeTo, iBegin, iEnd) { return this.$val.topDownSplitMerge(mergeFrom, mergeTo, iBegin, iEnd); };
+	TopDownMergeSort.ptr.prototype.topDownMerge = function(mergeFrom, mergeTo, iBegin, iMid, iEnd) {
+		var i, iBegin, iEnd, iMid, j, k, m, mergeFrom, mergeTo, x, x$1, x$2, x$3, x$4, x$5, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; i = $f.i; iBegin = $f.iBegin; iEnd = $f.iEnd; iMid = $f.iMid; j = $f.j; k = $f.k; m = $f.m; mergeFrom = $f.mergeFrom; mergeTo = $f.mergeTo; x = $f.x; x$1 = $f.x$1; x$2 = $f.x$2; x$3 = $f.x$3; x$4 = $f.x$4; x$5 = $f.x$5; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		m = this;
+		i = iBegin;
+		j = iMid;
+		k = iBegin;
+		/* while (true) { */ case 1:
+			/* if (!(k < iEnd)) { break; } */ if(!(k < iEnd)) { $s = 2; continue; }
+			/* */ if (i < iMid && (j >= iEnd || (x = mergeFrom.nums, ((i < 0 || i >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + i])) <= (x$1 = mergeFrom.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])))) { $s = 3; continue; }
+			/* */ $s = 4; continue;
+			/* if (i < iMid && (j >= iEnd || (x = mergeFrom.nums, ((i < 0 || i >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + i])) <= (x$1 = mergeFrom.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])))) { */ case 3:
+				(x$3 = mergeTo.nums, ((k < 0 || k >= x$3.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$3.$array[x$3.$offset + k] = (x$2 = mergeFrom.nums, ((i < 0 || i >= x$2.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$2.$array[x$2.$offset + i]))));
+				$r = m.assign(iBegin, iMid, iEnd, k, i, j, "i", mergeFrom.name, mergeTo.name); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				i = i + (1) >> 0;
+				$s = 5; continue;
+			/* } else { */ case 4:
+				(x$5 = mergeTo.nums, ((k < 0 || k >= x$5.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$5.$array[x$5.$offset + k] = (x$4 = mergeFrom.nums, ((j < 0 || j >= x$4.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$4.$array[x$4.$offset + j]))));
+				$r = m.assign(iBegin, iMid, iEnd, k, i, j, "j", mergeFrom.name, mergeTo.name); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				j = j + (1) >> 0;
+			/* } */ case 5:
+			k = k + (1) >> 0;
+		/* } */ $s = 1; continue; case 2:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.topDownMerge }; } $f.i = i; $f.iBegin = iBegin; $f.iEnd = iEnd; $f.iMid = iMid; $f.j = j; $f.k = k; $f.m = m; $f.mergeFrom = mergeFrom; $f.mergeTo = mergeTo; $f.x = x; $f.x$1 = x$1; $f.x$2 = x$2; $f.x$3 = x$3; $f.x$4 = x$4; $f.x$5 = x$5; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	TopDownMergeSort.prototype.topDownMerge = function(mergeFrom, mergeTo, iBegin, iMid, iEnd) { return this.$val.topDownMerge(mergeFrom, mergeTo, iBegin, iMid, iEnd); };
+	TopDownMergeSort.ptr.prototype.start = function(iBegin, iEnd) {
+		var iBegin, iEnd, m, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; iBegin = $f.iBegin; iEnd = $f.iEnd; m = $f.m; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		m = this;
+		s = new Step.ptr(0, 0, 0, 0, 0, 0, "", "", "", false, false, false, ptrType.nil, ptrType.nil, ptrType.nil);
+		s.IBegin = iBegin;
+		s.IEnd = iEnd;
+		s.isFirst = true;
+		s.From = m.from;
+		s.To = m.to;
+		$r = m.steps.AddStep(s); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.start }; } $f.iBegin = iBegin; $f.iEnd = iEnd; $f.m = m; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	TopDownMergeSort.prototype.start = function(iBegin, iEnd) { return this.$val.start(iBegin, iEnd); };
+	TopDownMergeSort.ptr.prototype.split = function(iBegin, iEnd, from, to) {
+		var from, iBegin, iEnd, m, s, to, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; from = $f.from; iBegin = $f.iBegin; iEnd = $f.iEnd; m = $f.m; s = $f.s; to = $f.to; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		m = this;
+		s = new Step.ptr(0, 0, 0, 0, 0, 0, "", "", "", false, false, false, ptrType.nil, ptrType.nil, ptrType.nil);
+		s.IBegin = iBegin;
+		s.IEnd = iEnd;
+		s.isSplit = true;
+		s.From = from;
+		s.To = to;
+		$r = m.steps.AddStep(s); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.split }; } $f.from = from; $f.iBegin = iBegin; $f.iEnd = iEnd; $f.m = m; $f.s = s; $f.to = to; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	TopDownMergeSort.prototype.split = function(iBegin, iEnd, from, to) { return this.$val.split(iBegin, iEnd, from, to); };
+	TopDownMergeSort.ptr.prototype.assign = function(iBegin, iMid, iEnd, k, i, j, assign, from, to) {
+		var assign, from, i, iBegin, iEnd, iMid, j, k, m, s, to, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; assign = $f.assign; from = $f.from; i = $f.i; iBegin = $f.iBegin; iEnd = $f.iEnd; iMid = $f.iMid; j = $f.j; k = $f.k; m = $f.m; s = $f.s; to = $f.to; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		m = this;
+		s = new Step.ptr(0, 0, 0, 0, 0, 0, "", "", "", false, false, false, ptrType.nil, ptrType.nil, ptrType.nil);
+		s.IBegin = iBegin;
+		s.IMid = iMid;
+		s.IEnd = iEnd;
+		s.K = k;
+		s.I = i;
+		s.J = j;
+		s.Assign = assign;
+		s.From = from;
+		s.To = to;
+		s.isAssign = true;
+		$r = m.steps.AddStep(s); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.assign }; } $f.assign = assign; $f.from = from; $f.i = i; $f.iBegin = iBegin; $f.iEnd = iEnd; $f.iMid = iMid; $f.j = j; $f.k = k; $f.m = m; $f.s = s; $f.to = to; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	TopDownMergeSort.prototype.assign = function(iBegin, iMid, iEnd, k, i, j, assign, from, to) { return this.$val.assign(iBegin, iMid, iEnd, k, i, j, assign, from, to); };
+	Step.ptr.prototype.AddStep = function(stepper) {
+		var _tuple, ok, s, step, stepper;
+		s = this;
+		_tuple = $assertType(stepper, ptrType, true);
+		step = _tuple[0];
+		ok = _tuple[1];
+		if (ok) {
+			s.last.next = step;
+			s.last = step;
+		} else {
+			console.log("Can't add step");
+		}
+	};
+	Step.prototype.AddStep = function(stepper) { return this.$val.AddStep(stepper); };
+	Step.ptr.prototype.Finished = function() {
+		var s;
+		s = this;
+		return s.current.next === ptrType.nil;
+	};
+	Step.prototype.Finished = function() { return this.$val.Finished(); };
+	Step.ptr.prototype.NextStep = function() {
+		var s;
+		s = this;
+		if (s.Finished()) {
+			return $ifaceNil;
+		}
+		s.current = s.current.next;
+		return s.current;
+	};
+	Step.prototype.NextStep = function() { return this.$val.NextStep(); };
+	Step.ptr.prototype.CurrentStep = function() {
+		var s;
+		s = this;
+		return s.current;
+	};
+	Step.prototype.CurrentStep = function() { return this.$val.CurrentStep(); };
+	Step.ptr.prototype.IsFirstStep = function() {
+		var s;
+		s = this;
+		return s.isFirst;
+	};
+	Step.prototype.IsFirstStep = function() { return this.$val.IsFirstStep(); };
+	Step.ptr.prototype.IsSplitStep = function() {
+		var s;
+		s = this;
+		return s.isSplit;
+	};
+	Step.prototype.IsSplitStep = function() { return this.$val.IsSplitStep(); };
+	Step.ptr.prototype.IsAssignStep = function() {
+		var s;
+		s = this;
+		return s.isAssign;
+	};
+	Step.prototype.IsAssignStep = function() { return this.$val.IsAssignStep(); };
+	ptrType$2.methods = [{prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "topDownSplitMerge", name: "topDownSplitMerge", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([ptrType$1, ptrType$1, $Int, $Int], [], false)}, {prop: "topDownMerge", name: "topDownMerge", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([ptrType$1, ptrType$1, $Int, $Int, $Int], [], false)}, {prop: "start", name: "start", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([$Int, $Int], [], false)}, {prop: "split", name: "split", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([$Int, $Int, $String, $String], [], false)}, {prop: "assign", name: "assign", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([$Int, $Int, $Int, $Int, $Int, $Int, $String, $String, $String], [], false)}];
+	ptrType.methods = [{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "IsFirstStep", name: "IsFirstStep", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "IsSplitStep", name: "IsSplitStep", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "IsAssignStep", name: "IsAssignStep", pkg: "", typ: $funcType([], [$Bool], false)}];
+	TopDownMergeSort.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: visualizer.Stepper, tag: ""}, {prop: "from", name: "from", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "to", name: "to", anonymous: false, exported: false, typ: $String, tag: ""}]);
+	IntSlice.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", [{prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType, tag: ""}, {prop: "name", name: "name", anonymous: false, exported: false, typ: $String, tag: ""}]);
+	Step.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", [{prop: "IBegin", name: "IBegin", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IMid", name: "IMid", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IEnd", name: "IEnd", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "K", name: "K", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "I", name: "I", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "J", name: "J", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "From", name: "From", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "To", name: "To", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "Assign", name: "Assign", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "isFirst", name: "isFirst", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "isSplit", name: "isSplit", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "isAssign", name: "isAssign", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "next", name: "next", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "last", name: "last", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "current", name: "current", anonymous: false, exported: false, typ: ptrType, tag: ""}]);
+	$init = function() {
+		$pkg.$init = function() {};
+		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		$r = sorting.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = visualizer.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.$init = $init;
@@ -10860,6 +9501,1565 @@ $packages["github.com/lei-cao/learning-cs-again/code/utils"] = (function() {
 	$pkg.$init = $init;
 	return $pkg;
 })();
+$packages["github.com/lei-cao/learning-cs-again/code/visualizer/defaults"] = (function() {
+	var $pkg = {}, $init, ColorScheme;
+	ColorScheme = $pkg.ColorScheme = $newType(0, $kindStruct, "defaults.ColorScheme", true, "github.com/lei-cao/learning-cs-again/code/visualizer/defaults", true, function(BackgroundColor_, BarColor_, AColor_, BColor_, CColor_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.BackgroundColor = "";
+			this.BarColor = "";
+			this.AColor = "";
+			this.BColor = "";
+			this.CColor = "";
+			return;
+		}
+		this.BackgroundColor = BackgroundColor_;
+		this.BarColor = BarColor_;
+		this.AColor = AColor_;
+		this.BColor = BColor_;
+		this.CColor = CColor_;
+	});
+	ColorScheme.init("", [{prop: "BackgroundColor", name: "BackgroundColor", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "BarColor", name: "BarColor", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "AColor", name: "AColor", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "BColor", name: "BColor", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "CColor", name: "CColor", anonymous: false, exported: true, typ: $String, tag: ""}]);
+	$init = function() {
+		$pkg.$init = function() {};
+		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		$pkg.DefaultColor = new ColorScheme.ptr("#012A36", "#A8A7A0", "#2AB7B7", "#0E7C7B", "#F25243");
+		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.$init = $init;
+	return $pkg;
+})();
+$packages["github.com/oskca/gopherjs-dom"] = (function() {
+	var $pkg = {}, $init, js, CSSStyleDeclaration, EventTarget, NodeType, NodeList, Node, Doc, Element, HTMLCollection, File, Event, ptrType, ptrType$1, ptrType$2, ptrType$3, ptrType$4, ptrType$5, sliceType, ptrType$6, sliceType$1, ptrType$7, funcType, ptrType$8, mapType, funcType$1, funcType$2, funcType$3, sliceType$3, funcType$4, funcType$5, funcType$6, funcType$7, funcType$8, funcType$9, funcType$10, funcType$11, funcType$12, funcType$13, funcType$14, funcType$15, funcType$16, funcType$17, funcType$18, funcType$19, ptrType$10, funcType$20, funcType$21, funcType$22, funcType$23, funcType$24, funcType$25, funcType$26, WrapEventTarget, WrapNode, WrapElement;
+	js = $packages["github.com/gopherjs/gopherjs/js"];
+	CSSStyleDeclaration = $pkg.CSSStyleDeclaration = $newType(0, $kindStruct, "dom.CSSStyleDeclaration", true, "github.com/oskca/gopherjs-dom", true, function(Object_, CssText_, Length_, ParentRule_, RemoveProperty_, GetPropertyValue_, GetPropertyPriority_, SetProperty_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Object = null;
+			this.CssText = "";
+			this.Length = 0;
+			this.ParentRule = ptrType.nil;
+			this.RemoveProperty = $throwNilPointerError;
+			this.GetPropertyValue = $throwNilPointerError;
+			this.GetPropertyPriority = $throwNilPointerError;
+			this.SetProperty = $throwNilPointerError;
+			return;
+		}
+		this.Object = Object_;
+		this.CssText = CssText_;
+		this.Length = Length_;
+		this.ParentRule = ParentRule_;
+		this.RemoveProperty = RemoveProperty_;
+		this.GetPropertyValue = GetPropertyValue_;
+		this.GetPropertyPriority = GetPropertyPriority_;
+		this.SetProperty = SetProperty_;
+	});
+	EventTarget = $pkg.EventTarget = $newType(0, $kindStruct, "dom.EventTarget", true, "github.com/oskca/gopherjs-dom", true, function(Object_, AddEventListener_, RemoveEventListener_, DispatchEvent_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Object = null;
+			this.AddEventListener = $throwNilPointerError;
+			this.RemoveEventListener = $throwNilPointerError;
+			this.DispatchEvent = $throwNilPointerError;
+			return;
+		}
+		this.Object = Object_;
+		this.AddEventListener = AddEventListener_;
+		this.RemoveEventListener = RemoveEventListener_;
+		this.DispatchEvent = DispatchEvent_;
+	});
+	NodeType = $pkg.NodeType = $newType(4, $kindInt, "dom.NodeType", true, "github.com/oskca/gopherjs-dom", true, null);
+	NodeList = $pkg.NodeList = $newType(0, $kindStruct, "dom.NodeList", true, "github.com/oskca/gopherjs-dom", true, function(Object_, Length_, Item_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Object = null;
+			this.Length = 0;
+			this.Item = $throwNilPointerError;
+			return;
+		}
+		this.Object = Object_;
+		this.Length = Length_;
+		this.Item = Item_;
+	});
+	Node = $pkg.Node = $newType(0, $kindStruct, "dom.Node", true, "github.com/oskca/gopherjs-dom", true, function(EventTarget_, BaseURI_, ChildNodes_, FirstChild_, LastChild_, LocalName_, NamespaceURI_, NextSibling_, NodeName_, NodeType_, NodeValue_, OwnerDocument_, ParentNode_, Prefix_, PreviousSibling_, TextContent_, AppendChild_, CloneNode_, CompareDocumentPosition_, HasChildNodes_, InsertBefore_, IsDefaultNamespace_, IsEqualNode_, IsSameNode_, LookupNamespaceURI_, LookupPrefix_, Normalize_, RemoveChild_, ReplaceChild_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.EventTarget = ptrType$1.nil;
+			this.BaseURI = "";
+			this.ChildNodes = ptrType$2.nil;
+			this.FirstChild = ptrType$3.nil;
+			this.LastChild = ptrType$3.nil;
+			this.LocalName = "";
+			this.NamespaceURI = "";
+			this.NextSibling = ptrType$3.nil;
+			this.NodeName = "";
+			this.NodeType = 0;
+			this.NodeValue = "";
+			this.OwnerDocument = ptrType$4.nil;
+			this.ParentNode = ptrType$3.nil;
+			this.Prefix = "";
+			this.PreviousSibling = ptrType$3.nil;
+			this.TextContent = "";
+			this.AppendChild = $throwNilPointerError;
+			this.CloneNode = $throwNilPointerError;
+			this.CompareDocumentPosition = $throwNilPointerError;
+			this.HasChildNodes = $throwNilPointerError;
+			this.InsertBefore = $throwNilPointerError;
+			this.IsDefaultNamespace = $throwNilPointerError;
+			this.IsEqualNode = $throwNilPointerError;
+			this.IsSameNode = $throwNilPointerError;
+			this.LookupNamespaceURI = $throwNilPointerError;
+			this.LookupPrefix = $throwNilPointerError;
+			this.Normalize = $throwNilPointerError;
+			this.RemoveChild = $throwNilPointerError;
+			this.ReplaceChild = $throwNilPointerError;
+			return;
+		}
+		this.EventTarget = EventTarget_;
+		this.BaseURI = BaseURI_;
+		this.ChildNodes = ChildNodes_;
+		this.FirstChild = FirstChild_;
+		this.LastChild = LastChild_;
+		this.LocalName = LocalName_;
+		this.NamespaceURI = NamespaceURI_;
+		this.NextSibling = NextSibling_;
+		this.NodeName = NodeName_;
+		this.NodeType = NodeType_;
+		this.NodeValue = NodeValue_;
+		this.OwnerDocument = OwnerDocument_;
+		this.ParentNode = ParentNode_;
+		this.Prefix = Prefix_;
+		this.PreviousSibling = PreviousSibling_;
+		this.TextContent = TextContent_;
+		this.AppendChild = AppendChild_;
+		this.CloneNode = CloneNode_;
+		this.CompareDocumentPosition = CompareDocumentPosition_;
+		this.HasChildNodes = HasChildNodes_;
+		this.InsertBefore = InsertBefore_;
+		this.IsDefaultNamespace = IsDefaultNamespace_;
+		this.IsEqualNode = IsEqualNode_;
+		this.IsSameNode = IsSameNode_;
+		this.LookupNamespaceURI = LookupNamespaceURI_;
+		this.LookupPrefix = LookupPrefix_;
+		this.Normalize = Normalize_;
+		this.RemoveChild = RemoveChild_;
+		this.ReplaceChild = ReplaceChild_;
+	});
+	Doc = $pkg.Doc = $newType(0, $kindStruct, "dom.Doc", true, "github.com/oskca/gopherjs-dom", true, function(Node_, CharacterSet_, Async_, Doctype_, DocumentElement_, DocumentURI_, Implementation_, AdoptNode_, CreateComment_, CreateElement_, CreateElementNS_, CreateEvent_, CreateTextNode_, GetElementById_, GetElementsByTagName_, GetElementsByTagNameNS_, ImportNode_, QuerySelector_, QuerySelectorAll_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Node = ptrType$3.nil;
+			this.CharacterSet = "";
+			this.Async = false;
+			this.Doctype = null;
+			this.DocumentElement = ptrType$5.nil;
+			this.DocumentURI = "";
+			this.Implementation = null;
+			this.AdoptNode = $throwNilPointerError;
+			this.CreateComment = $throwNilPointerError;
+			this.CreateElement = $throwNilPointerError;
+			this.CreateElementNS = $throwNilPointerError;
+			this.CreateEvent = $throwNilPointerError;
+			this.CreateTextNode = $throwNilPointerError;
+			this.GetElementById = $throwNilPointerError;
+			this.GetElementsByTagName = $throwNilPointerError;
+			this.GetElementsByTagNameNS = $throwNilPointerError;
+			this.ImportNode = $throwNilPointerError;
+			this.QuerySelector = $throwNilPointerError;
+			this.QuerySelectorAll = $throwNilPointerError;
+			return;
+		}
+		this.Node = Node_;
+		this.CharacterSet = CharacterSet_;
+		this.Async = Async_;
+		this.Doctype = Doctype_;
+		this.DocumentElement = DocumentElement_;
+		this.DocumentURI = DocumentURI_;
+		this.Implementation = Implementation_;
+		this.AdoptNode = AdoptNode_;
+		this.CreateComment = CreateComment_;
+		this.CreateElement = CreateElement_;
+		this.CreateElementNS = CreateElementNS_;
+		this.CreateEvent = CreateEvent_;
+		this.CreateTextNode = CreateTextNode_;
+		this.GetElementById = GetElementById_;
+		this.GetElementsByTagName = GetElementsByTagName_;
+		this.GetElementsByTagNameNS = GetElementsByTagNameNS_;
+		this.ImportNode = ImportNode_;
+		this.QuerySelector = QuerySelector_;
+		this.QuerySelectorAll = QuerySelectorAll_;
+	});
+	Element = $pkg.Element = $newType(0, $kindStruct, "dom.Element", true, "github.com/oskca/gopherjs-dom", true, function(Node_, Id_, InnerHTML_, InnerText_, TagName_, ContentEditable_, Width_, Height_, InnerWidth_, InnerHeight_, PreviousElementSibling_, NextElementSibling_, FirstElementChild_, LastElementChild_, Src_, Style_, ClassName_, ClassList_, SetAttribute_, GetAttribute_, RemoveAttribute_, AppendChild_, RemoveChild_, Remove_, QuerySelector_, QuerySelectorAll_, Click_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Node = ptrType$3.nil;
+			this.Id = "";
+			this.InnerHTML = "";
+			this.InnerText = "";
+			this.TagName = "";
+			this.ContentEditable = false;
+			this.Width = 0;
+			this.Height = 0;
+			this.InnerWidth = 0;
+			this.InnerHeight = 0;
+			this.PreviousElementSibling = ptrType$5.nil;
+			this.NextElementSibling = ptrType$5.nil;
+			this.FirstElementChild = ptrType$5.nil;
+			this.LastElementChild = ptrType$5.nil;
+			this.Src = "";
+			this.Style = ptrType.nil;
+			this.ClassName = "";
+			this.ClassList = sliceType.nil;
+			this.SetAttribute = $throwNilPointerError;
+			this.GetAttribute = $throwNilPointerError;
+			this.RemoveAttribute = $throwNilPointerError;
+			this.AppendChild = $throwNilPointerError;
+			this.RemoveChild = $throwNilPointerError;
+			this.Remove = $throwNilPointerError;
+			this.QuerySelector = $throwNilPointerError;
+			this.QuerySelectorAll = $throwNilPointerError;
+			this.Click = $throwNilPointerError;
+			return;
+		}
+		this.Node = Node_;
+		this.Id = Id_;
+		this.InnerHTML = InnerHTML_;
+		this.InnerText = InnerText_;
+		this.TagName = TagName_;
+		this.ContentEditable = ContentEditable_;
+		this.Width = Width_;
+		this.Height = Height_;
+		this.InnerWidth = InnerWidth_;
+		this.InnerHeight = InnerHeight_;
+		this.PreviousElementSibling = PreviousElementSibling_;
+		this.NextElementSibling = NextElementSibling_;
+		this.FirstElementChild = FirstElementChild_;
+		this.LastElementChild = LastElementChild_;
+		this.Src = Src_;
+		this.Style = Style_;
+		this.ClassName = ClassName_;
+		this.ClassList = ClassList_;
+		this.SetAttribute = SetAttribute_;
+		this.GetAttribute = GetAttribute_;
+		this.RemoveAttribute = RemoveAttribute_;
+		this.AppendChild = AppendChild_;
+		this.RemoveChild = RemoveChild_;
+		this.Remove = Remove_;
+		this.QuerySelector = QuerySelector_;
+		this.QuerySelectorAll = QuerySelectorAll_;
+		this.Click = Click_;
+	});
+	HTMLCollection = $pkg.HTMLCollection = $newType(0, $kindStruct, "dom.HTMLCollection", true, "github.com/oskca/gopherjs-dom", true, function(Object_, Length_, Item_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Object = null;
+			this.Length = 0;
+			this.Item = $throwNilPointerError;
+			return;
+		}
+		this.Object = Object_;
+		this.Length = Length_;
+		this.Item = Item_;
+	});
+	File = $pkg.File = $newType(0, $kindStruct, "dom.File", true, "github.com/oskca/gopherjs-dom", true, function(Object_, LastModifiledData_, Name_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Object = null;
+			this.LastModifiledData = null;
+			this.Name = "";
+			return;
+		}
+		this.Object = Object_;
+		this.LastModifiledData = LastModifiledData_;
+		this.Name = Name_;
+	});
+	Event = $pkg.Event = $newType(0, $kindStruct, "dom.Event", true, "github.com/oskca/gopherjs-dom", true, function(Object_, Type_, Code_, Reason_, WasClean_, DeltaX_, DeltaY_, DeltaZ_, DeltaMode_, AltKey_, CharCode_, CtrlKey_, Key_, KeyIdentifier_, KeyCode_, Locale_, Location_, KeyLocation_, MetaKey_, Repeat_, ShiftKey_, Button_, ClientX_, ClientY_, MovementX_, MovementY_, ScreenX_, ScreenY_, LayerX_, LayerY_, Data_, Bubbles_, Cancelable_, CurrentTarget_, DefaultPrevented_, EventPhase_, Target_, Timestamp_, PreventDefault_, StopImmediatePropagation_, StopPropagation_, GetModifierState_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Object = null;
+			this.Type = "";
+			this.Code = 0;
+			this.Reason = "";
+			this.WasClean = false;
+			this.DeltaX = 0;
+			this.DeltaY = 0;
+			this.DeltaZ = 0;
+			this.DeltaMode = 0;
+			this.AltKey = false;
+			this.CharCode = 0;
+			this.CtrlKey = false;
+			this.Key = "";
+			this.KeyIdentifier = "";
+			this.KeyCode = 0;
+			this.Locale = "";
+			this.Location = 0;
+			this.KeyLocation = 0;
+			this.MetaKey = false;
+			this.Repeat = false;
+			this.ShiftKey = false;
+			this.Button = 0;
+			this.ClientX = 0;
+			this.ClientY = 0;
+			this.MovementX = 0;
+			this.MovementY = 0;
+			this.ScreenX = 0;
+			this.ScreenY = 0;
+			this.LayerX = 0;
+			this.LayerY = 0;
+			this.Data = null;
+			this.Bubbles = false;
+			this.Cancelable = false;
+			this.CurrentTarget = ptrType$5.nil;
+			this.DefaultPrevented = false;
+			this.EventPhase = 0;
+			this.Target = ptrType$5.nil;
+			this.Timestamp = 0;
+			this.PreventDefault = $throwNilPointerError;
+			this.StopImmediatePropagation = $throwNilPointerError;
+			this.StopPropagation = $throwNilPointerError;
+			this.GetModifierState = $throwNilPointerError;
+			return;
+		}
+		this.Object = Object_;
+		this.Type = Type_;
+		this.Code = Code_;
+		this.Reason = Reason_;
+		this.WasClean = WasClean_;
+		this.DeltaX = DeltaX_;
+		this.DeltaY = DeltaY_;
+		this.DeltaZ = DeltaZ_;
+		this.DeltaMode = DeltaMode_;
+		this.AltKey = AltKey_;
+		this.CharCode = CharCode_;
+		this.CtrlKey = CtrlKey_;
+		this.Key = Key_;
+		this.KeyIdentifier = KeyIdentifier_;
+		this.KeyCode = KeyCode_;
+		this.Locale = Locale_;
+		this.Location = Location_;
+		this.KeyLocation = KeyLocation_;
+		this.MetaKey = MetaKey_;
+		this.Repeat = Repeat_;
+		this.ShiftKey = ShiftKey_;
+		this.Button = Button_;
+		this.ClientX = ClientX_;
+		this.ClientY = ClientY_;
+		this.MovementX = MovementX_;
+		this.MovementY = MovementY_;
+		this.ScreenX = ScreenX_;
+		this.ScreenY = ScreenY_;
+		this.LayerX = LayerX_;
+		this.LayerY = LayerY_;
+		this.Data = Data_;
+		this.Bubbles = Bubbles_;
+		this.Cancelable = Cancelable_;
+		this.CurrentTarget = CurrentTarget_;
+		this.DefaultPrevented = DefaultPrevented_;
+		this.EventPhase = EventPhase_;
+		this.Target = Target_;
+		this.Timestamp = Timestamp_;
+		this.PreventDefault = PreventDefault_;
+		this.StopImmediatePropagation = StopImmediatePropagation_;
+		this.StopPropagation = StopPropagation_;
+		this.GetModifierState = GetModifierState_;
+	});
+	ptrType = $ptrType(CSSStyleDeclaration);
+	ptrType$1 = $ptrType(EventTarget);
+	ptrType$2 = $ptrType(NodeList);
+	ptrType$3 = $ptrType(Node);
+	ptrType$4 = $ptrType(Doc);
+	ptrType$5 = $ptrType(Element);
+	sliceType = $sliceType($String);
+	ptrType$6 = $ptrType(File);
+	sliceType$1 = $sliceType(ptrType$6);
+	ptrType$7 = $ptrType(Event);
+	funcType = $funcType([ptrType$7], [], false);
+	ptrType$8 = $ptrType(js.Object);
+	mapType = $mapType($String, $String);
+	funcType$1 = $funcType([$String], [], false);
+	funcType$2 = $funcType([$String], [$String], false);
+	funcType$3 = $funcType([$String, $String, sliceType], [], true);
+	sliceType$3 = $sliceType($Bool);
+	funcType$4 = $funcType([$String, funcType, sliceType$3], [], true);
+	funcType$5 = $funcType([$Int], [Node], false);
+	funcType$6 = $funcType([ptrType$3], [], false);
+	funcType$7 = $funcType([], [ptrType$3], false);
+	funcType$8 = $funcType([ptrType$3], [$Int], false);
+	funcType$9 = $funcType([], [$Bool], false);
+	funcType$10 = $funcType([ptrType$3, ptrType$3], [], false);
+	funcType$11 = $funcType([$String], [$Bool], false);
+	funcType$12 = $funcType([ptrType$3], [$Bool], false);
+	funcType$13 = $funcType([], [$String], false);
+	funcType$14 = $funcType([], [], false);
+	funcType$15 = $funcType([ptrType$3], [ptrType$3], false);
+	funcType$16 = $funcType([$String], [ptrType$3], false);
+	funcType$17 = $funcType([$String], [ptrType$5], false);
+	funcType$18 = $funcType([$String, $String], [ptrType$5], false);
+	funcType$19 = $funcType([$String], [ptrType$7], false);
+	ptrType$10 = $ptrType(HTMLCollection);
+	funcType$20 = $funcType([$String], [ptrType$10], false);
+	funcType$21 = $funcType([$String, $String], [ptrType$10], false);
+	funcType$22 = $funcType([ptrType$3, $Bool], [ptrType$3], false);
+	funcType$23 = $funcType([$String, $emptyInterface], [], false);
+	funcType$24 = $funcType([$String], [ptrType$8], false);
+	funcType$25 = $funcType([ptrType$5], [], false);
+	funcType$26 = $funcType([$Int], [ptrType$5], false);
+	CSSStyleDeclaration.ptr.prototype.ToMap = function() {
+		var N, _key, css, i, m, name, value;
+		css = this;
+		m = {};
+		N = $parseInt(css.Object.length) >> 0;
+		i = 0;
+		while (true) {
+			if (!(i < N)) { break; }
+			name = $internalize(css.Object.index(i), $String);
+			value = $internalize(css.Object.getPropertyValue(), $String);
+			_key = name; (m || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key)] = { k: _key, v: value };
+			i = i + (1) >> 0;
+		}
+		return m;
+	};
+	CSSStyleDeclaration.prototype.ToMap = function() { return this.$val.ToMap(); };
+	WrapEventTarget = function(t) {
+		var t;
+		return new EventTarget.ptr(t, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError);
+	};
+	$pkg.WrapEventTarget = WrapEventTarget;
+	WrapNode = function(n) {
+		var n;
+		return new Node.ptr(WrapEventTarget(n), "", ptrType$2.nil, ptrType$3.nil, ptrType$3.nil, "", "", ptrType$3.nil, "", 0, "", ptrType$4.nil, ptrType$3.nil, "", ptrType$3.nil, "", $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError);
+	};
+	$pkg.WrapNode = WrapNode;
+	WrapElement = function(el) {
+		var el;
+		if (el === undefined || el === null) {
+			return ptrType$5.nil;
+		}
+		return new Element.ptr(WrapNode(el), "", "", "", "", false, 0, 0, 0, 0, ptrType$5.nil, ptrType$5.nil, ptrType$5.nil, ptrType$5.nil, "", ptrType.nil, "", sliceType.nil, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError);
+	};
+	$pkg.WrapElement = WrapElement;
+	Element.ptr.prototype.Files = function() {
+		var _i, _ref, e, files, i, out;
+		e = this;
+		files = e.Node.EventTarget.Object.files;
+		out = $makeSlice(sliceType$1, ($parseInt(files.length) >> 0));
+		_ref = out;
+		_i = 0;
+		while (true) {
+			if (!(_i < _ref.$length)) { break; }
+			i = _i;
+			((i < 0 || i >= out.$length) ? ($throwRuntimeError("index out of range"), undefined) : out.$array[out.$offset + i] = new File.ptr(files.item(i), null, ""));
+			_i++;
+		}
+		return out;
+	};
+	Element.prototype.Files = function() { return this.$val.Files(); };
+	ptrType.methods = [{prop: "ToMap", name: "ToMap", pkg: "", typ: $funcType([], [mapType], false)}];
+	ptrType$5.methods = [{prop: "Files", name: "Files", pkg: "", typ: $funcType([], [sliceType$1], false)}];
+	CSSStyleDeclaration.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$8, tag: ""}, {prop: "CssText", name: "CssText", anonymous: false, exported: true, typ: $String, tag: "js:\"cssText\""}, {prop: "Length", name: "Length", anonymous: false, exported: true, typ: $Int, tag: "js:\"length\""}, {prop: "ParentRule", name: "ParentRule", anonymous: false, exported: true, typ: ptrType, tag: "js:\"parentRule\""}, {prop: "RemoveProperty", name: "RemoveProperty", anonymous: false, exported: true, typ: funcType$1, tag: "js:\"removeProperty\""}, {prop: "GetPropertyValue", name: "GetPropertyValue", anonymous: false, exported: true, typ: funcType$2, tag: "js:\"getPropertyValue\""}, {prop: "GetPropertyPriority", name: "GetPropertyPriority", anonymous: false, exported: true, typ: funcType$2, tag: "js:\"getPropertyPriority\""}, {prop: "SetProperty", name: "SetProperty", anonymous: false, exported: true, typ: funcType$3, tag: "js:\"setProperty\""}]);
+	EventTarget.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$8, tag: ""}, {prop: "AddEventListener", name: "AddEventListener", anonymous: false, exported: true, typ: funcType$4, tag: "js:\"addEventListener\""}, {prop: "RemoveEventListener", name: "RemoveEventListener", anonymous: false, exported: true, typ: funcType$4, tag: "js:\"removeEventListener\""}, {prop: "DispatchEvent", name: "DispatchEvent", anonymous: false, exported: true, typ: funcType, tag: "js:\"dispatchEvent\""}]);
+	NodeList.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$8, tag: ""}, {prop: "Length", name: "Length", anonymous: false, exported: true, typ: $Int, tag: "js:\"length\""}, {prop: "Item", name: "Item", anonymous: false, exported: true, typ: funcType$5, tag: "js:\"item\""}]);
+	Node.init("", [{prop: "EventTarget", name: "EventTarget", anonymous: true, exported: true, typ: ptrType$1, tag: ""}, {prop: "BaseURI", name: "BaseURI", anonymous: false, exported: true, typ: $String, tag: "js:\"baseURI\""}, {prop: "ChildNodes", name: "ChildNodes", anonymous: false, exported: true, typ: ptrType$2, tag: "js:\"childNodes\""}, {prop: "FirstChild", name: "FirstChild", anonymous: false, exported: true, typ: ptrType$3, tag: "js:\"firstChild\""}, {prop: "LastChild", name: "LastChild", anonymous: false, exported: true, typ: ptrType$3, tag: "js:\"lastChild\""}, {prop: "LocalName", name: "LocalName", anonymous: false, exported: true, typ: $String, tag: "js:\"localName\""}, {prop: "NamespaceURI", name: "NamespaceURI", anonymous: false, exported: true, typ: $String, tag: "js:\"namespaceURI\""}, {prop: "NextSibling", name: "NextSibling", anonymous: false, exported: true, typ: ptrType$3, tag: "js:\"nextSibling\""}, {prop: "NodeName", name: "NodeName", anonymous: false, exported: true, typ: $String, tag: "js:\"nodeName\""}, {prop: "NodeType", name: "NodeType", anonymous: false, exported: true, typ: NodeType, tag: "js:\"nodeType\""}, {prop: "NodeValue", name: "NodeValue", anonymous: false, exported: true, typ: $String, tag: "js:\"nodeValue\""}, {prop: "OwnerDocument", name: "OwnerDocument", anonymous: false, exported: true, typ: ptrType$4, tag: "js:\"ownerDocument\""}, {prop: "ParentNode", name: "ParentNode", anonymous: false, exported: true, typ: ptrType$3, tag: "js:\"parentNode\""}, {prop: "Prefix", name: "Prefix", anonymous: false, exported: true, typ: $String, tag: "js:\"prefix\""}, {prop: "PreviousSibling", name: "PreviousSibling", anonymous: false, exported: true, typ: ptrType$3, tag: "js:\"previousSibling\""}, {prop: "TextContent", name: "TextContent", anonymous: false, exported: true, typ: $String, tag: "js:\"textContent\""}, {prop: "AppendChild", name: "AppendChild", anonymous: false, exported: true, typ: funcType$6, tag: "js:\"appendChild\""}, {prop: "CloneNode", name: "CloneNode", anonymous: false, exported: true, typ: funcType$7, tag: "js:\"cloneNode\""}, {prop: "CompareDocumentPosition", name: "CompareDocumentPosition", anonymous: false, exported: true, typ: funcType$8, tag: "js:\"compareDocumentPosition\""}, {prop: "HasChildNodes", name: "HasChildNodes", anonymous: false, exported: true, typ: funcType$9, tag: "js:\"hasChildNodes\""}, {prop: "InsertBefore", name: "InsertBefore", anonymous: false, exported: true, typ: funcType$10, tag: "js:\"insertBefore\""}, {prop: "IsDefaultNamespace", name: "IsDefaultNamespace", anonymous: false, exported: true, typ: funcType$11, tag: "js:\"isDefaultNamespace\""}, {prop: "IsEqualNode", name: "IsEqualNode", anonymous: false, exported: true, typ: funcType$12, tag: "js:\"isEqualNode\""}, {prop: "IsSameNode", name: "IsSameNode", anonymous: false, exported: true, typ: funcType$12, tag: "js:\"isSameNode\""}, {prop: "LookupNamespaceURI", name: "LookupNamespaceURI", anonymous: false, exported: true, typ: funcType$2, tag: "js:\"lookupNamespaceURI\""}, {prop: "LookupPrefix", name: "LookupPrefix", anonymous: false, exported: true, typ: funcType$13, tag: "js:\"lookupPrefix\""}, {prop: "Normalize", name: "Normalize", anonymous: false, exported: true, typ: funcType$14, tag: "js:\"normalize\""}, {prop: "RemoveChild", name: "RemoveChild", anonymous: false, exported: true, typ: funcType$6, tag: "js:\"removeChild\""}, {prop: "ReplaceChild", name: "ReplaceChild", anonymous: false, exported: true, typ: funcType$10, tag: "js:\"replaceChild\""}]);
+	Doc.init("", [{prop: "Node", name: "Node", anonymous: true, exported: true, typ: ptrType$3, tag: ""}, {prop: "CharacterSet", name: "CharacterSet", anonymous: false, exported: true, typ: $String, tag: "js:\"characterSet\""}, {prop: "Async", name: "Async", anonymous: false, exported: true, typ: $Bool, tag: "js:\"async\""}, {prop: "Doctype", name: "Doctype", anonymous: false, exported: true, typ: ptrType$8, tag: "js:\"doctype\""}, {prop: "DocumentElement", name: "DocumentElement", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"documentElement\""}, {prop: "DocumentURI", name: "DocumentURI", anonymous: false, exported: true, typ: $String, tag: "js:\"documentURI\""}, {prop: "Implementation", name: "Implementation", anonymous: false, exported: true, typ: ptrType$8, tag: "js:\"implementation\""}, {prop: "AdoptNode", name: "AdoptNode", anonymous: false, exported: true, typ: funcType$15, tag: "js:\"adoptNode\""}, {prop: "CreateComment", name: "CreateComment", anonymous: false, exported: true, typ: funcType$16, tag: "js:\"createComment\""}, {prop: "CreateElement", name: "CreateElement", anonymous: false, exported: true, typ: funcType$17, tag: "js:\"createElement\""}, {prop: "CreateElementNS", name: "CreateElementNS", anonymous: false, exported: true, typ: funcType$18, tag: "js:\"createElementNS\""}, {prop: "CreateEvent", name: "CreateEvent", anonymous: false, exported: true, typ: funcType$19, tag: "js:\"createEvent\""}, {prop: "CreateTextNode", name: "CreateTextNode", anonymous: false, exported: true, typ: funcType$16, tag: "js:\"createTextNode\""}, {prop: "GetElementById", name: "GetElementById", anonymous: false, exported: true, typ: funcType$17, tag: "js:\"getElementById\""}, {prop: "GetElementsByTagName", name: "GetElementsByTagName", anonymous: false, exported: true, typ: funcType$20, tag: "js:\"getElementsByTagName\""}, {prop: "GetElementsByTagNameNS", name: "GetElementsByTagNameNS", anonymous: false, exported: true, typ: funcType$21, tag: "js:\"getElementsByTagNameNS\""}, {prop: "ImportNode", name: "ImportNode", anonymous: false, exported: true, typ: funcType$22, tag: "js:\"importNode\""}, {prop: "QuerySelector", name: "QuerySelector", anonymous: false, exported: true, typ: funcType$17, tag: "js:\"querySelector\""}, {prop: "QuerySelectorAll", name: "QuerySelectorAll", anonymous: false, exported: true, typ: funcType$20, tag: "js:\"querySelectorAll\""}]);
+	Element.init("", [{prop: "Node", name: "Node", anonymous: true, exported: true, typ: ptrType$3, tag: ""}, {prop: "Id", name: "Id", anonymous: false, exported: true, typ: $String, tag: "js:\"id\""}, {prop: "InnerHTML", name: "InnerHTML", anonymous: false, exported: true, typ: $String, tag: "js:\"innerHTML\""}, {prop: "InnerText", name: "InnerText", anonymous: false, exported: true, typ: $String, tag: "js:\"innerText\""}, {prop: "TagName", name: "TagName", anonymous: false, exported: true, typ: $String, tag: "js:\"tagName\""}, {prop: "ContentEditable", name: "ContentEditable", anonymous: false, exported: true, typ: $Bool, tag: "js:\"contentEditable\""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Int, tag: "js:\"width\""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Int, tag: "js:\"height\""}, {prop: "InnerWidth", name: "InnerWidth", anonymous: false, exported: true, typ: $Int, tag: "js:\"innerWidth\""}, {prop: "InnerHeight", name: "InnerHeight", anonymous: false, exported: true, typ: $Int, tag: "js:\"innerHeight\""}, {prop: "PreviousElementSibling", name: "PreviousElementSibling", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"previousElementSibling\""}, {prop: "NextElementSibling", name: "NextElementSibling", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"nextElementSibling\""}, {prop: "FirstElementChild", name: "FirstElementChild", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"firstElementChild\""}, {prop: "LastElementChild", name: "LastElementChild", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"lastElementChild\""}, {prop: "Src", name: "Src", anonymous: false, exported: true, typ: $String, tag: "js:\"src\""}, {prop: "Style", name: "Style", anonymous: false, exported: true, typ: ptrType, tag: "js:\"style\""}, {prop: "ClassName", name: "ClassName", anonymous: false, exported: true, typ: $String, tag: "js:\"className\""}, {prop: "ClassList", name: "ClassList", anonymous: false, exported: true, typ: sliceType, tag: "js:\"classList\""}, {prop: "SetAttribute", name: "SetAttribute", anonymous: false, exported: true, typ: funcType$23, tag: "js:\"setAttribute\""}, {prop: "GetAttribute", name: "GetAttribute", anonymous: false, exported: true, typ: funcType$24, tag: "js:\"getAttribute\""}, {prop: "RemoveAttribute", name: "RemoveAttribute", anonymous: false, exported: true, typ: funcType$1, tag: "js:\"removeAttribute\""}, {prop: "AppendChild", name: "AppendChild", anonymous: false, exported: true, typ: funcType$25, tag: "js:\"appendChild\""}, {prop: "RemoveChild", name: "RemoveChild", anonymous: false, exported: true, typ: funcType$25, tag: "js:\"removeChild\""}, {prop: "Remove", name: "Remove", anonymous: false, exported: true, typ: funcType$14, tag: "js:\"remove\""}, {prop: "QuerySelector", name: "QuerySelector", anonymous: false, exported: true, typ: funcType$17, tag: "js:\"querySelector\""}, {prop: "QuerySelectorAll", name: "QuerySelectorAll", anonymous: false, exported: true, typ: funcType$20, tag: "js:\"querySelectorAll\""}, {prop: "Click", name: "Click", anonymous: false, exported: true, typ: funcType$14, tag: "js:\"click\""}]);
+	HTMLCollection.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$8, tag: ""}, {prop: "Length", name: "Length", anonymous: false, exported: true, typ: $Int, tag: "js:\"length\""}, {prop: "Item", name: "Item", anonymous: false, exported: true, typ: funcType$26, tag: "js:\"item\""}]);
+	File.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$8, tag: ""}, {prop: "LastModifiledData", name: "LastModifiledData", anonymous: false, exported: true, typ: ptrType$8, tag: "js:\"lastModifiedDate\""}, {prop: "Name", name: "Name", anonymous: false, exported: true, typ: $String, tag: "js:\"name\""}]);
+	Event.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$8, tag: ""}, {prop: "Type", name: "Type", anonymous: false, exported: true, typ: $String, tag: "js:\"type\""}, {prop: "Code", name: "Code", anonymous: false, exported: true, typ: $Int, tag: "js:\"code\""}, {prop: "Reason", name: "Reason", anonymous: false, exported: true, typ: $String, tag: "js:\"reason\""}, {prop: "WasClean", name: "WasClean", anonymous: false, exported: true, typ: $Bool, tag: "js:\"wasClean\""}, {prop: "DeltaX", name: "DeltaX", anonymous: false, exported: true, typ: $Float64, tag: "js:\"deltaX\""}, {prop: "DeltaY", name: "DeltaY", anonymous: false, exported: true, typ: $Float64, tag: "js:\"deltaY\""}, {prop: "DeltaZ", name: "DeltaZ", anonymous: false, exported: true, typ: $Float64, tag: "js:\"deltaZ\""}, {prop: "DeltaMode", name: "DeltaMode", anonymous: false, exported: true, typ: $Int, tag: "js:\"deltaMode\""}, {prop: "AltKey", name: "AltKey", anonymous: false, exported: true, typ: $Bool, tag: "js:\"altKey\""}, {prop: "CharCode", name: "CharCode", anonymous: false, exported: true, typ: $Int, tag: "js:\"charCode\""}, {prop: "CtrlKey", name: "CtrlKey", anonymous: false, exported: true, typ: $Bool, tag: "js:\"ctrlKey\""}, {prop: "Key", name: "Key", anonymous: false, exported: true, typ: $String, tag: "js:\"key\""}, {prop: "KeyIdentifier", name: "KeyIdentifier", anonymous: false, exported: true, typ: $String, tag: "js:\"keyIdentifier\""}, {prop: "KeyCode", name: "KeyCode", anonymous: false, exported: true, typ: $Int, tag: "js:\"keyCode\""}, {prop: "Locale", name: "Locale", anonymous: false, exported: true, typ: $String, tag: "js:\"locale\""}, {prop: "Location", name: "Location", anonymous: false, exported: true, typ: $Int, tag: "js:\"location\""}, {prop: "KeyLocation", name: "KeyLocation", anonymous: false, exported: true, typ: $Int, tag: "js:\"keyLocation\""}, {prop: "MetaKey", name: "MetaKey", anonymous: false, exported: true, typ: $Bool, tag: "js:\"metaKey\""}, {prop: "Repeat", name: "Repeat", anonymous: false, exported: true, typ: $Bool, tag: "js:\"repeat\""}, {prop: "ShiftKey", name: "ShiftKey", anonymous: false, exported: true, typ: $Bool, tag: "js:\"shiftKey\""}, {prop: "Button", name: "Button", anonymous: false, exported: true, typ: $Int, tag: "js:\"button\""}, {prop: "ClientX", name: "ClientX", anonymous: false, exported: true, typ: $Int, tag: "js:\"clientX\""}, {prop: "ClientY", name: "ClientY", anonymous: false, exported: true, typ: $Int, tag: "js:\"clientY\""}, {prop: "MovementX", name: "MovementX", anonymous: false, exported: true, typ: $Int, tag: "js:\"movementX\""}, {prop: "MovementY", name: "MovementY", anonymous: false, exported: true, typ: $Int, tag: "js:\"movementY\""}, {prop: "ScreenX", name: "ScreenX", anonymous: false, exported: true, typ: $Int, tag: "js:\"screenX\""}, {prop: "ScreenY", name: "ScreenY", anonymous: false, exported: true, typ: $Int, tag: "js:\"screenY\""}, {prop: "LayerX", name: "LayerX", anonymous: false, exported: true, typ: $Int, tag: "js:\"layerX\""}, {prop: "LayerY", name: "LayerY", anonymous: false, exported: true, typ: $Int, tag: "js:\"layerY\""}, {prop: "Data", name: "Data", anonymous: false, exported: true, typ: ptrType$8, tag: "js:\"data\""}, {prop: "Bubbles", name: "Bubbles", anonymous: false, exported: true, typ: $Bool, tag: "js:\"bubbles\""}, {prop: "Cancelable", name: "Cancelable", anonymous: false, exported: true, typ: $Bool, tag: "js:\"cancelable\""}, {prop: "CurrentTarget", name: "CurrentTarget", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"currentTarget\""}, {prop: "DefaultPrevented", name: "DefaultPrevented", anonymous: false, exported: true, typ: $Bool, tag: "js:\"defaultPrevented\""}, {prop: "EventPhase", name: "EventPhase", anonymous: false, exported: true, typ: $Int, tag: "js:\"eventPhase\""}, {prop: "Target", name: "Target", anonymous: false, exported: true, typ: ptrType$5, tag: "js:\"target\""}, {prop: "Timestamp", name: "Timestamp", anonymous: false, exported: true, typ: $Int, tag: "js:\"timeStamp\""}, {prop: "PreventDefault", name: "PreventDefault", anonymous: false, exported: true, typ: funcType$14, tag: "js:\"preventDefault\""}, {prop: "StopImmediatePropagation", name: "StopImmediatePropagation", anonymous: false, exported: true, typ: funcType$14, tag: "js:\"stopImmediatePropagation\""}, {prop: "StopPropagation", name: "StopPropagation", anonymous: false, exported: true, typ: funcType$14, tag: "js:\"stopPropagation\""}, {prop: "GetModifierState", name: "GetModifierState", anonymous: false, exported: true, typ: funcType$11, tag: "js:\"getModifierState\""}]);
+	$init = function() {
+		$pkg.$init = function() {};
+		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		$r = js.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.$init = $init;
+	return $pkg;
+})();
+$packages["image/color"] = (function() {
+	var $pkg = {}, $init, Color, RGBA, RGBA64, NRGBA, NRGBA64, Alpha, Alpha16, Gray, Gray16, modelFunc, YCbCr, NYCbCrA, CMYK, ptrType, funcType, ModelFunc, rgbaModel, rgba64Model, nrgbaModel, nrgba64Model, alphaModel, alpha16Model, grayModel, gray16Model, RGBToYCbCr, yCbCrModel, nYCbCrAModel, RGBToCMYK, cmykModel;
+	Color = $pkg.Color = $newType(8, $kindInterface, "color.Color", true, "image/color", true, null);
+	RGBA = $pkg.RGBA = $newType(0, $kindStruct, "color.RGBA", true, "image/color", true, function(R_, G_, B_, A_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.R = 0;
+			this.G = 0;
+			this.B = 0;
+			this.A = 0;
+			return;
+		}
+		this.R = R_;
+		this.G = G_;
+		this.B = B_;
+		this.A = A_;
+	});
+	RGBA64 = $pkg.RGBA64 = $newType(0, $kindStruct, "color.RGBA64", true, "image/color", true, function(R_, G_, B_, A_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.R = 0;
+			this.G = 0;
+			this.B = 0;
+			this.A = 0;
+			return;
+		}
+		this.R = R_;
+		this.G = G_;
+		this.B = B_;
+		this.A = A_;
+	});
+	NRGBA = $pkg.NRGBA = $newType(0, $kindStruct, "color.NRGBA", true, "image/color", true, function(R_, G_, B_, A_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.R = 0;
+			this.G = 0;
+			this.B = 0;
+			this.A = 0;
+			return;
+		}
+		this.R = R_;
+		this.G = G_;
+		this.B = B_;
+		this.A = A_;
+	});
+	NRGBA64 = $pkg.NRGBA64 = $newType(0, $kindStruct, "color.NRGBA64", true, "image/color", true, function(R_, G_, B_, A_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.R = 0;
+			this.G = 0;
+			this.B = 0;
+			this.A = 0;
+			return;
+		}
+		this.R = R_;
+		this.G = G_;
+		this.B = B_;
+		this.A = A_;
+	});
+	Alpha = $pkg.Alpha = $newType(0, $kindStruct, "color.Alpha", true, "image/color", true, function(A_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.A = 0;
+			return;
+		}
+		this.A = A_;
+	});
+	Alpha16 = $pkg.Alpha16 = $newType(0, $kindStruct, "color.Alpha16", true, "image/color", true, function(A_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.A = 0;
+			return;
+		}
+		this.A = A_;
+	});
+	Gray = $pkg.Gray = $newType(0, $kindStruct, "color.Gray", true, "image/color", true, function(Y_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Y = 0;
+			return;
+		}
+		this.Y = Y_;
+	});
+	Gray16 = $pkg.Gray16 = $newType(0, $kindStruct, "color.Gray16", true, "image/color", true, function(Y_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Y = 0;
+			return;
+		}
+		this.Y = Y_;
+	});
+	modelFunc = $pkg.modelFunc = $newType(0, $kindStruct, "color.modelFunc", true, "image/color", false, function(f_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.f = $throwNilPointerError;
+			return;
+		}
+		this.f = f_;
+	});
+	YCbCr = $pkg.YCbCr = $newType(0, $kindStruct, "color.YCbCr", true, "image/color", true, function(Y_, Cb_, Cr_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Y = 0;
+			this.Cb = 0;
+			this.Cr = 0;
+			return;
+		}
+		this.Y = Y_;
+		this.Cb = Cb_;
+		this.Cr = Cr_;
+	});
+	NYCbCrA = $pkg.NYCbCrA = $newType(0, $kindStruct, "color.NYCbCrA", true, "image/color", true, function(YCbCr_, A_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.YCbCr = new YCbCr.ptr(0, 0, 0);
+			this.A = 0;
+			return;
+		}
+		this.YCbCr = YCbCr_;
+		this.A = A_;
+	});
+	CMYK = $pkg.CMYK = $newType(0, $kindStruct, "color.CMYK", true, "image/color", true, function(C_, M_, Y_, K_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.C = 0;
+			this.M = 0;
+			this.Y = 0;
+			this.K = 0;
+			return;
+		}
+		this.C = C_;
+		this.M = M_;
+		this.Y = Y_;
+		this.K = K_;
+	});
+	ptrType = $ptrType(modelFunc);
+	funcType = $funcType([Color], [Color], false);
+	RGBA.ptr.prototype.RGBA = function() {
+		var a, b, c, g, r;
+		r = 0;
+		g = 0;
+		b = 0;
+		a = 0;
+		c = this;
+		r = ((c.R >>> 0));
+		r = (r | ((r << 8 >>> 0))) >>> 0;
+		g = ((c.G >>> 0));
+		g = (g | ((g << 8 >>> 0))) >>> 0;
+		b = ((c.B >>> 0));
+		b = (b | ((b << 8 >>> 0))) >>> 0;
+		a = ((c.A >>> 0));
+		a = (a | ((a << 8 >>> 0))) >>> 0;
+		return [r, g, b, a];
+	};
+	RGBA.prototype.RGBA = function() { return this.$val.RGBA(); };
+	RGBA64.ptr.prototype.RGBA = function() {
+		var _tmp, _tmp$1, _tmp$2, _tmp$3, a, b, c, g, r;
+		r = 0;
+		g = 0;
+		b = 0;
+		a = 0;
+		c = this;
+		_tmp = ((c.R >>> 0));
+		_tmp$1 = ((c.G >>> 0));
+		_tmp$2 = ((c.B >>> 0));
+		_tmp$3 = ((c.A >>> 0));
+		r = _tmp;
+		g = _tmp$1;
+		b = _tmp$2;
+		a = _tmp$3;
+		return [r, g, b, a];
+	};
+	RGBA64.prototype.RGBA = function() { return this.$val.RGBA(); };
+	NRGBA.ptr.prototype.RGBA = function() {
+		var _q, _q$1, _q$2, a, b, c, g, r;
+		r = 0;
+		g = 0;
+		b = 0;
+		a = 0;
+		c = this;
+		r = ((c.R >>> 0));
+		r = (r | ((r << 8 >>> 0))) >>> 0;
+		r = $imul(r, (((c.A >>> 0)))) >>> 0;
+		r = (_q = r / (255), (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
+		g = ((c.G >>> 0));
+		g = (g | ((g << 8 >>> 0))) >>> 0;
+		g = $imul(g, (((c.A >>> 0)))) >>> 0;
+		g = (_q$1 = g / (255), (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
+		b = ((c.B >>> 0));
+		b = (b | ((b << 8 >>> 0))) >>> 0;
+		b = $imul(b, (((c.A >>> 0)))) >>> 0;
+		b = (_q$2 = b / (255), (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
+		a = ((c.A >>> 0));
+		a = (a | ((a << 8 >>> 0))) >>> 0;
+		return [r, g, b, a];
+	};
+	NRGBA.prototype.RGBA = function() { return this.$val.RGBA(); };
+	NRGBA64.ptr.prototype.RGBA = function() {
+		var _q, _q$1, _q$2, a, b, c, g, r;
+		r = 0;
+		g = 0;
+		b = 0;
+		a = 0;
+		c = this;
+		r = ((c.R >>> 0));
+		r = $imul(r, (((c.A >>> 0)))) >>> 0;
+		r = (_q = r / (65535), (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
+		g = ((c.G >>> 0));
+		g = $imul(g, (((c.A >>> 0)))) >>> 0;
+		g = (_q$1 = g / (65535), (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
+		b = ((c.B >>> 0));
+		b = $imul(b, (((c.A >>> 0)))) >>> 0;
+		b = (_q$2 = b / (65535), (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
+		a = ((c.A >>> 0));
+		return [r, g, b, a];
+	};
+	NRGBA64.prototype.RGBA = function() { return this.$val.RGBA(); };
+	Alpha.ptr.prototype.RGBA = function() {
+		var _tmp, _tmp$1, _tmp$2, _tmp$3, a, b, c, g, r;
+		r = 0;
+		g = 0;
+		b = 0;
+		a = 0;
+		c = this;
+		a = ((c.A >>> 0));
+		a = (a | ((a << 8 >>> 0))) >>> 0;
+		_tmp = a;
+		_tmp$1 = a;
+		_tmp$2 = a;
+		_tmp$3 = a;
+		r = _tmp;
+		g = _tmp$1;
+		b = _tmp$2;
+		a = _tmp$3;
+		return [r, g, b, a];
+	};
+	Alpha.prototype.RGBA = function() { return this.$val.RGBA(); };
+	Alpha16.ptr.prototype.RGBA = function() {
+		var _tmp, _tmp$1, _tmp$2, _tmp$3, a, b, c, g, r;
+		r = 0;
+		g = 0;
+		b = 0;
+		a = 0;
+		c = this;
+		a = ((c.A >>> 0));
+		_tmp = a;
+		_tmp$1 = a;
+		_tmp$2 = a;
+		_tmp$3 = a;
+		r = _tmp;
+		g = _tmp$1;
+		b = _tmp$2;
+		a = _tmp$3;
+		return [r, g, b, a];
+	};
+	Alpha16.prototype.RGBA = function() { return this.$val.RGBA(); };
+	Gray.ptr.prototype.RGBA = function() {
+		var _tmp, _tmp$1, _tmp$2, _tmp$3, a, b, c, g, r, y;
+		r = 0;
+		g = 0;
+		b = 0;
+		a = 0;
+		c = this;
+		y = ((c.Y >>> 0));
+		y = (y | ((y << 8 >>> 0))) >>> 0;
+		_tmp = y;
+		_tmp$1 = y;
+		_tmp$2 = y;
+		_tmp$3 = 65535;
+		r = _tmp;
+		g = _tmp$1;
+		b = _tmp$2;
+		a = _tmp$3;
+		return [r, g, b, a];
+	};
+	Gray.prototype.RGBA = function() { return this.$val.RGBA(); };
+	Gray16.ptr.prototype.RGBA = function() {
+		var _tmp, _tmp$1, _tmp$2, _tmp$3, a, b, c, g, r, y;
+		r = 0;
+		g = 0;
+		b = 0;
+		a = 0;
+		c = this;
+		y = ((c.Y >>> 0));
+		_tmp = y;
+		_tmp$1 = y;
+		_tmp$2 = y;
+		_tmp$3 = 65535;
+		r = _tmp;
+		g = _tmp$1;
+		b = _tmp$2;
+		a = _tmp$3;
+		return [r, g, b, a];
+	};
+	Gray16.prototype.RGBA = function() { return this.$val.RGBA(); };
+	ModelFunc = function(f) {
+		var f;
+		return new modelFunc.ptr(f);
+	};
+	$pkg.ModelFunc = ModelFunc;
+	modelFunc.ptr.prototype.Convert = function(c) {
+		var _r, c, m, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; c = $f.c; m = $f.m; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		m = this;
+		_r = m.f(c); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		$s = -1; return _r;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: modelFunc.ptr.prototype.Convert }; } $f._r = _r; $f.c = c; $f.m = m; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	modelFunc.prototype.Convert = function(c) { return this.$val.Convert(c); };
+	rgbaModel = function(c) {
+		var _r, _tuple, _tuple$1, a, b, c, g, ok, r, x, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_tuple = $assertType(c, RGBA, true);
+		ok = _tuple[1];
+		if (ok) {
+			$s = -1; return c;
+		}
+		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_tuple$1 = _r;
+		r = _tuple$1[0];
+		g = _tuple$1[1];
+		b = _tuple$1[2];
+		a = _tuple$1[3];
+		$s = -1; return (x = new RGBA.ptr((((r >>> 8 >>> 0) << 24 >>> 24)), (((g >>> 8 >>> 0) << 24 >>> 24)), (((b >>> 8 >>> 0) << 24 >>> 24)), (((a >>> 8 >>> 0) << 24 >>> 24))), new x.constructor.elem(x));
+		/* */ } return; } if ($f === undefined) { $f = { $blk: rgbaModel }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	rgba64Model = function(c) {
+		var _r, _tuple, _tuple$1, a, b, c, g, ok, r, x, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_tuple = $assertType(c, RGBA64, true);
+		ok = _tuple[1];
+		if (ok) {
+			$s = -1; return c;
+		}
+		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_tuple$1 = _r;
+		r = _tuple$1[0];
+		g = _tuple$1[1];
+		b = _tuple$1[2];
+		a = _tuple$1[3];
+		$s = -1; return (x = new RGBA64.ptr(((r << 16 >>> 16)), ((g << 16 >>> 16)), ((b << 16 >>> 16)), ((a << 16 >>> 16))), new x.constructor.elem(x));
+		/* */ } return; } if ($f === undefined) { $f = { $blk: rgba64Model }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	nrgbaModel = function(c) {
+		var _q, _q$1, _q$2, _r, _tuple, _tuple$1, a, b, c, g, ok, r, x, x$1, x$2, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _q = $f._q; _q$1 = $f._q$1; _q$2 = $f._q$2; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; x = $f.x; x$1 = $f.x$1; x$2 = $f.x$2; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_tuple = $assertType(c, NRGBA, true);
+		ok = _tuple[1];
+		if (ok) {
+			$s = -1; return c;
+		}
+		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_tuple$1 = _r;
+		r = _tuple$1[0];
+		g = _tuple$1[1];
+		b = _tuple$1[2];
+		a = _tuple$1[3];
+		if (a === 65535) {
+			$s = -1; return (x = new NRGBA.ptr((((r >>> 8 >>> 0) << 24 >>> 24)), (((g >>> 8 >>> 0) << 24 >>> 24)), (((b >>> 8 >>> 0) << 24 >>> 24)), 255), new x.constructor.elem(x));
+		}
+		if (a === 0) {
+			$s = -1; return (x$1 = new NRGBA.ptr(0, 0, 0, 0), new x$1.constructor.elem(x$1));
+		}
+		r = (_q = (($imul(r, 65535) >>> 0)) / a, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
+		g = (_q$1 = (($imul(g, 65535) >>> 0)) / a, (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
+		b = (_q$2 = (($imul(b, 65535) >>> 0)) / a, (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
+		$s = -1; return (x$2 = new NRGBA.ptr((((r >>> 8 >>> 0) << 24 >>> 24)), (((g >>> 8 >>> 0) << 24 >>> 24)), (((b >>> 8 >>> 0) << 24 >>> 24)), (((a >>> 8 >>> 0) << 24 >>> 24))), new x$2.constructor.elem(x$2));
+		/* */ } return; } if ($f === undefined) { $f = { $blk: nrgbaModel }; } $f._q = _q; $f._q$1 = _q$1; $f._q$2 = _q$2; $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.x = x; $f.x$1 = x$1; $f.x$2 = x$2; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	nrgba64Model = function(c) {
+		var _q, _q$1, _q$2, _r, _tuple, _tuple$1, a, b, c, g, ok, r, x, x$1, x$2, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _q = $f._q; _q$1 = $f._q$1; _q$2 = $f._q$2; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; x = $f.x; x$1 = $f.x$1; x$2 = $f.x$2; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_tuple = $assertType(c, NRGBA64, true);
+		ok = _tuple[1];
+		if (ok) {
+			$s = -1; return c;
+		}
+		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_tuple$1 = _r;
+		r = _tuple$1[0];
+		g = _tuple$1[1];
+		b = _tuple$1[2];
+		a = _tuple$1[3];
+		if (a === 65535) {
+			$s = -1; return (x = new NRGBA64.ptr(((r << 16 >>> 16)), ((g << 16 >>> 16)), ((b << 16 >>> 16)), 65535), new x.constructor.elem(x));
+		}
+		if (a === 0) {
+			$s = -1; return (x$1 = new NRGBA64.ptr(0, 0, 0, 0), new x$1.constructor.elem(x$1));
+		}
+		r = (_q = (($imul(r, 65535) >>> 0)) / a, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
+		g = (_q$1 = (($imul(g, 65535) >>> 0)) / a, (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
+		b = (_q$2 = (($imul(b, 65535) >>> 0)) / a, (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
+		$s = -1; return (x$2 = new NRGBA64.ptr(((r << 16 >>> 16)), ((g << 16 >>> 16)), ((b << 16 >>> 16)), ((a << 16 >>> 16))), new x$2.constructor.elem(x$2));
+		/* */ } return; } if ($f === undefined) { $f = { $blk: nrgba64Model }; } $f._q = _q; $f._q$1 = _q$1; $f._q$2 = _q$2; $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.x = x; $f.x$1 = x$1; $f.x$2 = x$2; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	alphaModel = function(c) {
+		var _r, _tuple, _tuple$1, a, c, ok, x, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; c = $f.c; ok = $f.ok; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_tuple = $assertType(c, Alpha, true);
+		ok = _tuple[1];
+		if (ok) {
+			$s = -1; return c;
+		}
+		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_tuple$1 = _r;
+		a = _tuple$1[3];
+		$s = -1; return (x = new Alpha.ptr((((a >>> 8 >>> 0) << 24 >>> 24))), new x.constructor.elem(x));
+		/* */ } return; } if ($f === undefined) { $f = { $blk: alphaModel }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.c = c; $f.ok = ok; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	alpha16Model = function(c) {
+		var _r, _tuple, _tuple$1, a, c, ok, x, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; c = $f.c; ok = $f.ok; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_tuple = $assertType(c, Alpha16, true);
+		ok = _tuple[1];
+		if (ok) {
+			$s = -1; return c;
+		}
+		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_tuple$1 = _r;
+		a = _tuple$1[3];
+		$s = -1; return (x = new Alpha16.ptr(((a << 16 >>> 16))), new x.constructor.elem(x));
+		/* */ } return; } if ($f === undefined) { $f = { $blk: alpha16Model }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.c = c; $f.ok = ok; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	grayModel = function(c) {
+		var _r, _tuple, _tuple$1, b, c, g, ok, r, x, y, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; x = $f.x; y = $f.y; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_tuple = $assertType(c, Gray, true);
+		ok = _tuple[1];
+		if (ok) {
+			$s = -1; return c;
+		}
+		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_tuple$1 = _r;
+		r = _tuple$1[0];
+		g = _tuple$1[1];
+		b = _tuple$1[2];
+		y = ((((($imul(19595, r) >>> 0) + ($imul(38470, g) >>> 0) >>> 0) + ($imul(7471, b) >>> 0) >>> 0) + 32768 >>> 0)) >>> 24 >>> 0;
+		$s = -1; return (x = new Gray.ptr(((y << 24 >>> 24))), new x.constructor.elem(x));
+		/* */ } return; } if ($f === undefined) { $f = { $blk: grayModel }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.x = x; $f.y = y; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	gray16Model = function(c) {
+		var _r, _tuple, _tuple$1, b, c, g, ok, r, x, y, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; x = $f.x; y = $f.y; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_tuple = $assertType(c, Gray16, true);
+		ok = _tuple[1];
+		if (ok) {
+			$s = -1; return c;
+		}
+		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_tuple$1 = _r;
+		r = _tuple$1[0];
+		g = _tuple$1[1];
+		b = _tuple$1[2];
+		y = ((((($imul(19595, r) >>> 0) + ($imul(38470, g) >>> 0) >>> 0) + ($imul(7471, b) >>> 0) >>> 0) + 32768 >>> 0)) >>> 16 >>> 0;
+		$s = -1; return (x = new Gray16.ptr(((y << 16 >>> 16))), new x.constructor.elem(x));
+		/* */ } return; } if ($f === undefined) { $f = { $blk: gray16Model }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.x = x; $f.y = y; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	RGBToYCbCr = function(r, g, b) {
+		var b, b1, cb, cr, g, g1, r, r1, yy;
+		r1 = ((r >> 0));
+		g1 = ((g >> 0));
+		b1 = ((b >> 0));
+		yy = ((((($imul(19595, r1)) + ($imul(38470, g1)) >> 0) + ($imul(7471, b1)) >> 0) + 32768 >> 0)) >> 16 >> 0;
+		cb = ((($imul(-11056, r1)) - ($imul(21712, g1)) >> 0) + ($imul(32768, b1)) >> 0) + 8421376 >> 0;
+		if (((((cb >>> 0)) & 4278190080) >>> 0) === 0) {
+			cb = (cb >> $min((16), 31)) >> 0;
+		} else {
+			cb = ~((cb >> 31 >> 0)) >> 0;
+		}
+		cr = ((($imul(32768, r1)) - ($imul(27440, g1)) >> 0) - ($imul(5328, b1)) >> 0) + 8421376 >> 0;
+		if (((((cr >>> 0)) & 4278190080) >>> 0) === 0) {
+			cr = (cr >> $min((16), 31)) >> 0;
+		} else {
+			cr = ~((cr >> 31 >> 0)) >> 0;
+		}
+		return [((yy << 24 >>> 24)), ((cb << 24 >>> 24)), ((cr << 24 >>> 24))];
+	};
+	$pkg.RGBToYCbCr = RGBToYCbCr;
+	YCbCr.ptr.prototype.RGBA = function() {
+		var b, c, cb1, cr1, g, r, yy1;
+		c = this;
+		yy1 = $imul(((c.Y >> 0)), 65793);
+		cb1 = ((c.Cb >> 0)) - 128 >> 0;
+		cr1 = ((c.Cr >> 0)) - 128 >> 0;
+		r = yy1 + ($imul(91881, cr1)) >> 0;
+		if (((((r >>> 0)) & 4278190080) >>> 0) === 0) {
+			r = (r >> $min((8), 31)) >> 0;
+		} else {
+			r = (~((r >> 31 >> 0)) >> 0) & 65535;
+		}
+		g = (yy1 - ($imul(22554, cb1)) >> 0) - ($imul(46802, cr1)) >> 0;
+		if (((((g >>> 0)) & 4278190080) >>> 0) === 0) {
+			g = (g >> $min((8), 31)) >> 0;
+		} else {
+			g = (~((g >> 31 >> 0)) >> 0) & 65535;
+		}
+		b = yy1 + ($imul(116130, cb1)) >> 0;
+		if (((((b >>> 0)) & 4278190080) >>> 0) === 0) {
+			b = (b >> $min((8), 31)) >> 0;
+		} else {
+			b = (~((b >> 31 >> 0)) >> 0) & 65535;
+		}
+		return [((r >>> 0)), ((g >>> 0)), ((b >>> 0)), 65535];
+	};
+	YCbCr.prototype.RGBA = function() { return this.$val.RGBA(); };
+	yCbCrModel = function(c) {
+		var _r, _tuple, _tuple$1, _tuple$2, b, c, g, ok, r, u, v, x, y, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; _tuple$2 = $f._tuple$2; b = $f.b; c = $f.c; g = $f.g; ok = $f.ok; r = $f.r; u = $f.u; v = $f.v; x = $f.x; y = $f.y; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_tuple = $assertType(c, YCbCr, true);
+		ok = _tuple[1];
+		if (ok) {
+			$s = -1; return c;
+		}
+		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_tuple$1 = _r;
+		r = _tuple$1[0];
+		g = _tuple$1[1];
+		b = _tuple$1[2];
+		_tuple$2 = RGBToYCbCr((((r >>> 8 >>> 0) << 24 >>> 24)), (((g >>> 8 >>> 0) << 24 >>> 24)), (((b >>> 8 >>> 0) << 24 >>> 24)));
+		y = _tuple$2[0];
+		u = _tuple$2[1];
+		v = _tuple$2[2];
+		$s = -1; return (x = new YCbCr.ptr(y, u, v), new x.constructor.elem(x));
+		/* */ } return; } if ($f === undefined) { $f = { $blk: yCbCrModel }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f._tuple$2 = _tuple$2; $f.b = b; $f.c = c; $f.g = g; $f.ok = ok; $f.r = r; $f.u = u; $f.v = v; $f.x = x; $f.y = y; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	NYCbCrA.ptr.prototype.RGBA = function() {
+		var _q, _q$1, _q$2, a, b, c, cb1, cr1, g, r, yy1;
+		c = this;
+		yy1 = $imul(((c.YCbCr.Y >> 0)), 65793);
+		cb1 = ((c.YCbCr.Cb >> 0)) - 128 >> 0;
+		cr1 = ((c.YCbCr.Cr >> 0)) - 128 >> 0;
+		r = yy1 + ($imul(91881, cr1)) >> 0;
+		if (((((r >>> 0)) & 4278190080) >>> 0) === 0) {
+			r = (r >> $min((8), 31)) >> 0;
+		} else {
+			r = (~((r >> 31 >> 0)) >> 0) & 65535;
+		}
+		g = (yy1 - ($imul(22554, cb1)) >> 0) - ($imul(46802, cr1)) >> 0;
+		if (((((g >>> 0)) & 4278190080) >>> 0) === 0) {
+			g = (g >> $min((8), 31)) >> 0;
+		} else {
+			g = (~((g >> 31 >> 0)) >> 0) & 65535;
+		}
+		b = yy1 + ($imul(116130, cb1)) >> 0;
+		if (((((b >>> 0)) & 4278190080) >>> 0) === 0) {
+			b = (b >> $min((8), 31)) >> 0;
+		} else {
+			b = (~((b >> 31 >> 0)) >> 0) & 65535;
+		}
+		a = $imul(((c.A >>> 0)), 257) >>> 0;
+		return [(_q = ($imul(((r >>> 0)), a) >>> 0) / 65535, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero")), (_q$1 = ($imul(((g >>> 0)), a) >>> 0) / 65535, (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero")), (_q$2 = ($imul(((b >>> 0)), a) >>> 0) / 65535, (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero")), a];
+	};
+	NYCbCrA.prototype.RGBA = function() { return this.$val.RGBA(); };
+	nYCbCrAModel = function(c) {
+		var _q, _q$1, _q$2, _r, _ref, _tuple, _tuple$1, a, b, c, c$1, c$2, g, r, u, v, x, x$1, y, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _q = $f._q; _q$1 = $f._q$1; _q$2 = $f._q$2; _r = $f._r; _ref = $f._ref; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; a = $f.a; b = $f.b; c = $f.c; c$1 = $f.c$1; c$2 = $f.c$2; g = $f.g; r = $f.r; u = $f.u; v = $f.v; x = $f.x; x$1 = $f.x$1; y = $f.y; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_ref = c;
+		if ($assertType(_ref, NYCbCrA, true)[1]) {
+			c$1 = $clone(_ref.$val, NYCbCrA);
+			$s = -1; return new c$1.constructor.elem(c$1);
+		} else if ($assertType(_ref, YCbCr, true)[1]) {
+			c$2 = $clone(_ref.$val, YCbCr);
+			$s = -1; return (x = new NYCbCrA.ptr($clone(c$2, YCbCr), 255), new x.constructor.elem(x));
+		}
+		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_tuple = _r;
+		r = _tuple[0];
+		g = _tuple[1];
+		b = _tuple[2];
+		a = _tuple[3];
+		if (!((a === 0))) {
+			r = (_q = (($imul(r, 65535) >>> 0)) / a, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
+			g = (_q$1 = (($imul(g, 65535) >>> 0)) / a, (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
+			b = (_q$2 = (($imul(b, 65535) >>> 0)) / a, (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
+		}
+		_tuple$1 = RGBToYCbCr((((r >>> 8 >>> 0) << 24 >>> 24)), (((g >>> 8 >>> 0) << 24 >>> 24)), (((b >>> 8 >>> 0) << 24 >>> 24)));
+		y = _tuple$1[0];
+		u = _tuple$1[1];
+		v = _tuple$1[2];
+		$s = -1; return (x$1 = new NYCbCrA.ptr(new YCbCr.ptr(y, u, v), (((a >>> 8 >>> 0) << 24 >>> 24))), new x$1.constructor.elem(x$1));
+		/* */ } return; } if ($f === undefined) { $f = { $blk: nYCbCrAModel }; } $f._q = _q; $f._q$1 = _q$1; $f._q$2 = _q$2; $f._r = _r; $f._ref = _ref; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.a = a; $f.b = b; $f.c = c; $f.c$1 = c$1; $f.c$2 = c$2; $f.g = g; $f.r = r; $f.u = u; $f.v = v; $f.x = x; $f.x$1 = x$1; $f.y = y; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	RGBToCMYK = function(r, g, b) {
+		var _q, _q$1, _q$2, b, bb, c, g, gg, m, r, rr, w, y;
+		rr = ((r >>> 0));
+		gg = ((g >>> 0));
+		bb = ((b >>> 0));
+		w = rr;
+		if (w < gg) {
+			w = gg;
+		}
+		if (w < bb) {
+			w = bb;
+		}
+		if (w === 0) {
+			return [0, 0, 0, 255];
+		}
+		c = (_q = ($imul(((w - rr >>> 0)), 255) >>> 0) / w, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
+		m = (_q$1 = ($imul(((w - gg >>> 0)), 255) >>> 0) / w, (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
+		y = (_q$2 = ($imul(((w - bb >>> 0)), 255) >>> 0) / w, (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
+		return [((c << 24 >>> 24)), ((m << 24 >>> 24)), ((y << 24 >>> 24)), (((255 - w >>> 0) << 24 >>> 24))];
+	};
+	$pkg.RGBToCMYK = RGBToCMYK;
+	CMYK.ptr.prototype.RGBA = function() {
+		var _q, _q$1, _q$2, b, c, g, r, w;
+		c = this;
+		w = 65535 - ($imul(((c.K >>> 0)), 257) >>> 0) >>> 0;
+		r = (_q = ($imul(((65535 - ($imul(((c.C >>> 0)), 257) >>> 0) >>> 0)), w) >>> 0) / 65535, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >>> 0 : $throwRuntimeError("integer divide by zero"));
+		g = (_q$1 = ($imul(((65535 - ($imul(((c.M >>> 0)), 257) >>> 0) >>> 0)), w) >>> 0) / 65535, (_q$1 === _q$1 && _q$1 !== 1/0 && _q$1 !== -1/0) ? _q$1 >>> 0 : $throwRuntimeError("integer divide by zero"));
+		b = (_q$2 = ($imul(((65535 - ($imul(((c.Y >>> 0)), 257) >>> 0) >>> 0)), w) >>> 0) / 65535, (_q$2 === _q$2 && _q$2 !== 1/0 && _q$2 !== -1/0) ? _q$2 >>> 0 : $throwRuntimeError("integer divide by zero"));
+		return [r, g, b, 65535];
+	};
+	CMYK.prototype.RGBA = function() { return this.$val.RGBA(); };
+	cmykModel = function(c) {
+		var _r, _tuple, _tuple$1, _tuple$2, b, c, cc, g, kk, mm, ok, r, x, yy, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; _tuple$2 = $f._tuple$2; b = $f.b; c = $f.c; cc = $f.cc; g = $f.g; kk = $f.kk; mm = $f.mm; ok = $f.ok; r = $f.r; x = $f.x; yy = $f.yy; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_tuple = $assertType(c, CMYK, true);
+		ok = _tuple[1];
+		if (ok) {
+			$s = -1; return c;
+		}
+		_r = c.RGBA(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_tuple$1 = _r;
+		r = _tuple$1[0];
+		g = _tuple$1[1];
+		b = _tuple$1[2];
+		_tuple$2 = RGBToCMYK((((r >>> 8 >>> 0) << 24 >>> 24)), (((g >>> 8 >>> 0) << 24 >>> 24)), (((b >>> 8 >>> 0) << 24 >>> 24)));
+		cc = _tuple$2[0];
+		mm = _tuple$2[1];
+		yy = _tuple$2[2];
+		kk = _tuple$2[3];
+		$s = -1; return (x = new CMYK.ptr(cc, mm, yy, kk), new x.constructor.elem(x));
+		/* */ } return; } if ($f === undefined) { $f = { $blk: cmykModel }; } $f._r = _r; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f._tuple$2 = _tuple$2; $f.b = b; $f.c = c; $f.cc = cc; $f.g = g; $f.kk = kk; $f.mm = mm; $f.ok = ok; $f.r = r; $f.x = x; $f.yy = yy; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	RGBA.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
+	RGBA64.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
+	NRGBA.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
+	NRGBA64.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
+	Alpha.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
+	Alpha16.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
+	Gray.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
+	Gray16.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
+	ptrType.methods = [{prop: "Convert", name: "Convert", pkg: "", typ: $funcType([Color], [Color], false)}];
+	YCbCr.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
+	NYCbCrA.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
+	CMYK.methods = [{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}];
+	Color.init([{prop: "RGBA", name: "RGBA", pkg: "", typ: $funcType([], [$Uint32, $Uint32, $Uint32, $Uint32], false)}]);
+	RGBA.init("", [{prop: "R", name: "R", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "G", name: "G", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "B", name: "B", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
+	RGBA64.init("", [{prop: "R", name: "R", anonymous: false, exported: true, typ: $Uint16, tag: ""}, {prop: "G", name: "G", anonymous: false, exported: true, typ: $Uint16, tag: ""}, {prop: "B", name: "B", anonymous: false, exported: true, typ: $Uint16, tag: ""}, {prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint16, tag: ""}]);
+	NRGBA.init("", [{prop: "R", name: "R", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "G", name: "G", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "B", name: "B", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
+	NRGBA64.init("", [{prop: "R", name: "R", anonymous: false, exported: true, typ: $Uint16, tag: ""}, {prop: "G", name: "G", anonymous: false, exported: true, typ: $Uint16, tag: ""}, {prop: "B", name: "B", anonymous: false, exported: true, typ: $Uint16, tag: ""}, {prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint16, tag: ""}]);
+	Alpha.init("", [{prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
+	Alpha16.init("", [{prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint16, tag: ""}]);
+	Gray.init("", [{prop: "Y", name: "Y", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
+	Gray16.init("", [{prop: "Y", name: "Y", anonymous: false, exported: true, typ: $Uint16, tag: ""}]);
+	modelFunc.init("image/color", [{prop: "f", name: "f", anonymous: false, exported: false, typ: funcType, tag: ""}]);
+	YCbCr.init("", [{prop: "Y", name: "Y", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "Cb", name: "Cb", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "Cr", name: "Cr", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
+	NYCbCrA.init("", [{prop: "YCbCr", name: "YCbCr", anonymous: true, exported: true, typ: YCbCr, tag: ""}, {prop: "A", name: "A", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
+	CMYK.init("", [{prop: "C", name: "C", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "M", name: "M", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "Y", name: "Y", anonymous: false, exported: true, typ: $Uint8, tag: ""}, {prop: "K", name: "K", anonymous: false, exported: true, typ: $Uint8, tag: ""}]);
+	$init = function() {
+		$pkg.$init = function() {};
+		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		$pkg.RGBAModel = ModelFunc(rgbaModel);
+		$pkg.RGBA64Model = ModelFunc(rgba64Model);
+		$pkg.NRGBAModel = ModelFunc(nrgbaModel);
+		$pkg.NRGBA64Model = ModelFunc(nrgba64Model);
+		$pkg.AlphaModel = ModelFunc(alphaModel);
+		$pkg.Alpha16Model = ModelFunc(alpha16Model);
+		$pkg.GrayModel = ModelFunc(grayModel);
+		$pkg.Gray16Model = ModelFunc(gray16Model);
+		$pkg.YCbCrModel = ModelFunc(yCbCrModel);
+		$pkg.NYCbCrAModel = ModelFunc(nYCbCrAModel);
+		$pkg.CMYKModel = ModelFunc(cmykModel);
+		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.$init = $init;
+	return $pkg;
+})();
+$packages["github.com/oskca/gopherjs-canvas"] = (function() {
+	var $pkg = {}, $init, js, dom, color, Canvas, Context2D, Gradient, Pattern, ImageData, sliceType, sliceType$1, ptrType, sliceType$2, sliceType$3, ptrType$1, ptrType$2, ptrType$3, ptrType$4, ptrType$5, sliceType$4, ptrType$6, ptrType$7, New;
+	js = $packages["github.com/gopherjs/gopherjs/js"];
+	dom = $packages["github.com/oskca/gopherjs-dom"];
+	color = $packages["image/color"];
+	Canvas = $pkg.Canvas = $newType(0, $kindStruct, "canvas.Canvas", true, "github.com/oskca/gopherjs-canvas", true, function(Element_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Element = ptrType.nil;
+			return;
+		}
+		this.Element = Element_;
+	});
+	Context2D = $pkg.Context2D = $newType(0, $kindStruct, "canvas.Context2D", true, "github.com/oskca/gopherjs-canvas", true, function(Object_, StrokeStyle_, FillStyle_, ShadowColor_, ShadowBlur_, ShadowOffsetX_, ShadowOffsetY_, LineCap_, LineJoin_, LineWidth_, MiterLimit_, Font_, TextAlign_, TextBaseline_, GlobalAlpha_, GlobalCompositeOperation_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Object = null;
+			this.StrokeStyle = $ifaceNil;
+			this.FillStyle = $ifaceNil;
+			this.ShadowColor = "";
+			this.ShadowBlur = 0;
+			this.ShadowOffsetX = 0;
+			this.ShadowOffsetY = 0;
+			this.LineCap = "";
+			this.LineJoin = "";
+			this.LineWidth = 0;
+			this.MiterLimit = 0;
+			this.Font = "";
+			this.TextAlign = "";
+			this.TextBaseline = "";
+			this.GlobalAlpha = 0;
+			this.GlobalCompositeOperation = "";
+			return;
+		}
+		this.Object = Object_;
+		this.StrokeStyle = StrokeStyle_;
+		this.FillStyle = FillStyle_;
+		this.ShadowColor = ShadowColor_;
+		this.ShadowBlur = ShadowBlur_;
+		this.ShadowOffsetX = ShadowOffsetX_;
+		this.ShadowOffsetY = ShadowOffsetY_;
+		this.LineCap = LineCap_;
+		this.LineJoin = LineJoin_;
+		this.LineWidth = LineWidth_;
+		this.MiterLimit = MiterLimit_;
+		this.Font = Font_;
+		this.TextAlign = TextAlign_;
+		this.TextBaseline = TextBaseline_;
+		this.GlobalAlpha = GlobalAlpha_;
+		this.GlobalCompositeOperation = GlobalCompositeOperation_;
+	});
+	Gradient = $pkg.Gradient = $newType(0, $kindStruct, "canvas.Gradient", true, "github.com/oskca/gopherjs-canvas", true, function(o_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.o = null;
+			return;
+		}
+		this.o = o_;
+	});
+	Pattern = $pkg.Pattern = $newType(0, $kindStruct, "canvas.Pattern", true, "github.com/oskca/gopherjs-canvas", true, function(o_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.o = null;
+			return;
+		}
+		this.o = o_;
+	});
+	ImageData = $pkg.ImageData = $newType(0, $kindStruct, "canvas.ImageData", true, "github.com/oskca/gopherjs-canvas", true, function(Object_, Data_, Height_, Width_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Object = null;
+			this.Data = null;
+			this.Height = 0;
+			this.Width = 0;
+			return;
+		}
+		this.Object = Object_;
+		this.Data = Data_;
+		this.Height = Height_;
+		this.Width = Width_;
+	});
+	sliceType = $sliceType($String);
+	sliceType$1 = $sliceType($Float64);
+	ptrType = $ptrType(dom.Element);
+	sliceType$2 = $sliceType($Uint8);
+	sliceType$3 = $sliceType($emptyInterface);
+	ptrType$1 = $ptrType(Context2D);
+	ptrType$2 = $ptrType(Canvas);
+	ptrType$3 = $ptrType(Gradient);
+	ptrType$4 = $ptrType(Pattern);
+	ptrType$5 = $ptrType(ImageData);
+	sliceType$4 = $sliceType($Int);
+	ptrType$6 = $ptrType(js.Object);
+	ptrType$7 = $ptrType(color.NRGBA);
+	New = function(el) {
+		var el;
+		return new Canvas.ptr(dom.WrapElement(el));
+	};
+	$pkg.New = New;
+	Canvas.ptr.prototype.GetContext2D = function() {
+		var c, ctx;
+		c = this;
+		ctx = c.Element.Node.EventTarget.Object.getContext($externalize("2d", $String));
+		return new Context2D.ptr(ctx, $ifaceNil, $ifaceNil, "", 0, 0, 0, "", "", 0, 0, "", "", "", 0, "");
+	};
+	Canvas.prototype.GetContext2D = function() { return this.$val.GetContext2D(); };
+	Gradient.ptr.prototype.AddColorStop = function(offset, color$1) {
+		var color$1, g, offset;
+		g = this;
+		g.o.addColorStop(offset, $externalize(color$1, $String));
+	};
+	Gradient.prototype.AddColorStop = function(offset, color$1) { return this.$val.AddColorStop(offset, color$1); };
+	Gradient.ptr.prototype.Value = function() {
+		var g;
+		g = this;
+		return g.o;
+	};
+	Gradient.prototype.Value = function() { return this.$val.Value(); };
+	Context2D.ptr.prototype.CreateLinearGradient = function(x0, y0, x1, y1) {
+		var ctx, o, x0, x1, y0, y1;
+		ctx = this;
+		o = ctx.Object.createLinearGradient(x0, y0, x1, y1);
+		return new Gradient.ptr(o);
+	};
+	Context2D.prototype.CreateLinearGradient = function(x0, y0, x1, y1) { return this.$val.CreateLinearGradient(x0, y0, x1, y1); };
+	Context2D.ptr.prototype.CreateRadialGradient = function(x0, y0, r0, x1, y1, r1) {
+		var ctx, o, r0, r1, x0, x1, y0, y1;
+		ctx = this;
+		o = ctx.Object.createRadialGradient(x0, y0, r0, x1, y1, r1);
+		return new Gradient.ptr(o);
+	};
+	Context2D.prototype.CreateRadialGradient = function(x0, y0, r0, x1, y1, r1) { return this.$val.CreateRadialGradient(x0, y0, r0, x1, y1, r1); };
+	Pattern.ptr.prototype.Value = function() {
+		var p;
+		p = this;
+		return p.o;
+	};
+	Pattern.prototype.Value = function() { return this.$val.Value(); };
+	Context2D.ptr.prototype.CreatePattern = function(image, repetition) {
+		var ctx, image, o, repetition;
+		ctx = this;
+		o = ctx.Object.createPattern(image.Node.EventTarget.Object, $externalize(repetition, $String));
+		return new Pattern.ptr(o);
+	};
+	Context2D.prototype.CreatePattern = function(image, repetition) { return this.$val.CreatePattern(image, repetition); };
+	Context2D.ptr.prototype.SetLineDash = function(distances) {
+		var ctx, distances;
+		ctx = this;
+		ctx.Object.setLineDash($externalize(distances, sliceType$1));
+	};
+	Context2D.prototype.SetLineDash = function(distances) { return this.$val.SetLineDash(distances); };
+	Context2D.ptr.prototype.GetLineDash = function() {
+		var ctx, o;
+		ctx = this;
+		o = ctx.Object.getLineDash();
+		return $assertType($internalize(o, $emptyInterface), sliceType$1);
+	};
+	Context2D.prototype.GetLineDash = function() { return this.$val.GetLineDash(); };
+	Context2D.ptr.prototype.Rect = function(x, y, width, height) {
+		var ctx, height, width, x, y;
+		ctx = this;
+		ctx.Object.rect(x, y, width, height);
+	};
+	Context2D.prototype.Rect = function(x, y, width, height) { return this.$val.Rect(x, y, width, height); };
+	Context2D.ptr.prototype.FillRect = function(left, top, width, height) {
+		var ctx, height, left, top, width;
+		ctx = this;
+		ctx.Object.fillRect(left, top, width, height);
+	};
+	Context2D.prototype.FillRect = function(left, top, width, height) { return this.$val.FillRect(left, top, width, height); };
+	Context2D.ptr.prototype.StrokeRect = function(left, top, width, height) {
+		var ctx, height, left, top, width;
+		ctx = this;
+		ctx.Object.strokeRect(left, top, width, height);
+	};
+	Context2D.prototype.StrokeRect = function(left, top, width, height) { return this.$val.StrokeRect(left, top, width, height); };
+	Context2D.ptr.prototype.ClearRect = function(left, top, width, height) {
+		var ctx, height, left, top, width;
+		ctx = this;
+		ctx.Object.clearRect(left, top, width, height);
+	};
+	Context2D.prototype.ClearRect = function(left, top, width, height) { return this.$val.ClearRect(left, top, width, height); };
+	Context2D.ptr.prototype.Fill = function() {
+		var ctx;
+		ctx = this;
+		ctx.Object.fill();
+	};
+	Context2D.prototype.Fill = function() { return this.$val.Fill(); };
+	Context2D.ptr.prototype.Stroke = function() {
+		var ctx;
+		ctx = this;
+		ctx.Object.stroke();
+	};
+	Context2D.prototype.Stroke = function() { return this.$val.Stroke(); };
+	Context2D.ptr.prototype.BeginPath = function() {
+		var ctx;
+		ctx = this;
+		ctx.Object.beginPath();
+	};
+	Context2D.prototype.BeginPath = function() { return this.$val.BeginPath(); };
+	Context2D.ptr.prototype.MoveTo = function(x, y) {
+		var ctx, x, y;
+		ctx = this;
+		ctx.Object.moveTo(x, y);
+	};
+	Context2D.prototype.MoveTo = function(x, y) { return this.$val.MoveTo(x, y); };
+	Context2D.ptr.prototype.ClosePath = function() {
+		var ctx;
+		ctx = this;
+		ctx.Object.closePath();
+	};
+	Context2D.prototype.ClosePath = function() { return this.$val.ClosePath(); };
+	Context2D.ptr.prototype.LineTo = function(x, y) {
+		var ctx, x, y;
+		ctx = this;
+		ctx.Object.lineTo(x, y);
+	};
+	Context2D.prototype.LineTo = function(x, y) { return this.$val.LineTo(x, y); };
+	Context2D.ptr.prototype.Clip = function() {
+		var ctx;
+		ctx = this;
+		ctx.Object.clip();
+	};
+	Context2D.prototype.Clip = function() { return this.$val.Clip(); };
+	Context2D.ptr.prototype.QuadraticCurveTo = function(cpx, cpy, x, y) {
+		var cpx, cpy, ctx, x, y;
+		ctx = this;
+		ctx.Object.quadraticCurveTo(cpx, cpy, x, y);
+	};
+	Context2D.prototype.QuadraticCurveTo = function(cpx, cpy, x, y) { return this.$val.QuadraticCurveTo(cpx, cpy, x, y); };
+	Context2D.ptr.prototype.BezierCurveTo = function(cp1x, cp1y, cp2x, cp2y, x, y) {
+		var cp1x, cp1y, cp2x, cp2y, ctx, x, y;
+		ctx = this;
+		ctx.Object.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+	};
+	Context2D.prototype.BezierCurveTo = function(cp1x, cp1y, cp2x, cp2y, x, y) { return this.$val.BezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y); };
+	Context2D.ptr.prototype.Arc = function(x, y, radius, sAngle, eAngle, counterclockwise) {
+		var counterclockwise, ctx, eAngle, radius, sAngle, x, y;
+		ctx = this;
+		ctx.Object.arc(x, y, radius, sAngle, eAngle, $externalize(counterclockwise, $Bool));
+	};
+	Context2D.prototype.Arc = function(x, y, radius, sAngle, eAngle, counterclockwise) { return this.$val.Arc(x, y, radius, sAngle, eAngle, counterclockwise); };
+	Context2D.ptr.prototype.ArcTo = function(x1, y1, x2, y2, r) {
+		var ctx, r, x1, x2, y1, y2;
+		ctx = this;
+		ctx.Object.arcTo(x1, y1, x2, y2, r);
+	};
+	Context2D.prototype.ArcTo = function(x1, y1, x2, y2, r) { return this.$val.ArcTo(x1, y1, x2, y2, r); };
+	Context2D.ptr.prototype.IsPointInPath = function(x, y) {
+		var ctx, x, y;
+		ctx = this;
+		return !!(ctx.Object.isPointInPath(x, y));
+	};
+	Context2D.prototype.IsPointInPath = function(x, y) { return this.$val.IsPointInPath(x, y); };
+	Context2D.ptr.prototype.IsPointInStroke = function(x, y) {
+		var ctx, x, y;
+		ctx = this;
+		return !!(ctx.Object.isPointInStroke(x, y));
+	};
+	Context2D.prototype.IsPointInStroke = function(x, y) { return this.$val.IsPointInStroke(x, y); };
+	Context2D.ptr.prototype.Scale = function(scaleWidth, scaleHeight) {
+		var ctx, scaleHeight, scaleWidth;
+		ctx = this;
+		ctx.Object.scale(scaleWidth, scaleHeight);
+	};
+	Context2D.prototype.Scale = function(scaleWidth, scaleHeight) { return this.$val.Scale(scaleWidth, scaleHeight); };
+	Context2D.ptr.prototype.Rotate = function(angle) {
+		var angle, ctx;
+		ctx = this;
+		ctx.Object.rotate(angle);
+	};
+	Context2D.prototype.Rotate = function(angle) { return this.$val.Rotate(angle); };
+	Context2D.ptr.prototype.Translate = function(x, y) {
+		var ctx, x, y;
+		ctx = this;
+		ctx.Object.translate(x, y);
+	};
+	Context2D.prototype.Translate = function(x, y) { return this.$val.Translate(x, y); };
+	Context2D.ptr.prototype.Transform = function(a, b, c, d, e, f) {
+		var a, b, c, ctx, d, e, f;
+		ctx = this;
+		ctx.Object.transform(a, b, c, d, e, f);
+	};
+	Context2D.prototype.Transform = function(a, b, c, d, e, f) { return this.$val.Transform(a, b, c, d, e, f); };
+	Context2D.ptr.prototype.SetTransform = function(a, b, c, d, e, f) {
+		var a, b, c, ctx, d, e, f;
+		ctx = this;
+		ctx.Object.setTransform(a, b, c, d, e, f);
+	};
+	Context2D.prototype.SetTransform = function(a, b, c, d, e, f) { return this.$val.SetTransform(a, b, c, d, e, f); };
+	Context2D.ptr.prototype.FillText = function(text, x, y, maxWidth) {
+		var ctx, maxWidth, text, x, y;
+		ctx = this;
+		if (maxWidth === -1) {
+			ctx.Object.fillText($externalize(text, $String), x, y);
+			return;
+		}
+		ctx.Object.fillText($externalize(text, $String), x, y, maxWidth);
+	};
+	Context2D.prototype.FillText = function(text, x, y, maxWidth) { return this.$val.FillText(text, x, y, maxWidth); };
+	Context2D.ptr.prototype.StrokeText = function(text, x, y, maxWidth) {
+		var ctx, maxWidth, text, x, y;
+		ctx = this;
+		if (maxWidth === -1) {
+			ctx.Object.strokeText($externalize(text, $String), x, y);
+			return;
+		}
+		ctx.Object.strokeText($externalize(text, $String), x, y, maxWidth);
+	};
+	Context2D.prototype.StrokeText = function(text, x, y, maxWidth) { return this.$val.StrokeText(text, x, y, maxWidth); };
+	Context2D.ptr.prototype.Save = function() {
+		var ctx;
+		ctx = this;
+		ctx.Object.save();
+	};
+	Context2D.prototype.Save = function() { return this.$val.Save(); };
+	Context2D.ptr.prototype.Restore = function() {
+		var ctx;
+		ctx = this;
+		ctx.Object.restore();
+	};
+	Context2D.prototype.Restore = function() { return this.$val.Restore(); };
+	Context2D.ptr.prototype.DrawImage = function(image, dx, dy, dw, dh) {
+		var ctx, dh, dw, dx, dy, image;
+		ctx = this;
+		ctx.Object.drawImage($externalize(image, ptrType), dx, dy, dw, dh);
+	};
+	Context2D.prototype.DrawImage = function(image, dx, dy, dw, dh) { return this.$val.DrawImage(image, dx, dy, dw, dh); };
+	ImageData.ptr.prototype.Bytes = function() {
+		var i;
+		i = this;
+		return $assertType($internalize(new ($global.Uint8Array)(i.Object.data), $emptyInterface), sliceType$2);
+	};
+	ImageData.prototype.Bytes = function() { return this.$val.Bytes(); };
+	ImageData.ptr.prototype.At = function(x, y) {
+		var i, idx, rgba, x, y;
+		i = this;
+		idx = $imul(4, ((($imul(y, ($parseInt(i.Object.width) >> 0))) + x >> 0)));
+		rgba = new color.NRGBA.ptr(0, 0, 0, 0);
+		rgba.R = ((($parseInt(i.Object.data[idx]) >> 0) << 24 >>> 24));
+		rgba.G = ((($parseInt(i.Object.data[(idx + 1 >> 0)]) >> 0) << 24 >>> 24));
+		rgba.B = ((($parseInt(i.Object.data[(idx + 2 >> 0)]) >> 0) << 24 >>> 24));
+		rgba.A = ((($parseInt(i.Object.data[(idx + 3 >> 0)]) >> 0) << 24 >>> 24));
+		console.log("at:", x, y, rgba);
+		return rgba;
+	};
+	ImageData.prototype.At = function(x, y) { return this.$val.At(x, y); };
+	ImageData.ptr.prototype.Set = function(x, y, c) {
+		var c, i, idx, x, y;
+		i = this;
+		idx = $imul(4, ((($imul(y, ($parseInt(i.Object.width) >> 0))) + x >> 0)));
+		i.Object.data[idx] = c.R;
+		i.Object.data[(idx + 1 >> 0)] = c.G;
+		i.Object.data[(idx + 2 >> 0)] = c.B;
+		i.Object.data[(idx + 3 >> 0)] = c.A;
+	};
+	ImageData.prototype.Set = function(x, y, c) { return this.$val.Set(x, y, c); };
+	Context2D.ptr.prototype.CreateImageData = function(width, height) {
+		var ctx, height, im, o, width;
+		ctx = this;
+		o = ctx.Object.createImageData(width, height);
+		im = new ImageData.ptr(o, null, 0, 0);
+		return im;
+	};
+	Context2D.prototype.CreateImageData = function(width, height) { return this.$val.CreateImageData(width, height); };
+	Context2D.ptr.prototype.GetImageData = function(x, y, width, heigth) {
+		var ctx, heigth, o, width, x, y;
+		ctx = this;
+		o = ctx.Object.getImageData(x, y, width, heigth);
+		return new ImageData.ptr(o, null, 0, 0);
+	};
+	Context2D.prototype.GetImageData = function(x, y, width, heigth) { return this.$val.GetImageData(x, y, width, heigth); };
+	Context2D.ptr.prototype.PutImageData = function(imd, x, y, dirtyX) {
+		var _i, _ref, args, ctx, dirtyX, imd, obj, v, x, y;
+		ctx = this;
+		args = new sliceType$3([new $jsObjectPtr(imd.Object), new $Int(x), new $Int(y)]);
+		_ref = dirtyX;
+		_i = 0;
+		while (true) {
+			if (!(_i < _ref.$length)) { break; }
+			v = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
+			args = $append(args, new $Int(v));
+			_i++;
+		}
+		(obj = ctx.Object, obj.putImageData.apply(obj, $externalize(args, sliceType$3)));
+	};
+	Context2D.prototype.PutImageData = function(imd, x, y, dirtyX) { return this.$val.PutImageData(imd, x, y, dirtyX); };
+	ptrType$2.methods = [{prop: "GetContext2D", name: "GetContext2D", pkg: "", typ: $funcType([], [ptrType$1], false)}, {prop: "toDataURL", name: "toDataURL", pkg: "github.com/oskca/gopherjs-canvas", typ: $funcType([sliceType], [$String], true)}];
+	ptrType$1.methods = [{prop: "CreateLinearGradient", name: "CreateLinearGradient", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64], [ptrType$3], false)}, {prop: "CreateRadialGradient", name: "CreateRadialGradient", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64, $Float64, $Float64], [ptrType$3], false)}, {prop: "CreatePattern", name: "CreatePattern", pkg: "", typ: $funcType([ptrType, $String], [ptrType$4], false)}, {prop: "SetLineDash", name: "SetLineDash", pkg: "", typ: $funcType([sliceType$1], [], true)}, {prop: "GetLineDash", name: "GetLineDash", pkg: "", typ: $funcType([], [sliceType$1], false)}, {prop: "Rect", name: "Rect", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "FillRect", name: "FillRect", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "StrokeRect", name: "StrokeRect", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "ClearRect", name: "ClearRect", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "Fill", name: "Fill", pkg: "", typ: $funcType([], [], false)}, {prop: "Stroke", name: "Stroke", pkg: "", typ: $funcType([], [], false)}, {prop: "BeginPath", name: "BeginPath", pkg: "", typ: $funcType([], [], false)}, {prop: "MoveTo", name: "MoveTo", pkg: "", typ: $funcType([$Float64, $Float64], [], false)}, {prop: "ClosePath", name: "ClosePath", pkg: "", typ: $funcType([], [], false)}, {prop: "LineTo", name: "LineTo", pkg: "", typ: $funcType([$Float64, $Float64], [], false)}, {prop: "Clip", name: "Clip", pkg: "", typ: $funcType([], [], false)}, {prop: "QuadraticCurveTo", name: "QuadraticCurveTo", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "BezierCurveTo", name: "BezierCurveTo", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "Arc", name: "Arc", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64, $Float64, $Bool], [], false)}, {prop: "ArcTo", name: "ArcTo", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "IsPointInPath", name: "IsPointInPath", pkg: "", typ: $funcType([$Float64, $Float64], [$Bool], false)}, {prop: "IsPointInStroke", name: "IsPointInStroke", pkg: "", typ: $funcType([$Float64, $Float64], [$Bool], false)}, {prop: "Scale", name: "Scale", pkg: "", typ: $funcType([$Float64, $Float64], [], false)}, {prop: "Rotate", name: "Rotate", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Translate", name: "Translate", pkg: "", typ: $funcType([$Float64, $Float64], [], false)}, {prop: "Transform", name: "Transform", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "SetTransform", name: "SetTransform", pkg: "", typ: $funcType([$Float64, $Float64, $Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "FillText", name: "FillText", pkg: "", typ: $funcType([$String, $Float64, $Float64, $Float64], [], false)}, {prop: "StrokeText", name: "StrokeText", pkg: "", typ: $funcType([$String, $Float64, $Float64, $Float64], [], false)}, {prop: "Save", name: "Save", pkg: "", typ: $funcType([], [], false)}, {prop: "Restore", name: "Restore", pkg: "", typ: $funcType([], [], false)}, {prop: "DrawImage", name: "DrawImage", pkg: "", typ: $funcType([ptrType, $Float64, $Float64, $Float64, $Float64], [], false)}, {prop: "CreateImageData", name: "CreateImageData", pkg: "", typ: $funcType([$Int, $Int], [ptrType$5], false)}, {prop: "GetImageData", name: "GetImageData", pkg: "", typ: $funcType([$Int, $Int, $Int, $Int], [ptrType$5], false)}, {prop: "PutImageData", name: "PutImageData", pkg: "", typ: $funcType([ptrType$5, $Int, $Int, sliceType$4], [], true)}];
+	ptrType$3.methods = [{prop: "AddColorStop", name: "AddColorStop", pkg: "", typ: $funcType([$Float64, $String], [], false)}, {prop: "Value", name: "Value", pkg: "", typ: $funcType([], [ptrType$6], false)}];
+	ptrType$4.methods = [{prop: "Value", name: "Value", pkg: "", typ: $funcType([], [ptrType$6], false)}];
+	ptrType$5.methods = [{prop: "Bytes", name: "Bytes", pkg: "", typ: $funcType([], [sliceType$2], false)}, {prop: "At", name: "At", pkg: "", typ: $funcType([$Int, $Int], [ptrType$7], false)}, {prop: "Set", name: "Set", pkg: "", typ: $funcType([$Int, $Int, color.NRGBA], [], false)}];
+	Canvas.init("", [{prop: "Element", name: "Element", anonymous: true, exported: true, typ: ptrType, tag: ""}]);
+	Context2D.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$6, tag: ""}, {prop: "StrokeStyle", name: "StrokeStyle", anonymous: false, exported: true, typ: $emptyInterface, tag: "js:\"strokeStyle\""}, {prop: "FillStyle", name: "FillStyle", anonymous: false, exported: true, typ: $emptyInterface, tag: "js:\"fillStyle\""}, {prop: "ShadowColor", name: "ShadowColor", anonymous: false, exported: true, typ: $String, tag: "js:\"shadowColor\""}, {prop: "ShadowBlur", name: "ShadowBlur", anonymous: false, exported: true, typ: $Float64, tag: "js:\"shadowBlur\""}, {prop: "ShadowOffsetX", name: "ShadowOffsetX", anonymous: false, exported: true, typ: $Float64, tag: "js:\"shadowOffsetX\""}, {prop: "ShadowOffsetY", name: "ShadowOffsetY", anonymous: false, exported: true, typ: $Float64, tag: "js:\"shadowOffsetY\""}, {prop: "LineCap", name: "LineCap", anonymous: false, exported: true, typ: $String, tag: "js:\"lineCap\""}, {prop: "LineJoin", name: "LineJoin", anonymous: false, exported: true, typ: $String, tag: "js:\"lineJoin\""}, {prop: "LineWidth", name: "LineWidth", anonymous: false, exported: true, typ: $Float64, tag: "js:\"lineWidth\""}, {prop: "MiterLimit", name: "MiterLimit", anonymous: false, exported: true, typ: $Float64, tag: "js:\"miterLimit\""}, {prop: "Font", name: "Font", anonymous: false, exported: true, typ: $String, tag: "js:\"font\""}, {prop: "TextAlign", name: "TextAlign", anonymous: false, exported: true, typ: $String, tag: "js:\"textAlign\""}, {prop: "TextBaseline", name: "TextBaseline", anonymous: false, exported: true, typ: $String, tag: "js:\"textBaseline\""}, {prop: "GlobalAlpha", name: "GlobalAlpha", anonymous: false, exported: true, typ: $Float64, tag: "js:\"globalAlpha\""}, {prop: "GlobalCompositeOperation", name: "GlobalCompositeOperation", anonymous: false, exported: true, typ: $String, tag: "js:\"globalCompositeOperation\""}]);
+	Gradient.init("github.com/oskca/gopherjs-canvas", [{prop: "o", name: "o", anonymous: false, exported: false, typ: ptrType$6, tag: ""}]);
+	Pattern.init("github.com/oskca/gopherjs-canvas", [{prop: "o", name: "o", anonymous: false, exported: false, typ: ptrType$6, tag: ""}]);
+	ImageData.init("", [{prop: "Object", name: "Object", anonymous: true, exported: true, typ: ptrType$6, tag: ""}, {prop: "Data", name: "Data", anonymous: false, exported: true, typ: ptrType$6, tag: "js:\"data\""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Int, tag: "js:\"height\""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Int, tag: "js:\"width\""}]);
+	$init = function() {
+		$pkg.$init = function() {};
+		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		$r = js.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = dom.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = color.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.$init = $init;
+	return $pkg;
+})();
 $packages["unicode/utf8"] = (function() {
 	var $pkg = {}, $init, acceptRange, first, acceptRanges, DecodeRuneInString, EncodeRune;
 	acceptRange = $pkg.acceptRange = $newType(0, $kindStruct, "utf8.acceptRange", true, "unicode/utf8", false, function(lo_, hi_) {
@@ -11371,19 +11571,45 @@ $packages["strconv"] = (function() {
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basic"] = (function() {
-	var $pkg = {}, $init, js, visualizer, canvas, strconv, Screen, ptrType, ptrType$1, ptrType$2, sliceType, ptrType$3, mapType, NewScreen, createCanvas, canvasWidth, canvasHeight;
+$packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort"] = (function() {
+	var $pkg = {}, $init, js, basicsort, visualizer, defaults, canvas, strconv, Rectangle, Screen, ptrType, ptrType$1, ptrType$2, sliceType, ptrType$3, ptrType$4, mapType, NewRect, maxHeight, NewScreen, createCanvas, canvasWidth, canvasHeight;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
+	basicsort = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort"];
 	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
+	defaults = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/defaults"];
 	canvas = $packages["github.com/oskca/gopherjs-canvas"];
 	strconv = $packages["strconv"];
-	Screen = $pkg.Screen = $newType(0, $kindStruct, "basic.Screen", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basic", true, function(id_, size_, c_, ctx_, rectangles_, finishedDrawing_, ready_, aIndex_, bIndex_) {
+	Rectangle = $pkg.Rectangle = $newType(0, $kindStruct, "basicsort.Rectangle", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", true, function(Ctx_, Index_, ToIndex_, IsA_, IsB_, Left_, Top_, Width_, Height_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Ctx = ptrType.nil;
+			this.Index = 0;
+			this.ToIndex = 0;
+			this.IsA = false;
+			this.IsB = false;
+			this.Left = 0;
+			this.Top = 0;
+			this.Width = 0;
+			this.Height = 0;
+			return;
+		}
+		this.Ctx = Ctx_;
+		this.Index = Index_;
+		this.ToIndex = ToIndex_;
+		this.IsA = IsA_;
+		this.IsB = IsB_;
+		this.Left = Left_;
+		this.Top = Top_;
+		this.Width = Width_;
+		this.Height = Height_;
+	});
+	Screen = $pkg.Screen = $newType(0, $kindStruct, "basicsort.Screen", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", true, function(id_, size_, c_, ctx_, rectangles_, finishedDrawing_, ready_, aIndex_, bIndex_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.id = "";
 			this.size = 0;
-			this.c = ptrType.nil;
-			this.ctx = ptrType$1.nil;
+			this.c = ptrType$1.nil;
+			this.ctx = ptrType.nil;
 			this.rectangles = sliceType.nil;
 			this.finishedDrawing = false;
 			this.ready = false;
@@ -11401,15 +11627,76 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basic"] 
 		this.aIndex = aIndex_;
 		this.bIndex = bIndex_;
 	});
-	ptrType = $ptrType(canvas.Canvas);
-	ptrType$1 = $ptrType(canvas.Context2D);
-	ptrType$2 = $ptrType(visualizer.Rectangle);
+	ptrType = $ptrType(canvas.Context2D);
+	ptrType$1 = $ptrType(canvas.Canvas);
+	ptrType$2 = $ptrType(Rectangle);
 	sliceType = $sliceType(ptrType$2);
-	ptrType$3 = $ptrType(Screen);
+	ptrType$3 = $ptrType(basicsort.Step);
+	ptrType$4 = $ptrType(Screen);
 	mapType = $mapType($Int, $Bool);
+	NewRect = function(total, index, value, ctx) {
+		var ctx, index, r, total, value;
+		r = new Rectangle.ptr(ptrType.nil, 0, 0, false, false, 0, 0, 0, 0);
+		r.Ctx = ctx;
+		r.Index = index;
+		r.ToIndex = index;
+		r.Left = (($imul(10, index)));
+		r.Top = ((maxHeight(total) - ($imul(value, 5)) >> 0));
+		r.Width = 8;
+		r.Height = (($imul(value, 5)));
+		return r;
+	};
+	$pkg.NewRect = NewRect;
+	Rectangle.ptr.prototype.Animate = function(progress) {
+		var finished, progress, r;
+		r = this;
+		finished = r.update(progress);
+		r.draw();
+		return finished;
+	};
+	Rectangle.prototype.Animate = function(progress) { return this.$val.Animate(progress); };
+	Rectangle.ptr.prototype.update = function(progress) {
+		var finished, progress, r;
+		r = this;
+		finished = false;
+		if (r.Left - r.toLeft() > 0) {
+			r.Left = r.Left - ((r.Left - r.toLeft()) * progress);
+		} else if (r.Left - r.toLeft() < 0) {
+			r.Left = r.Left + ((r.toLeft() - r.Left) * progress);
+		} else {
+			r.Index = r.ToIndex;
+		}
+		if (progress === 1) {
+			finished = true;
+		}
+		return finished;
+	};
+	Rectangle.prototype.update = function(progress) { return this.$val.update(progress); };
+	Rectangle.ptr.prototype.draw = function() {
+		var r;
+		r = this;
+		r.Ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.BarColor), $emptyInterface);
+		if (r.IsA) {
+			r.Ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.AColor), $emptyInterface);
+		} else if (r.IsB) {
+			r.Ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.BColor), $emptyInterface);
+		}
+		r.Ctx.FillRect(r.Left, r.Top, r.Width, r.Height);
+	};
+	Rectangle.prototype.draw = function() { return this.$val.draw(); };
+	Rectangle.ptr.prototype.toLeft = function() {
+		var r;
+		r = this;
+		return (($imul(10, r.ToIndex)));
+	};
+	Rectangle.prototype.toLeft = function() { return this.$val.toLeft(); };
+	maxHeight = function(size) {
+		var size;
+		return $imul(size, 5);
+	};
 	NewScreen = function(id, size, nums) {
 		var _i, _ref, id, k, nums, obj, r, s, size, v;
-		s = new Screen.ptr("", 0, ptrType.nil, ptrType$1.nil, sliceType.nil, false, false, 0, 0);
+		s = new Screen.ptr("", 0, ptrType$1.nil, ptrType.nil, sliceType.nil, false, false, 0, 0);
 		s.id = id;
 		s.size = size;
 		obj = createCanvas(s.id, s.size);
@@ -11422,7 +11709,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basic"] 
 			if (!(_i < _ref.$length)) { break; }
 			k = _i;
 			v = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
-			r = visualizer.NewRect(size, k, v, s.ctx);
+			r = NewRect(size, k, v, s.ctx);
 			s.rectangles = $append(s.rectangles, r);
 			_i++;
 		}
@@ -11449,28 +11736,18 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basic"] 
 	};
 	Screen.prototype.Draw = function(progress) { return this.$val.Draw(progress); };
 	Screen.ptr.prototype.Update = function(i) {
-		var _arg, _arg$1, _arg$2, _arg$3, _r, _r$1, _r$2, _r$3, _r$4, i, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; i = $f.i; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var _tuple, i, ok, s, step;
 		s = this;
-		_r = i.DoSwap(); /* */ $s = 4; case 4: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		/* */ if (_r) { $s = 1; continue; }
-		/* */ $s = 2; continue;
-		/* if (_r) { */ case 1:
-			_r$1 = i.A(); /* */ $s = 5; case 5: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-			_arg = _r$1;
-			_r$2 = i.B(); /* */ $s = 6; case 6: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-			_arg$1 = _r$2;
-			$r = s.Swap(_arg, _arg$1); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			$s = 3; continue;
-		/* } else { */ case 2:
-			_r$3 = i.A(); /* */ $s = 8; case 8: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-			_arg$2 = _r$3;
-			_r$4 = i.B(); /* */ $s = 9; case 9: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-			_arg$3 = _r$4;
-			$r = s.Pass(_arg$2, _arg$3); /* */ $s = 10; case 10: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		/* } */ case 3:
-		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: Screen.ptr.prototype.Update }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f.i = i; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+		_tuple = $assertType(i, ptrType$3, true);
+		step = _tuple[0];
+		ok = _tuple[1];
+		if (ok) {
+			if (step.DoSwap()) {
+				s.Swap(step.A(), step.B());
+			} else {
+				s.Pass(step.A(), step.B());
+			}
+		}
 	};
 	Screen.prototype.Update = function(i) { return this.$val.Update(i); };
 	Screen.ptr.prototype.Swap = function(ia, ib) {
@@ -11502,7 +11779,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basic"] 
 	Screen.ptr.prototype.draw = function(progress) {
 		var _entry, _i, _i$1, _key, _keys, _ref, _ref$1, finished, k, progress, r, s;
 		s = this;
-		s.ctx.Object.fillStyle = $externalize(new $String(visualizer.DefaultColor.BackgroundColor), $emptyInterface);
+		s.ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.BackgroundColor), $emptyInterface);
 		s.ctx.FillRect(0, 0, (($parseInt(s.c.Element.Node.EventTarget.Object.width) >> 0)), (($parseInt(s.c.Element.Node.EventTarget.Object.height) >> 0)));
 		_ref = s.rectangles;
 		_i = 0;
@@ -11553,32 +11830,424 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basic"] 
 	};
 	canvasWidth = function(size) {
 		var size;
-		return ($imul(visualizer.BarWidth, size)) + ($imul(((size - 1 >> 0)), visualizer.BarSpace)) >> 0;
+		return ($imul(8, size)) + ($imul(((size - 1 >> 0)), 2)) >> 0;
 	};
 	canvasHeight = function(size) {
 		var size;
-		return $imul(size, visualizer.HeightUnit);
+		return $imul(size, 5);
 	};
-	ptrType$3.methods = [{prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basic", typ: $funcType([$Float64], [], false)}];
-	Screen.init("github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basic", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "c", name: "c", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "ctx", name: "ctx", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "rectangles", name: "rectangles", anonymous: false, exported: false, typ: sliceType, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "ready", name: "ready", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "aIndex", name: "aIndex", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "bIndex", name: "bIndex", anonymous: false, exported: false, typ: $Int, tag: ""}]);
+	ptrType$2.methods = [{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", typ: $funcType([$Float64], [$Bool], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", typ: $funcType([], [], false)}, {prop: "toLeft", name: "toLeft", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", typ: $funcType([], [$Float64], false)}];
+	ptrType$4.methods = [{prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", typ: $funcType([$Float64], [], false)}];
+	Rectangle.init("", [{prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "Index", name: "Index", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "ToIndex", name: "ToIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IsA", name: "IsA", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "IsB", name: "IsB", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Left", name: "Left", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Top", name: "Top", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Float64, tag: ""}]);
+	Screen.init("github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "c", name: "c", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "ctx", name: "ctx", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "rectangles", name: "rectangles", anonymous: false, exported: false, typ: sliceType, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "ready", name: "ready", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "aIndex", name: "aIndex", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "bIndex", name: "bIndex", anonymous: false, exported: false, typ: $Int, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		$r = js.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = visualizer.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = canvas.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = strconv.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = basicsort.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = visualizer.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = defaults.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = canvas.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = strconv.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.$init = $init;
+	return $pkg;
+})();
+$packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort"] = (function() {
+	var $pkg = {}, $init, js, mergesort, visualizer, defaults, canvas, strconv, Point, RectSlice, Rectangle, Screen, ptrType, ptrType$1, ptrType$2, sliceType, sliceType$1, ptrType$3, ptrType$4, ptrType$5, ptrType$7, mapType, NewRectSlice, rectSliceHeight, NewRect, NewScreen, createCanvas, canvasWidth, canvasHeight, rectanglesHeight;
+	js = $packages["github.com/gopherjs/gopherjs/js"];
+	mergesort = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort"];
+	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
+	defaults = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/defaults"];
+	canvas = $packages["github.com/oskca/gopherjs-canvas"];
+	strconv = $packages["strconv"];
+	Point = $pkg.Point = $newType(0, $kindStruct, "mergesort.Point", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", true, function(X_, Y_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.X = 0;
+			this.Y = 0;
+			return;
+		}
+		this.X = X_;
+		this.Y = Y_;
+	});
+	RectSlice = $pkg.RectSlice = $newType(0, $kindStruct, "mergesort.RectSlice", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", true, function(Rectangles_, StartPoint_, Size_, Name_, DisplayName_, nums_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Rectangles = sliceType.nil;
+			this.StartPoint = ptrType$1.nil;
+			this.Size = 0;
+			this.Name = "";
+			this.DisplayName = false;
+			this.nums = sliceType$1.nil;
+			return;
+		}
+		this.Rectangles = Rectangles_;
+		this.StartPoint = StartPoint_;
+		this.Size = Size_;
+		this.Name = Name_;
+		this.DisplayName = DisplayName_;
+		this.nums = nums_;
+	});
+	Rectangle = $pkg.Rectangle = $newType(0, $kindStruct, "mergesort.Rectangle", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", true, function(Ctx_, startPoint_, destPoint_, Width_, Height_, Color_, V_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Ctx = ptrType.nil;
+			this.startPoint = ptrType$1.nil;
+			this.destPoint = ptrType$1.nil;
+			this.Width = 0;
+			this.Height = 0;
+			this.Color = "";
+			this.V = 0;
+			return;
+		}
+		this.Ctx = Ctx_;
+		this.startPoint = startPoint_;
+		this.destPoint = destPoint_;
+		this.Width = Width_;
+		this.Height = Height_;
+		this.Color = Color_;
+		this.V = V_;
+	});
+	Screen = $pkg.Screen = $newType(0, $kindStruct, "mergesort.Screen", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", true, function(id_, size_, c_, ctx_, rsA_, rsB_, aName_, bName_, finishedDrawing_, ready_, iBegin_, iMid_, iEnd_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.id = "";
+			this.size = 0;
+			this.c = ptrType$3.nil;
+			this.ctx = ptrType.nil;
+			this.rsA = ptrType$4.nil;
+			this.rsB = ptrType$4.nil;
+			this.aName = "";
+			this.bName = "";
+			this.finishedDrawing = false;
+			this.ready = false;
+			this.iBegin = 0;
+			this.iMid = 0;
+			this.iEnd = 0;
+			return;
+		}
+		this.id = id_;
+		this.size = size_;
+		this.c = c_;
+		this.ctx = ctx_;
+		this.rsA = rsA_;
+		this.rsB = rsB_;
+		this.aName = aName_;
+		this.bName = bName_;
+		this.finishedDrawing = finishedDrawing_;
+		this.ready = ready_;
+		this.iBegin = iBegin_;
+		this.iMid = iMid_;
+		this.iEnd = iEnd_;
+	});
+	ptrType = $ptrType(canvas.Context2D);
+	ptrType$1 = $ptrType(Point);
+	ptrType$2 = $ptrType(Rectangle);
+	sliceType = $sliceType(ptrType$2);
+	sliceType$1 = $sliceType($Int);
+	ptrType$3 = $ptrType(canvas.Canvas);
+	ptrType$4 = $ptrType(RectSlice);
+	ptrType$5 = $ptrType(mergesort.Step);
+	ptrType$7 = $ptrType(Screen);
+	mapType = $mapType($Int, $Bool);
+	Point.ptr.prototype.MoveTo = function(dest, progress) {
+		var dest, p, progress;
+		p = this;
+		p.X = p.X + ((dest.X - p.X) * progress);
+		p.Y = p.Y + ((dest.Y - p.Y) * progress);
+	};
+	Point.prototype.MoveTo = function(dest, progress) { return this.$val.MoveTo(dest, progress); };
+	Point.ptr.prototype.Equals = function(b) {
+		var b, p;
+		p = this;
+		return (p.X === b.X) && (p.Y === b.Y);
+	};
+	Point.prototype.Equals = function(b) { return this.$val.Equals(b); };
+	NewRectSlice = function(ctx, nums, startPoint, name, displayName) {
+		var _i, _ref, ctx, displayName, k, name, nums, r, rs, startPoint, v;
+		rs = new RectSlice.ptr(sliceType.nil, ptrType$1.nil, 0, "", false, sliceType$1.nil);
+		rs.nums = nums;
+		rs.StartPoint = startPoint;
+		rs.Size = nums.$length;
+		_ref = nums;
+		_i = 0;
+		while (true) {
+			if (!(_i < _ref.$length)) { break; }
+			k = _i;
+			v = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
+			r = NewRect(ctx, rs.rectPoint(k, v), 8, 5 * (v), v);
+			rs.AddRect(r);
+			_i++;
+		}
+		rs.Name = name;
+		rs.DisplayName = displayName;
+		return rs;
+	};
+	$pkg.NewRectSlice = NewRectSlice;
+	rectSliceHeight = function(size) {
+		var size;
+		return 5 * (size);
+	};
+	RectSlice.ptr.prototype.AddRect = function(rectangle) {
+		var rectangle, rs;
+		rs = this;
+		rs.Rectangles = $append(rs.Rectangles, rectangle);
+	};
+	RectSlice.prototype.AddRect = function(rectangle) { return this.$val.AddRect(rectangle); };
+	RectSlice.ptr.prototype.Height = function() {
+		var rs;
+		rs = this;
+		return (rs.Size) * 5;
+	};
+	RectSlice.prototype.Height = function() { return this.$val.Height(); };
+	RectSlice.ptr.prototype.rectPoint = function(k, v) {
+		var k, p, rs, v;
+		rs = this;
+		p = new Point.ptr(rs.StartPoint.X + 10 * (k), rs.StartPoint.Y + rectSliceHeight(rs.Size) - (v) * 5);
+		return p;
+	};
+	RectSlice.prototype.rectPoint = function(k, v) { return this.$val.rectPoint(k, v); };
+	NewRect = function(ctx, startPoint, width, height, value) {
+		var ctx, height, r, startPoint, value, width;
+		r = new Rectangle.ptr(ptrType.nil, ptrType$1.nil, ptrType$1.nil, 0, 0, "", 0);
+		r.Ctx = ctx;
+		r.startPoint = startPoint;
+		r.destPoint = startPoint;
+		r.Width = width;
+		r.Height = height;
+		r.V = value;
+		r.Color = defaults.DefaultColor.BarColor;
+		return r;
+	};
+	$pkg.NewRect = NewRect;
+	Rectangle.ptr.prototype.Animate = function(progress) {
+		var finished, progress, r;
+		r = this;
+		finished = r.update(progress);
+		r.draw();
+		return finished;
+	};
+	Rectangle.prototype.Animate = function(progress) { return this.$val.Animate(progress); };
+	Rectangle.ptr.prototype.update = function(progress) {
+		var finished, progress, r;
+		r = this;
+		finished = false;
+		r.startPoint.MoveTo(r.destPoint, progress);
+		if (progress === 1) {
+			r.startPoint = r.destPoint;
+			finished = true;
+		}
+		return finished;
+	};
+	Rectangle.prototype.update = function(progress) { return this.$val.update(progress); };
+	Rectangle.ptr.prototype.draw = function() {
+		var r;
+		r = this;
+		r.Ctx.Object.fillStyle = $externalize(new $String(r.Color), $emptyInterface);
+		if (r.moving()) {
+			r.Ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.AColor), $emptyInterface);
+		}
+		r.Ctx.FillRect(r.startPoint.X, r.startPoint.Y, r.Width, r.Height);
+	};
+	Rectangle.prototype.draw = function() { return this.$val.draw(); };
+	Rectangle.ptr.prototype.moving = function() {
+		var r;
+		r = this;
+		return !r.startPoint.Equals(r.destPoint);
+	};
+	Rectangle.prototype.moving = function() { return this.$val.moving(); };
+	NewScreen = function(id, size, nums) {
+		var id, nums, obj, pa, pb, s, size;
+		s = new Screen.ptr("", 0, ptrType$3.nil, ptrType.nil, ptrType$4.nil, ptrType$4.nil, "", "", false, false, 0, 0, 0);
+		s.id = id;
+		s.size = size;
+		obj = createCanvas(s.id, s.size);
+		s.c = canvas.New(obj);
+		s.ctx = s.c.GetContext2D();
+		pa = new Point.ptr(0, 0);
+		s.rsA = NewRectSlice(s.ctx, nums, pa, "a", false);
+		pb = new Point.ptr(0, s.rsA.Height() + 30);
+		s.rsB = NewRectSlice(s.ctx, nums, pb, "b", false);
+		s.aName = "a";
+		s.bName = "b";
+		s.finishedDrawing = $makeMap($Int.keyFor, []);
+		return s;
+	};
+	$pkg.NewScreen = NewScreen;
+	Screen.ptr.prototype.Ready = function() {
+		var s;
+		s = this;
+		return s.ready;
+	};
+	Screen.prototype.Ready = function() { return this.$val.Ready(); };
+	Screen.ptr.prototype.Clear = function() {
+		var s;
+		s = this;
+		s.ctx.ClearRect(0, 0, (canvasWidth(s.size)), (canvasHeight(s.size, 2)));
+	};
+	Screen.prototype.Clear = function() { return this.$val.Clear(); };
+	Screen.ptr.prototype.Draw = function(progress) {
+		var progress, s;
+		s = this;
+		s.draw(progress);
+	};
+	Screen.prototype.Draw = function(progress) { return this.$val.Draw(progress); };
+	Screen.ptr.prototype.Update = function(i) {
+		var _tuple, i, ok, s, step;
+		s = this;
+		_tuple = $assertType(i, ptrType$5, true);
+		step = _tuple[0];
+		ok = _tuple[1];
+		if (ok) {
+			if (step.IsFirstStep()) {
+			}
+			if (step.IsSplitStep()) {
+				if (s.aName === step.From) {
+				}
+				if (s.bName === step.From) {
+				}
+			}
+			if (step.IsAssignStep()) {
+				s.assign(step);
+			}
+		}
+	};
+	Screen.prototype.Update = function(i) { return this.$val.Update(i); };
+	Screen.ptr.prototype.assign = function(step) {
+		var i, r, rCopy, rFrom, rTo, rsFrom, rsTo, s, step, x, x$1, x$2, x$3, x$4;
+		s = this;
+		rsFrom = ptrType$4.nil;
+		rsTo = ptrType$4.nil;
+		if (s.aName === step.From) {
+			rsFrom = s.rsA;
+			rsTo = s.rsB;
+		} else {
+			rsFrom = s.rsB;
+			rsTo = s.rsA;
+		}
+		rFrom = rsFrom.Rectangles;
+		rTo = rsTo.Rectangles;
+		r = ptrType$2.nil;
+		rCopy = new Rectangle.ptr(ptrType.nil, ptrType$1.nil, ptrType$1.nil, 0, 0, "", 0);
+		i = 0;
+		if (step.Assign === "i") {
+			i = step.I;
+			r = (x = step.I, ((x < 0 || x >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x]));
+			(x$1 = step.I, ((x$1 < 0 || x$1 >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x$1] = r));
+		} else {
+			i = step.J;
+			r = (x$2 = step.J, ((x$2 < 0 || x$2 >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x$2]));
+			(x$3 = step.J, ((x$3 < 0 || x$3 >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x$3] = r));
+		}
+		rCopy.Color = defaults.DefaultColor.CColor;
+		rCopy.destPoint = rsTo.rectPoint(step.K, r.V);
+		rCopy.startPoint = rsFrom.rectPoint(i, r.V);
+		rCopy.Height = r.Height;
+		rCopy.Width = r.Width;
+		rCopy.Ctx = r.Ctx;
+		rCopy.V = r.V;
+		r.Color = defaults.DefaultColor.AColor;
+		(x$4 = step.K, ((x$4 < 0 || x$4 >= rTo.$length) ? ($throwRuntimeError("index out of range"), undefined) : rTo.$array[rTo.$offset + x$4] = rCopy));
+	};
+	Screen.prototype.assign = function(step) { return this.$val.assign(step); };
+	Screen.ptr.prototype.draw = function(progress) {
+		var _entry, _i, _i$1, _i$2, _key, _key$1, _keys, _ref, _ref$1, _ref$2, finished, k, k$1, progress, r, r$1, s;
+		s = this;
+		s.ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.BackgroundColor), $emptyInterface);
+		s.ctx.FillRect(0, 0, (($parseInt(s.c.Element.Node.EventTarget.Object.width) >> 0)), (($parseInt(s.c.Element.Node.EventTarget.Object.height) >> 0)));
+		_ref = s.rsA.Rectangles;
+		_i = 0;
+		while (true) {
+			if (!(_i < _ref.$length)) { break; }
+			k = _i;
+			r = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
+			_key = k; (s.finishedDrawing || $throwRuntimeError("assignment to entry in nil map"))[$Int.keyFor(_key)] = { k: _key, v: r.Animate(progress) };
+			_i++;
+		}
+		_ref$1 = s.rsB.Rectangles;
+		_i$1 = 0;
+		while (true) {
+			if (!(_i$1 < _ref$1.$length)) { break; }
+			k$1 = _i$1;
+			r$1 = ((_i$1 < 0 || _i$1 >= _ref$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref$1.$array[_ref$1.$offset + _i$1]);
+			_key$1 = s.size + k$1 >> 0; (s.finishedDrawing || $throwRuntimeError("assignment to entry in nil map"))[$Int.keyFor(_key$1)] = { k: _key$1, v: r$1.Animate(progress) };
+			_i$1++;
+		}
+		_ref$2 = s.finishedDrawing;
+		_i$2 = 0;
+		_keys = $keys(_ref$2);
+		while (true) {
+			if (!(_i$2 < _keys.length)) { break; }
+			_entry = _ref$2[_keys[_i$2]];
+			if (_entry === undefined) {
+				_i$2++;
+				continue;
+			}
+			finished = _entry.v;
+			if (!finished) {
+				s.ready = false;
+				return;
+			}
+			_i$2++;
+		}
+		s.ready = true;
+	};
+	Screen.prototype.draw = function(progress) { return this.$val.draw(progress); };
+	createCanvas = function(id, size) {
+		var body, id, obj, size;
+		body = $global.document.getElementById($externalize(id, $String));
+		obj = $global.document.createElement($externalize("canvas", $String));
+		obj.width = $externalize(strconv.Itoa(canvasWidth(size)), $String);
+		obj.height = $externalize(strconv.Itoa(canvasHeight(size, 2) + 60 >> 0), $String);
+		body.innerHTML = $externalize("", $String);
+		body.appendChild(obj);
+		return obj;
+	};
+	canvasWidth = function(size) {
+		var size;
+		return ($imul(8, size)) + ($imul(((size - 1 >> 0)), 2)) >> 0;
+	};
+	canvasHeight = function(size, index) {
+		var index, size;
+		return $imul(index, rectanglesHeight(size, index));
+	};
+	rectanglesHeight = function(size, index) {
+		var index, size;
+		return ($imul(size, 5)) + ($imul(($imul(((index - 1 >> 0)), 3)), 5)) >> 0;
+	};
+	ptrType$1.methods = [{prop: "MoveTo", name: "MoveTo", pkg: "", typ: $funcType([ptrType$1, $Float64], [], false)}, {prop: "Equals", name: "Equals", pkg: "", typ: $funcType([ptrType$1], [$Bool], false)}];
+	ptrType$4.methods = [{prop: "AddRect", name: "AddRect", pkg: "", typ: $funcType([ptrType$2], [], false)}, {prop: "Height", name: "Height", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "rectPoint", name: "rectPoint", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([$Int, $Int], [ptrType$1], false)}];
+	ptrType$2.methods = [{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([$Float64], [$Bool], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([], [], false)}, {prop: "moving", name: "moving", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([], [$Bool], false)}];
+	ptrType$7.methods = [{prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "assign", name: "assign", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$5], [], false)}, {prop: "splitA", name: "splitA", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$5], [], false)}, {prop: "splitB", name: "splitB", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$5], [], false)}, {prop: "split", name: "split", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$5, $String], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([$Float64], [], false)}];
+	Point.init("", [{prop: "X", name: "X", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Y", name: "Y", anonymous: false, exported: true, typ: $Float64, tag: ""}]);
+	RectSlice.init("github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", [{prop: "Rectangles", name: "Rectangles", anonymous: false, exported: true, typ: sliceType, tag: ""}, {prop: "StartPoint", name: "StartPoint", anonymous: false, exported: true, typ: ptrType$1, tag: ""}, {prop: "Size", name: "Size", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "Name", name: "Name", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "DisplayName", name: "DisplayName", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType$1, tag: ""}]);
+	Rectangle.init("github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", [{prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "startPoint", name: "startPoint", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "destPoint", name: "destPoint", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Color", name: "Color", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "V", name: "V", anonymous: false, exported: true, typ: $Int, tag: ""}]);
+	Screen.init("github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "c", name: "c", anonymous: false, exported: false, typ: ptrType$3, tag: ""}, {prop: "ctx", name: "ctx", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "rsA", name: "rsA", anonymous: false, exported: false, typ: ptrType$4, tag: ""}, {prop: "rsB", name: "rsB", anonymous: false, exported: false, typ: ptrType$4, tag: ""}, {prop: "aName", name: "aName", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "bName", name: "bName", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "ready", name: "ready", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "iBegin", name: "iBegin", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "iMid", name: "iMid", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "iEnd", name: "iEnd", anonymous: false, exported: false, typ: $Int, tag: ""}]);
+	$init = function() {
+		$pkg.$init = function() {};
+		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		$r = js.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = mergesort.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = visualizer.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = defaults.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = canvas.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = strconv.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.$init = $init;
 	return $pkg;
 })();
 $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
-	var $pkg = {}, $init, sorting, utils, visualizer, basic, ControllerConfig, Controller, ptrType, sliceType, ptrType$1, defaultSize;
+	var $pkg = {}, $init, sorting, basicsort$1, mergesort$1, utils, visualizer, basicsort, mergesort, ControllerConfig, Controller, ptrType, sliceType, ptrType$1, defaultSize;
 	sorting = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting"];
+	basicsort$1 = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort"];
+	mergesort$1 = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort"];
 	utils = $packages["github.com/lei-cao/learning-cs-again/code/utils"];
 	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
-	basic = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basic"];
+	basicsort = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort"];
+	mergesort = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort"];
 	ControllerConfig = $pkg.ControllerConfig = $newType(0, $kindStruct, "play.ControllerConfig", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(Id_, Duration_, Size_) {
 		this.$val = this;
 		if (arguments.length === 0) {
@@ -11648,7 +12317,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		$r = c.animation.UpdateDuration(config.Duration); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		_r = utils.Shuffle(c.config.Size); /* */ $s = 2; case 2: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 		c.nums = _r;
-		s = basic.NewScreen(c.config.Id, c.config.Size, c.nums);
+		s = basicsort.NewScreen(c.config.Id, c.config.Size, c.nums);
 		$r = c.animation.SetScreen(s); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = c.applyAlgorithm(config); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = c.animation.StartAnimating(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
@@ -11684,26 +12353,39 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 	};
 	Controller.prototype.NextStep = function() { return this.$val.NextStep(); };
 	Controller.ptr.prototype.applyAlgorithm = function(config) {
-		var _1, _r, c, config, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _1 = $f._1; _r = $f._r; c = $f.c; config = $f.config; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var _1, _r, c, config, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _1 = $f._1; _r = $f._r; c = $f.c; config = $f.config; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
-		_1 = config.Id;
-		if (_1 === ("bubble")) {
-			c.sorter = sorting.NewBubbleSort();
-		} else if (_1 === ("selection")) {
-			c.sorter = sorting.NewSelectionSort();
-		} else if (_1 === ("insertion")) {
-			c.sorter = sorting.NewInsertionSort();
-		} else if (_1 === ("quick")) {
-			c.sorter = sorting.NewQuickSort();
-		} else if (_1 === ("topDownMergeSort")) {
-			c.sorter = sorting.NewTopDownMergeSort();
-		}
-		$r = c.sorter.Sort(c.nums); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		_r = c.sorter.Steps(); /* */ $s = 2; case 2: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		$r = c.animation.SetSteps(_r); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			_1 = config.Id;
+			/* */ if (_1 === ("bubble")) { $s = 2; continue; }
+			/* */ if (_1 === ("selection")) { $s = 3; continue; }
+			/* */ if (_1 === ("insertion")) { $s = 4; continue; }
+			/* */ if (_1 === ("quick")) { $s = 5; continue; }
+			/* */ if (_1 === ("topDownMergeSort")) { $s = 6; continue; }
+			/* */ $s = 7; continue;
+			/* if (_1 === ("bubble")) { */ case 2:
+				c.sorter = basicsort$1.NewBubbleSort();
+				$s = 7; continue;
+			/* } else if (_1 === ("selection")) { */ case 3:
+				c.sorter = basicsort$1.NewSelectionSort();
+				$s = 7; continue;
+			/* } else if (_1 === ("insertion")) { */ case 4:
+				c.sorter = basicsort$1.NewInsertionSort();
+				$s = 7; continue;
+			/* } else if (_1 === ("quick")) { */ case 5:
+				c.sorter = basicsort$1.NewQuickSort();
+				$s = 7; continue;
+			/* } else if (_1 === ("topDownMergeSort")) { */ case 6:
+				s = mergesort.NewScreen(c.config.Id, c.config.Size, c.nums);
+				$r = c.animation.SetScreen(s); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				c.sorter = mergesort$1.NewTopDownMergeSort();
+			/* } */ case 7:
+		case 1:
+		$r = c.sorter.Sort(c.nums); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		_r = c.sorter.Steps(); /* */ $s = 10; case 10: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		$r = c.animation.SetSteps(_r); /* */ $s = 11; case 11: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.applyAlgorithm }; } $f._1 = _1; $f._r = _r; $f.c = c; $f.config = config; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.applyAlgorithm }; } $f._1 = _1; $f._r = _r; $f.c = c; $f.config = config; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.applyAlgorithm = function(config) { return this.$val.applyAlgorithm(config); };
 	ptrType.methods = [{prop: "SetDuration", name: "SetDuration", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "SetSize", name: "SetSize", pkg: "", typ: $funcType([$Int], [], false)}, {prop: "SetId", name: "SetId", pkg: "", typ: $funcType([$String], [], false)}];
@@ -11714,9 +12396,12 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		$r = sorting.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = utils.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = visualizer.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = basic.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = basicsort$1.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = mergesort$1.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = utils.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = visualizer.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = basicsort.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = mergesort.$init(); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		defaultSize = 10;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};

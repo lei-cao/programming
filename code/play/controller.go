@@ -4,7 +4,10 @@ import (
 	"github.com/lei-cao/learning-cs-again/code/visualizer"
 	"github.com/lei-cao/learning-cs-again/code/utils"
 	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting"
-	"github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basic"
+	basic "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort"
+	merge "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort"
+	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort"
+	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort"
 )
 
 // default size for the slice being solved
@@ -84,15 +87,17 @@ func (c *Controller) NextStep() {
 func (c *Controller) applyAlgorithm(config *ControllerConfig) {
 	switch config.Id {
 	case "bubble":
-		c.sorter = sorting.NewBubbleSort()
+		c.sorter = basicsort.NewBubbleSort()
 	case "selection":
-		c.sorter = sorting.NewSelectionSort()
+		c.sorter = basicsort.NewSelectionSort()
 	case "insertion":
-		c.sorter = sorting.NewInsertionSort()
+		c.sorter = basicsort.NewInsertionSort()
 	case "quick":
-		c.sorter = sorting.NewQuickSort()
+		c.sorter = basicsort.NewQuickSort()
 	case "topDownMergeSort":
-		c.sorter = sorting.NewTopDownMergeSort()
+		s := merge.NewScreen(c.config.Id, c.config.Size, c.nums)
+		c.animation.SetScreen(s)
+		c.sorter = mergesort.NewTopDownMergeSort()
 	}
 	c.sorter.Sort(c.nums)
 	c.animation.SetSteps(c.sorter.Steps())

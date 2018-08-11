@@ -1,22 +1,19 @@
-package visualizer
+package basicsort
 
 import (
 	"github.com/oskca/gopherjs-canvas"
+	"github.com/lei-cao/learning-cs-again/code/visualizer/defaults"
 )
-
-var BarWidth = 8
-var BarSpace = 2
-var HeightUnit = 5
 
 func NewRect(total int, index int, value int, ctx *canvas.Context2D) *Rectangle {
 	r := new(Rectangle)
 	r.Ctx = ctx
 	r.Index = index
 	r.ToIndex = index
-	r.Left = float64((BarWidth + BarSpace) * index)
-	r.Top = float64(maxHeight(total) - value*HeightUnit)
-	r.Width = float64(BarWidth)
-	r.Height = float64(value * HeightUnit)
+	r.Left = float64((defaults.BarWidth + defaults.BarSpace) * index)
+	r.Top = float64(maxHeight(total) - value*defaults.HeightUnit)
+	r.Width = float64(defaults.BarWidth)
+	r.Height = float64(value * defaults.HeightUnit)
 	return r
 }
 
@@ -59,19 +56,19 @@ func (r *Rectangle) update(progress float64) bool {
 }
 
 func (r *Rectangle) draw() {
-	r.Ctx.FillStyle = DefaultColor.BarColor
+	r.Ctx.FillStyle = defaults.DefaultColor.BarColor
 	if r.IsA {
-		r.Ctx.FillStyle = DefaultColor.AColor
+		r.Ctx.FillStyle = defaults.DefaultColor.AColor
 	} else if r.IsB {
-		r.Ctx.FillStyle = DefaultColor.BColor
+		r.Ctx.FillStyle = defaults.DefaultColor.BColor
 	}
 	r.Ctx.FillRect(r.Left, r.Top, r.Width, r.Height)
 }
 
 func (r *Rectangle) toLeft() float64 {
-	return float64((BarWidth + BarSpace) * r.ToIndex)
+	return float64((defaults.BarWidth + defaults.BarSpace) * r.ToIndex)
 }
 
 func maxHeight(size int) int {
-	return size * HeightUnit
+	return size * defaults.HeightUnit
 }

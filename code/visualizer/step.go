@@ -1,6 +1,6 @@
 package visualizer
 
-func NewStep() Stepper {
+func NewFirstStep() Stepper {
 	s := &Step{}
 	s.last = s
 	s.current = s
@@ -9,19 +9,18 @@ func NewStep() Stepper {
 
 // Hold the operation steps queue
 type Step struct {
-	Swapper
-	a       int
-	b       int
-	doSwap  bool
 	next    *Step
 	last    *Step
 	current *Step
 }
 
-func (s *Step) AddStep(a, b int, doSwap bool) {
-	step := &Step{a: a, b: b, doSwap: doSwap}
-	s.last.next = step
-	s.last = step
+func (s *Step) AddStep(stepper Stepper) {
+	if step, ok := stepper.(*Step); ok {
+		s.last.next = step
+		s.last = step
+	} else {
+		println("Can't add step")
+	}
 }
 
 func (s *Step) Finished() bool {
@@ -38,14 +37,4 @@ func (s *Step) NextStep() Stepper {
 
 func (s *Step) CurrentStep() Stepper {
 	return s.current
-}
-
-func (s *Step) A() int {
-	return s.a
-}
-func (s *Step) B() int {
-	return s.b
-}
-func (s *Step) DoSwap() bool {
-	return s.doSwap
 }

@@ -20,7 +20,8 @@ type Animator interface {
 
 func NewAnimation() Animator {
 	a := new(Animation)
-	a.steps = NewStep()
+	// Avoiding undefined
+	a.steps = NewFirstStep()
 	a.autoUpdate = true
 	a.fps = 60
 	a.fpdInterval = 1000 / float64(a.fps)

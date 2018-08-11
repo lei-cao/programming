@@ -1,4 +1,4 @@
-package sorting
+package basicsort
 
 type SelectionSort struct {
 	BasicSort

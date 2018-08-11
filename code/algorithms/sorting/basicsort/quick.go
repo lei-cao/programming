@@ -1,4 +1,4 @@
-package sorting
+package basicsort
 
 type QuickSort struct {
 	BasicSort

@@ -3,15 +3,12 @@ package visualizer
 type Screener interface {
 	Ready() bool
 	Update(step Stepper)
-	Swap(ia, ib int)
-	Pass(ia, ib int)
 	Draw(progress float64)
 	Clear()
 }
 
 type Stepper interface {
-	Swapper
-	AddStep(a, b int, doSwap bool)
+	AddStep(step Stepper)
 	Finished() bool
 	NextStep() Stepper
 	CurrentStep() Stepper
