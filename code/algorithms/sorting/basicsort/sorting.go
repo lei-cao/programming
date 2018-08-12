@@ -36,10 +36,10 @@ func (s *BasicSort) Steps() visualizer.Stepper {
 	return s.steps
 }
 
-func (s *BasicSort) swap(nums []int, a, b int) {
-	step := NewStep(a, b, true)
+func (s *BasicSort) swap(a []int, ia, ib int) {
+	step := NewStep(ia, ib, true)
 	s.steps.AddStep(step)
-	nums[a], nums[b] = nums[b], nums[a]
+	a[ia], a[ib] = a[ib], a[ia]
 }
 
 func (s *BasicSort) pass(a, b int) {

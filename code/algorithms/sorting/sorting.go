@@ -5,6 +5,6 @@ import (
 )
 
 type Sorter interface {
-	Sort(nums []int)
+	Sort(a []int)
 	Steps() visualizer.Stepper
 }

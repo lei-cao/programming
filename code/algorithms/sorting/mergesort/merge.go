@@ -13,16 +13,12 @@ func NewFirstStep() visualizer.Stepper {
 }
 func NewTopDownMergeSort() sorting.Sorter {
 	m := new(TopDownMergeSort)
-	m.from = "b"
-	m.to = "a"
 	m.steps = NewFirstStep()
 	return m
 }
 
 type TopDownMergeSort struct {
 	steps visualizer.Stepper
-	from  string
-	to    string
 }
 
 func (m *TopDownMergeSort) Steps() visualizer.Stepper {
@@ -30,26 +26,25 @@ func (m *TopDownMergeSort) Steps() visualizer.Stepper {
 }
 
 type IntSlice struct {
-	nums []int
+	a    []int
 	name string
 }
 
-func (m *TopDownMergeSort) Sort(nums []int) {
+func (m *TopDownMergeSort) Sort(a []int) {
 
-	var numsB []int = make([]int, len(nums))
-	copy(numsB, nums)
+	var b = make([]int, len(a))
+	copy(b, a)
 	from := &IntSlice{
-		nums: nums,
+		a:    a,
 		name: "a",
 	}
 	to := &IntSlice{
-		nums: numsB,
+		a:    b,
 		name: "b",
 	}
 
-	m.start(0, len(nums))
-	// Sort data From numsB to nums
-	m.topDownSplitMerge(to, from, 0, len(nums))
+	// Sort data From b to a
+	m.topDownSplitMerge(to, from, 0, len(a))
 }
 
 func (m *TopDownMergeSort) topDownSplitMerge(mergeFrom *IntSlice, mergeTo *IntSlice, iBegin int, iEnd int) {
@@ -67,26 +62,16 @@ func (m *TopDownMergeSort) topDownMerge(mergeFrom *IntSlice, mergeTo *IntSlice, 
 	i := iBegin
 	j := iMid
 	for k := iBegin; k < iEnd; k++ {
-		if i < iMid && (j >= iEnd || mergeFrom.nums[i] <= mergeFrom.nums[j]) {
-			mergeTo.nums[k] = mergeFrom.nums[i]
+		if i < iMid && (j >= iEnd || mergeFrom.a[i] <= mergeFrom.a[j]) {
+			mergeTo.a[k] = mergeFrom.a[i]
 			m.assign(iBegin, iMid, iEnd, k, i, j, "i", mergeFrom.name, mergeTo.name)
 			i += 1
 		} else {
-			mergeTo.nums[k] = mergeFrom.nums[j]
+			mergeTo.a[k] = mergeFrom.a[j]
 			m.assign(iBegin, iMid, iEnd, k, i, j, "j", mergeFrom.name, mergeTo.name)
 			j += 1
 		}
 	}
-}
-
-func (m *TopDownMergeSort) start(iBegin, iEnd int) {
-	s := &Step{}
-	s.IBegin = iBegin
-	s.IEnd = iEnd
-	s.isFirst = true
-	s.From = m.from
-	s.To = m.to
-	m.steps.AddStep(s)
 }
 
 func (m *TopDownMergeSort) split(iBegin, iEnd int, from, to string) {

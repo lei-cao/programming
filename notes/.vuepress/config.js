@@ -5,6 +5,7 @@ module.exports = {
     lastUpdated: 'Last Updated', // string | boolean
     repo: 'lei-cao/learning-cs-again',
     base: '/learning-cs-again/',
+    ga: 'UA-81346198-2',
     markdown: {
     },
     themeConfig: {

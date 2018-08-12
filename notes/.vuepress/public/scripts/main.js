@@ -8311,20 +8311,20 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsor
 	ptrType$3 = $ptrType(QuickSort);
 	ptrType$4 = $ptrType(SelectionSort);
 	ptrType$5 = $ptrType(BasicSort);
-	BubbleSort.ptr.prototype.Sort = function(nums) {
-		var i, j, nums, s, x, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; i = $f.i; j = $f.j; nums = $f.nums; s = $f.s; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+	BubbleSort.ptr.prototype.Sort = function(a) {
+		var a, i, j, s, x, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; i = $f.i; j = $f.j; s = $f.s; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		s = this;
 		i = 0;
 		/* while (true) { */ case 1:
-			/* if (!(i < nums.$length)) { break; } */ if(!(i < nums.$length)) { $s = 2; continue; }
+			/* if (!(i < a.$length)) { break; } */ if(!(i < a.$length)) { $s = 2; continue; }
 			j = 0;
 			/* while (true) { */ case 3:
-				/* if (!(j < (nums.$length - 1 >> 0))) { break; } */ if(!(j < (nums.$length - 1 >> 0))) { $s = 4; continue; }
-				/* */ if (((j < 0 || j >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + j]) > (x = j + 1 >> 0, ((x < 0 || x >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + x]))) { $s = 5; continue; }
+				/* if (!(j < (a.$length - 1 >> 0))) { break; } */ if(!(j < (a.$length - 1 >> 0))) { $s = 4; continue; }
+				/* */ if (((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]) > (x = j + 1 >> 0, ((x < 0 || x >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + x]))) { $s = 5; continue; }
 				/* */ $s = 6; continue;
-				/* if (((j < 0 || j >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + j]) > (x = j + 1 >> 0, ((x < 0 || x >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + x]))) { */ case 5:
-					$r = s.BasicSort.swap(nums, j, j + 1 >> 0); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				/* if (((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]) > (x = j + 1 >> 0, ((x < 0 || x >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + x]))) { */ case 5:
+					$r = s.BasicSort.swap(a, j, j + 1 >> 0); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 					$s = 7; continue;
 				/* } else { */ case 6:
 					$r = s.BasicSort.pass(j, j + 1 >> 0); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
@@ -8334,24 +8334,24 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsor
 			i = i + (1) >> 0;
 		/* } */ $s = 1; continue; case 2:
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: BubbleSort.ptr.prototype.Sort }; } $f.i = i; $f.j = j; $f.nums = nums; $f.s = s; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: BubbleSort.ptr.prototype.Sort }; } $f.a = a; $f.i = i; $f.j = j; $f.s = s; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	BubbleSort.prototype.Sort = function(nums) { return this.$val.Sort(nums); };
-	InsertionSort.ptr.prototype.Sort = function(nums) {
-		var i, j, nums, s, temp, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; i = $f.i; j = $f.j; nums = $f.nums; s = $f.s; temp = $f.temp; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+	BubbleSort.prototype.Sort = function(a) { return this.$val.Sort(a); };
+	InsertionSort.ptr.prototype.Sort = function(a) {
+		var a, i, j, s, temp, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; i = $f.i; j = $f.j; s = $f.s; temp = $f.temp; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		s = this;
 		i = 0;
 		/* while (true) { */ case 1:
-			/* if (!(i < nums.$length)) { break; } */ if(!(i < nums.$length)) { $s = 2; continue; }
-			temp = ((i < 0 || i >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + i]);
+			/* if (!(i < a.$length)) { break; } */ if(!(i < a.$length)) { $s = 2; continue; }
+			temp = ((i < 0 || i >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + i]);
 			j = i - 1 >> 0;
 			/* while (true) { */ case 3:
 				/* if (!(j >= 0)) { break; } */ if(!(j >= 0)) { $s = 4; continue; }
-				/* */ if (((j < 0 || j >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + j]) > temp) { $s = 5; continue; }
+				/* */ if (((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]) > temp) { $s = 5; continue; }
 				/* */ $s = 6; continue;
-				/* if (((j < 0 || j >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + j]) > temp) { */ case 5:
-					$r = s.BasicSort.swap(nums, j + 1 >> 0, j); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				/* if (((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]) > temp) { */ case 5:
+					$r = s.BasicSort.swap(a, j + 1 >> 0, j); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 					$s = 7; continue;
 				/* } else { */ case 6:
 					$r = s.BasicSort.pass(j + 1 >> 0, j); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
@@ -8361,73 +8361,73 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsor
 			i = i + (1) >> 0;
 		/* } */ $s = 1; continue; case 2:
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: InsertionSort.ptr.prototype.Sort }; } $f.i = i; $f.j = j; $f.nums = nums; $f.s = s; $f.temp = temp; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: InsertionSort.ptr.prototype.Sort }; } $f.a = a; $f.i = i; $f.j = j; $f.s = s; $f.temp = temp; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	InsertionSort.prototype.Sort = function(nums) { return this.$val.Sort(nums); };
-	QuickSort.ptr.prototype.Sort = function(nums) {
-		var nums, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; nums = $f.nums; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+	InsertionSort.prototype.Sort = function(a) { return this.$val.Sort(a); };
+	QuickSort.ptr.prototype.Sort = function(a) {
+		var a, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		s = this;
-		$r = s.quickSort(nums, 0, nums.$length - 1 >> 0); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = s.quickSort(a, 0, a.$length - 1 >> 0); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: QuickSort.ptr.prototype.Sort }; } $f.nums = nums; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: QuickSort.ptr.prototype.Sort }; } $f.a = a; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	QuickSort.prototype.Sort = function(nums) { return this.$val.Sort(nums); };
-	QuickSort.ptr.prototype.quickSort = function(nums, lo, hi) {
-		var _r, hi, lo, nums, p, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; hi = $f.hi; lo = $f.lo; nums = $f.nums; p = $f.p; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+	QuickSort.prototype.Sort = function(a) { return this.$val.Sort(a); };
+	QuickSort.ptr.prototype.quickSort = function(a, lo, hi) {
+		var _r, a, hi, lo, p, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; a = $f.a; hi = $f.hi; lo = $f.lo; p = $f.p; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		s = this;
 		/* */ if (lo < hi) { $s = 1; continue; }
 		/* */ $s = 2; continue;
 		/* if (lo < hi) { */ case 1:
-			_r = s.partition(nums, lo, hi); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			_r = s.partition(a, lo, hi); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 			p = _r;
-			$r = s.quickSort(nums, lo, p - 1 >> 0); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			$r = s.quickSort(nums, p + 1 >> 0, hi); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$r = s.quickSort(a, lo, p - 1 >> 0); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$r = s.quickSort(a, p + 1 >> 0, hi); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		/* } */ case 2:
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: QuickSort.ptr.prototype.quickSort }; } $f._r = _r; $f.hi = hi; $f.lo = lo; $f.nums = nums; $f.p = p; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: QuickSort.ptr.prototype.quickSort }; } $f._r = _r; $f.a = a; $f.hi = hi; $f.lo = lo; $f.p = p; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	QuickSort.prototype.quickSort = function(nums, lo, hi) { return this.$val.quickSort(nums, lo, hi); };
-	QuickSort.ptr.prototype.partition = function(nums, lo, hi) {
-		var hi, i, j, lo, nums, pivot, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; hi = $f.hi; i = $f.i; j = $f.j; lo = $f.lo; nums = $f.nums; pivot = $f.pivot; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+	QuickSort.prototype.quickSort = function(a, lo, hi) { return this.$val.quickSort(a, lo, hi); };
+	QuickSort.ptr.prototype.partition = function(a, lo, hi) {
+		var a, hi, i, j, lo, pivot, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; hi = $f.hi; i = $f.i; j = $f.j; lo = $f.lo; pivot = $f.pivot; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		s = this;
-		pivot = ((hi < 0 || hi >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + hi]);
+		pivot = ((hi < 0 || hi >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + hi]);
 		i = lo - 1 >> 0;
 		j = lo;
 		/* while (true) { */ case 1:
 			/* if (!(j < hi)) { break; } */ if(!(j < hi)) { $s = 2; continue; }
-			/* */ if (((j < 0 || j >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + j]) < pivot) { $s = 3; continue; }
+			/* */ if (((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]) < pivot) { $s = 3; continue; }
 			/* */ $s = 4; continue;
-			/* if (((j < 0 || j >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + j]) < pivot) { */ case 3:
+			/* if (((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j]) < pivot) { */ case 3:
 				i = i + (1) >> 0;
-				$r = s.BasicSort.swap(nums, i, j); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$r = s.BasicSort.swap(a, i, j); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				$s = 5; continue;
 			/* } else { */ case 4:
 				$r = s.BasicSort.pass(hi, j); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			/* } */ case 5:
 			j = j + (1) >> 0;
 		/* } */ $s = 1; continue; case 2:
-		$r = s.BasicSort.swap(nums, hi, i + 1 >> 0); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = s.BasicSort.swap(a, hi, i + 1 >> 0); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return i + 1 >> 0;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: QuickSort.ptr.prototype.partition }; } $f.hi = hi; $f.i = i; $f.j = j; $f.lo = lo; $f.nums = nums; $f.pivot = pivot; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: QuickSort.ptr.prototype.partition }; } $f.a = a; $f.hi = hi; $f.i = i; $f.j = j; $f.lo = lo; $f.pivot = pivot; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	QuickSort.prototype.partition = function(nums, lo, hi) { return this.$val.partition(nums, lo, hi); };
-	SelectionSort.ptr.prototype.Sort = function(nums) {
-		var i, j, nums, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; i = $f.i; j = $f.j; nums = $f.nums; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+	QuickSort.prototype.partition = function(a, lo, hi) { return this.$val.partition(a, lo, hi); };
+	SelectionSort.ptr.prototype.Sort = function(a) {
+		var a, i, j, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; i = $f.i; j = $f.j; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		s = this;
 		i = 0;
 		/* while (true) { */ case 1:
-			/* if (!(i < nums.$length)) { break; } */ if(!(i < nums.$length)) { $s = 2; continue; }
+			/* if (!(i < a.$length)) { break; } */ if(!(i < a.$length)) { $s = 2; continue; }
 			j = i + 1 >> 0;
 			/* while (true) { */ case 3:
-				/* if (!(j < nums.$length)) { break; } */ if(!(j < nums.$length)) { $s = 4; continue; }
-				/* */ if (((i < 0 || i >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + i]) > ((j < 0 || j >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + j])) { $s = 5; continue; }
+				/* if (!(j < a.$length)) { break; } */ if(!(j < a.$length)) { $s = 4; continue; }
+				/* */ if (((i < 0 || i >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + i]) > ((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j])) { $s = 5; continue; }
 				/* */ $s = 6; continue;
-				/* if (((i < 0 || i >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + i]) > ((j < 0 || j >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + j])) { */ case 5:
-					$r = s.BasicSort.swap(nums, i, j); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				/* if (((i < 0 || i >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + i]) > ((j < 0 || j >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + j])) { */ case 5:
+					$r = s.BasicSort.swap(a, i, j); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 					$s = 7; continue;
 				/* } else { */ case 6:
 					$r = s.BasicSort.pass(i, j); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
@@ -8437,9 +8437,9 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsor
 			i = i + (1) >> 0;
 		/* } */ $s = 1; continue; case 2:
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: SelectionSort.ptr.prototype.Sort }; } $f.i = i; $f.j = j; $f.nums = nums; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: SelectionSort.ptr.prototype.Sort }; } $f.a = a; $f.i = i; $f.j = j; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	SelectionSort.prototype.Sort = function(nums) { return this.$val.Sort(nums); };
+	SelectionSort.prototype.Sort = function(a) { return this.$val.Sort(a); };
 	NewBubbleSort = function() {
 		var s;
 		s = new BubbleSort.ptr(new BasicSort.ptr($ifaceNil));
@@ -8474,20 +8474,20 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsor
 		return s.steps;
 	};
 	BasicSort.prototype.Steps = function() { return this.$val.Steps(); };
-	BasicSort.ptr.prototype.swap = function(nums, a, b) {
-		var _tmp, _tmp$1, a, b, nums, s, step, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _tmp = $f._tmp; _tmp$1 = $f._tmp$1; a = $f.a; b = $f.b; nums = $f.nums; s = $f.s; step = $f.step; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+	BasicSort.ptr.prototype.swap = function(a, ia, ib) {
+		var _tmp, _tmp$1, a, ia, ib, s, step, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _tmp = $f._tmp; _tmp$1 = $f._tmp$1; a = $f.a; ia = $f.ia; ib = $f.ib; s = $f.s; step = $f.step; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		s = this;
-		step = NewStep(a, b, true);
+		step = NewStep(ia, ib, true);
 		$r = s.steps.AddStep(step); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		_tmp = ((b < 0 || b >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + b]);
-		_tmp$1 = ((a < 0 || a >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + a]);
-		((a < 0 || a >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + a] = _tmp);
-		((b < 0 || b >= nums.$length) ? ($throwRuntimeError("index out of range"), undefined) : nums.$array[nums.$offset + b] = _tmp$1);
+		_tmp = ((ib < 0 || ib >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + ib]);
+		_tmp$1 = ((ia < 0 || ia >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + ia]);
+		((ia < 0 || ia >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + ia] = _tmp);
+		((ib < 0 || ib >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + ib] = _tmp$1);
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: BasicSort.ptr.prototype.swap }; } $f._tmp = _tmp; $f._tmp$1 = _tmp$1; $f.a = a; $f.b = b; $f.nums = nums; $f.s = s; $f.step = step; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: BasicSort.ptr.prototype.swap }; } $f._tmp = _tmp; $f._tmp$1 = _tmp$1; $f.a = a; $f.ia = ia; $f.ib = ib; $f.s = s; $f.step = step; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	BasicSort.prototype.swap = function(nums, a, b) { return this.$val.swap(nums, a, b); };
+	BasicSort.prototype.swap = function(a, ia, ib) { return this.$val.swap(a, ia, ib); };
 	BasicSort.ptr.prototype.pass = function(a, b) {
 		var a, b, s, step, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; b = $f.b; s = $f.s; step = $f.step; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -8595,26 +8595,22 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesor
 	var $pkg = {}, $init, sorting, visualizer, TopDownMergeSort, IntSlice, Step, ptrType, sliceType, ptrType$1, ptrType$2, NewFirstStep, NewTopDownMergeSort;
 	sorting = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting"];
 	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
-	TopDownMergeSort = $pkg.TopDownMergeSort = $newType(0, $kindStruct, "mergesort.TopDownMergeSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", true, function(steps_, from_, to_) {
+	TopDownMergeSort = $pkg.TopDownMergeSort = $newType(0, $kindStruct, "mergesort.TopDownMergeSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", true, function(steps_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.steps = $ifaceNil;
-			this.from = "";
-			this.to = "";
 			return;
 		}
 		this.steps = steps_;
-		this.from = from_;
-		this.to = to_;
 	});
-	IntSlice = $pkg.IntSlice = $newType(0, $kindStruct, "mergesort.IntSlice", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", true, function(nums_, name_) {
+	IntSlice = $pkg.IntSlice = $newType(0, $kindStruct, "mergesort.IntSlice", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", true, function(a_, name_) {
 		this.$val = this;
 		if (arguments.length === 0) {
-			this.nums = sliceType.nil;
+			this.a = sliceType.nil;
 			this.name = "";
 			return;
 		}
-		this.nums = nums_;
+		this.a = a_;
 		this.name = name_;
 	});
 	Step = $pkg.Step = $newType(0, $kindStruct, "mergesort.Step", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", true, function(IBegin_, IMid_, IEnd_, K_, I_, J_, From_, To_, Assign_, isFirst_, isSplit_, isAssign_, next_, last_, current_) {
@@ -8667,9 +8663,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesor
 	$pkg.NewFirstStep = NewFirstStep;
 	NewTopDownMergeSort = function() {
 		var m;
-		m = new TopDownMergeSort.ptr($ifaceNil, "", "");
-		m.from = "b";
-		m.to = "a";
+		m = new TopDownMergeSort.ptr($ifaceNil);
 		m.steps = NewFirstStep();
 		return m;
 	};
@@ -8680,20 +8674,19 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesor
 		return m.steps;
 	};
 	TopDownMergeSort.prototype.Steps = function() { return this.$val.Steps(); };
-	TopDownMergeSort.ptr.prototype.Sort = function(nums) {
-		var from, m, nums, numsB, to, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; from = $f.from; m = $f.m; nums = $f.nums; numsB = $f.numsB; to = $f.to; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+	TopDownMergeSort.ptr.prototype.Sort = function(a) {
+		var a, b, from, m, to, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; b = $f.b; from = $f.from; m = $f.m; to = $f.to; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		m = this;
-		numsB = $makeSlice(sliceType, nums.$length);
-		$copySlice(numsB, nums);
-		from = new IntSlice.ptr(nums, "a");
-		to = new IntSlice.ptr(numsB, "b");
-		$r = m.start(0, nums.$length); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = m.topDownSplitMerge(to, from, 0, nums.$length); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		b = $makeSlice(sliceType, a.$length);
+		$copySlice(b, a);
+		from = new IntSlice.ptr(a, "a");
+		to = new IntSlice.ptr(b, "b");
+		$r = m.topDownSplitMerge(to, from, 0, a.$length); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.Sort }; } $f.from = from; $f.m = m; $f.nums = nums; $f.numsB = numsB; $f.to = to; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.Sort }; } $f.a = a; $f.b = b; $f.from = from; $f.m = m; $f.to = to; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	TopDownMergeSort.prototype.Sort = function(nums) { return this.$val.Sort(nums); };
+	TopDownMergeSort.prototype.Sort = function(a) { return this.$val.Sort(a); };
 	TopDownMergeSort.ptr.prototype.topDownSplitMerge = function(mergeFrom, mergeTo, iBegin, iEnd) {
 		var _q, iBegin, iEnd, iMid, m, mergeFrom, mergeTo, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _q = $f._q; iBegin = $f.iBegin; iEnd = $f.iEnd; iMid = $f.iMid; m = $f.m; mergeFrom = $f.mergeFrom; mergeTo = $f.mergeTo; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -8719,15 +8712,15 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesor
 		k = iBegin;
 		/* while (true) { */ case 1:
 			/* if (!(k < iEnd)) { break; } */ if(!(k < iEnd)) { $s = 2; continue; }
-			/* */ if (i < iMid && (j >= iEnd || (x = mergeFrom.nums, ((i < 0 || i >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + i])) <= (x$1 = mergeFrom.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])))) { $s = 3; continue; }
+			/* */ if (i < iMid && (j >= iEnd || (x = mergeFrom.a, ((i < 0 || i >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + i])) <= (x$1 = mergeFrom.a, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])))) { $s = 3; continue; }
 			/* */ $s = 4; continue;
-			/* if (i < iMid && (j >= iEnd || (x = mergeFrom.nums, ((i < 0 || i >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + i])) <= (x$1 = mergeFrom.nums, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])))) { */ case 3:
-				(x$3 = mergeTo.nums, ((k < 0 || k >= x$3.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$3.$array[x$3.$offset + k] = (x$2 = mergeFrom.nums, ((i < 0 || i >= x$2.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$2.$array[x$2.$offset + i]))));
+			/* if (i < iMid && (j >= iEnd || (x = mergeFrom.a, ((i < 0 || i >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + i])) <= (x$1 = mergeFrom.a, ((j < 0 || j >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + j])))) { */ case 3:
+				(x$3 = mergeTo.a, ((k < 0 || k >= x$3.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$3.$array[x$3.$offset + k] = (x$2 = mergeFrom.a, ((i < 0 || i >= x$2.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$2.$array[x$2.$offset + i]))));
 				$r = m.assign(iBegin, iMid, iEnd, k, i, j, "i", mergeFrom.name, mergeTo.name); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				i = i + (1) >> 0;
 				$s = 5; continue;
 			/* } else { */ case 4:
-				(x$5 = mergeTo.nums, ((k < 0 || k >= x$5.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$5.$array[x$5.$offset + k] = (x$4 = mergeFrom.nums, ((j < 0 || j >= x$4.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$4.$array[x$4.$offset + j]))));
+				(x$5 = mergeTo.a, ((k < 0 || k >= x$5.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$5.$array[x$5.$offset + k] = (x$4 = mergeFrom.a, ((j < 0 || j >= x$4.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$4.$array[x$4.$offset + j]))));
 				$r = m.assign(iBegin, iMid, iEnd, k, i, j, "j", mergeFrom.name, mergeTo.name); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				j = j + (1) >> 0;
 			/* } */ case 5:
@@ -8737,21 +8730,6 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesor
 		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.topDownMerge }; } $f.i = i; $f.iBegin = iBegin; $f.iEnd = iEnd; $f.iMid = iMid; $f.j = j; $f.k = k; $f.m = m; $f.mergeFrom = mergeFrom; $f.mergeTo = mergeTo; $f.x = x; $f.x$1 = x$1; $f.x$2 = x$2; $f.x$3 = x$3; $f.x$4 = x$4; $f.x$5 = x$5; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	TopDownMergeSort.prototype.topDownMerge = function(mergeFrom, mergeTo, iBegin, iMid, iEnd) { return this.$val.topDownMerge(mergeFrom, mergeTo, iBegin, iMid, iEnd); };
-	TopDownMergeSort.ptr.prototype.start = function(iBegin, iEnd) {
-		var iBegin, iEnd, m, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; iBegin = $f.iBegin; iEnd = $f.iEnd; m = $f.m; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		m = this;
-		s = new Step.ptr(0, 0, 0, 0, 0, 0, "", "", "", false, false, false, ptrType.nil, ptrType.nil, ptrType.nil);
-		s.IBegin = iBegin;
-		s.IEnd = iEnd;
-		s.isFirst = true;
-		s.From = m.from;
-		s.To = m.to;
-		$r = m.steps.AddStep(s); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.start }; } $f.iBegin = iBegin; $f.iEnd = iEnd; $f.m = m; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	TopDownMergeSort.prototype.start = function(iBegin, iEnd) { return this.$val.start(iBegin, iEnd); };
 	TopDownMergeSort.ptr.prototype.split = function(iBegin, iEnd, from, to) {
 		var from, iBegin, iEnd, m, s, to, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; from = $f.from; iBegin = $f.iBegin; iEnd = $f.iEnd; m = $f.m; s = $f.s; to = $f.to; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -8841,10 +8819,10 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesor
 		return s.isAssign;
 	};
 	Step.prototype.IsAssignStep = function() { return this.$val.IsAssignStep(); };
-	ptrType$2.methods = [{prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "topDownSplitMerge", name: "topDownSplitMerge", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([ptrType$1, ptrType$1, $Int, $Int], [], false)}, {prop: "topDownMerge", name: "topDownMerge", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([ptrType$1, ptrType$1, $Int, $Int, $Int], [], false)}, {prop: "start", name: "start", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([$Int, $Int], [], false)}, {prop: "split", name: "split", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([$Int, $Int, $String, $String], [], false)}, {prop: "assign", name: "assign", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([$Int, $Int, $Int, $Int, $Int, $Int, $String, $String, $String], [], false)}];
+	ptrType$2.methods = [{prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "topDownSplitMerge", name: "topDownSplitMerge", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([ptrType$1, ptrType$1, $Int, $Int], [], false)}, {prop: "topDownMerge", name: "topDownMerge", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([ptrType$1, ptrType$1, $Int, $Int, $Int], [], false)}, {prop: "split", name: "split", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([$Int, $Int, $String, $String], [], false)}, {prop: "assign", name: "assign", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([$Int, $Int, $Int, $Int, $Int, $Int, $String, $String, $String], [], false)}];
 	ptrType.methods = [{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "IsFirstStep", name: "IsFirstStep", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "IsSplitStep", name: "IsSplitStep", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "IsAssignStep", name: "IsAssignStep", pkg: "", typ: $funcType([], [$Bool], false)}];
-	TopDownMergeSort.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: visualizer.Stepper, tag: ""}, {prop: "from", name: "from", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "to", name: "to", anonymous: false, exported: false, typ: $String, tag: ""}]);
-	IntSlice.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", [{prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType, tag: ""}, {prop: "name", name: "name", anonymous: false, exported: false, typ: $String, tag: ""}]);
+	TopDownMergeSort.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: visualizer.Stepper, tag: ""}]);
+	IntSlice.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", [{prop: "a", name: "a", anonymous: false, exported: false, typ: sliceType, tag: ""}, {prop: "name", name: "name", anonymous: false, exported: false, typ: $String, tag: ""}]);
 	Step.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", [{prop: "IBegin", name: "IBegin", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IMid", name: "IMid", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IEnd", name: "IEnd", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "K", name: "K", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "I", name: "I", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "J", name: "J", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "From", name: "From", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "To", name: "To", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "Assign", name: "Assign", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "isFirst", name: "isFirst", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "isSplit", name: "isSplit", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "isAssign", name: "isAssign", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "next", name: "next", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "last", name: "last", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "current", name: "current", anonymous: false, exported: false, typ: ptrType, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};

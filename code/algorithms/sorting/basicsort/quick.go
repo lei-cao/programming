@@ -4,29 +4,29 @@ type QuickSort struct {
 	BasicSort
 }
 
-func (s *QuickSort) Sort(nums []int) {
-	s.quickSort(nums, 0, len(nums)-1)
+func (s *QuickSort) Sort(a []int) {
+	s.quickSort(a, 0, len(a)-1)
 }
 
-func (s *QuickSort) quickSort(nums []int, lo, hi int) {
+func (s *QuickSort) quickSort(a []int, lo, hi int) {
 	if lo < hi {
-		p := s.partition(nums, lo, hi)
-		s.quickSort(nums, lo, p-1)
-		s.quickSort(nums, p+1, hi)
+		p := s.partition(a, lo, hi)
+		s.quickSort(a, lo, p-1)
+		s.quickSort(a, p+1, hi)
 	}
 }
 
-func (s *QuickSort) partition(nums []int, lo, hi int) int {
-	pivot := nums[hi]
+func (s *QuickSort) partition(a []int, lo, hi int) int {
+	pivot := a[hi]
 	i := lo - 1
 	for j := lo; j < hi; j++ {
-		if nums[j] < pivot {
+		if a[j] < pivot {
 			i += 1
-			s.swap(nums, i, j)
+			s.swap(a, i, j)
 		} else {
 			s.pass(hi, j)
 		}
 	}
-	s.swap(nums, hi, i+1)
+	s.swap(a, hi, i+1)
 	return i + 1
 }
