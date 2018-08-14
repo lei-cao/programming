@@ -6,8 +6,12 @@ module.exports = {
     repo: 'lei-cao/learning-cs-again',
     base: '/learning-cs-again/',
     ga: 'UA-81346198-2',
+    serviceWorker: true,
     markdown: {
     },
+    head: [
+        ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ],
     themeConfig: {
         nav: [
             {text: 'Home', link: '/'},

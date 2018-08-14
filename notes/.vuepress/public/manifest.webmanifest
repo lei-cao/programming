@@ -1,0 +1,13 @@
+{
+  "name": "Learning CS",
+  "short_name": "Learning CS",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Learning CS Again",
+  "icons": [{
+      "src": "favicon.ico",
+      "sizes": "48x48"
+    }],
+  "related_applications": []
+}
