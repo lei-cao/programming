@@ -44,6 +44,7 @@ func (m *TopDownMergeSort) Sort(a []int) {
 	}
 
 	// Sort data From b to a
+	m.split(0, len(a), to.name, from.name)
 	m.topDownSplitMerge(to, from, 0, len(a))
 }
 
@@ -52,8 +53,9 @@ func (m *TopDownMergeSort) topDownSplitMerge(mergeFrom *IntSlice, mergeTo *IntSl
 		return
 	}
 	iMid := (iBegin + iEnd) / 2
-	m.split(iBegin, iEnd, mergeFrom.name, mergeTo.name)
+	m.split(iBegin, iMid, mergeTo.name, mergeFrom.name)
 	m.topDownSplitMerge(mergeTo, mergeFrom, iBegin, iMid)
+	m.split(iMid, iEnd, mergeTo.name, mergeFrom.name)
 	m.topDownSplitMerge(mergeTo, mergeFrom, iMid, iEnd)
 	m.topDownMerge(mergeFrom, mergeTo, iBegin, iMid, iEnd)
 }

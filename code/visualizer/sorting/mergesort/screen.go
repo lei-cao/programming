@@ -7,6 +7,7 @@ import (
 	"github.com/lei-cao/learning-cs-again/code/visualizer"
 	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort"
 	"github.com/lei-cao/learning-cs-again/code/visualizer/defaults"
+	"github.com/lei-cao/learning-cs-again/code/visualizer/ui"
 )
 
 func NewScreen(id string, size int, nums []int) *Screen {
@@ -18,11 +19,11 @@ func NewScreen(id string, size int, nums []int) *Screen {
 	s.c = canvas.New(obj)
 	s.ctx = s.c.GetContext2D()
 
-	pa := &Point{X: 0, Y: 0}
-	s.rsA = NewRectSlice(s.ctx, nums, pa, "a", false)
+	pa := ui.Point{X: 0, Y: 0}
+	s.rsA = ui.NewRectSlice(s.ctx, nums, pa, "a", false)
 
-	pb := &Point{X: 0, Y: s.rsA.Height() + 30}
-	s.rsB = NewRectSlice(s.ctx, nums, pb, "b", false)
+	pb := ui.Point{X: 0, Y: s.rsA.Height() + 30}
+	s.rsB = ui.NewRectSlice(s.ctx, nums, pb, "b", false)
 
 	s.aName = "a"
 	s.bName = "b"
@@ -37,8 +38,8 @@ type Screen struct {
 	size            int
 	c               *canvas.Canvas
 	ctx             *canvas.Context2D
-	rsA             *RectSlice
-	rsB             *RectSlice
+	rsA             *ui.RectSlice
+	rsB             *ui.RectSlice
 	aName           string
 	bName           string
 	finishedDrawing map[int]bool
@@ -67,13 +68,8 @@ func (s *Screen) Update(i visualizer.Stepper) {
 
 		if step.IsSplitStep() {
 			// split a step
-			if s.aName == step.From {
-				//s.splitA(step)
-			}
-
-			if s.bName == step.From {
-				//s.splitB(step)
-			}
+			s.splitA(step)
+			s.splitB(step)
 		}
 
 		if step.IsAssignStep() {
@@ -83,8 +79,8 @@ func (s *Screen) Update(i visualizer.Stepper) {
 }
 
 func (s *Screen) assign(step *mergesort.Step) {
-	var rsFrom *RectSlice
-	var rsTo *RectSlice
+	var rsFrom *ui.RectSlice
+	var rsTo *ui.RectSlice
 	if s.aName == step.From {
 		rsFrom = s.rsA
 		rsTo = s.rsB
@@ -96,8 +92,7 @@ func (s *Screen) assign(step *mergesort.Step) {
 	rFrom := rsFrom.Rectangles
 	rTo := rsTo.Rectangles
 
-	var r *Rectangle
-	var rCopy = &Rectangle{}
+	var r *ui.Rectangle
 	var i int
 	if step.Assign == "i" {
 		i = step.I
@@ -108,15 +103,17 @@ func (s *Screen) assign(step *mergesort.Step) {
 		r = rFrom[step.J]
 		rFrom[step.J] = r
 	}
-	rCopy.Color = defaults.DefaultColor.CColor
-	//rCopy.destPoint = rTo[step.K].startPoint
-	rCopy.destPoint = rsTo.rectPoint(step.K, r.V)
-	rCopy.startPoint = rsFrom.rectPoint(i, r.V)
-	rCopy.Height = r.Height
-	rCopy.Width = r.Width
-	rCopy.Ctx = r.Ctx
-	rCopy.V = r.V
-	r.Color = defaults.DefaultColor.AColor
+	dest := rsTo.RectPoint(step.K, r.V)
+	start := rsFrom.RectPoint(i, r.V)
+	var rCopy = ui.NewRect(r.Ctx, start, r.Width, r.Height, r.Index, r.V)
+	rCopy.DestPoint = dest
+	rCopy.OnFinished = func() {
+		if s.aName == step.From {
+			rCopy.Color = defaults.DefaultColor.BColor
+		} else {
+			rCopy.Color = defaults.DefaultColor.AColor
+		}
+	}
 	rTo[step.K] = rCopy
 }
 
@@ -129,51 +126,48 @@ func (s *Screen) splitB(step *mergesort.Step) {
 }
 
 func (s *Screen) split(step *mergesort.Step, name string) {
-	var rs *RectSlice
+	var rs *ui.RectSlice
+	var color string
 	if name == "a" {
 		rs = s.rsA
 	} else {
 		rs = s.rsB
 	}
+	color = defaults.DefaultColor.CColor
 
 	r := rs.Rectangles
 	begin := r[step.IBegin]
-	mid := r[step.IMid]
-	end := r[step.IEnd]
-	begin.Color = defaults.DefaultColor.AColor
-	mid.Color = defaults.DefaultColor.CColor
-	end.Color = defaults.DefaultColor.AColor
-	r[step.IBegin] = begin
-	r[step.IMid] = mid
-	r[step.IEnd] = end
+	end := r[step.IEnd-1]
+	begin.OnDrawing = func() {
+		begin.Color = color
+	}
+	end.OnDrawing = func() {
+		end.Color = color
+	}
+
+	begin.OnFinished = func() {
+		begin.Color = color
+	}
+	end.OnFinished = func() {
+		end.Color = color
+	}
 }
 
 func (s *Screen) draw(progress float64) {
 	s.ctx.FillStyle = defaults.DefaultColor.BackgroundColor
 	s.ctx.FillRect(0, 0, float64(s.c.Width), float64(s.c.Height))
-	//s.ctx.FillStyle = defaults.DefaultColor.BarColor
-	//s.ctx.Font = "20px Arial";
-	//s.ctx.FillText(s.aName, 5, 20, -1);
-	for k, r := range s.rsA.Rectangles {
-		s.finishedDrawing[k] = r.Animate(progress)
-	}
-	for k, r := range s.rsB.Rectangles {
-		s.finishedDrawing[s.size+k] = r.Animate(progress)
-	}
-	for _, finished := range s.finishedDrawing {
-		if !finished {
-			s.ready = false
-			return
-		}
-	}
-	s.ready = true
+
+	s.rsA.Draw(progress)
+	s.rsB.Draw(progress)
+
+	s.ready = s.rsA.Ready() && s.rsB.Ready()
 }
 
 func createCanvas(id string, size int) *js.Object {
 	body := js.Global.Get("document").Call("getElementById", id)
 	obj := js.Global.Get("document").Call("createElement", "canvas")
 	obj.Set("width", strconv.Itoa(canvasWidth(size)))
-	obj.Set("height", strconv.Itoa(canvasHeight(size, 2)+60))
+	obj.Set("height", strconv.Itoa(canvasHeight(size, 2)))
 	body.Set("innerHTML", "")
 	body.Call("appendChild", obj)
 	return obj

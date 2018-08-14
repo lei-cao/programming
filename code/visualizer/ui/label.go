@@ -1,4 +1,4 @@
-package mergesort
+package ui
 
 import "github.com/oskca/gopherjs-canvas"
 

@@ -7,6 +7,7 @@ import (
 	"github.com/lei-cao/learning-cs-again/code/visualizer"
 	"github.com/lei-cao/learning-cs-again/code/visualizer/defaults"
 	basic "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort"
+	"github.com/lei-cao/learning-cs-again/code/visualizer/ui"
 )
 
 func NewScreen(id string, size int, nums []int) *Screen {
@@ -18,12 +19,9 @@ func NewScreen(id string, size int, nums []int) *Screen {
 	s.c = canvas.New(obj)
 	s.ctx = s.c.GetContext2D()
 
-	s.rectangles = []*Rectangle{}
+	pa := ui.Point{X: 0, Y: 0}
+	s.rs = ui.NewRectSlice(s.ctx, nums, pa, "a", false)
 
-	for k, v := range nums {
-		r := NewRect(size, k, v, s.ctx)
-		s.rectangles = append(s.rectangles, r)
-	}
 	s.finishedDrawing = map[int]bool{}
 	return s
 }
@@ -35,7 +33,7 @@ type Screen struct {
 	size            int
 	c               *canvas.Canvas
 	ctx             *canvas.Context2D
-	rectangles      []*Rectangle
+	rs              *ui.RectSlice
 	finishedDrawing map[int]bool
 	ready           bool
 	aIndex          int
@@ -66,50 +64,20 @@ func (s *Screen) Update(i visualizer.Stepper) {
 }
 
 func (s *Screen) Swap(ia, ib int) {
-	a := s.rectangles[ia]
-	b := s.rectangles[ib]
-	a.IsA = true
-	b.IsB = true
-	s.aIndex = ia
-	s.bIndex = ib
-
-	a.ToIndex = ib
-	b.ToIndex = ia
-
-	s.rectangles[ia] = b
-	s.rectangles[ib] = a
+	s.rs.Swap(ia, ib)
 }
 
 func (s *Screen) Pass(ia, ib int) {
-	a := s.rectangles[ia]
-	b := s.rectangles[ib]
-	a.IsA = true
-	b.IsB = true
-	s.aIndex = ia
-	s.bIndex = ib
+	s.rs.Pass(ia, ib)
 }
 
 func (s *Screen) draw(progress float64) {
 	s.ctx.FillStyle = defaults.DefaultColor.BackgroundColor
 	s.ctx.FillRect(0, 0, float64(s.c.Width), float64(s.c.Height))
-	for k, r := range s.rectangles {
-		r.IsB = false
-		r.IsA = false
-		if s.aIndex == r.Index {
-			r.IsA = true
-		}
-		if s.bIndex == r.Index {
-			r.IsB = true
-		}
-		s.finishedDrawing[k] = r.Animate(progress)
-	}
-	for _, finished := range s.finishedDrawing {
-		if !finished {
-			s.ready = false
-			return
-		}
-	}
-	s.ready = true
+
+	s.rs.Draw(progress)
+
+	s.ready = s.rs.Ready()
 }
 
 func createCanvas(id string, size int) *js.Object {

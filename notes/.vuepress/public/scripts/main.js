@@ -8682,7 +8682,8 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesor
 		$copySlice(b, a);
 		from = new IntSlice.ptr(a, "a");
 		to = new IntSlice.ptr(b, "b");
-		$r = m.topDownSplitMerge(to, from, 0, a.$length); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = m.split(0, a.$length, to.name, from.name); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = m.topDownSplitMerge(to, from, 0, a.$length); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.Sort }; } $f.a = a; $f.b = b; $f.from = from; $f.m = m; $f.to = to; $f.$s = $s; $f.$r = $r; return $f;
 	};
@@ -8695,10 +8696,11 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesor
 			$s = -1; return;
 		}
 		iMid = (_q = ((iBegin + iEnd >> 0)) / 2, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >> 0 : $throwRuntimeError("integer divide by zero"));
-		$r = m.split(iBegin, iEnd, mergeFrom.name, mergeTo.name); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = m.split(iBegin, iMid, mergeTo.name, mergeFrom.name); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = m.topDownSplitMerge(mergeTo, mergeFrom, iBegin, iMid); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = m.topDownSplitMerge(mergeTo, mergeFrom, iMid, iEnd); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = m.topDownMerge(mergeFrom, mergeTo, iBegin, iMid, iEnd); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = m.split(iMid, iEnd, mergeTo.name, mergeFrom.name); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = m.topDownSplitMerge(mergeTo, mergeFrom, iMid, iEnd); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = m.topDownMerge(mergeFrom, mergeTo, iBegin, iMid, iEnd); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: TopDownMergeSort.ptr.prototype.topDownSplitMerge }; } $f._q = _q; $f.iBegin = iBegin; $f.iEnd = iEnd; $f.iMid = iMid; $f.m = m; $f.mergeFrom = mergeFrom; $f.mergeTo = mergeTo; $f.$s = $s; $f.$r = $r; return $f;
 	};
@@ -11038,6 +11040,302 @@ $packages["github.com/oskca/gopherjs-canvas"] = (function() {
 	$pkg.$init = $init;
 	return $pkg;
 })();
+$packages["github.com/lei-cao/learning-cs-again/code/visualizer/ui"] = (function() {
+	var $pkg = {}, $init, defaults, canvas, Point, Rectangle, RectSlice, ptrType, ptrType$1, ptrType$2, sliceType, sliceType$1, funcType, ptrType$4, mapType, NewRect, NewRectSlice, rectSliceHeight;
+	defaults = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/defaults"];
+	canvas = $packages["github.com/oskca/gopherjs-canvas"];
+	Point = $pkg.Point = $newType(0, $kindStruct, "ui.Point", true, "github.com/lei-cao/learning-cs-again/code/visualizer/ui", true, function(X_, Y_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.X = 0;
+			this.Y = 0;
+			return;
+		}
+		this.X = X_;
+		this.Y = Y_;
+	});
+	Rectangle = $pkg.Rectangle = $newType(0, $kindStruct, "ui.Rectangle", true, "github.com/lei-cao/learning-cs-again/code/visualizer/ui", true, function(Ctx_, StartPoint_, DestPoint_, Width_, Height_, Color_, V_, Index_, ToIndex_, isA_, isB_, OnFinished_, OnDrawing_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Ctx = ptrType.nil;
+			this.StartPoint = new Point.ptr(0, 0);
+			this.DestPoint = new Point.ptr(0, 0);
+			this.Width = 0;
+			this.Height = 0;
+			this.Color = "";
+			this.V = 0;
+			this.Index = 0;
+			this.ToIndex = 0;
+			this.isA = false;
+			this.isB = false;
+			this.OnFinished = $throwNilPointerError;
+			this.OnDrawing = $throwNilPointerError;
+			return;
+		}
+		this.Ctx = Ctx_;
+		this.StartPoint = StartPoint_;
+		this.DestPoint = DestPoint_;
+		this.Width = Width_;
+		this.Height = Height_;
+		this.Color = Color_;
+		this.V = V_;
+		this.Index = Index_;
+		this.ToIndex = ToIndex_;
+		this.isA = isA_;
+		this.isB = isB_;
+		this.OnFinished = OnFinished_;
+		this.OnDrawing = OnDrawing_;
+	});
+	RectSlice = $pkg.RectSlice = $newType(0, $kindStruct, "ui.RectSlice", true, "github.com/lei-cao/learning-cs-again/code/visualizer/ui", true, function(Rectangles_, StartPoint_, Size_, Name_, DisplayName_, finishedDrawing_, nums_, aIndex_, bIndex_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Rectangles = sliceType.nil;
+			this.StartPoint = new Point.ptr(0, 0);
+			this.Size = 0;
+			this.Name = "";
+			this.DisplayName = false;
+			this.finishedDrawing = false;
+			this.nums = sliceType$1.nil;
+			this.aIndex = 0;
+			this.bIndex = 0;
+			return;
+		}
+		this.Rectangles = Rectangles_;
+		this.StartPoint = StartPoint_;
+		this.Size = Size_;
+		this.Name = Name_;
+		this.DisplayName = DisplayName_;
+		this.finishedDrawing = finishedDrawing_;
+		this.nums = nums_;
+		this.aIndex = aIndex_;
+		this.bIndex = bIndex_;
+	});
+	ptrType = $ptrType(canvas.Context2D);
+	ptrType$1 = $ptrType(Point);
+	ptrType$2 = $ptrType(Rectangle);
+	sliceType = $sliceType(ptrType$2);
+	sliceType$1 = $sliceType($Int);
+	funcType = $funcType([], [], false);
+	ptrType$4 = $ptrType(RectSlice);
+	mapType = $mapType($Int, $Bool);
+	Point.ptr.prototype.MoveTo = function(dest, progress) {
+		var dest, p, progress;
+		p = this;
+		p.X = p.X + ((dest.X - p.X) * progress);
+		p.Y = p.Y + ((dest.Y - p.Y) * progress);
+	};
+	Point.prototype.MoveTo = function(dest, progress) { return this.$val.MoveTo(dest, progress); };
+	Point.ptr.prototype.Equals = function(b) {
+		var b, p;
+		p = this;
+		return (p.X === b.X) && (p.Y === b.Y);
+	};
+	Point.prototype.Equals = function(b) { return this.$val.Equals(b); };
+	NewRect = function(ctx, startPoint, width, height, index, value) {
+		var ctx, height, index, r, startPoint, value, width;
+		r = new Rectangle.ptr(ptrType.nil, new Point.ptr(0, 0), new Point.ptr(0, 0), 0, 0, "", 0, 0, 0, false, false, $throwNilPointerError, $throwNilPointerError);
+		r.Ctx = ctx;
+		Point.copy(r.StartPoint, startPoint);
+		Point.copy(r.DestPoint, startPoint);
+		r.Width = width;
+		r.Height = height;
+		r.V = value;
+		r.Index = index;
+		r.ToIndex = index;
+		r.OnDrawing = (function() {
+			if (r.isA) {
+				r.Color = defaults.DefaultColor.AColor;
+			}
+			if (r.isB) {
+				r.Color = defaults.DefaultColor.BColor;
+			}
+		});
+		r.OnFinished = (function() {
+			r.Color = defaults.DefaultColor.BarColor;
+		});
+		r.Color = defaults.DefaultColor.BarColor;
+		return r;
+	};
+	$pkg.NewRect = NewRect;
+	Rectangle.ptr.prototype.Animate = function(progress) {
+		var finished, progress, r, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; finished = $f.finished; progress = $f.progress; r = $f.r; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		r = this;
+		finished = false;
+		r.update(progress);
+		$r = r.draw(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* */ if (progress === 1) { $s = 2; continue; }
+		/* */ $s = 3; continue;
+		/* if (progress === 1) { */ case 2:
+			Point.copy(r.StartPoint, r.DestPoint);
+			r.Index = r.ToIndex;
+			$r = r.OnFinished(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			finished = true;
+		/* } */ case 3:
+		$s = -1; return finished;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Rectangle.ptr.prototype.Animate }; } $f.finished = finished; $f.progress = progress; $f.r = r; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	Rectangle.prototype.Animate = function(progress) { return this.$val.Animate(progress); };
+	Rectangle.ptr.prototype.update = function(progress) {
+		var progress, r;
+		r = this;
+		r.StartPoint.MoveTo($clone(r.DestPoint, Point), progress);
+	};
+	Rectangle.prototype.update = function(progress) { return this.$val.update(progress); };
+	Rectangle.ptr.prototype.draw = function() {
+		var r, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; r = $f.r; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		r = this;
+		$r = r.OnDrawing(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		r.Ctx.Object.fillStyle = $externalize(new $String(r.Color), $emptyInterface);
+		r.Ctx.FillRect(r.StartPoint.X, r.StartPoint.Y, r.Width, r.Height);
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Rectangle.ptr.prototype.draw }; } $f.r = r; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	Rectangle.prototype.draw = function() { return this.$val.draw(); };
+	NewRectSlice = function(ctx, nums, startPoint, name, displayName) {
+		var _i, _ref, ctx, displayName, k, name, nums, r, rs, startPoint, v;
+		rs = new RectSlice.ptr(sliceType.nil, new Point.ptr(0, 0), 0, "", false, false, sliceType$1.nil, 0, 0);
+		rs.nums = nums;
+		Point.copy(rs.StartPoint, startPoint);
+		rs.Size = nums.$length;
+		_ref = nums;
+		_i = 0;
+		while (true) {
+			if (!(_i < _ref.$length)) { break; }
+			k = _i;
+			v = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
+			r = NewRect(ctx, $clone(rs.RectPoint(k, v), Point), 8, 5 * (v), k, v);
+			rs.AddRect(r);
+			_i++;
+		}
+		rs.finishedDrawing = {};
+		rs.Name = name;
+		rs.DisplayName = displayName;
+		rs.aIndex = -1;
+		rs.bIndex = -1;
+		return rs;
+	};
+	$pkg.NewRectSlice = NewRectSlice;
+	rectSliceHeight = function(size) {
+		var size;
+		return 5 * (size);
+	};
+	RectSlice.ptr.prototype.Draw = function(progress) {
+		var _i, _key, _r, _ref, k, progress, r, rs, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _key = $f._key; _r = $f._r; _ref = $f._ref; k = $f.k; progress = $f.progress; r = $f.r; rs = $f.rs; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		rs = this;
+		_ref = rs.Rectangles;
+		_i = 0;
+		/* while (true) { */ case 1:
+			/* if (!(_i < _ref.$length)) { break; } */ if(!(_i < _ref.$length)) { $s = 2; continue; }
+			k = _i;
+			r = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
+			r.isB = false;
+			r.isA = false;
+			if (rs.aIndex === r.Index) {
+				r.isA = true;
+			}
+			if (rs.bIndex === r.Index) {
+				r.isB = true;
+			}
+			_r = r.Animate(progress); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			_key = k; (rs.finishedDrawing || $throwRuntimeError("assignment to entry in nil map"))[$Int.keyFor(_key)] = { k: _key, v: _r };
+			_i++;
+		/* } */ $s = 1; continue; case 2:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: RectSlice.ptr.prototype.Draw }; } $f._i = _i; $f._key = _key; $f._r = _r; $f._ref = _ref; $f.k = k; $f.progress = progress; $f.r = r; $f.rs = rs; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	RectSlice.prototype.Draw = function(progress) { return this.$val.Draw(progress); };
+	RectSlice.ptr.prototype.Ready = function() {
+		var _entry, _i, _keys, _ref, finished, rs;
+		rs = this;
+		_ref = rs.finishedDrawing;
+		_i = 0;
+		_keys = $keys(_ref);
+		while (true) {
+			if (!(_i < _keys.length)) { break; }
+			_entry = _ref[_keys[_i]];
+			if (_entry === undefined) {
+				_i++;
+				continue;
+			}
+			finished = _entry.v;
+			if (!finished) {
+				return false;
+			}
+			_i++;
+		}
+		return true;
+	};
+	RectSlice.prototype.Ready = function() { return this.$val.Ready(); };
+	RectSlice.ptr.prototype.AddRect = function(rectangle) {
+		var rectangle, rs;
+		rs = this;
+		rs.Rectangles = $append(rs.Rectangles, rectangle);
+	};
+	RectSlice.prototype.AddRect = function(rectangle) { return this.$val.AddRect(rectangle); };
+	RectSlice.ptr.prototype.Height = function() {
+		var rs;
+		rs = this;
+		return (rs.Size) * 5;
+	};
+	RectSlice.prototype.Height = function() { return this.$val.Height(); };
+	RectSlice.ptr.prototype.RectPoint = function(k, v) {
+		var k, p, rs, v;
+		rs = this;
+		p = new Point.ptr(rs.StartPoint.X + 10 * (k), rs.StartPoint.Y + rectSliceHeight(rs.Size) - (v) * 5);
+		return p;
+	};
+	RectSlice.prototype.RectPoint = function(k, v) { return this.$val.RectPoint(k, v); };
+	RectSlice.ptr.prototype.Swap = function(ia, ib) {
+		var ia, ib, ra, rb, rs, x, x$1, x$2, x$3;
+		rs = this;
+		if (ia < 0 || ib < 0 || ia > (rs.Rectangles.$length - 1 >> 0) || ib > (rs.Rectangles.$length - 1 >> 0)) {
+			return;
+		}
+		ra = (x = rs.Rectangles, ((ia < 0 || ia >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + ia]));
+		rb = (x$1 = rs.Rectangles, ((ib < 0 || ib >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + ib]));
+		rs.aIndex = ia;
+		rs.bIndex = ib;
+		ra.ToIndex = ib;
+		rb.ToIndex = ia;
+		ra.isA = true;
+		rb.isB = true;
+		Point.copy(ra.DestPoint, rs.RectPoint(ib, ra.V));
+		Point.copy(rb.DestPoint, rs.RectPoint(ia, rb.V));
+		(x$2 = rs.Rectangles, ((ia < 0 || ia >= x$2.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$2.$array[x$2.$offset + ia] = rb));
+		(x$3 = rs.Rectangles, ((ib < 0 || ib >= x$3.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$3.$array[x$3.$offset + ib] = ra));
+	};
+	RectSlice.prototype.Swap = function(ia, ib) { return this.$val.Swap(ia, ib); };
+	RectSlice.ptr.prototype.Pass = function(ia, ib) {
+		var ia, ib, rs, x, x$1;
+		rs = this;
+		if (ia < 0 || ib < 0 || ia > (rs.Rectangles.$length - 1 >> 0) || ib > (rs.Rectangles.$length - 1 >> 0)) {
+			return;
+		}
+		(x = rs.Rectangles, ((ia < 0 || ia >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + ia])).isA = true;
+		(x$1 = rs.Rectangles, ((ib < 0 || ib >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + ib])).isB = true;
+		rs.aIndex = ia;
+		rs.bIndex = ib;
+	};
+	RectSlice.prototype.Pass = function(ia, ib) { return this.$val.Pass(ia, ib); };
+	ptrType$1.methods = [{prop: "MoveTo", name: "MoveTo", pkg: "", typ: $funcType([Point, $Float64], [], false)}, {prop: "Equals", name: "Equals", pkg: "", typ: $funcType([Point], [$Bool], false)}];
+	ptrType$2.methods = [{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/ui", typ: $funcType([$Float64], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/ui", typ: $funcType([], [], false)}, {prop: "moving", name: "moving", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/ui", typ: $funcType([], [$Bool], false)}];
+	ptrType$4.methods = [{prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "AddRect", name: "AddRect", pkg: "", typ: $funcType([ptrType$2], [], false)}, {prop: "Height", name: "Height", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "RectPoint", name: "RectPoint", pkg: "", typ: $funcType([$Int, $Int], [Point], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}];
+	Point.init("", [{prop: "X", name: "X", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Y", name: "Y", anonymous: false, exported: true, typ: $Float64, tag: ""}]);
+	Rectangle.init("github.com/lei-cao/learning-cs-again/code/visualizer/ui", [{prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "StartPoint", name: "StartPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "DestPoint", name: "DestPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Color", name: "Color", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "V", name: "V", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "Index", name: "Index", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "ToIndex", name: "ToIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "isA", name: "isA", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "isB", name: "isB", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "OnFinished", name: "OnFinished", anonymous: false, exported: true, typ: funcType, tag: ""}, {prop: "OnDrawing", name: "OnDrawing", anonymous: false, exported: true, typ: funcType, tag: ""}]);
+	RectSlice.init("github.com/lei-cao/learning-cs-again/code/visualizer/ui", [{prop: "Rectangles", name: "Rectangles", anonymous: false, exported: true, typ: sliceType, tag: ""}, {prop: "StartPoint", name: "StartPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "Size", name: "Size", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "Name", name: "Name", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "DisplayName", name: "DisplayName", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType$1, tag: ""}, {prop: "aIndex", name: "aIndex", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "bIndex", name: "bIndex", anonymous: false, exported: false, typ: $Int, tag: ""}]);
+	$init = function() {
+		$pkg.$init = function() {};
+		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		$r = defaults.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = canvas.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.$init = $init;
+	return $pkg;
+})();
 $packages["unicode/utf8"] = (function() {
 	var $pkg = {}, $init, acceptRange, first, acceptRanges, DecodeRuneInString, EncodeRune;
 	acceptRange = $pkg.acceptRange = $newType(0, $kindStruct, "utf8.acceptRange", true, "unicode/utf8", false, function(lo_, hi_) {
@@ -11550,45 +11848,22 @@ $packages["strconv"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort"] = (function() {
-	var $pkg = {}, $init, js, basicsort, visualizer, defaults, canvas, strconv, Rectangle, Screen, ptrType, ptrType$1, ptrType$2, sliceType, ptrType$3, ptrType$4, mapType, NewRect, maxHeight, NewScreen, createCanvas, canvasWidth, canvasHeight;
+	var $pkg = {}, $init, js, basicsort, visualizer, defaults, ui, canvas, strconv, Screen, ptrType, ptrType$1, ptrType$2, ptrType$3, ptrType$4, mapType, NewScreen, createCanvas, canvasWidth, canvasHeight;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	basicsort = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort"];
 	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
 	defaults = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/defaults"];
+	ui = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/ui"];
 	canvas = $packages["github.com/oskca/gopherjs-canvas"];
 	strconv = $packages["strconv"];
-	Rectangle = $pkg.Rectangle = $newType(0, $kindStruct, "basicsort.Rectangle", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", true, function(Ctx_, Index_, ToIndex_, IsA_, IsB_, Left_, Top_, Width_, Height_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Ctx = ptrType.nil;
-			this.Index = 0;
-			this.ToIndex = 0;
-			this.IsA = false;
-			this.IsB = false;
-			this.Left = 0;
-			this.Top = 0;
-			this.Width = 0;
-			this.Height = 0;
-			return;
-		}
-		this.Ctx = Ctx_;
-		this.Index = Index_;
-		this.ToIndex = ToIndex_;
-		this.IsA = IsA_;
-		this.IsB = IsB_;
-		this.Left = Left_;
-		this.Top = Top_;
-		this.Width = Width_;
-		this.Height = Height_;
-	});
-	Screen = $pkg.Screen = $newType(0, $kindStruct, "basicsort.Screen", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", true, function(id_, size_, c_, ctx_, rectangles_, finishedDrawing_, ready_, aIndex_, bIndex_) {
+	Screen = $pkg.Screen = $newType(0, $kindStruct, "basicsort.Screen", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", true, function(id_, size_, c_, ctx_, rs_, finishedDrawing_, ready_, aIndex_, bIndex_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.id = "";
 			this.size = 0;
-			this.c = ptrType$1.nil;
-			this.ctx = ptrType.nil;
-			this.rectangles = sliceType.nil;
+			this.c = ptrType.nil;
+			this.ctx = ptrType$1.nil;
+			this.rs = ptrType$2.nil;
 			this.finishedDrawing = false;
 			this.ready = false;
 			this.aIndex = 0;
@@ -11599,98 +11874,28 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsor
 		this.size = size_;
 		this.c = c_;
 		this.ctx = ctx_;
-		this.rectangles = rectangles_;
+		this.rs = rs_;
 		this.finishedDrawing = finishedDrawing_;
 		this.ready = ready_;
 		this.aIndex = aIndex_;
 		this.bIndex = bIndex_;
 	});
-	ptrType = $ptrType(canvas.Context2D);
-	ptrType$1 = $ptrType(canvas.Canvas);
-	ptrType$2 = $ptrType(Rectangle);
-	sliceType = $sliceType(ptrType$2);
+	ptrType = $ptrType(canvas.Canvas);
+	ptrType$1 = $ptrType(canvas.Context2D);
+	ptrType$2 = $ptrType(ui.RectSlice);
 	ptrType$3 = $ptrType(basicsort.Step);
 	ptrType$4 = $ptrType(Screen);
 	mapType = $mapType($Int, $Bool);
-	NewRect = function(total, index, value, ctx) {
-		var ctx, index, r, total, value;
-		r = new Rectangle.ptr(ptrType.nil, 0, 0, false, false, 0, 0, 0, 0);
-		r.Ctx = ctx;
-		r.Index = index;
-		r.ToIndex = index;
-		r.Left = (($imul(10, index)));
-		r.Top = ((maxHeight(total) - ($imul(value, 5)) >> 0));
-		r.Width = 8;
-		r.Height = (($imul(value, 5)));
-		return r;
-	};
-	$pkg.NewRect = NewRect;
-	Rectangle.ptr.prototype.Animate = function(progress) {
-		var finished, progress, r;
-		r = this;
-		finished = r.update(progress);
-		r.draw();
-		return finished;
-	};
-	Rectangle.prototype.Animate = function(progress) { return this.$val.Animate(progress); };
-	Rectangle.ptr.prototype.update = function(progress) {
-		var finished, progress, r;
-		r = this;
-		finished = false;
-		if (r.Left - r.toLeft() > 0) {
-			r.Left = r.Left - ((r.Left - r.toLeft()) * progress);
-		} else if (r.Left - r.toLeft() < 0) {
-			r.Left = r.Left + ((r.toLeft() - r.Left) * progress);
-		} else {
-			r.Index = r.ToIndex;
-		}
-		if (progress === 1) {
-			finished = true;
-		}
-		return finished;
-	};
-	Rectangle.prototype.update = function(progress) { return this.$val.update(progress); };
-	Rectangle.ptr.prototype.draw = function() {
-		var r;
-		r = this;
-		r.Ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.BarColor), $emptyInterface);
-		if (r.IsA) {
-			r.Ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.AColor), $emptyInterface);
-		} else if (r.IsB) {
-			r.Ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.BColor), $emptyInterface);
-		}
-		r.Ctx.FillRect(r.Left, r.Top, r.Width, r.Height);
-	};
-	Rectangle.prototype.draw = function() { return this.$val.draw(); };
-	Rectangle.ptr.prototype.toLeft = function() {
-		var r;
-		r = this;
-		return (($imul(10, r.ToIndex)));
-	};
-	Rectangle.prototype.toLeft = function() { return this.$val.toLeft(); };
-	maxHeight = function(size) {
-		var size;
-		return $imul(size, 5);
-	};
 	NewScreen = function(id, size, nums) {
-		var _i, _ref, id, k, nums, obj, r, s, size, v;
-		s = new Screen.ptr("", 0, ptrType$1.nil, ptrType.nil, sliceType.nil, false, false, 0, 0);
+		var id, nums, obj, pa, s, size;
+		s = new Screen.ptr("", 0, ptrType.nil, ptrType$1.nil, ptrType$2.nil, false, false, 0, 0);
 		s.id = id;
 		s.size = size;
 		obj = createCanvas(s.id, s.size);
 		s.c = canvas.New(obj);
 		s.ctx = s.c.GetContext2D();
-		s.rectangles = new sliceType([]);
-		_ref = nums;
-		_i = 0;
-		while (true) {
-			if (!(_i < _ref.$length)) { break; }
-			k = _i;
-			v = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
-			r = NewRect(size, k, v, s.ctx);
-			s.rectangles = $append(s.rectangles, r);
-			_i++;
-		}
+		pa = new ui.Point.ptr(0, 0);
+		s.rs = ui.NewRectSlice(s.ctx, nums, $clone(pa, ui.Point), "a", false);
 		s.finishedDrawing = $makeMap($Int.keyFor, []);
 		return s;
 	};
@@ -11708,9 +11913,12 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsor
 	};
 	Screen.prototype.Clear = function() { return this.$val.Clear(); };
 	Screen.ptr.prototype.Draw = function(progress) {
-		var progress, s;
+		var progress, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; progress = $f.progress; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		s = this;
-		s.draw(progress);
+		$r = s.draw(progress); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Screen.ptr.prototype.Draw }; } $f.progress = progress; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Screen.prototype.Draw = function(progress) { return this.$val.Draw(progress); };
 	Screen.ptr.prototype.Update = function(i) {
@@ -11729,71 +11937,27 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsor
 	};
 	Screen.prototype.Update = function(i) { return this.$val.Update(i); };
 	Screen.ptr.prototype.Swap = function(ia, ib) {
-		var a, b, ia, ib, s, x, x$1, x$2, x$3;
+		var ia, ib, s;
 		s = this;
-		a = (x = s.rectangles, ((ia < 0 || ia >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + ia]));
-		b = (x$1 = s.rectangles, ((ib < 0 || ib >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + ib]));
-		a.IsA = true;
-		b.IsB = true;
-		s.aIndex = ia;
-		s.bIndex = ib;
-		a.ToIndex = ib;
-		b.ToIndex = ia;
-		(x$2 = s.rectangles, ((ia < 0 || ia >= x$2.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$2.$array[x$2.$offset + ia] = b));
-		(x$3 = s.rectangles, ((ib < 0 || ib >= x$3.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$3.$array[x$3.$offset + ib] = a));
+		s.rs.Swap(ia, ib);
 	};
 	Screen.prototype.Swap = function(ia, ib) { return this.$val.Swap(ia, ib); };
 	Screen.ptr.prototype.Pass = function(ia, ib) {
-		var a, b, ia, ib, s, x, x$1;
+		var ia, ib, s;
 		s = this;
-		a = (x = s.rectangles, ((ia < 0 || ia >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + ia]));
-		b = (x$1 = s.rectangles, ((ib < 0 || ib >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + ib]));
-		a.IsA = true;
-		b.IsB = true;
-		s.aIndex = ia;
-		s.bIndex = ib;
+		s.rs.Pass(ia, ib);
 	};
 	Screen.prototype.Pass = function(ia, ib) { return this.$val.Pass(ia, ib); };
 	Screen.ptr.prototype.draw = function(progress) {
-		var _entry, _i, _i$1, _key, _keys, _ref, _ref$1, finished, k, progress, r, s;
+		var progress, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; progress = $f.progress; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		s = this;
 		s.ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.BackgroundColor), $emptyInterface);
 		s.ctx.FillRect(0, 0, (($parseInt(s.c.Element.Node.EventTarget.Object.width) >> 0)), (($parseInt(s.c.Element.Node.EventTarget.Object.height) >> 0)));
-		_ref = s.rectangles;
-		_i = 0;
-		while (true) {
-			if (!(_i < _ref.$length)) { break; }
-			k = _i;
-			r = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
-			r.IsB = false;
-			r.IsA = false;
-			if (s.aIndex === r.Index) {
-				r.IsA = true;
-			}
-			if (s.bIndex === r.Index) {
-				r.IsB = true;
-			}
-			_key = k; (s.finishedDrawing || $throwRuntimeError("assignment to entry in nil map"))[$Int.keyFor(_key)] = { k: _key, v: r.Animate(progress) };
-			_i++;
-		}
-		_ref$1 = s.finishedDrawing;
-		_i$1 = 0;
-		_keys = $keys(_ref$1);
-		while (true) {
-			if (!(_i$1 < _keys.length)) { break; }
-			_entry = _ref$1[_keys[_i$1]];
-			if (_entry === undefined) {
-				_i$1++;
-				continue;
-			}
-			finished = _entry.v;
-			if (!finished) {
-				s.ready = false;
-				return;
-			}
-			_i$1++;
-		}
-		s.ready = true;
+		$r = s.rs.Draw(progress); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		s.ready = s.rs.Ready();
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Screen.ptr.prototype.draw }; } $f.progress = progress; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Screen.prototype.draw = function(progress) { return this.$val.draw(progress); };
 	createCanvas = function(id, size) {
@@ -11814,10 +11978,8 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsor
 		var size;
 		return $imul(size, 5);
 	};
-	ptrType$2.methods = [{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", typ: $funcType([$Float64], [$Bool], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", typ: $funcType([], [], false)}, {prop: "toLeft", name: "toLeft", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", typ: $funcType([], [$Float64], false)}];
 	ptrType$4.methods = [{prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", typ: $funcType([$Float64], [], false)}];
-	Rectangle.init("", [{prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "Index", name: "Index", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "ToIndex", name: "ToIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IsA", name: "IsA", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "IsB", name: "IsB", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "Left", name: "Left", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Top", name: "Top", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Float64, tag: ""}]);
-	Screen.init("github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "c", name: "c", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "ctx", name: "ctx", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "rectangles", name: "rectangles", anonymous: false, exported: false, typ: sliceType, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "ready", name: "ready", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "aIndex", name: "aIndex", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "bIndex", name: "bIndex", anonymous: false, exported: false, typ: $Int, tag: ""}]);
+	Screen.init("github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "c", name: "c", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "ctx", name: "ctx", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "rs", name: "rs", anonymous: false, exported: false, typ: ptrType$2, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "ready", name: "ready", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "aIndex", name: "aIndex", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "bIndex", name: "bIndex", anonymous: false, exported: false, typ: $Int, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -11825,78 +11987,32 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsor
 		$r = basicsort.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = visualizer.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = defaults.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = canvas.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = strconv.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = ui.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = canvas.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = strconv.$init(); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.$init = $init;
 	return $pkg;
 })();
 $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort"] = (function() {
-	var $pkg = {}, $init, js, mergesort, visualizer, defaults, canvas, strconv, Point, RectSlice, Rectangle, Screen, ptrType, ptrType$1, ptrType$2, sliceType, sliceType$1, ptrType$3, ptrType$4, ptrType$5, ptrType$7, mapType, NewRectSlice, rectSliceHeight, NewRect, NewScreen, createCanvas, canvasWidth, canvasHeight, rectanglesHeight;
+	var $pkg = {}, $init, js, mergesort, visualizer, defaults, ui, canvas, strconv, Screen, ptrType, ptrType$1, ptrType$2, ptrType$3, ptrType$4, ptrType$5, mapType, NewScreen, createCanvas, canvasWidth, canvasHeight, rectanglesHeight;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	mergesort = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort"];
 	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
 	defaults = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/defaults"];
+	ui = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/ui"];
 	canvas = $packages["github.com/oskca/gopherjs-canvas"];
 	strconv = $packages["strconv"];
-	Point = $pkg.Point = $newType(0, $kindStruct, "mergesort.Point", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", true, function(X_, Y_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.X = 0;
-			this.Y = 0;
-			return;
-		}
-		this.X = X_;
-		this.Y = Y_;
-	});
-	RectSlice = $pkg.RectSlice = $newType(0, $kindStruct, "mergesort.RectSlice", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", true, function(Rectangles_, StartPoint_, Size_, Name_, DisplayName_, nums_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Rectangles = sliceType.nil;
-			this.StartPoint = ptrType$1.nil;
-			this.Size = 0;
-			this.Name = "";
-			this.DisplayName = false;
-			this.nums = sliceType$1.nil;
-			return;
-		}
-		this.Rectangles = Rectangles_;
-		this.StartPoint = StartPoint_;
-		this.Size = Size_;
-		this.Name = Name_;
-		this.DisplayName = DisplayName_;
-		this.nums = nums_;
-	});
-	Rectangle = $pkg.Rectangle = $newType(0, $kindStruct, "mergesort.Rectangle", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", true, function(Ctx_, startPoint_, destPoint_, Width_, Height_, Color_, V_) {
-		this.$val = this;
-		if (arguments.length === 0) {
-			this.Ctx = ptrType.nil;
-			this.startPoint = ptrType$1.nil;
-			this.destPoint = ptrType$1.nil;
-			this.Width = 0;
-			this.Height = 0;
-			this.Color = "";
-			this.V = 0;
-			return;
-		}
-		this.Ctx = Ctx_;
-		this.startPoint = startPoint_;
-		this.destPoint = destPoint_;
-		this.Width = Width_;
-		this.Height = Height_;
-		this.Color = Color_;
-		this.V = V_;
-	});
 	Screen = $pkg.Screen = $newType(0, $kindStruct, "mergesort.Screen", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", true, function(id_, size_, c_, ctx_, rsA_, rsB_, aName_, bName_, finishedDrawing_, ready_, iBegin_, iMid_, iEnd_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.id = "";
 			this.size = 0;
-			this.c = ptrType$3.nil;
-			this.ctx = ptrType.nil;
-			this.rsA = ptrType$4.nil;
-			this.rsB = ptrType$4.nil;
+			this.c = ptrType.nil;
+			this.ctx = ptrType$1.nil;
+			this.rsA = ptrType$2.nil;
+			this.rsB = ptrType$2.nil;
 			this.aName = "";
 			this.bName = "";
 			this.finishedDrawing = false;
@@ -11920,134 +12036,25 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesor
 		this.iMid = iMid_;
 		this.iEnd = iEnd_;
 	});
-	ptrType = $ptrType(canvas.Context2D);
-	ptrType$1 = $ptrType(Point);
-	ptrType$2 = $ptrType(Rectangle);
-	sliceType = $sliceType(ptrType$2);
-	sliceType$1 = $sliceType($Int);
-	ptrType$3 = $ptrType(canvas.Canvas);
-	ptrType$4 = $ptrType(RectSlice);
-	ptrType$5 = $ptrType(mergesort.Step);
-	ptrType$7 = $ptrType(Screen);
+	ptrType = $ptrType(canvas.Canvas);
+	ptrType$1 = $ptrType(canvas.Context2D);
+	ptrType$2 = $ptrType(ui.RectSlice);
+	ptrType$3 = $ptrType(mergesort.Step);
+	ptrType$4 = $ptrType(ui.Rectangle);
+	ptrType$5 = $ptrType(Screen);
 	mapType = $mapType($Int, $Bool);
-	Point.ptr.prototype.MoveTo = function(dest, progress) {
-		var dest, p, progress;
-		p = this;
-		p.X = p.X + ((dest.X - p.X) * progress);
-		p.Y = p.Y + ((dest.Y - p.Y) * progress);
-	};
-	Point.prototype.MoveTo = function(dest, progress) { return this.$val.MoveTo(dest, progress); };
-	Point.ptr.prototype.Equals = function(b) {
-		var b, p;
-		p = this;
-		return (p.X === b.X) && (p.Y === b.Y);
-	};
-	Point.prototype.Equals = function(b) { return this.$val.Equals(b); };
-	NewRectSlice = function(ctx, nums, startPoint, name, displayName) {
-		var _i, _ref, ctx, displayName, k, name, nums, r, rs, startPoint, v;
-		rs = new RectSlice.ptr(sliceType.nil, ptrType$1.nil, 0, "", false, sliceType$1.nil);
-		rs.nums = nums;
-		rs.StartPoint = startPoint;
-		rs.Size = nums.$length;
-		_ref = nums;
-		_i = 0;
-		while (true) {
-			if (!(_i < _ref.$length)) { break; }
-			k = _i;
-			v = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
-			r = NewRect(ctx, rs.rectPoint(k, v), 8, 5 * (v), v);
-			rs.AddRect(r);
-			_i++;
-		}
-		rs.Name = name;
-		rs.DisplayName = displayName;
-		return rs;
-	};
-	$pkg.NewRectSlice = NewRectSlice;
-	rectSliceHeight = function(size) {
-		var size;
-		return 5 * (size);
-	};
-	RectSlice.ptr.prototype.AddRect = function(rectangle) {
-		var rectangle, rs;
-		rs = this;
-		rs.Rectangles = $append(rs.Rectangles, rectangle);
-	};
-	RectSlice.prototype.AddRect = function(rectangle) { return this.$val.AddRect(rectangle); };
-	RectSlice.ptr.prototype.Height = function() {
-		var rs;
-		rs = this;
-		return (rs.Size) * 5;
-	};
-	RectSlice.prototype.Height = function() { return this.$val.Height(); };
-	RectSlice.ptr.prototype.rectPoint = function(k, v) {
-		var k, p, rs, v;
-		rs = this;
-		p = new Point.ptr(rs.StartPoint.X + 10 * (k), rs.StartPoint.Y + rectSliceHeight(rs.Size) - (v) * 5);
-		return p;
-	};
-	RectSlice.prototype.rectPoint = function(k, v) { return this.$val.rectPoint(k, v); };
-	NewRect = function(ctx, startPoint, width, height, value) {
-		var ctx, height, r, startPoint, value, width;
-		r = new Rectangle.ptr(ptrType.nil, ptrType$1.nil, ptrType$1.nil, 0, 0, "", 0);
-		r.Ctx = ctx;
-		r.startPoint = startPoint;
-		r.destPoint = startPoint;
-		r.Width = width;
-		r.Height = height;
-		r.V = value;
-		r.Color = defaults.DefaultColor.BarColor;
-		return r;
-	};
-	$pkg.NewRect = NewRect;
-	Rectangle.ptr.prototype.Animate = function(progress) {
-		var finished, progress, r;
-		r = this;
-		finished = r.update(progress);
-		r.draw();
-		return finished;
-	};
-	Rectangle.prototype.Animate = function(progress) { return this.$val.Animate(progress); };
-	Rectangle.ptr.prototype.update = function(progress) {
-		var finished, progress, r;
-		r = this;
-		finished = false;
-		r.startPoint.MoveTo(r.destPoint, progress);
-		if (progress === 1) {
-			r.startPoint = r.destPoint;
-			finished = true;
-		}
-		return finished;
-	};
-	Rectangle.prototype.update = function(progress) { return this.$val.update(progress); };
-	Rectangle.ptr.prototype.draw = function() {
-		var r;
-		r = this;
-		r.Ctx.Object.fillStyle = $externalize(new $String(r.Color), $emptyInterface);
-		if (r.moving()) {
-			r.Ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.AColor), $emptyInterface);
-		}
-		r.Ctx.FillRect(r.startPoint.X, r.startPoint.Y, r.Width, r.Height);
-	};
-	Rectangle.prototype.draw = function() { return this.$val.draw(); };
-	Rectangle.ptr.prototype.moving = function() {
-		var r;
-		r = this;
-		return !r.startPoint.Equals(r.destPoint);
-	};
-	Rectangle.prototype.moving = function() { return this.$val.moving(); };
 	NewScreen = function(id, size, nums) {
 		var id, nums, obj, pa, pb, s, size;
-		s = new Screen.ptr("", 0, ptrType$3.nil, ptrType.nil, ptrType$4.nil, ptrType$4.nil, "", "", false, false, 0, 0, 0);
+		s = new Screen.ptr("", 0, ptrType.nil, ptrType$1.nil, ptrType$2.nil, ptrType$2.nil, "", "", false, false, 0, 0, 0);
 		s.id = id;
 		s.size = size;
 		obj = createCanvas(s.id, s.size);
 		s.c = canvas.New(obj);
 		s.ctx = s.c.GetContext2D();
-		pa = new Point.ptr(0, 0);
-		s.rsA = NewRectSlice(s.ctx, nums, pa, "a", false);
-		pb = new Point.ptr(0, s.rsA.Height() + 30);
-		s.rsB = NewRectSlice(s.ctx, nums, pb, "b", false);
+		pa = new ui.Point.ptr(0, 0);
+		s.rsA = ui.NewRectSlice(s.ctx, nums, $clone(pa, ui.Point), "a", false);
+		pb = new ui.Point.ptr(0, s.rsA.Height() + 30);
+		s.rsB = ui.NewRectSlice(s.ctx, nums, $clone(pb, ui.Point), "b", false);
 		s.aName = "a";
 		s.bName = "b";
 		s.finishedDrawing = $makeMap($Int.keyFor, []);
@@ -12067,25 +12074,26 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesor
 	};
 	Screen.prototype.Clear = function() { return this.$val.Clear(); };
 	Screen.ptr.prototype.Draw = function(progress) {
-		var progress, s;
+		var progress, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; progress = $f.progress; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		s = this;
-		s.draw(progress);
+		$r = s.draw(progress); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Screen.ptr.prototype.Draw }; } $f.progress = progress; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Screen.prototype.Draw = function(progress) { return this.$val.Draw(progress); };
 	Screen.ptr.prototype.Update = function(i) {
 		var _tuple, i, ok, s, step;
 		s = this;
-		_tuple = $assertType(i, ptrType$5, true);
+		_tuple = $assertType(i, ptrType$3, true);
 		step = _tuple[0];
 		ok = _tuple[1];
 		if (ok) {
 			if (step.IsFirstStep()) {
 			}
 			if (step.IsSplitStep()) {
-				if (s.aName === step.From) {
-				}
-				if (s.bName === step.From) {
-				}
+				s.splitA(step);
+				s.splitB(step);
 			}
 			if (step.IsAssignStep()) {
 				s.assign(step);
@@ -12094,10 +12102,10 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesor
 	};
 	Screen.prototype.Update = function(i) { return this.$val.Update(i); };
 	Screen.ptr.prototype.assign = function(step) {
-		var i, r, rCopy, rFrom, rTo, rsFrom, rsTo, s, step, x, x$1, x$2, x$3, x$4;
+		var dest, i, r, rCopy, rFrom, rTo, rsFrom, rsTo, s, start, step, x, x$1, x$2, x$3, x$4;
 		s = this;
-		rsFrom = ptrType$4.nil;
-		rsTo = ptrType$4.nil;
+		rsFrom = ptrType$2.nil;
+		rsTo = ptrType$2.nil;
 		if (s.aName === step.From) {
 			rsFrom = s.rsA;
 			rsTo = s.rsB;
@@ -12107,8 +12115,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesor
 		}
 		rFrom = rsFrom.Rectangles;
 		rTo = rsTo.Rectangles;
-		r = ptrType$2.nil;
-		rCopy = new Rectangle.ptr(ptrType.nil, ptrType$1.nil, ptrType$1.nil, 0, 0, "", 0);
+		r = ptrType$4.nil;
 		i = 0;
 		if (step.Assign === "i") {
 			i = step.I;
@@ -12119,58 +12126,71 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesor
 			r = (x$2 = step.J, ((x$2 < 0 || x$2 >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x$2]));
 			(x$3 = step.J, ((x$3 < 0 || x$3 >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x$3] = r));
 		}
-		rCopy.Color = defaults.DefaultColor.CColor;
-		rCopy.destPoint = rsTo.rectPoint(step.K, r.V);
-		rCopy.startPoint = rsFrom.rectPoint(i, r.V);
-		rCopy.Height = r.Height;
-		rCopy.Width = r.Width;
-		rCopy.Ctx = r.Ctx;
-		rCopy.V = r.V;
-		r.Color = defaults.DefaultColor.AColor;
+		dest = $clone(rsTo.RectPoint(step.K, r.V), ui.Point);
+		start = $clone(rsFrom.RectPoint(i, r.V), ui.Point);
+		rCopy = ui.NewRect(r.Ctx, $clone(start, ui.Point), r.Width, r.Height, r.Index, r.V);
+		ui.Point.copy(rCopy.DestPoint, dest);
+		rCopy.OnFinished = (function() {
+			if (s.aName === step.From) {
+				rCopy.Color = defaults.DefaultColor.BColor;
+			} else {
+				rCopy.Color = defaults.DefaultColor.AColor;
+			}
+		});
 		(x$4 = step.K, ((x$4 < 0 || x$4 >= rTo.$length) ? ($throwRuntimeError("index out of range"), undefined) : rTo.$array[rTo.$offset + x$4] = rCopy));
 	};
 	Screen.prototype.assign = function(step) { return this.$val.assign(step); };
+	Screen.ptr.prototype.splitA = function(step) {
+		var s, step;
+		s = this;
+		s.split(step, "a");
+	};
+	Screen.prototype.splitA = function(step) { return this.$val.splitA(step); };
+	Screen.ptr.prototype.splitB = function(step) {
+		var s, step;
+		s = this;
+		s.split(step, "b");
+	};
+	Screen.prototype.splitB = function(step) { return this.$val.splitB(step); };
+	Screen.ptr.prototype.split = function(step, name) {
+		var begin, color, end, name, r, rs, s, step, x, x$1;
+		s = this;
+		rs = ptrType$2.nil;
+		color = "";
+		if (name === "a") {
+			rs = s.rsA;
+		} else {
+			rs = s.rsB;
+		}
+		color = defaults.DefaultColor.CColor;
+		r = rs.Rectangles;
+		begin = (x = step.IBegin, ((x < 0 || x >= r.$length) ? ($throwRuntimeError("index out of range"), undefined) : r.$array[r.$offset + x]));
+		end = (x$1 = step.IEnd - 1 >> 0, ((x$1 < 0 || x$1 >= r.$length) ? ($throwRuntimeError("index out of range"), undefined) : r.$array[r.$offset + x$1]));
+		begin.OnDrawing = (function() {
+			begin.Color = color;
+		});
+		end.OnDrawing = (function() {
+			end.Color = color;
+		});
+		begin.OnFinished = (function() {
+			begin.Color = color;
+		});
+		end.OnFinished = (function() {
+			end.Color = color;
+		});
+	};
+	Screen.prototype.split = function(step, name) { return this.$val.split(step, name); };
 	Screen.ptr.prototype.draw = function(progress) {
-		var _entry, _i, _i$1, _i$2, _key, _key$1, _keys, _ref, _ref$1, _ref$2, finished, k, k$1, progress, r, r$1, s;
+		var progress, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; progress = $f.progress; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		s = this;
 		s.ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.BackgroundColor), $emptyInterface);
 		s.ctx.FillRect(0, 0, (($parseInt(s.c.Element.Node.EventTarget.Object.width) >> 0)), (($parseInt(s.c.Element.Node.EventTarget.Object.height) >> 0)));
-		_ref = s.rsA.Rectangles;
-		_i = 0;
-		while (true) {
-			if (!(_i < _ref.$length)) { break; }
-			k = _i;
-			r = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
-			_key = k; (s.finishedDrawing || $throwRuntimeError("assignment to entry in nil map"))[$Int.keyFor(_key)] = { k: _key, v: r.Animate(progress) };
-			_i++;
-		}
-		_ref$1 = s.rsB.Rectangles;
-		_i$1 = 0;
-		while (true) {
-			if (!(_i$1 < _ref$1.$length)) { break; }
-			k$1 = _i$1;
-			r$1 = ((_i$1 < 0 || _i$1 >= _ref$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref$1.$array[_ref$1.$offset + _i$1]);
-			_key$1 = s.size + k$1 >> 0; (s.finishedDrawing || $throwRuntimeError("assignment to entry in nil map"))[$Int.keyFor(_key$1)] = { k: _key$1, v: r$1.Animate(progress) };
-			_i$1++;
-		}
-		_ref$2 = s.finishedDrawing;
-		_i$2 = 0;
-		_keys = $keys(_ref$2);
-		while (true) {
-			if (!(_i$2 < _keys.length)) { break; }
-			_entry = _ref$2[_keys[_i$2]];
-			if (_entry === undefined) {
-				_i$2++;
-				continue;
-			}
-			finished = _entry.v;
-			if (!finished) {
-				s.ready = false;
-				return;
-			}
-			_i$2++;
-		}
-		s.ready = true;
+		$r = s.rsA.Draw(progress); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = s.rsB.Draw(progress); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		s.ready = s.rsA.Ready() && s.rsB.Ready();
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Screen.ptr.prototype.draw }; } $f.progress = progress; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Screen.prototype.draw = function(progress) { return this.$val.draw(progress); };
 	createCanvas = function(id, size) {
@@ -12178,7 +12198,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesor
 		body = $global.document.getElementById($externalize(id, $String));
 		obj = $global.document.createElement($externalize("canvas", $String));
 		obj.width = $externalize(strconv.Itoa(canvasWidth(size)), $String);
-		obj.height = $externalize(strconv.Itoa(canvasHeight(size, 2) + 60 >> 0), $String);
+		obj.height = $externalize(strconv.Itoa(canvasHeight(size, 2)), $String);
 		body.innerHTML = $externalize("", $String);
 		body.appendChild(obj);
 		return obj;
@@ -12195,14 +12215,8 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesor
 		var index, size;
 		return ($imul(size, 5)) + ($imul(($imul(((index - 1 >> 0)), 3)), 5)) >> 0;
 	};
-	ptrType$1.methods = [{prop: "MoveTo", name: "MoveTo", pkg: "", typ: $funcType([ptrType$1, $Float64], [], false)}, {prop: "Equals", name: "Equals", pkg: "", typ: $funcType([ptrType$1], [$Bool], false)}];
-	ptrType$4.methods = [{prop: "AddRect", name: "AddRect", pkg: "", typ: $funcType([ptrType$2], [], false)}, {prop: "Height", name: "Height", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "rectPoint", name: "rectPoint", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([$Int, $Int], [ptrType$1], false)}];
-	ptrType$2.methods = [{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([$Float64], [$Bool], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([], [], false)}, {prop: "moving", name: "moving", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([], [$Bool], false)}];
-	ptrType$7.methods = [{prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "assign", name: "assign", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$5], [], false)}, {prop: "splitA", name: "splitA", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$5], [], false)}, {prop: "splitB", name: "splitB", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$5], [], false)}, {prop: "split", name: "split", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$5, $String], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([$Float64], [], false)}];
-	Point.init("", [{prop: "X", name: "X", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Y", name: "Y", anonymous: false, exported: true, typ: $Float64, tag: ""}]);
-	RectSlice.init("github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", [{prop: "Rectangles", name: "Rectangles", anonymous: false, exported: true, typ: sliceType, tag: ""}, {prop: "StartPoint", name: "StartPoint", anonymous: false, exported: true, typ: ptrType$1, tag: ""}, {prop: "Size", name: "Size", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "Name", name: "Name", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "DisplayName", name: "DisplayName", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType$1, tag: ""}]);
-	Rectangle.init("github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", [{prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "startPoint", name: "startPoint", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "destPoint", name: "destPoint", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Color", name: "Color", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "V", name: "V", anonymous: false, exported: true, typ: $Int, tag: ""}]);
-	Screen.init("github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "c", name: "c", anonymous: false, exported: false, typ: ptrType$3, tag: ""}, {prop: "ctx", name: "ctx", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "rsA", name: "rsA", anonymous: false, exported: false, typ: ptrType$4, tag: ""}, {prop: "rsB", name: "rsB", anonymous: false, exported: false, typ: ptrType$4, tag: ""}, {prop: "aName", name: "aName", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "bName", name: "bName", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "ready", name: "ready", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "iBegin", name: "iBegin", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "iMid", name: "iMid", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "iEnd", name: "iEnd", anonymous: false, exported: false, typ: $Int, tag: ""}]);
+	ptrType$5.methods = [{prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "assign", name: "assign", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$3], [], false)}, {prop: "splitA", name: "splitA", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$3], [], false)}, {prop: "splitB", name: "splitB", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$3], [], false)}, {prop: "split", name: "split", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$3, $String], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([$Float64], [], false)}];
+	Screen.init("github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "c", name: "c", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "ctx", name: "ctx", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "rsA", name: "rsA", anonymous: false, exported: false, typ: ptrType$2, tag: ""}, {prop: "rsB", name: "rsB", anonymous: false, exported: false, typ: ptrType$2, tag: ""}, {prop: "aName", name: "aName", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "bName", name: "bName", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "ready", name: "ready", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "iBegin", name: "iBegin", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "iMid", name: "iMid", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "iEnd", name: "iEnd", anonymous: false, exported: false, typ: $Int, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -12210,8 +12224,9 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesor
 		$r = mergesort.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = visualizer.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = defaults.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = canvas.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = strconv.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = ui.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = canvas.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = strconv.$init(); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.$init = $init;
