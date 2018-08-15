@@ -4,14 +4,21 @@
   "description": "webpack demo",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open",
+    "server": "node server.js",
     "build": "webpack"
   },
   "author": "Lei Cao",
   "private": true,
   "license": "MIT",
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "express": "^4.16.3",
+    "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.16.5",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-middleware": "^3.1.3",
+    "webpack-dev-server": "^3.1.5"
   },
   "dependencies": {
     "lodash": "^4.17.10"
