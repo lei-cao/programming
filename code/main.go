@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-	v2 "github.com/lei-cao/learning-cs-again/code/play"
-	v1 "github.com/lei-cao/learning-cs-again/code/v1/visualizer"
+	v2 "github.com/lei-cao/programming/code/play"
+	v1 "github.com/lei-cao/programming/code/v1/visualizer"
 )
 
 func main() {

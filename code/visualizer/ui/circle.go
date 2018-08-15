@@ -3,25 +3,18 @@ package ui
 import (
 	"github.com/oskca/gopherjs-canvas"
 	"github.com/lei-cao/programming/code/visualizer/defaults"
+	"math"
 )
 
-func NewRect(ctx *canvas.Context2D, startPoint Point, width float64, height float64, index int, value int) *Rectangle {
-	r := new(Rectangle)
+func NewCircle(ctx *canvas.Context2D, startPoint Point, radius float64, index int, value int) *Circle {
+	r := new(Circle)
 	r.Ctx = ctx
 	r.StartPoint = startPoint
 	r.DestPoint = startPoint
-	r.Width = width
-	r.Height = height
+	r.Radius = radius
 	r.V = value
-	r.Index = index
-	r.ToIndex = index
 	r.OnDrawing = func() {
-		if r.isA == true {
-			r.Color = defaults.DefaultColor.AColor
-		}
-		if r.isB == true {
-			r.Color = defaults.DefaultColor.BColor
-		}
+		r.Color = defaults.DefaultColor.CColor
 	}
 
 	r.OnFinished = func() {
@@ -32,45 +25,39 @@ func NewRect(ctx *canvas.Context2D, startPoint Point, width float64, height floa
 }
 
 // Represent the element in the problem slice
-type Rectangle struct {
+type Circle struct {
 	Ctx        *canvas.Context2D
 	StartPoint Point
 	DestPoint  Point
-	Width      float64
-	Height     float64
+	Radius     float64
 	Color      string
 	V          int
-	Index      int
-	ToIndex    int
-	isA        bool
-	isB        bool
 	OnFinished func()
 	OnDrawing  func()
 }
 
-func (r *Rectangle) Animate(progress float64) bool {
+func (r *Circle) Animate(progress float64) bool {
 	var finished bool
 	r.update(progress)
 	r.draw()
 	if progress == 1 {
 		r.StartPoint = r.DestPoint
-		r.Index = r.ToIndex
 		r.OnFinished()
 		finished = true
 	}
 	return finished
 }
 
-func (r *Rectangle) update(progress float64) {
+func (r *Circle) update(progress float64) {
 	r.StartPoint.MoveTo(r.DestPoint, progress)
 }
 
-func (r *Rectangle) draw() {
+func (r *Circle) draw() {
 	r.OnDrawing()
 	r.Ctx.FillStyle = r.Color
-	r.Ctx.FillRect(r.StartPoint.X, r.StartPoint.Y, r.Width, r.Height)
+	r.Ctx.Arc(r.StartPoint.X, r.StartPoint.Y, r.Radius, 0, 2*math.Pi, true)
 }
 
-func (r *Rectangle) moving() bool {
+func (r *Circle) moving() bool {
 	return !r.StartPoint.Equals(r.DestPoint)
 }

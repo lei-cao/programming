@@ -15,18 +15,18 @@ Then I just loaded it in a Vue Component. Hacky.. But works now.
 
 ### Bubble sort
 
-<ACanvas id="bubble"/>
+<ACanvasV1 id="bubble"/>
 
 
 ### Bubble sort swapped
-<ACanvas id="bubble_swapped"/>
+<ACanvasV1 id="bubble_swapped"/>
 
 
 ### Selection sort
 
 <<< @/code/v1/sort/selection.go
 
-<ACanvas id="selection"/>
+<ACanvasV1 id="selection"/>
 
 ## What's Next?
 

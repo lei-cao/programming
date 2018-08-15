@@ -1,7 +1,7 @@
 package ui
 
 import (
-	"github.com/lei-cao/learning-cs-again/code/visualizer/defaults"
+	"github.com/lei-cao/programming/code/visualizer/defaults"
 	"github.com/oskca/gopherjs-canvas"
 )
 

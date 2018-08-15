@@ -1,7 +1,7 @@
 package sorting
 
 import (
-	"github.com/lei-cao/learning-cs-again/code/visualizer"
+	"github.com/lei-cao/programming/code/visualizer"
 )
 
 type Sorter interface {

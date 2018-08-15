@@ -7974,13 +7974,13 @@ $packages["time"] = (function() {
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() {
+$packages["github.com/lei-cao/programming/code/visualizer"] = (function() {
 	var $pkg = {}, $init, js, math, time, Animator, Animation, Screener, Stepper, Step, funcType, ptrType, ptrType$1, funcType$1, ptrType$2, NewAnimation, makeTimestamp, NewFirstStep;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	math = $packages["math"];
 	time = $packages["time"];
-	Animator = $pkg.Animator = $newType(8, $kindInterface, "visualizer.Animator", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, null);
-	Animation = $pkg.Animation = $newType(0, $kindStruct, "visualizer.Animation", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, function(steps_, screen_, animating_, autoUpdate_, fps_, fpdInterval_, startTime_, now_, then_, elapsed_, duration_, timing_, animationFrame_) {
+	Animator = $pkg.Animator = $newType(8, $kindInterface, "visualizer.Animator", true, "github.com/lei-cao/programming/code/visualizer", true, null);
+	Animation = $pkg.Animation = $newType(0, $kindStruct, "visualizer.Animation", true, "github.com/lei-cao/programming/code/visualizer", true, function(steps_, screen_, animating_, autoUpdate_, fps_, fpdInterval_, startTime_, now_, then_, elapsed_, duration_, timing_, animationFrame_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.steps = $ifaceNil;
@@ -8012,9 +8012,9 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 		this.timing = timing_;
 		this.animationFrame = animationFrame_;
 	});
-	Screener = $pkg.Screener = $newType(8, $kindInterface, "visualizer.Screener", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, null);
-	Stepper = $pkg.Stepper = $newType(8, $kindInterface, "visualizer.Stepper", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, null);
-	Step = $pkg.Step = $newType(0, $kindStruct, "visualizer.Step", true, "github.com/lei-cao/learning-cs-again/code/visualizer", true, function(next_, last_, current_) {
+	Screener = $pkg.Screener = $newType(8, $kindInterface, "visualizer.Screener", true, "github.com/lei-cao/programming/code/visualizer", true, null);
+	Stepper = $pkg.Stepper = $newType(8, $kindInterface, "visualizer.Stepper", true, "github.com/lei-cao/programming/code/visualizer", true, null);
+	Step = $pkg.Step = $newType(0, $kindStruct, "visualizer.Step", true, "github.com/lei-cao/programming/code/visualizer", true, function(next_, last_, current_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.next = ptrType.nil;
@@ -8212,10 +8212,10 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 	ptrType$1.methods = [{prop: "UpdateDuration", name: "UpdateDuration", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "SetScreen", name: "SetScreen", pkg: "", typ: $funcType([Screener], [], false)}, {prop: "SetSteps", name: "SetSteps", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "StartAnimating", name: "StartAnimating", pkg: "", typ: $funcType([], [], false)}, {prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}];
 	ptrType.methods = [{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [Stepper], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [Stepper], false)}];
 	Animator.init([{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "SetScreen", name: "SetScreen", pkg: "", typ: $funcType([Screener], [], false)}, {prop: "SetSteps", name: "SetSteps", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "StartAnimating", name: "StartAnimating", pkg: "", typ: $funcType([], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "UpdateDuration", name: "UpdateDuration", pkg: "", typ: $funcType([$Float64], [], false)}]);
-	Animation.init("github.com/lei-cao/learning-cs-again/code/visualizer", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: Stepper, tag: ""}, {prop: "screen", name: "screen", anonymous: false, exported: false, typ: Screener, tag: ""}, {prop: "animating", name: "animating", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "autoUpdate", name: "autoUpdate", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "fps", name: "fps", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "fpdInterval", name: "fpdInterval", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "startTime", name: "startTime", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "now", name: "now", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "then", name: "then", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "elapsed", name: "elapsed", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "duration", name: "duration", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "timing", name: "timing", anonymous: false, exported: false, typ: funcType$1, tag: ""}, {prop: "animationFrame", name: "animationFrame", anonymous: false, exported: false, typ: ptrType$2, tag: ""}]);
+	Animation.init("github.com/lei-cao/programming/code/visualizer", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: Stepper, tag: ""}, {prop: "screen", name: "screen", anonymous: false, exported: false, typ: Screener, tag: ""}, {prop: "animating", name: "animating", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "autoUpdate", name: "autoUpdate", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "fps", name: "fps", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "fpdInterval", name: "fpdInterval", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "startTime", name: "startTime", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "now", name: "now", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "then", name: "then", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "elapsed", name: "elapsed", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "duration", name: "duration", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "timing", name: "timing", anonymous: false, exported: false, typ: funcType$1, tag: ""}, {prop: "animationFrame", name: "animationFrame", anonymous: false, exported: false, typ: ptrType$2, tag: ""}]);
 	Screener.init([{prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([Stepper], [], false)}]);
 	Stepper.init([{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [Stepper], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [Stepper], false)}]);
-	Step.init("github.com/lei-cao/learning-cs-again/code/visualizer", [{prop: "next", name: "next", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "last", name: "last", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "current", name: "current", anonymous: false, exported: false, typ: ptrType, tag: ""}]);
+	Step.init("github.com/lei-cao/programming/code/visualizer", [{prop: "next", name: "next", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "last", name: "last", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "current", name: "current", anonymous: false, exported: false, typ: ptrType, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -8227,10 +8227,10 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer"] = (function() 
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting"] = (function() {
+$packages["github.com/lei-cao/programming/code/algorithms/sorting"] = (function() {
 	var $pkg = {}, $init, visualizer, Sorter, sliceType;
-	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
-	Sorter = $pkg.Sorter = $newType(8, $kindInterface, "sorting.Sorter", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting", true, null);
+	visualizer = $packages["github.com/lei-cao/programming/code/visualizer"];
+	Sorter = $pkg.Sorter = $newType(8, $kindInterface, "sorting.Sorter", true, "github.com/lei-cao/programming/code/algorithms/sorting", true, null);
 	sliceType = $sliceType($Int);
 	Sorter.init([{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}]);
 	$init = function() {
@@ -8242,11 +8242,11 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting"] = (fun
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort"] = (function() {
+$packages["github.com/lei-cao/programming/code/algorithms/sorting/basicsort"] = (function() {
 	var $pkg = {}, $init, sorting, visualizer, BubbleSort, InsertionSort, QuickSort, SelectionSort, BasicSort, Step, ptrType, sliceType, ptrType$1, ptrType$2, ptrType$3, ptrType$4, ptrType$5, NewBubbleSort, NewInsertionSort, NewQuickSort, NewSelectionSort, NewFirstStep, NewStep;
-	sorting = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting"];
-	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
-	BubbleSort = $pkg.BubbleSort = $newType(0, $kindStruct, "basicsort.BubbleSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
+	sorting = $packages["github.com/lei-cao/programming/code/algorithms/sorting"];
+	visualizer = $packages["github.com/lei-cao/programming/code/visualizer"];
+	BubbleSort = $pkg.BubbleSort = $newType(0, $kindStruct, "basicsort.BubbleSort", true, "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.BasicSort = new BasicSort.ptr($ifaceNil);
@@ -8254,7 +8254,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsor
 		}
 		this.BasicSort = BasicSort_;
 	});
-	InsertionSort = $pkg.InsertionSort = $newType(0, $kindStruct, "basicsort.InsertionSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
+	InsertionSort = $pkg.InsertionSort = $newType(0, $kindStruct, "basicsort.InsertionSort", true, "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.BasicSort = new BasicSort.ptr($ifaceNil);
@@ -8262,7 +8262,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsor
 		}
 		this.BasicSort = BasicSort_;
 	});
-	QuickSort = $pkg.QuickSort = $newType(0, $kindStruct, "basicsort.QuickSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
+	QuickSort = $pkg.QuickSort = $newType(0, $kindStruct, "basicsort.QuickSort", true, "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.BasicSort = new BasicSort.ptr($ifaceNil);
@@ -8270,7 +8270,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsor
 		}
 		this.BasicSort = BasicSort_;
 	});
-	SelectionSort = $pkg.SelectionSort = $newType(0, $kindStruct, "basicsort.SelectionSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
+	SelectionSort = $pkg.SelectionSort = $newType(0, $kindStruct, "basicsort.SelectionSort", true, "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.BasicSort = new BasicSort.ptr($ifaceNil);
@@ -8278,7 +8278,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsor
 		}
 		this.BasicSort = BasicSort_;
 	});
-	BasicSort = $pkg.BasicSort = $newType(0, $kindStruct, "basicsort.BasicSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", true, function(steps_) {
+	BasicSort = $pkg.BasicSort = $newType(0, $kindStruct, "basicsort.BasicSort", true, "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", true, function(steps_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.steps = $ifaceNil;
@@ -8286,7 +8286,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsor
 		}
 		this.steps = steps_;
 	});
-	Step = $pkg.Step = $newType(0, $kindStruct, "basicsort.Step", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", true, function(a_, b_, doSwap_, next_, last_, current_) {
+	Step = $pkg.Step = $newType(0, $kindStruct, "basicsort.Step", true, "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", true, function(a_, b_, doSwap_, next_, last_, current_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.a = 0;
@@ -8571,16 +8571,16 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsor
 	Step.prototype.DoSwap = function() { return this.$val.DoSwap(); };
 	ptrType$1.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}];
 	ptrType$2.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}];
-	ptrType$3.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "quickSort", name: "quickSort", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [], false)}, {prop: "partition", name: "partition", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [$Int], false)}];
+	ptrType$3.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "quickSort", name: "quickSort", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [], false)}, {prop: "partition", name: "partition", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [$Int], false)}];
 	ptrType$4.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}];
-	ptrType$5.methods = [{prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "swap", name: "swap", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", typ: $funcType([$Int, $Int], [], false)}];
+	ptrType$5.methods = [{prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "swap", name: "swap", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([$Int, $Int], [], false)}];
 	ptrType.methods = [{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "A", name: "A", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "B", name: "B", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "DoSwap", name: "DoSwap", pkg: "", typ: $funcType([], [$Bool], false)}];
 	BubbleSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
 	InsertionSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
 	QuickSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
 	SelectionSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
-	BasicSort.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: visualizer.Stepper, tag: ""}]);
-	Step.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort", [{prop: "a", name: "a", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "b", name: "b", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "doSwap", name: "doSwap", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "next", name: "next", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "last", name: "last", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "current", name: "current", anonymous: false, exported: false, typ: ptrType, tag: ""}]);
+	BasicSort.init("github.com/lei-cao/programming/code/algorithms/sorting/basicsort", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: visualizer.Stepper, tag: ""}]);
+	Step.init("github.com/lei-cao/programming/code/algorithms/sorting/basicsort", [{prop: "a", name: "a", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "b", name: "b", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "doSwap", name: "doSwap", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "next", name: "next", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "last", name: "last", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "current", name: "current", anonymous: false, exported: false, typ: ptrType, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -8591,11 +8591,11 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsor
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort"] = (function() {
+$packages["github.com/lei-cao/programming/code/algorithms/sorting/mergesort"] = (function() {
 	var $pkg = {}, $init, sorting, visualizer, TopDownMergeSort, IntSlice, Step, ptrType, sliceType, ptrType$1, ptrType$2, NewFirstStep, NewTopDownMergeSort;
-	sorting = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting"];
-	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
-	TopDownMergeSort = $pkg.TopDownMergeSort = $newType(0, $kindStruct, "mergesort.TopDownMergeSort", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", true, function(steps_) {
+	sorting = $packages["github.com/lei-cao/programming/code/algorithms/sorting"];
+	visualizer = $packages["github.com/lei-cao/programming/code/visualizer"];
+	TopDownMergeSort = $pkg.TopDownMergeSort = $newType(0, $kindStruct, "mergesort.TopDownMergeSort", true, "github.com/lei-cao/programming/code/algorithms/sorting/mergesort", true, function(steps_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.steps = $ifaceNil;
@@ -8603,7 +8603,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesor
 		}
 		this.steps = steps_;
 	});
-	IntSlice = $pkg.IntSlice = $newType(0, $kindStruct, "mergesort.IntSlice", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", true, function(a_, name_) {
+	IntSlice = $pkg.IntSlice = $newType(0, $kindStruct, "mergesort.IntSlice", true, "github.com/lei-cao/programming/code/algorithms/sorting/mergesort", true, function(a_, name_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.a = sliceType.nil;
@@ -8613,7 +8613,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesor
 		this.a = a_;
 		this.name = name_;
 	});
-	Step = $pkg.Step = $newType(0, $kindStruct, "mergesort.Step", true, "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", true, function(IBegin_, IMid_, IEnd_, K_, I_, J_, From_, To_, Assign_, isFirst_, isSplit_, isAssign_, next_, last_, current_) {
+	Step = $pkg.Step = $newType(0, $kindStruct, "mergesort.Step", true, "github.com/lei-cao/programming/code/algorithms/sorting/mergesort", true, function(IBegin_, IMid_, IEnd_, K_, I_, J_, From_, To_, Assign_, isFirst_, isSplit_, isAssign_, next_, last_, current_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.IBegin = 0;
@@ -8821,11 +8821,11 @@ $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesor
 		return s.isAssign;
 	};
 	Step.prototype.IsAssignStep = function() { return this.$val.IsAssignStep(); };
-	ptrType$2.methods = [{prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "topDownSplitMerge", name: "topDownSplitMerge", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([ptrType$1, ptrType$1, $Int, $Int], [], false)}, {prop: "topDownMerge", name: "topDownMerge", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([ptrType$1, ptrType$1, $Int, $Int, $Int], [], false)}, {prop: "split", name: "split", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([$Int, $Int, $String, $String], [], false)}, {prop: "assign", name: "assign", pkg: "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", typ: $funcType([$Int, $Int, $Int, $Int, $Int, $Int, $String, $String, $String], [], false)}];
+	ptrType$2.methods = [{prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "topDownSplitMerge", name: "topDownSplitMerge", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/mergesort", typ: $funcType([ptrType$1, ptrType$1, $Int, $Int], [], false)}, {prop: "topDownMerge", name: "topDownMerge", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/mergesort", typ: $funcType([ptrType$1, ptrType$1, $Int, $Int, $Int], [], false)}, {prop: "split", name: "split", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/mergesort", typ: $funcType([$Int, $Int, $String, $String], [], false)}, {prop: "assign", name: "assign", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/mergesort", typ: $funcType([$Int, $Int, $Int, $Int, $Int, $Int, $String, $String, $String], [], false)}];
 	ptrType.methods = [{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "IsFirstStep", name: "IsFirstStep", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "IsSplitStep", name: "IsSplitStep", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "IsAssignStep", name: "IsAssignStep", pkg: "", typ: $funcType([], [$Bool], false)}];
-	TopDownMergeSort.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: visualizer.Stepper, tag: ""}]);
-	IntSlice.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", [{prop: "a", name: "a", anonymous: false, exported: false, typ: sliceType, tag: ""}, {prop: "name", name: "name", anonymous: false, exported: false, typ: $String, tag: ""}]);
-	Step.init("github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort", [{prop: "IBegin", name: "IBegin", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IMid", name: "IMid", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IEnd", name: "IEnd", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "K", name: "K", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "I", name: "I", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "J", name: "J", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "From", name: "From", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "To", name: "To", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "Assign", name: "Assign", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "isFirst", name: "isFirst", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "isSplit", name: "isSplit", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "isAssign", name: "isAssign", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "next", name: "next", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "last", name: "last", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "current", name: "current", anonymous: false, exported: false, typ: ptrType, tag: ""}]);
+	TopDownMergeSort.init("github.com/lei-cao/programming/code/algorithms/sorting/mergesort", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: visualizer.Stepper, tag: ""}]);
+	IntSlice.init("github.com/lei-cao/programming/code/algorithms/sorting/mergesort", [{prop: "a", name: "a", anonymous: false, exported: false, typ: sliceType, tag: ""}, {prop: "name", name: "name", anonymous: false, exported: false, typ: $String, tag: ""}]);
+	Step.init("github.com/lei-cao/programming/code/algorithms/sorting/mergesort", [{prop: "IBegin", name: "IBegin", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IMid", name: "IMid", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "IEnd", name: "IEnd", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "K", name: "K", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "I", name: "I", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "J", name: "J", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "From", name: "From", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "To", name: "To", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "Assign", name: "Assign", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "isFirst", name: "isFirst", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "isSplit", name: "isSplit", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "isAssign", name: "isAssign", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "next", name: "next", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "last", name: "last", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "current", name: "current", anonymous: false, exported: false, typ: ptrType, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -9443,7 +9443,7 @@ $packages["math/rand"] = (function() {
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/lei-cao/learning-cs-again/code/utils"] = (function() {
+$packages["github.com/lei-cao/programming/code/utils"] = (function() {
 	var $pkg = {}, $init, rand, time, sliceType, Shuffle;
 	rand = $packages["math/rand"];
 	time = $packages["time"];
@@ -9481,9 +9481,9 @@ $packages["github.com/lei-cao/learning-cs-again/code/utils"] = (function() {
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/lei-cao/learning-cs-again/code/visualizer/defaults"] = (function() {
+$packages["github.com/lei-cao/programming/code/visualizer/defaults"] = (function() {
 	var $pkg = {}, $init, ColorScheme;
-	ColorScheme = $pkg.ColorScheme = $newType(0, $kindStruct, "defaults.ColorScheme", true, "github.com/lei-cao/learning-cs-again/code/visualizer/defaults", true, function(BackgroundColor_, BarColor_, AColor_, BColor_, CColor_) {
+	ColorScheme = $pkg.ColorScheme = $newType(0, $kindStruct, "defaults.ColorScheme", true, "github.com/lei-cao/programming/code/visualizer/defaults", true, function(BackgroundColor_, BarColor_, AColor_, BColor_, CColor_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.BackgroundColor = "";
@@ -11040,11 +11040,12 @@ $packages["github.com/oskca/gopherjs-canvas"] = (function() {
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/lei-cao/learning-cs-again/code/visualizer/ui"] = (function() {
-	var $pkg = {}, $init, defaults, canvas, Point, Rectangle, RectSlice, ptrType, ptrType$1, ptrType$2, sliceType, sliceType$1, funcType, ptrType$4, mapType, NewRect, NewRectSlice, rectSliceHeight;
-	defaults = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/defaults"];
+$packages["github.com/lei-cao/programming/code/visualizer/ui"] = (function() {
+	var $pkg = {}, $init, defaults, canvas, math, Point, Rectangle, RectSlice, ptrType, ptrType$1, ptrType$2, sliceType, sliceType$1, funcType, ptrType$5, mapType, NewRect, NewRectSlice, rectSliceHeight;
+	defaults = $packages["github.com/lei-cao/programming/code/visualizer/defaults"];
 	canvas = $packages["github.com/oskca/gopherjs-canvas"];
-	Point = $pkg.Point = $newType(0, $kindStruct, "ui.Point", true, "github.com/lei-cao/learning-cs-again/code/visualizer/ui", true, function(X_, Y_) {
+	math = $packages["math"];
+	Point = $pkg.Point = $newType(0, $kindStruct, "ui.Point", true, "github.com/lei-cao/programming/code/visualizer/ui", true, function(X_, Y_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.X = 0;
@@ -11054,7 +11055,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/ui"] = (function
 		this.X = X_;
 		this.Y = Y_;
 	});
-	Rectangle = $pkg.Rectangle = $newType(0, $kindStruct, "ui.Rectangle", true, "github.com/lei-cao/learning-cs-again/code/visualizer/ui", true, function(Ctx_, StartPoint_, DestPoint_, Width_, Height_, Color_, V_, Index_, ToIndex_, isA_, isB_, OnFinished_, OnDrawing_) {
+	Rectangle = $pkg.Rectangle = $newType(0, $kindStruct, "ui.Rectangle", true, "github.com/lei-cao/programming/code/visualizer/ui", true, function(Ctx_, StartPoint_, DestPoint_, Width_, Height_, Color_, V_, Index_, ToIndex_, isA_, isB_, OnFinished_, OnDrawing_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.Ctx = ptrType.nil;
@@ -11086,7 +11087,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/ui"] = (function
 		this.OnFinished = OnFinished_;
 		this.OnDrawing = OnDrawing_;
 	});
-	RectSlice = $pkg.RectSlice = $newType(0, $kindStruct, "ui.RectSlice", true, "github.com/lei-cao/learning-cs-again/code/visualizer/ui", true, function(Rectangles_, StartPoint_, Size_, Name_, DisplayName_, finishedDrawing_, nums_, aIndex_, bIndex_) {
+	RectSlice = $pkg.RectSlice = $newType(0, $kindStruct, "ui.RectSlice", true, "github.com/lei-cao/programming/code/visualizer/ui", true, function(Rectangles_, StartPoint_, Size_, Name_, DisplayName_, finishedDrawing_, nums_, aIndex_, bIndex_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.Rectangles = sliceType.nil;
@@ -11116,7 +11117,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/ui"] = (function
 	sliceType = $sliceType(ptrType$2);
 	sliceType$1 = $sliceType($Int);
 	funcType = $funcType([], [], false);
-	ptrType$4 = $ptrType(RectSlice);
+	ptrType$5 = $ptrType(RectSlice);
 	mapType = $mapType($Int, $Bool);
 	Point.ptr.prototype.MoveTo = function(dest, progress) {
 		var dest, p, progress;
@@ -11321,16 +11322,17 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/ui"] = (function
 	};
 	RectSlice.prototype.Pass = function(ia, ib) { return this.$val.Pass(ia, ib); };
 	ptrType$1.methods = [{prop: "MoveTo", name: "MoveTo", pkg: "", typ: $funcType([Point, $Float64], [], false)}, {prop: "Equals", name: "Equals", pkg: "", typ: $funcType([Point], [$Bool], false)}];
-	ptrType$2.methods = [{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/ui", typ: $funcType([$Float64], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/ui", typ: $funcType([], [], false)}, {prop: "moving", name: "moving", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/ui", typ: $funcType([], [$Bool], false)}];
-	ptrType$4.methods = [{prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "AddRect", name: "AddRect", pkg: "", typ: $funcType([ptrType$2], [], false)}, {prop: "Height", name: "Height", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "RectPoint", name: "RectPoint", pkg: "", typ: $funcType([$Int, $Int], [Point], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}];
+	ptrType$2.methods = [{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/programming/code/visualizer/ui", typ: $funcType([$Float64], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/programming/code/visualizer/ui", typ: $funcType([], [], false)}, {prop: "moving", name: "moving", pkg: "github.com/lei-cao/programming/code/visualizer/ui", typ: $funcType([], [$Bool], false)}];
+	ptrType$5.methods = [{prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "AddRect", name: "AddRect", pkg: "", typ: $funcType([ptrType$2], [], false)}, {prop: "Height", name: "Height", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "RectPoint", name: "RectPoint", pkg: "", typ: $funcType([$Int, $Int], [Point], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}];
 	Point.init("", [{prop: "X", name: "X", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Y", name: "Y", anonymous: false, exported: true, typ: $Float64, tag: ""}]);
-	Rectangle.init("github.com/lei-cao/learning-cs-again/code/visualizer/ui", [{prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "StartPoint", name: "StartPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "DestPoint", name: "DestPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Color", name: "Color", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "V", name: "V", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "Index", name: "Index", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "ToIndex", name: "ToIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "isA", name: "isA", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "isB", name: "isB", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "OnFinished", name: "OnFinished", anonymous: false, exported: true, typ: funcType, tag: ""}, {prop: "OnDrawing", name: "OnDrawing", anonymous: false, exported: true, typ: funcType, tag: ""}]);
-	RectSlice.init("github.com/lei-cao/learning-cs-again/code/visualizer/ui", [{prop: "Rectangles", name: "Rectangles", anonymous: false, exported: true, typ: sliceType, tag: ""}, {prop: "StartPoint", name: "StartPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "Size", name: "Size", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "Name", name: "Name", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "DisplayName", name: "DisplayName", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType$1, tag: ""}, {prop: "aIndex", name: "aIndex", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "bIndex", name: "bIndex", anonymous: false, exported: false, typ: $Int, tag: ""}]);
+	Rectangle.init("github.com/lei-cao/programming/code/visualizer/ui", [{prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "StartPoint", name: "StartPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "DestPoint", name: "DestPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Color", name: "Color", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "V", name: "V", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "Index", name: "Index", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "ToIndex", name: "ToIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "isA", name: "isA", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "isB", name: "isB", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "OnFinished", name: "OnFinished", anonymous: false, exported: true, typ: funcType, tag: ""}, {prop: "OnDrawing", name: "OnDrawing", anonymous: false, exported: true, typ: funcType, tag: ""}]);
+	RectSlice.init("github.com/lei-cao/programming/code/visualizer/ui", [{prop: "Rectangles", name: "Rectangles", anonymous: false, exported: true, typ: sliceType, tag: ""}, {prop: "StartPoint", name: "StartPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "Size", name: "Size", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "Name", name: "Name", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "DisplayName", name: "DisplayName", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType$1, tag: ""}, {prop: "aIndex", name: "aIndex", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "bIndex", name: "bIndex", anonymous: false, exported: false, typ: $Int, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		$r = defaults.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = canvas.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = math.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.$init = $init;
@@ -11847,16 +11849,16 @@ $packages["strconv"] = (function() {
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort"] = (function() {
+$packages["github.com/lei-cao/programming/code/visualizer/sorting/basicsort"] = (function() {
 	var $pkg = {}, $init, js, basicsort, visualizer, defaults, ui, canvas, strconv, Screen, ptrType, ptrType$1, ptrType$2, ptrType$3, ptrType$4, mapType, NewScreen, createCanvas, canvasWidth, canvasHeight;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
-	basicsort = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort"];
-	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
-	defaults = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/defaults"];
-	ui = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/ui"];
+	basicsort = $packages["github.com/lei-cao/programming/code/algorithms/sorting/basicsort"];
+	visualizer = $packages["github.com/lei-cao/programming/code/visualizer"];
+	defaults = $packages["github.com/lei-cao/programming/code/visualizer/defaults"];
+	ui = $packages["github.com/lei-cao/programming/code/visualizer/ui"];
 	canvas = $packages["github.com/oskca/gopherjs-canvas"];
 	strconv = $packages["strconv"];
-	Screen = $pkg.Screen = $newType(0, $kindStruct, "basicsort.Screen", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", true, function(id_, size_, c_, ctx_, rs_, finishedDrawing_, ready_, aIndex_, bIndex_) {
+	Screen = $pkg.Screen = $newType(0, $kindStruct, "basicsort.Screen", true, "github.com/lei-cao/programming/code/visualizer/sorting/basicsort", true, function(id_, size_, c_, ctx_, rs_, finishedDrawing_, ready_, aIndex_, bIndex_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.id = "";
@@ -11978,8 +11980,8 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsor
 		var size;
 		return $imul(size, 5);
 	};
-	ptrType$4.methods = [{prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", typ: $funcType([$Float64], [], false)}];
-	Screen.init("github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "c", name: "c", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "ctx", name: "ctx", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "rs", name: "rs", anonymous: false, exported: false, typ: ptrType$2, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "ready", name: "ready", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "aIndex", name: "aIndex", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "bIndex", name: "bIndex", anonymous: false, exported: false, typ: $Int, tag: ""}]);
+	ptrType$4.methods = [{prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/programming/code/visualizer/sorting/basicsort", typ: $funcType([$Float64], [], false)}];
+	Screen.init("github.com/lei-cao/programming/code/visualizer/sorting/basicsort", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "c", name: "c", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "ctx", name: "ctx", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "rs", name: "rs", anonymous: false, exported: false, typ: ptrType$2, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "ready", name: "ready", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "aIndex", name: "aIndex", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "bIndex", name: "bIndex", anonymous: false, exported: false, typ: $Int, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -11995,16 +11997,16 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsor
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort"] = (function() {
+$packages["github.com/lei-cao/programming/code/visualizer/sorting/mergesort"] = (function() {
 	var $pkg = {}, $init, js, mergesort, visualizer, defaults, ui, canvas, strconv, Screen, ptrType, ptrType$1, ptrType$2, ptrType$3, ptrType$4, ptrType$5, mapType, NewScreen, createCanvas, canvasWidth, canvasHeight, rectanglesHeight;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
-	mergesort = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort"];
-	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
-	defaults = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/defaults"];
-	ui = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/ui"];
+	mergesort = $packages["github.com/lei-cao/programming/code/algorithms/sorting/mergesort"];
+	visualizer = $packages["github.com/lei-cao/programming/code/visualizer"];
+	defaults = $packages["github.com/lei-cao/programming/code/visualizer/defaults"];
+	ui = $packages["github.com/lei-cao/programming/code/visualizer/ui"];
 	canvas = $packages["github.com/oskca/gopherjs-canvas"];
 	strconv = $packages["strconv"];
-	Screen = $pkg.Screen = $newType(0, $kindStruct, "mergesort.Screen", true, "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", true, function(id_, size_, c_, ctx_, rsA_, rsB_, aName_, bName_, finishedDrawing_, ready_, iBegin_, iMid_, iEnd_) {
+	Screen = $pkg.Screen = $newType(0, $kindStruct, "mergesort.Screen", true, "github.com/lei-cao/programming/code/visualizer/sorting/mergesort", true, function(id_, size_, c_, ctx_, rsA_, rsB_, aName_, bName_, finishedDrawing_, ready_, iBegin_, iMid_, iEnd_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.id = "";
@@ -12215,8 +12217,8 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesor
 		var index, size;
 		return ($imul(size, 5)) + ($imul(($imul(((index - 1 >> 0)), 3)), 5)) >> 0;
 	};
-	ptrType$5.methods = [{prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "assign", name: "assign", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$3], [], false)}, {prop: "splitA", name: "splitA", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$3], [], false)}, {prop: "splitB", name: "splitB", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$3], [], false)}, {prop: "split", name: "split", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$3, $String], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", typ: $funcType([$Float64], [], false)}];
-	Screen.init("github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "c", name: "c", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "ctx", name: "ctx", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "rsA", name: "rsA", anonymous: false, exported: false, typ: ptrType$2, tag: ""}, {prop: "rsB", name: "rsB", anonymous: false, exported: false, typ: ptrType$2, tag: ""}, {prop: "aName", name: "aName", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "bName", name: "bName", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "ready", name: "ready", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "iBegin", name: "iBegin", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "iMid", name: "iMid", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "iEnd", name: "iEnd", anonymous: false, exported: false, typ: $Int, tag: ""}]);
+	ptrType$5.methods = [{prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "assign", name: "assign", pkg: "github.com/lei-cao/programming/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$3], [], false)}, {prop: "splitA", name: "splitA", pkg: "github.com/lei-cao/programming/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$3], [], false)}, {prop: "splitB", name: "splitB", pkg: "github.com/lei-cao/programming/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$3], [], false)}, {prop: "split", name: "split", pkg: "github.com/lei-cao/programming/code/visualizer/sorting/mergesort", typ: $funcType([ptrType$3, $String], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/programming/code/visualizer/sorting/mergesort", typ: $funcType([$Float64], [], false)}];
+	Screen.init("github.com/lei-cao/programming/code/visualizer/sorting/mergesort", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "c", name: "c", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "ctx", name: "ctx", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "rsA", name: "rsA", anonymous: false, exported: false, typ: ptrType$2, tag: ""}, {prop: "rsB", name: "rsB", anonymous: false, exported: false, typ: ptrType$2, tag: ""}, {prop: "aName", name: "aName", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "bName", name: "bName", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "ready", name: "ready", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "iBegin", name: "iBegin", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "iMid", name: "iMid", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "iEnd", name: "iEnd", anonymous: false, exported: false, typ: $Int, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -12232,16 +12234,16 @@ $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesor
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
+$packages["github.com/lei-cao/programming/code/play"] = (function() {
 	var $pkg = {}, $init, sorting, basicsort$1, mergesort$1, utils, visualizer, basicsort, mergesort, ControllerConfig, Controller, ptrType, sliceType, ptrType$1, defaultSize;
-	sorting = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting"];
-	basicsort$1 = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort"];
-	mergesort$1 = $packages["github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort"];
-	utils = $packages["github.com/lei-cao/learning-cs-again/code/utils"];
-	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/visualizer"];
-	basicsort = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort"];
-	mergesort = $packages["github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort"];
-	ControllerConfig = $pkg.ControllerConfig = $newType(0, $kindStruct, "play.ControllerConfig", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(Id_, Duration_, Size_) {
+	sorting = $packages["github.com/lei-cao/programming/code/algorithms/sorting"];
+	basicsort$1 = $packages["github.com/lei-cao/programming/code/algorithms/sorting/basicsort"];
+	mergesort$1 = $packages["github.com/lei-cao/programming/code/algorithms/sorting/mergesort"];
+	utils = $packages["github.com/lei-cao/programming/code/utils"];
+	visualizer = $packages["github.com/lei-cao/programming/code/visualizer"];
+	basicsort = $packages["github.com/lei-cao/programming/code/visualizer/sorting/basicsort"];
+	mergesort = $packages["github.com/lei-cao/programming/code/visualizer/sorting/mergesort"];
+	ControllerConfig = $pkg.ControllerConfig = $newType(0, $kindStruct, "play.ControllerConfig", true, "github.com/lei-cao/programming/code/play", true, function(Id_, Duration_, Size_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.Id = "";
@@ -12253,7 +12255,7 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 		this.Duration = Duration_;
 		this.Size = Size_;
 	});
-	Controller = $pkg.Controller = $newType(0, $kindStruct, "play.Controller", true, "github.com/lei-cao/learning-cs-again/code/play", true, function(animation_, config_, sorter_, nums_) {
+	Controller = $pkg.Controller = $newType(0, $kindStruct, "play.Controller", true, "github.com/lei-cao/programming/code/play", true, function(animation_, config_, sorter_, nums_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.animation = $ifaceNil;
@@ -12382,9 +12384,9 @@ $packages["github.com/lei-cao/learning-cs-again/code/play"] = (function() {
 	};
 	Controller.prototype.applyAlgorithm = function(config) { return this.$val.applyAlgorithm(config); };
 	ptrType.methods = [{prop: "SetDuration", name: "SetDuration", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "SetSize", name: "SetSize", pkg: "", typ: $funcType([$Int], [], false)}, {prop: "SetId", name: "SetId", pkg: "", typ: $funcType([$String], [], false)}];
-	ptrType$1.methods = [{prop: "UpdateConfig", name: "UpdateConfig", pkg: "", typ: $funcType([ptrType], [], false)}, {prop: "Init", name: "Init", pkg: "", typ: $funcType([ptrType], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}, {prop: "applyAlgorithm", name: "applyAlgorithm", pkg: "github.com/lei-cao/learning-cs-again/code/play", typ: $funcType([ptrType], [], false)}];
+	ptrType$1.methods = [{prop: "UpdateConfig", name: "UpdateConfig", pkg: "", typ: $funcType([ptrType], [], false)}, {prop: "Init", name: "Init", pkg: "", typ: $funcType([ptrType], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}, {prop: "applyAlgorithm", name: "applyAlgorithm", pkg: "github.com/lei-cao/programming/code/play", typ: $funcType([ptrType], [], false)}];
 	ControllerConfig.init("", [{prop: "Id", name: "Id", anonymous: false, exported: true, typ: $String, tag: "json:\"id\""}, {prop: "Duration", name: "Duration", anonymous: false, exported: true, typ: $Float64, tag: "json:\"duration\""}, {prop: "Size", name: "Size", anonymous: false, exported: true, typ: $Int, tag: "json:\"size\""}]);
-	Controller.init("github.com/lei-cao/learning-cs-again/code/play", [{prop: "animation", name: "animation", anonymous: false, exported: false, typ: visualizer.Animator, tag: ""}, {prop: "config", name: "config", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "sorter", name: "sorter", anonymous: false, exported: false, typ: sorting.Sorter, tag: ""}, {prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType, tag: ""}]);
+	Controller.init("github.com/lei-cao/programming/code/play", [{prop: "animation", name: "animation", anonymous: false, exported: false, typ: visualizer.Animator, tag: ""}, {prop: "config", name: "config", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "sorter", name: "sorter", anonymous: false, exported: false, typ: sorting.Sorter, tag: ""}, {prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -19684,26 +19686,26 @@ $packages["fmt"] = (function() {
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/lei-cao/learning-cs-again/code/v1/sort"] = (function() {
+$packages["github.com/lei-cao/programming/code/v1/sort"] = (function() {
 	var $pkg = {}, $init, fmt, js, canvas, strconv, time, BubbleSort, BubbleSortSwapped, SelectionSort, sliceType, ptrType, ptrType$1, ptrType$3, barWidth, barSpace, heightUnit, createCanvas, draw, canvasWidth, canvasHeight, DoSort;
 	fmt = $packages["fmt"];
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	canvas = $packages["github.com/oskca/gopherjs-canvas"];
 	strconv = $packages["strconv"];
 	time = $packages["time"];
-	BubbleSort = $pkg.BubbleSort = $newType(0, $kindStruct, "sort.BubbleSort", true, "github.com/lei-cao/learning-cs-again/code/v1/sort", true, function() {
+	BubbleSort = $pkg.BubbleSort = $newType(0, $kindStruct, "sort.BubbleSort", true, "github.com/lei-cao/programming/code/v1/sort", true, function() {
 		this.$val = this;
 		if (arguments.length === 0) {
 			return;
 		}
 	});
-	BubbleSortSwapped = $pkg.BubbleSortSwapped = $newType(0, $kindStruct, "sort.BubbleSortSwapped", true, "github.com/lei-cao/learning-cs-again/code/v1/sort", true, function() {
+	BubbleSortSwapped = $pkg.BubbleSortSwapped = $newType(0, $kindStruct, "sort.BubbleSortSwapped", true, "github.com/lei-cao/programming/code/v1/sort", true, function() {
 		this.$val = this;
 		if (arguments.length === 0) {
 			return;
 		}
 	});
-	SelectionSort = $pkg.SelectionSort = $newType(0, $kindStruct, "sort.SelectionSort", true, "github.com/lei-cao/learning-cs-again/code/v1/sort", true, function() {
+	SelectionSort = $pkg.SelectionSort = $newType(0, $kindStruct, "sort.SelectionSort", true, "github.com/lei-cao/programming/code/v1/sort", true, function() {
 		this.$val = this;
 		if (arguments.length === 0) {
 			return;
@@ -19875,11 +19877,11 @@ $packages["github.com/lei-cao/learning-cs-again/code/v1/sort"] = (function() {
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/lei-cao/learning-cs-again/code/v1/visualizer"] = (function() {
+$packages["github.com/lei-cao/programming/code/v1/visualizer"] = (function() {
 	var $pkg = {}, $init, utils, sort, Visualizer, ptrType, nums, visualizers, _r;
-	utils = $packages["github.com/lei-cao/learning-cs-again/code/utils"];
-	sort = $packages["github.com/lei-cao/learning-cs-again/code/v1/sort"];
-	Visualizer = $pkg.Visualizer = $newType(0, $kindStruct, "visualizer.Visualizer", true, "github.com/lei-cao/learning-cs-again/code/v1/visualizer", true, function() {
+	utils = $packages["github.com/lei-cao/programming/code/utils"];
+	sort = $packages["github.com/lei-cao/programming/code/v1/sort"];
+	Visualizer = $pkg.Visualizer = $newType(0, $kindStruct, "visualizer.Visualizer", true, "github.com/lei-cao/programming/code/v1/visualizer", true, function() {
 		this.$val = this;
 		if (arguments.length === 0) {
 			return;
@@ -19923,8 +19925,8 @@ $packages["github.com/lei-cao/learning-cs-again/code/v1/visualizer"] = (function
 $packages["main"] = (function() {
 	var $pkg = {}, $init, js, play, visualizer, ptrType, funcType, mapType, ptrType$1, sliceType, main, Algorithm, Controller, ControllerConfig;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
-	play = $packages["github.com/lei-cao/learning-cs-again/code/play"];
-	visualizer = $packages["github.com/lei-cao/learning-cs-again/code/v1/visualizer"];
+	play = $packages["github.com/lei-cao/programming/code/play"];
+	visualizer = $packages["github.com/lei-cao/programming/code/v1/visualizer"];
 	ptrType = $ptrType(js.Object);
 	funcType = $funcType([], [ptrType], false);
 	mapType = $mapType($String, $emptyInterface);

@@ -4,10 +4,10 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 	"strconv"
 	"github.com/oskca/gopherjs-canvas"
-	"github.com/lei-cao/learning-cs-again/code/visualizer"
-	"github.com/lei-cao/learning-cs-again/code/visualizer/defaults"
-	basic "github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort"
-	"github.com/lei-cao/learning-cs-again/code/visualizer/ui"
+	"github.com/lei-cao/programming/code/visualizer"
+	"github.com/lei-cao/programming/code/visualizer/defaults"
+	basic "github.com/lei-cao/programming/code/algorithms/sorting/basicsort"
+	"github.com/lei-cao/programming/code/visualizer/ui"
 )
 
 func NewScreen(id string, size int, nums []int) *Screen {

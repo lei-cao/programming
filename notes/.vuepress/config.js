@@ -3,14 +3,15 @@ module.exports = {
     title: 'Learning CS Again',
     description: 'Learning Computer Science Once Again',
     lastUpdated: 'Last Updated', // string | boolean
-    repo: 'lei-cao/learning-cs-again',
-    base: '/learning-cs-again/',
+    repo: 'lei-cao/lei-cao.github.io',
+    base: '/',
     ga: 'UA-81346198-2',
     serviceWorker: true,
     markdown: {
     },
     head: [
-        ['link', { rel: 'icon', href: '/favicon.ico' }]
+        ['link', { rel: 'icon', href: '/favicon.ico' }],
+        ['script', { type: 'application/javascript', src: '/scripts/main.js?' + Date.now() }]
     ],
     themeConfig: {
         nav: [
@@ -31,6 +32,14 @@ module.exports = {
                     ]
                 }
             ]
+        }
+    },
+    configureWebpack: (config, isServer) => {
+        if (!isServer) {
+            // mutate the config for client
+            externals: {
+                algorithm: 'algorithm'
+            }
         }
     }
 }

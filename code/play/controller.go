@@ -1,13 +1,13 @@
 package play
 
 import (
-	"github.com/lei-cao/learning-cs-again/code/visualizer"
-	"github.com/lei-cao/learning-cs-again/code/utils"
-	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting"
-	basic "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/basicsort"
-	merge "github.com/lei-cao/learning-cs-again/code/visualizer/sorting/mergesort"
-	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort"
-	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort"
+	"github.com/lei-cao/programming/code/visualizer"
+	"github.com/lei-cao/programming/code/utils"
+	"github.com/lei-cao/programming/code/algorithms/sorting"
+	basic "github.com/lei-cao/programming/code/visualizer/sorting/basicsort"
+	merge "github.com/lei-cao/programming/code/visualizer/sorting/mergesort"
+	"github.com/lei-cao/programming/code/algorithms/sorting/basicsort"
+	"github.com/lei-cao/programming/code/algorithms/sorting/mergesort"
 )
 
 // default size for the slice being solved

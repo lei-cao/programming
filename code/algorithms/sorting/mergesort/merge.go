@@ -1,8 +1,8 @@
 package mergesort
 
 import (
-	"github.com/lei-cao/learning-cs-again/code/visualizer"
-	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting"
+	"github.com/lei-cao/programming/code/visualizer"
+	"github.com/lei-cao/programming/code/algorithms/sorting"
 )
 
 func NewFirstStep() visualizer.Stepper {

@@ -2,10 +2,10 @@ package sorting_test
 
 import (
 	"testing"
-	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting/basicsort"
-	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting/heapsort"
-	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting/mergesort"
-	"github.com/lei-cao/learning-cs-again/code/algorithms/sorting"
+	"github.com/lei-cao/programming/code/algorithms/sorting/basicsort"
+	"github.com/lei-cao/programming/code/algorithms/sorting/heapsort"
+	"github.com/lei-cao/programming/code/algorithms/sorting/mergesort"
+	"github.com/lei-cao/programming/code/algorithms/sorting"
 	"reflect"
 )
 

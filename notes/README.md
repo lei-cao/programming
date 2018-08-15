@@ -1,7 +1,6 @@
-# learning-cs-again
-Learning Computer Science Once Again
+# Programming Lei
 
-## Algorithms
+## Algorithms Visualization
 
 ### Sorting
 

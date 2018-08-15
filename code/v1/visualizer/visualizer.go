@@ -1,8 +1,8 @@
 package visualizer
 
 import (
-	"github.com/lei-cao/learning-cs-again/code/v1/sort"
-	"github.com/lei-cao/learning-cs-again/code/utils"
+	"github.com/lei-cao/programming/code/v1/sort"
+	"github.com/lei-cao/programming/code/utils"
 )
 
 var nums = utils.Shuffle(30)
