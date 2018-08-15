@@ -7,8 +7,8 @@ I made a very simple canvas app for visualising some basic sorting algorithms by
 Then I just loaded it in a Vue Component. Hacky.. But works now.
 
 ```html
-<ACanvas id="bubble"/>
-<ACanvas id="bubble_swapped"/>
+<ACanvasV1 id="bubble"/>
+<ACanvasV1 id="bubble_swapped"/>
 ```
 
 ## Demo

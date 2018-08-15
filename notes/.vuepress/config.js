@@ -1,10 +1,8 @@
 module.exports = {
     port : '8083',
-    title: 'Learning CS Again',
-    description: 'Learning Computer Science Once Again',
+    title: 'Programming Lei',
+    description: 'All about Programming',
     lastUpdated: 'Last Updated', // string | boolean
-    repo: 'lei-cao/lei-cao.github.io',
-    base: '/',
     ga: 'UA-81346198-2',
     serviceWorker: true,
     markdown: {
@@ -14,9 +12,9 @@ module.exports = {
         ['script', { type: 'application/javascript', src: '/scripts/main.js?' + Date.now() }]
     ],
     themeConfig: {
+        repo: 'lei-cao/programming',
         nav: [
             {text: 'Home', link: '/'},
-            {text: 'Algorithms', link: '/algorithms/'},
             {text: 'Blog', link: '/blog/'},
         ],
         sidebar: {
@@ -26,7 +24,6 @@ module.exports = {
                     collapsable: false,
                     children: [
                         '',
-                        'setting-sail',
                         'algorithm-visualization',
                         'algorithm-visualization-refactoring'
                     ]

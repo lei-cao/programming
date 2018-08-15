@@ -1,24 +1,23 @@
-# Programming Lei
-
 ## Algorithms Visualization
 
 ### Sorting
 
 #### Bubble Sort
-<ACanvasTwo id="bubble"/>
+<ACanvas id="bubble"/>
 
 #### Selection Sort
-<ACanvasTwo id="selection"/>
+<ACanvas id="selection"/>
 
 #### Insertion Sort
-<ACanvasTwo id="insertion"/>
+<ACanvas id="insertion"/>
 
 #### Quick Sort
-<ACanvasTwo id="quick"/>
+<ACanvas id="quick"/>
 
 #### Top Down Merge Sort
-<ACanvasTwo id="topDownMergeSort"/>
+<ACanvas id="topDownMergeSort"/>
 
+[See Detail](/blog/)
 
 
 ## License

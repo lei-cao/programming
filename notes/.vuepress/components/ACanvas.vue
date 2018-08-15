@@ -21,7 +21,7 @@
 
 <script>
 export default {
-    name: "ACanvasTwo",
+    name: "ACanvas",
     props: {
         id: String
     },
