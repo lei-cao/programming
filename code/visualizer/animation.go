@@ -7,11 +7,9 @@ import (
 )
 
 type Animator interface {
-	StartAnimating()
-	Animate(timestamp float64)
-	Draw(progress float64)
 	UpdateDuration(duration float64)
 	SetScreen(screener Screener)
+	StartAnimating()
 	SetSteps(step Stepper)
 	Stop()
 	Resume()

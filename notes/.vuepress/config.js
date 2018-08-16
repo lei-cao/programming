@@ -16,6 +16,7 @@ module.exports = {
         nav: [
             {text: 'Home', link: '/'},
             {text: 'Blog', link: '/blog/'},
+            {text: 'System Design', link: '/system-design/'}
         ],
         sidebar: {
             '/blog/': [
@@ -26,6 +27,16 @@ module.exports = {
                         '',
                         'algorithm-visualization',
                         'algorithm-visualization-refactoring'
+                    ]
+                }
+            ],
+            '/system-design/': [
+                {
+                    title: 'System Design',
+                    collapsable: false,
+                    children: [
+                        '',
+                        'hadoop/'
                     ]
                 }
             ]

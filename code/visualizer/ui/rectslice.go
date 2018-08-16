@@ -3,11 +3,12 @@ package ui
 import (
 	"github.com/lei-cao/programming/code/visualizer/defaults"
 	"github.com/oskca/gopherjs-canvas"
+	"github.com/lei-cao/programming/code/visualizer"
+	basic "github.com/lei-cao/programming/code/algorithms/sorting/basicsort"
 )
 
 func NewRectSlice(ctx *canvas.Context2D, nums []int, startPoint Point, name string, displayName bool) *RectSlice {
 	rs := &RectSlice{}
-	rs.nums = nums
 	rs.StartPoint = startPoint
 	rs.Size = len(nums)
 	for k, v := range nums {
@@ -15,27 +16,38 @@ func NewRectSlice(ctx *canvas.Context2D, nums []int, startPoint Point, name stri
 		rs.AddRect(r)
 	}
 	rs.finishedDrawing = make(map[int]bool)
-	rs.Name = name
-	rs.DisplayName = displayName
+	rs.Id = name
 	rs.aIndex = -1
 	rs.bIndex = -1
 	return rs
 }
 
-func rectSliceHeight(size int) float64 {
+func RectSliceHeight(size int) float64 {
 	return defaults.HeightUnit * float64(size)
 }
 
+func RectSliceWidth(size int) float64 {
+	return float64(size)*defaults.BarWidth + float64(size-1)*defaults.BarSpace
+}
+
 type RectSlice struct {
+	Element
 	Rectangles      []*Rectangle
 	StartPoint      Point
 	Size            int
-	Name            string
-	DisplayName     bool
 	finishedDrawing map[int]bool
-	nums            []int
 	aIndex          int
 	bIndex          int
+}
+
+func (rs *RectSlice) Update(stepper visualizer.Stepper) {
+	if step, ok := stepper.(*basic.Step); ok {
+		if step.DoSwap() {
+			rs.Swap(step.A(), step.B())
+		} else {
+			rs.Pass(step.A(), step.B())
+		}
+	}
 }
 
 func (rs *RectSlice) Draw(progress float64) {
@@ -66,14 +78,18 @@ func (rs *RectSlice) AddRect(rectangle *Rectangle) {
 	rs.Rectangles = append(rs.Rectangles, rectangle)
 }
 
+func (rs *RectSlice) Width() float64 {
+	return RectSliceWidth(rs.Size)
+}
+
 func (rs *RectSlice) Height() float64 {
-	return float64(rs.Size) * defaults.HeightUnit
+	return RectSliceHeight(rs.Size)
 }
 
 func (rs *RectSlice) RectPoint(k int, v int) Point {
 	p := Point{
 		rs.StartPoint.X + (defaults.BarWidth+defaults.BarSpace)*float64(k),
-		rs.StartPoint.Y + rectSliceHeight(rs.Size) - float64(v)*defaults.HeightUnit,
+		rs.StartPoint.Y + RectSliceHeight(rs.Size) - float64(v)*defaults.HeightUnit,
 	}
 	return p
 }

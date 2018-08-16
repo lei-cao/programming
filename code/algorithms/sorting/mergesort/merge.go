@@ -11,6 +11,7 @@ func NewFirstStep() visualizer.Stepper {
 	s.current = s
 	return s
 }
+
 func NewTopDownMergeSort() sorting.Sorter {
 	m := new(TopDownMergeSort)
 	m.steps = NewFirstStep()

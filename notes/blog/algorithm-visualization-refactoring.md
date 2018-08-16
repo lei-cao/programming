@@ -2,6 +2,9 @@
 
 Making a new version of the visualizer. Still based on `canvas`. Used `requestAnimationFrame` for better animations.
 
+## Heap Sort
+<ACanvas id="heap"/>
+
 ## Bubble Sort
 <ACanvas id="bubble"/>
 

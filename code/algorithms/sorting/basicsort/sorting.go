@@ -28,6 +28,12 @@ func NewSelectionSort() sorting.Sorter {
 	return s
 }
 
+func NewHeapSort() sorting.Sorter {
+	m := new(HeapSort)
+	m.steps = NewFirstStep()
+	return m
+}
+
 type BasicSort struct {
 	steps visualizer.Stepper
 }

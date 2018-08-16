@@ -94,6 +94,8 @@ func (c *Controller) applyAlgorithm(config *ControllerConfig) {
 		c.sorter = basicsort.NewInsertionSort()
 	case "quick":
 		c.sorter = basicsort.NewQuickSort()
+	case "heap":
+		c.sorter = basicsort.NewHeapSort()
 	case "topDownMergeSort":
 		s := merge.NewScreen(c.config.Id, c.config.Size, c.nums)
 		c.animation.SetScreen(s)

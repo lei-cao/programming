@@ -1,16 +1,11 @@
-package heapsort
+package basicsort
 
 import (
 	"math"
-	"github.com/lei-cao/programming/code/visualizer"
 )
 
 type HeapSort struct {
-	steps visualizer.Stepper
-}
-
-func (m *HeapSort) Steps() visualizer.Stepper {
-	return m.steps
+	BasicSort
 }
 
 /*
@@ -38,10 +33,11 @@ procedure heapsort(a, count) is
 		siftDown(a, 0, end)
 */
 func (h *HeapSort) Sort(a []int) {
+
 	h.heapify(a)
 
 	for end := len(a) - 1; end > 0; {
-		a[end], a[0] = a[0], a[end]
+		h.swap(a, end, 0)
 		end --
 		h.shiftDown(a, 0, end)
 	}
@@ -102,9 +98,10 @@ func (h *HeapSort) shiftDown(a []int, start, end int) {
 			swap = child + 1
 		}
 		if swap == root {
+			h.pass(swap, root)
 			return
 		}
-		a[root], a[swap] = a[swap], a[root]
+		h.swap(a, root, swap)
 		root = swap
 	}
 }

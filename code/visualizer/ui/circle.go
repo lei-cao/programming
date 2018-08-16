@@ -26,7 +26,7 @@ func NewCircle(ctx *canvas.Context2D, startPoint Point, radius float64, index in
 
 // Represent the element in the problem slice
 type Circle struct {
-	Ctx        *canvas.Context2D
+	Element
 	StartPoint Point
 	DestPoint  Point
 	Radius     float64
