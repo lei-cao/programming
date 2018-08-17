@@ -105,7 +105,7 @@ func (s *Screen) assign(step *mergesort.Step) {
 	}
 	dest := rsTo.RectPoint(step.K, r.V)
 	start := rsFrom.RectPoint(i, r.V)
-	var rCopy = ui.NewRect(r.Ctx, start, r.Width, r.Height, r.Index, r.V)
+	var rCopy = ui.NewRect(r.Ctx, start, r.Width(), r.Height(), r.Index, r.V)
 	rCopy.DestPoint = dest
 	rCopy.OnFinished = func() {
 		if s.aName == step.From {

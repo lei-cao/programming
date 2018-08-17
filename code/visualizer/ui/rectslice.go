@@ -9,6 +9,7 @@ import (
 
 func NewRectSlice(ctx *canvas.Context2D, nums []int, startPoint Point, name string, displayName bool) *RectSlice {
 	rs := &RectSlice{}
+	rs.Element = NewElement()
 	rs.StartPoint = startPoint
 	rs.Size = len(nums)
 	for k, v := range nums {
@@ -31,7 +32,7 @@ func RectSliceWidth(size int) float64 {
 }
 
 type RectSlice struct {
-	Element
+	*Element
 	Rectangles      []*Rectangle
 	StartPoint      Point
 	Size            int

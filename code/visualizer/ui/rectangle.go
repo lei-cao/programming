@@ -7,11 +7,12 @@ import (
 
 func NewRect(ctx *canvas.Context2D, startPoint Point, width float64, height float64, index int, value int) *Rectangle {
 	r := new(Rectangle)
+	r.Element = NewElement()
 	r.Ctx = ctx
 	r.StartPoint = startPoint
 	r.DestPoint = startPoint
-	r.Width = width
-	r.Height = height
+	r.SetWidth(width)
+	r.SetHeight(height)
 	r.V = value
 	r.Index = index
 	r.ToIndex = index
@@ -33,11 +34,9 @@ func NewRect(ctx *canvas.Context2D, startPoint Point, width float64, height floa
 
 // Represent the element in the problem slice
 type Rectangle struct {
-	Ctx        *canvas.Context2D
+	*Element
 	StartPoint Point
 	DestPoint  Point
-	Width      float64
-	Height     float64
 	Color      string
 	V          int
 	Index      int
@@ -68,7 +67,7 @@ func (r *Rectangle) update(progress float64) {
 func (r *Rectangle) draw() {
 	r.OnDrawing()
 	r.Ctx.FillStyle = r.Color
-	r.Ctx.FillRect(r.StartPoint.X, r.StartPoint.Y, r.Width, r.Height)
+	r.Ctx.FillRect(r.StartPoint.X, r.StartPoint.Y, r.Width(), r.Height())
 }
 
 func (r *Rectangle) moving() bool {

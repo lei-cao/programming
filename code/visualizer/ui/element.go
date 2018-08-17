@@ -5,6 +5,12 @@ import (
 	"github.com/lei-cao/programming/code/visualizer"
 )
 
+func NewElement() *Element {
+	e := &Element{}
+	e.Children = make([]Elementer, 0)
+	return e
+}
+
 // The Base UI Element
 type Element struct {
 	Id               string
@@ -21,17 +27,11 @@ type Element struct {
 }
 
 func (e *Element) Width() float64 {
-	if e.AutoWidth {
-		return e.calculatedWidth
-	}
-	return e.width
+	return e.calculatedWidth
 }
 
 func (e *Element) Height() float64 {
-	if e.AutoHeight {
-		return e.calculatedHeight
-	}
-	return e.height
+	return e.calculatedHeight
 }
 func (e *Element) Update(stepper visualizer.Stepper) {
 	for k := range e.Children {
@@ -54,10 +54,12 @@ func (e *Element) Ready() bool {
 
 func (e *Element) SetWidth(width float64) {
 	e.width = width
+	e.Resize()
 }
 
 func (e *Element) SetHeight(height float64) {
-	e.width = height
+	e.height = height
+	e.Resize()
 }
 
 func (e *Element) Resize() {
@@ -67,6 +69,6 @@ func (e *Element) Resize() {
 		w += e.Children[k].Width()
 		h += e.Children[k].Height()
 	}
-	e.calculatedWidth = w
-	e.calculatedWidth = h
+	e.calculatedWidth = e.width + w
+	e.calculatedHeight = e.height + h
 }
