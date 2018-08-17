@@ -2379,7 +2379,7 @@ $packages["runtime"] = (function() {
 	return $pkg;
 })();
 $packages["math"] = (function() {
-	var $pkg = {}, $init, js, arrayType, arrayType$1, arrayType$2, structType, math, zero, posInf, negInf, nan, buf, Exp, Log, Mod, Pow, init;
+	var $pkg = {}, $init, js, arrayType, arrayType$1, arrayType$2, structType, math, zero, posInf, negInf, nan, buf, Exp, Floor, Log, Mod, Pow, init;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	arrayType = $arrayType($Uint32, 2);
 	arrayType$1 = $arrayType($Float32, 2);
@@ -2390,6 +2390,11 @@ $packages["math"] = (function() {
 		return $parseFloat(math.exp(x));
 	};
 	$pkg.Exp = Exp;
+	Floor = function(x) {
+		var x;
+		return $parseFloat(math.floor(x));
+	};
+	$pkg.Floor = Floor;
 	Log = function(x) {
 		var x;
 		if (!((x === x))) {
@@ -8211,7 +8216,7 @@ $packages["github.com/lei-cao/programming/code/visualizer"] = (function() {
 	Step.prototype.CurrentStep = function() { return this.$val.CurrentStep(); };
 	ptrType$1.methods = [{prop: "UpdateDuration", name: "UpdateDuration", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "SetScreen", name: "SetScreen", pkg: "", typ: $funcType([Screener], [], false)}, {prop: "SetSteps", name: "SetSteps", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "StartAnimating", name: "StartAnimating", pkg: "", typ: $funcType([], [], false)}, {prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}];
 	ptrType.methods = [{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [Stepper], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [Stepper], false)}];
-	Animator.init([{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "SetScreen", name: "SetScreen", pkg: "", typ: $funcType([Screener], [], false)}, {prop: "SetSteps", name: "SetSteps", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "StartAnimating", name: "StartAnimating", pkg: "", typ: $funcType([], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "UpdateDuration", name: "UpdateDuration", pkg: "", typ: $funcType([$Float64], [], false)}]);
+	Animator.init([{prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [], false)}, {prop: "Resume", name: "Resume", pkg: "", typ: $funcType([], [], false)}, {prop: "SetScreen", name: "SetScreen", pkg: "", typ: $funcType([Screener], [], false)}, {prop: "SetSteps", name: "SetSteps", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "StartAnimating", name: "StartAnimating", pkg: "", typ: $funcType([], [], false)}, {prop: "Stop", name: "Stop", pkg: "", typ: $funcType([], [], false)}, {prop: "UpdateDuration", name: "UpdateDuration", pkg: "", typ: $funcType([$Float64], [], false)}]);
 	Animation.init("github.com/lei-cao/programming/code/visualizer", [{prop: "steps", name: "steps", anonymous: false, exported: false, typ: Stepper, tag: ""}, {prop: "screen", name: "screen", anonymous: false, exported: false, typ: Screener, tag: ""}, {prop: "animating", name: "animating", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "autoUpdate", name: "autoUpdate", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "fps", name: "fps", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "fpdInterval", name: "fpdInterval", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "startTime", name: "startTime", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "now", name: "now", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "then", name: "then", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "elapsed", name: "elapsed", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "duration", name: "duration", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "timing", name: "timing", anonymous: false, exported: false, typ: funcType$1, tag: ""}, {prop: "animationFrame", name: "animationFrame", anonymous: false, exported: false, typ: ptrType$2, tag: ""}]);
 	Screener.init([{prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([Stepper], [], false)}]);
 	Stepper.init([{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([Stepper], [], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [Stepper], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [Stepper], false)}]);
@@ -8243,10 +8248,19 @@ $packages["github.com/lei-cao/programming/code/algorithms/sorting"] = (function(
 	return $pkg;
 })();
 $packages["github.com/lei-cao/programming/code/algorithms/sorting/basicsort"] = (function() {
-	var $pkg = {}, $init, sorting, visualizer, BubbleSort, InsertionSort, QuickSort, SelectionSort, BasicSort, Step, ptrType, sliceType, ptrType$1, ptrType$2, ptrType$3, ptrType$4, ptrType$5, NewBubbleSort, NewInsertionSort, NewQuickSort, NewSelectionSort, NewFirstStep, NewStep;
+	var $pkg = {}, $init, sorting, visualizer, math, BubbleSort, HeapSort, InsertionSort, QuickSort, SelectionSort, BasicSort, Step, ptrType, sliceType, ptrType$1, ptrType$2, ptrType$3, ptrType$4, ptrType$5, ptrType$6, NewBubbleSort, NewInsertionSort, NewQuickSort, NewSelectionSort, NewHeapSort, NewFirstStep, NewStep;
 	sorting = $packages["github.com/lei-cao/programming/code/algorithms/sorting"];
 	visualizer = $packages["github.com/lei-cao/programming/code/visualizer"];
+	math = $packages["math"];
 	BubbleSort = $pkg.BubbleSort = $newType(0, $kindStruct, "basicsort.BubbleSort", true, "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.BasicSort = new BasicSort.ptr($ifaceNil);
+			return;
+		}
+		this.BasicSort = BasicSort_;
+	});
+	HeapSort = $pkg.HeapSort = $newType(0, $kindStruct, "basicsort.HeapSort", true, "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", true, function(BasicSort_) {
 		this.$val = this;
 		if (arguments.length === 0) {
 			this.BasicSort = new BasicSort.ptr($ifaceNil);
@@ -8307,10 +8321,11 @@ $packages["github.com/lei-cao/programming/code/algorithms/sorting/basicsort"] = 
 	ptrType = $ptrType(Step);
 	sliceType = $sliceType($Int);
 	ptrType$1 = $ptrType(BubbleSort);
-	ptrType$2 = $ptrType(InsertionSort);
-	ptrType$3 = $ptrType(QuickSort);
-	ptrType$4 = $ptrType(SelectionSort);
-	ptrType$5 = $ptrType(BasicSort);
+	ptrType$2 = $ptrType(HeapSort);
+	ptrType$3 = $ptrType(InsertionSort);
+	ptrType$4 = $ptrType(QuickSort);
+	ptrType$5 = $ptrType(SelectionSort);
+	ptrType$6 = $ptrType(BasicSort);
 	BubbleSort.ptr.prototype.Sort = function(a) {
 		var a, i, j, s, x, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; i = $f.i; j = $f.j; s = $f.s; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -8337,6 +8352,76 @@ $packages["github.com/lei-cao/programming/code/algorithms/sorting/basicsort"] = 
 		/* */ } return; } if ($f === undefined) { $f = { $blk: BubbleSort.ptr.prototype.Sort }; } $f.a = a; $f.i = i; $f.j = j; $f.s = s; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	BubbleSort.prototype.Sort = function(a) { return this.$val.Sort(a); };
+	HeapSort.ptr.prototype.Sort = function(a) {
+		var a, end, h, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; end = $f.end; h = $f.h; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		h = this;
+		$r = h.heapify(a); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		end = a.$length - 1 >> 0;
+		/* while (true) { */ case 2:
+			/* if (!(end > 0)) { break; } */ if(!(end > 0)) { $s = 3; continue; }
+			$r = h.BasicSort.swap(a, end, 0); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			end = end - (1) >> 0;
+			$r = h.shiftDown(a, 0, end); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* } */ $s = 2; continue; case 3:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: HeapSort.ptr.prototype.Sort }; } $f.a = a; $f.end = end; $f.h = h; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	HeapSort.prototype.Sort = function(a) { return this.$val.Sort(a); };
+	HeapSort.ptr.prototype.heapify = function(a) {
+		var a, h, start, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; h = $f.h; start = $f.start; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		h = this;
+		start = h.iParent(a.$length - 1 >> 0);
+		/* while (true) { */ case 1:
+			/* if (!(start >= 0)) { break; } */ if(!(start >= 0)) { $s = 2; continue; }
+			$r = h.shiftDown(a, start, a.$length - 1 >> 0); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			start = start - (1) >> 0;
+		/* } */ $s = 1; continue; case 2:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: HeapSort.ptr.prototype.heapify }; } $f.a = a; $f.h = h; $f.start = start; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	HeapSort.prototype.heapify = function(a) { return this.$val.heapify(a); };
+	HeapSort.ptr.prototype.shiftDown = function(a, start, end) {
+		var a, child, end, h, root, start, swap, x, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; child = $f.child; end = $f.end; h = $f.h; root = $f.root; start = $f.start; swap = $f.swap; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		h = this;
+		root = start;
+		/* while (true) { */ case 1:
+			/* if (!(h.iLeftChild(root) <= end)) { break; } */ if(!(h.iLeftChild(root) <= end)) { $s = 2; continue; }
+			child = h.iLeftChild(root);
+			swap = root;
+			if (((swap < 0 || swap >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + swap]) < ((child < 0 || child >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + child])) {
+				swap = child;
+			}
+			if ((child + 1 >> 0) <= end && ((swap < 0 || swap >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + swap]) < (x = child + 1 >> 0, ((x < 0 || x >= a.$length) ? ($throwRuntimeError("index out of range"), undefined) : a.$array[a.$offset + x]))) {
+				swap = child + 1 >> 0;
+			}
+			/* */ if (swap === root) { $s = 3; continue; }
+			/* */ $s = 4; continue;
+			/* if (swap === root) { */ case 3:
+				$r = h.BasicSort.pass(swap, root); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return;
+			/* } */ case 4:
+			$r = h.BasicSort.swap(a, root, swap); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			root = swap;
+		/* } */ $s = 1; continue; case 2:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: HeapSort.ptr.prototype.shiftDown }; } $f.a = a; $f.child = child; $f.end = end; $f.h = h; $f.root = root; $f.start = start; $f.swap = swap; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	HeapSort.prototype.shiftDown = function(a, start, end) { return this.$val.shiftDown(a, start, end); };
+	HeapSort.ptr.prototype.iParent = function(i) {
+		var _q, h, i;
+		h = this;
+		return ((math.Floor(((_q = ((i - 1 >> 0)) / 2, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >> 0 : $throwRuntimeError("integer divide by zero")))) >> 0));
+	};
+	HeapSort.prototype.iParent = function(i) { return this.$val.iParent(i); };
+	HeapSort.ptr.prototype.iLeftChild = function(i) {
+		var h, i;
+		h = this;
+		return ($imul(i, 2)) + 1 >> 0;
+	};
+	HeapSort.prototype.iLeftChild = function(i) { return this.$val.iLeftChild(i); };
 	InsertionSort.ptr.prototype.Sort = function(a) {
 		var a, i, j, s, temp, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; a = $f.a; i = $f.i; j = $f.j; s = $f.s; temp = $f.temp; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -8468,6 +8553,13 @@ $packages["github.com/lei-cao/programming/code/algorithms/sorting/basicsort"] = 
 		return s;
 	};
 	$pkg.NewSelectionSort = NewSelectionSort;
+	NewHeapSort = function() {
+		var m;
+		m = new HeapSort.ptr(new BasicSort.ptr($ifaceNil));
+		m.BasicSort.steps = NewFirstStep();
+		return m;
+	};
+	$pkg.NewHeapSort = NewHeapSort;
 	BasicSort.ptr.prototype.Steps = function() {
 		var s;
 		s = this;
@@ -8570,12 +8662,14 @@ $packages["github.com/lei-cao/programming/code/algorithms/sorting/basicsort"] = 
 	};
 	Step.prototype.DoSwap = function() { return this.$val.DoSwap(); };
 	ptrType$1.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}];
-	ptrType$2.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}];
-	ptrType$3.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "quickSort", name: "quickSort", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [], false)}, {prop: "partition", name: "partition", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [$Int], false)}];
-	ptrType$4.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}];
-	ptrType$5.methods = [{prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "swap", name: "swap", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([$Int, $Int], [], false)}];
+	ptrType$2.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "heapify", name: "heapify", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([sliceType], [], false)}, {prop: "shiftDown", name: "shiftDown", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [], false)}, {prop: "iParent", name: "iParent", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([$Int], [$Int], false)}, {prop: "iLeftChild", name: "iLeftChild", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([$Int], [$Int], false)}, {prop: "iRightChild", name: "iRightChild", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([$Int], [$Int], false)}];
+	ptrType$3.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}];
+	ptrType$4.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}, {prop: "quickSort", name: "quickSort", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [], false)}, {prop: "partition", name: "partition", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [$Int], false)}];
+	ptrType$5.methods = [{prop: "Sort", name: "Sort", pkg: "", typ: $funcType([sliceType], [], false)}];
+	ptrType$6.methods = [{prop: "Steps", name: "Steps", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "swap", name: "swap", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([sliceType, $Int, $Int], [], false)}, {prop: "pass", name: "pass", pkg: "github.com/lei-cao/programming/code/algorithms/sorting/basicsort", typ: $funcType([$Int, $Int], [], false)}];
 	ptrType.methods = [{prop: "AddStep", name: "AddStep", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Finished", name: "Finished", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "NextStep", name: "NextStep", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "CurrentStep", name: "CurrentStep", pkg: "", typ: $funcType([], [visualizer.Stepper], false)}, {prop: "A", name: "A", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "B", name: "B", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "DoSwap", name: "DoSwap", pkg: "", typ: $funcType([], [$Bool], false)}];
 	BubbleSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
+	HeapSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
 	InsertionSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
 	QuickSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
 	SelectionSort.init("", [{prop: "BasicSort", name: "BasicSort", anonymous: true, exported: true, typ: BasicSort, tag: ""}]);
@@ -8586,6 +8680,7 @@ $packages["github.com/lei-cao/programming/code/algorithms/sorting/basicsort"] = 
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		$r = sorting.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = visualizer.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = math.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.$init = $init;
@@ -11041,10 +11136,41 @@ $packages["github.com/oskca/gopherjs-canvas"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/lei-cao/programming/code/visualizer/ui"] = (function() {
-	var $pkg = {}, $init, defaults, canvas, math, Point, Rectangle, RectSlice, ptrType, ptrType$1, ptrType$2, sliceType, sliceType$1, funcType, ptrType$5, mapType, NewRect, NewRectSlice, rectSliceHeight;
+	var $pkg = {}, $init, basicsort, visualizer, defaults, canvas, math, Element, Elementer, Point, Rectangle, RectSlice, ptrType, sliceType, ptrType$1, ptrType$2, ptrType$3, sliceType$1, ptrType$4, funcType, ptrType$7, mapType, NewElement, NewRect, NewRectSlice, RectSliceHeight, RectSliceWidth;
+	basicsort = $packages["github.com/lei-cao/programming/code/algorithms/sorting/basicsort"];
+	visualizer = $packages["github.com/lei-cao/programming/code/visualizer"];
 	defaults = $packages["github.com/lei-cao/programming/code/visualizer/defaults"];
 	canvas = $packages["github.com/oskca/gopherjs-canvas"];
 	math = $packages["math"];
+	Element = $pkg.Element = $newType(0, $kindStruct, "ui.Element", true, "github.com/lei-cao/programming/code/visualizer/ui", true, function(Id_, Ctx_, Children_, AutoWidth_, AutoHeight_, OnFinished_, OnDrawing_, width_, height_, calculatedWidth_, calculatedHeight_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Id = "";
+			this.Ctx = ptrType.nil;
+			this.Children = sliceType.nil;
+			this.AutoWidth = false;
+			this.AutoHeight = false;
+			this.OnFinished = $throwNilPointerError;
+			this.OnDrawing = $throwNilPointerError;
+			this.width = 0;
+			this.height = 0;
+			this.calculatedWidth = 0;
+			this.calculatedHeight = 0;
+			return;
+		}
+		this.Id = Id_;
+		this.Ctx = Ctx_;
+		this.Children = Children_;
+		this.AutoWidth = AutoWidth_;
+		this.AutoHeight = AutoHeight_;
+		this.OnFinished = OnFinished_;
+		this.OnDrawing = OnDrawing_;
+		this.width = width_;
+		this.height = height_;
+		this.calculatedWidth = calculatedWidth_;
+		this.calculatedHeight = calculatedHeight_;
+	});
+	Elementer = $pkg.Elementer = $newType(8, $kindInterface, "ui.Elementer", true, "github.com/lei-cao/programming/code/visualizer/ui", true, null);
 	Point = $pkg.Point = $newType(0, $kindStruct, "ui.Point", true, "github.com/lei-cao/programming/code/visualizer/ui", true, function(X_, Y_) {
 		this.$val = this;
 		if (arguments.length === 0) {
@@ -11055,14 +11181,12 @@ $packages["github.com/lei-cao/programming/code/visualizer/ui"] = (function() {
 		this.X = X_;
 		this.Y = Y_;
 	});
-	Rectangle = $pkg.Rectangle = $newType(0, $kindStruct, "ui.Rectangle", true, "github.com/lei-cao/programming/code/visualizer/ui", true, function(Ctx_, StartPoint_, DestPoint_, Width_, Height_, Color_, V_, Index_, ToIndex_, isA_, isB_, OnFinished_, OnDrawing_) {
+	Rectangle = $pkg.Rectangle = $newType(0, $kindStruct, "ui.Rectangle", true, "github.com/lei-cao/programming/code/visualizer/ui", true, function(Element_, StartPoint_, DestPoint_, Color_, V_, Index_, ToIndex_, isA_, isB_, OnFinished_, OnDrawing_) {
 		this.$val = this;
 		if (arguments.length === 0) {
-			this.Ctx = ptrType.nil;
+			this.Element = ptrType$2.nil;
 			this.StartPoint = new Point.ptr(0, 0);
 			this.DestPoint = new Point.ptr(0, 0);
-			this.Width = 0;
-			this.Height = 0;
 			this.Color = "";
 			this.V = 0;
 			this.Index = 0;
@@ -11073,11 +11197,9 @@ $packages["github.com/lei-cao/programming/code/visualizer/ui"] = (function() {
 			this.OnDrawing = $throwNilPointerError;
 			return;
 		}
-		this.Ctx = Ctx_;
+		this.Element = Element_;
 		this.StartPoint = StartPoint_;
 		this.DestPoint = DestPoint_;
-		this.Width = Width_;
-		this.Height = Height_;
 		this.Color = Color_;
 		this.V = V_;
 		this.Index = Index_;
@@ -11087,38 +11209,151 @@ $packages["github.com/lei-cao/programming/code/visualizer/ui"] = (function() {
 		this.OnFinished = OnFinished_;
 		this.OnDrawing = OnDrawing_;
 	});
-	RectSlice = $pkg.RectSlice = $newType(0, $kindStruct, "ui.RectSlice", true, "github.com/lei-cao/programming/code/visualizer/ui", true, function(Rectangles_, StartPoint_, Size_, Name_, DisplayName_, finishedDrawing_, nums_, aIndex_, bIndex_) {
+	RectSlice = $pkg.RectSlice = $newType(0, $kindStruct, "ui.RectSlice", true, "github.com/lei-cao/programming/code/visualizer/ui", true, function(Element_, Rectangles_, StartPoint_, Size_, finishedDrawing_, aIndex_, bIndex_) {
 		this.$val = this;
 		if (arguments.length === 0) {
-			this.Rectangles = sliceType.nil;
+			this.Element = ptrType$2.nil;
+			this.Rectangles = sliceType$1.nil;
 			this.StartPoint = new Point.ptr(0, 0);
 			this.Size = 0;
-			this.Name = "";
-			this.DisplayName = false;
 			this.finishedDrawing = false;
-			this.nums = sliceType$1.nil;
 			this.aIndex = 0;
 			this.bIndex = 0;
 			return;
 		}
+		this.Element = Element_;
 		this.Rectangles = Rectangles_;
 		this.StartPoint = StartPoint_;
 		this.Size = Size_;
-		this.Name = Name_;
-		this.DisplayName = DisplayName_;
 		this.finishedDrawing = finishedDrawing_;
-		this.nums = nums_;
 		this.aIndex = aIndex_;
 		this.bIndex = bIndex_;
 	});
 	ptrType = $ptrType(canvas.Context2D);
+	sliceType = $sliceType(Elementer);
 	ptrType$1 = $ptrType(Point);
-	ptrType$2 = $ptrType(Rectangle);
-	sliceType = $sliceType(ptrType$2);
-	sliceType$1 = $sliceType($Int);
+	ptrType$2 = $ptrType(Element);
+	ptrType$3 = $ptrType(Rectangle);
+	sliceType$1 = $sliceType(ptrType$3);
+	ptrType$4 = $ptrType(basicsort.Step);
 	funcType = $funcType([], [], false);
-	ptrType$5 = $ptrType(RectSlice);
+	ptrType$7 = $ptrType(RectSlice);
 	mapType = $mapType($Int, $Bool);
+	NewElement = function() {
+		var e;
+		e = new Element.ptr("", ptrType.nil, sliceType.nil, false, false, $throwNilPointerError, $throwNilPointerError, 0, 0, 0, 0);
+		e.Children = $makeSlice(sliceType, 0);
+		return e;
+	};
+	$pkg.NewElement = NewElement;
+	Element.ptr.prototype.Width = function() {
+		var e;
+		e = this;
+		return e.calculatedWidth;
+	};
+	Element.prototype.Width = function() { return this.$val.Width(); };
+	Element.ptr.prototype.Height = function() {
+		var e;
+		e = this;
+		return e.calculatedHeight;
+	};
+	Element.prototype.Height = function() { return this.$val.Height(); };
+	Element.ptr.prototype.Update = function(stepper) {
+		var _i, _ref, e, k, stepper, x, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _ref = $f._ref; e = $f.e; k = $f.k; stepper = $f.stepper; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		e = this;
+		_ref = e.Children;
+		_i = 0;
+		/* while (true) { */ case 1:
+			/* if (!(_i < _ref.$length)) { break; } */ if(!(_i < _ref.$length)) { $s = 2; continue; }
+			k = _i;
+			$r = (x = e.Children, ((k < 0 || k >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + k])).Update(stepper); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			_i++;
+		/* } */ $s = 1; continue; case 2:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Element.ptr.prototype.Update }; } $f._i = _i; $f._ref = _ref; $f.e = e; $f.k = k; $f.stepper = stepper; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	Element.prototype.Update = function(stepper) { return this.$val.Update(stepper); };
+	Element.ptr.prototype.Draw = function(progress) {
+		var _i, _ref, e, k, progress, x, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _ref = $f._ref; e = $f.e; k = $f.k; progress = $f.progress; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		e = this;
+		_ref = e.Children;
+		_i = 0;
+		/* while (true) { */ case 1:
+			/* if (!(_i < _ref.$length)) { break; } */ if(!(_i < _ref.$length)) { $s = 2; continue; }
+			k = _i;
+			$r = (x = e.Children, ((k < 0 || k >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + k])).Draw(progress); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			_i++;
+		/* } */ $s = 1; continue; case 2:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Element.ptr.prototype.Draw }; } $f._i = _i; $f._ref = _ref; $f.e = e; $f.k = k; $f.progress = progress; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	Element.prototype.Draw = function(progress) { return this.$val.Draw(progress); };
+	Element.ptr.prototype.Ready = function() {
+		var _i, _r, _ref, e, k, x, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _r = $f._r; _ref = $f._ref; e = $f.e; k = $f.k; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		e = this;
+		_ref = e.Children;
+		_i = 0;
+		/* while (true) { */ case 1:
+			/* if (!(_i < _ref.$length)) { break; } */ if(!(_i < _ref.$length)) { $s = 2; continue; }
+			k = _i;
+			_r = (x = e.Children, ((k < 0 || k >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + k])).Ready(); /* */ $s = 5; case 5: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			/* */ if (!_r) { $s = 3; continue; }
+			/* */ $s = 4; continue;
+			/* if (!_r) { */ case 3:
+				$s = -1; return false;
+			/* } */ case 4:
+			_i++;
+		/* } */ $s = 1; continue; case 2:
+		$s = -1; return true;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Element.ptr.prototype.Ready }; } $f._i = _i; $f._r = _r; $f._ref = _ref; $f.e = e; $f.k = k; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	Element.prototype.Ready = function() { return this.$val.Ready(); };
+	Element.ptr.prototype.SetWidth = function(width) {
+		var e, width, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; e = $f.e; width = $f.width; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		e = this;
+		e.width = width;
+		$r = e.Resize(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Element.ptr.prototype.SetWidth }; } $f.e = e; $f.width = width; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	Element.prototype.SetWidth = function(width) { return this.$val.SetWidth(width); };
+	Element.ptr.prototype.SetHeight = function(height) {
+		var e, height, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; e = $f.e; height = $f.height; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		e = this;
+		e.height = height;
+		$r = e.Resize(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Element.ptr.prototype.SetHeight }; } $f.e = e; $f.height = height; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	Element.prototype.SetHeight = function(height) { return this.$val.SetHeight(height); };
+	Element.ptr.prototype.Resize = function() {
+		var _i, _r, _r$1, _ref, e, h, k, w, x, x$1, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _r = $f._r; _r$1 = $f._r$1; _ref = $f._ref; e = $f.e; h = $f.h; k = $f.k; w = $f.w; x = $f.x; x$1 = $f.x$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		e = this;
+		w = 0;
+		h = 0;
+		_ref = e.Children;
+		_i = 0;
+		/* while (true) { */ case 1:
+			/* if (!(_i < _ref.$length)) { break; } */ if(!(_i < _ref.$length)) { $s = 2; continue; }
+			k = _i;
+			_r = (x = e.Children, ((k < 0 || k >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + k])).Width(); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			w = w + (_r);
+			_r$1 = (x$1 = e.Children, ((k < 0 || k >= x$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + k])).Height(); /* */ $s = 4; case 4: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+			h = h + (_r$1);
+			_i++;
+		/* } */ $s = 1; continue; case 2:
+		e.calculatedWidth = e.width + w;
+		e.calculatedHeight = e.height + h;
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Element.ptr.prototype.Resize }; } $f._i = _i; $f._r = _r; $f._r$1 = _r$1; $f._ref = _ref; $f.e = e; $f.h = h; $f.k = k; $f.w = w; $f.x = x; $f.x$1 = x$1; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	Element.prototype.Resize = function() { return this.$val.Resize(); };
 	Point.ptr.prototype.MoveTo = function(dest, progress) {
 		var dest, p, progress;
 		p = this;
@@ -11133,29 +11368,33 @@ $packages["github.com/lei-cao/programming/code/visualizer/ui"] = (function() {
 	};
 	Point.prototype.Equals = function(b) { return this.$val.Equals(b); };
 	NewRect = function(ctx, startPoint, width, height, index, value) {
-		var ctx, height, index, r, startPoint, value, width;
-		r = new Rectangle.ptr(ptrType.nil, new Point.ptr(0, 0), new Point.ptr(0, 0), 0, 0, "", 0, 0, 0, false, false, $throwNilPointerError, $throwNilPointerError);
-		r.Ctx = ctx;
-		Point.copy(r.StartPoint, startPoint);
-		Point.copy(r.DestPoint, startPoint);
-		r.Width = width;
-		r.Height = height;
-		r.V = value;
-		r.Index = index;
-		r.ToIndex = index;
-		r.OnDrawing = (function() {
-			if (r.isA) {
-				r.Color = defaults.DefaultColor.AColor;
+		var ctx, height, index, r, startPoint, value, width, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; ctx = $f.ctx; height = $f.height; index = $f.index; r = $f.r; startPoint = $f.startPoint; value = $f.value; width = $f.width; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		r = [r];
+		r[0] = new Rectangle.ptr(ptrType$2.nil, new Point.ptr(0, 0), new Point.ptr(0, 0), "", 0, 0, 0, false, false, $throwNilPointerError, $throwNilPointerError);
+		r[0].Element = NewElement();
+		r[0].Element.Ctx = ctx;
+		Point.copy(r[0].StartPoint, startPoint);
+		Point.copy(r[0].DestPoint, startPoint);
+		$r = r[0].Element.SetWidth(width); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = r[0].Element.SetHeight(height); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		r[0].V = value;
+		r[0].Index = index;
+		r[0].ToIndex = index;
+		r[0].OnDrawing = (function(r) { return function() {
+			if (r[0].isA) {
+				r[0].Color = defaults.DefaultColor.AColor;
 			}
-			if (r.isB) {
-				r.Color = defaults.DefaultColor.BColor;
+			if (r[0].isB) {
+				r[0].Color = defaults.DefaultColor.BColor;
 			}
-		});
-		r.OnFinished = (function() {
-			r.Color = defaults.DefaultColor.BarColor;
-		});
-		r.Color = defaults.DefaultColor.BarColor;
-		return r;
+		}; })(r);
+		r[0].OnFinished = (function(r) { return function() {
+			r[0].Color = defaults.DefaultColor.BarColor;
+		}; })(r);
+		r[0].Color = defaults.DefaultColor.BarColor;
+		$s = -1; return r[0];
+		/* */ } return; } if ($f === undefined) { $f = { $blk: NewRect }; } $f.ctx = ctx; $f.height = height; $f.index = index; $f.r = r; $f.startPoint = startPoint; $f.value = value; $f.width = width; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.NewRect = NewRect;
 	Rectangle.ptr.prototype.Animate = function(progress) {
@@ -11188,40 +11427,63 @@ $packages["github.com/lei-cao/programming/code/visualizer/ui"] = (function() {
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; r = $f.r; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		r = this;
 		$r = r.OnDrawing(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		r.Ctx.Object.fillStyle = $externalize(new $String(r.Color), $emptyInterface);
-		r.Ctx.FillRect(r.StartPoint.X, r.StartPoint.Y, r.Width, r.Height);
+		r.Element.Ctx.Object.fillStyle = $externalize(new $String(r.Color), $emptyInterface);
+		r.Element.Ctx.FillRect(r.StartPoint.X, r.StartPoint.Y, r.Element.Width(), r.Element.Height());
 		$s = -1; return;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: Rectangle.ptr.prototype.draw }; } $f.r = r; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Rectangle.prototype.draw = function() { return this.$val.draw(); };
 	NewRectSlice = function(ctx, nums, startPoint, name, displayName) {
-		var _i, _ref, ctx, displayName, k, name, nums, r, rs, startPoint, v;
-		rs = new RectSlice.ptr(sliceType.nil, new Point.ptr(0, 0), 0, "", false, false, sliceType$1.nil, 0, 0);
-		rs.nums = nums;
+		var _i, _r, _ref, ctx, displayName, k, name, nums, r, rs, startPoint, v, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _r = $f._r; _ref = $f._ref; ctx = $f.ctx; displayName = $f.displayName; k = $f.k; name = $f.name; nums = $f.nums; r = $f.r; rs = $f.rs; startPoint = $f.startPoint; v = $f.v; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		rs = new RectSlice.ptr(ptrType$2.nil, sliceType$1.nil, new Point.ptr(0, 0), 0, false, 0, 0);
+		rs.Element = NewElement();
 		Point.copy(rs.StartPoint, startPoint);
 		rs.Size = nums.$length;
 		_ref = nums;
 		_i = 0;
-		while (true) {
-			if (!(_i < _ref.$length)) { break; }
+		/* while (true) { */ case 1:
+			/* if (!(_i < _ref.$length)) { break; } */ if(!(_i < _ref.$length)) { $s = 2; continue; }
 			k = _i;
 			v = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
-			r = NewRect(ctx, $clone(rs.RectPoint(k, v), Point), 8, 5 * (v), k, v);
+			_r = NewRect(ctx, $clone(rs.RectPoint(k, v), Point), 8, 5 * (v), k, v); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			r = _r;
 			rs.AddRect(r);
 			_i++;
-		}
+		/* } */ $s = 1; continue; case 2:
 		rs.finishedDrawing = {};
-		rs.Name = name;
-		rs.DisplayName = displayName;
+		rs.Element.Id = name;
 		rs.aIndex = -1;
 		rs.bIndex = -1;
-		return rs;
+		$s = -1; return rs;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: NewRectSlice }; } $f._i = _i; $f._r = _r; $f._ref = _ref; $f.ctx = ctx; $f.displayName = displayName; $f.k = k; $f.name = name; $f.nums = nums; $f.r = r; $f.rs = rs; $f.startPoint = startPoint; $f.v = v; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.NewRectSlice = NewRectSlice;
-	rectSliceHeight = function(size) {
+	RectSliceHeight = function(size) {
 		var size;
 		return 5 * (size);
 	};
+	$pkg.RectSliceHeight = RectSliceHeight;
+	RectSliceWidth = function(size) {
+		var size;
+		return (size) * 8 + ((size - 1 >> 0)) * 2;
+	};
+	$pkg.RectSliceWidth = RectSliceWidth;
+	RectSlice.ptr.prototype.Update = function(stepper) {
+		var _tuple, ok, rs, step, stepper;
+		rs = this;
+		_tuple = $assertType(stepper, ptrType$4, true);
+		step = _tuple[0];
+		ok = _tuple[1];
+		if (ok) {
+			if (step.DoSwap()) {
+				rs.Swap(step.A(), step.B());
+			} else {
+				rs.Pass(step.A(), step.B());
+			}
+		}
+	};
+	RectSlice.prototype.Update = function(stepper) { return this.$val.Update(stepper); };
 	RectSlice.ptr.prototype.Draw = function(progress) {
 		var _i, _key, _r, _ref, k, progress, r, rs, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _key = $f._key; _r = $f._r; _ref = $f._ref; k = $f.k; progress = $f.progress; r = $f.r; rs = $f.rs; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -11276,16 +11538,22 @@ $packages["github.com/lei-cao/programming/code/visualizer/ui"] = (function() {
 		rs.Rectangles = $append(rs.Rectangles, rectangle);
 	};
 	RectSlice.prototype.AddRect = function(rectangle) { return this.$val.AddRect(rectangle); };
+	RectSlice.ptr.prototype.Width = function() {
+		var rs;
+		rs = this;
+		return RectSliceWidth(rs.Size);
+	};
+	RectSlice.prototype.Width = function() { return this.$val.Width(); };
 	RectSlice.ptr.prototype.Height = function() {
 		var rs;
 		rs = this;
-		return (rs.Size) * 5;
+		return RectSliceHeight(rs.Size);
 	};
 	RectSlice.prototype.Height = function() { return this.$val.Height(); };
 	RectSlice.ptr.prototype.RectPoint = function(k, v) {
 		var k, p, rs, v;
 		rs = this;
-		p = new Point.ptr(rs.StartPoint.X + 10 * (k), rs.StartPoint.Y + rectSliceHeight(rs.Size) - (v) * 5);
+		p = new Point.ptr(rs.StartPoint.X + 10 * (k), rs.StartPoint.Y + RectSliceHeight(rs.Size) - (v) * 5);
 		return p;
 	};
 	RectSlice.prototype.RectPoint = function(k, v) { return this.$val.RectPoint(k, v); };
@@ -11321,18 +11589,126 @@ $packages["github.com/lei-cao/programming/code/visualizer/ui"] = (function() {
 		rs.bIndex = ib;
 	};
 	RectSlice.prototype.Pass = function(ia, ib) { return this.$val.Pass(ia, ib); };
+	ptrType$2.methods = [{prop: "Width", name: "Width", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "Height", name: "Height", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "SetWidth", name: "SetWidth", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "SetHeight", name: "SetHeight", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Resize", name: "Resize", pkg: "", typ: $funcType([], [], false)}];
 	ptrType$1.methods = [{prop: "MoveTo", name: "MoveTo", pkg: "", typ: $funcType([Point, $Float64], [], false)}, {prop: "Equals", name: "Equals", pkg: "", typ: $funcType([Point], [$Bool], false)}];
-	ptrType$2.methods = [{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/programming/code/visualizer/ui", typ: $funcType([$Float64], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/programming/code/visualizer/ui", typ: $funcType([], [], false)}, {prop: "moving", name: "moving", pkg: "github.com/lei-cao/programming/code/visualizer/ui", typ: $funcType([], [$Bool], false)}];
-	ptrType$5.methods = [{prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "AddRect", name: "AddRect", pkg: "", typ: $funcType([ptrType$2], [], false)}, {prop: "Height", name: "Height", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "RectPoint", name: "RectPoint", pkg: "", typ: $funcType([$Int, $Int], [Point], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}];
+	ptrType$3.methods = [{prop: "Animate", name: "Animate", pkg: "", typ: $funcType([$Float64], [$Bool], false)}, {prop: "update", name: "update", pkg: "github.com/lei-cao/programming/code/visualizer/ui", typ: $funcType([$Float64], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/programming/code/visualizer/ui", typ: $funcType([], [], false)}, {prop: "moving", name: "moving", pkg: "github.com/lei-cao/programming/code/visualizer/ui", typ: $funcType([], [$Bool], false)}];
+	ptrType$7.methods = [{prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "AddRect", name: "AddRect", pkg: "", typ: $funcType([ptrType$3], [], false)}, {prop: "Width", name: "Width", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "Height", name: "Height", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "RectPoint", name: "RectPoint", pkg: "", typ: $funcType([$Int, $Int], [Point], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}];
+	Element.init("github.com/lei-cao/programming/code/visualizer/ui", [{prop: "Id", name: "Id", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "Children", name: "Children", anonymous: false, exported: true, typ: sliceType, tag: ""}, {prop: "AutoWidth", name: "AutoWidth", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "AutoHeight", name: "AutoHeight", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "OnFinished", name: "OnFinished", anonymous: false, exported: true, typ: funcType, tag: ""}, {prop: "OnDrawing", name: "OnDrawing", anonymous: false, exported: true, typ: funcType, tag: ""}, {prop: "width", name: "width", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "height", name: "height", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "calculatedWidth", name: "calculatedWidth", anonymous: false, exported: false, typ: $Float64, tag: ""}, {prop: "calculatedHeight", name: "calculatedHeight", anonymous: false, exported: false, typ: $Float64, tag: ""}]);
+	Elementer.init([{prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Height", name: "Height", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Width", name: "Width", pkg: "", typ: $funcType([], [$Float64], false)}]);
 	Point.init("", [{prop: "X", name: "X", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Y", name: "Y", anonymous: false, exported: true, typ: $Float64, tag: ""}]);
-	Rectangle.init("github.com/lei-cao/programming/code/visualizer/ui", [{prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "StartPoint", name: "StartPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "DestPoint", name: "DestPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "Width", name: "Width", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Height", name: "Height", anonymous: false, exported: true, typ: $Float64, tag: ""}, {prop: "Color", name: "Color", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "V", name: "V", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "Index", name: "Index", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "ToIndex", name: "ToIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "isA", name: "isA", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "isB", name: "isB", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "OnFinished", name: "OnFinished", anonymous: false, exported: true, typ: funcType, tag: ""}, {prop: "OnDrawing", name: "OnDrawing", anonymous: false, exported: true, typ: funcType, tag: ""}]);
-	RectSlice.init("github.com/lei-cao/programming/code/visualizer/ui", [{prop: "Rectangles", name: "Rectangles", anonymous: false, exported: true, typ: sliceType, tag: ""}, {prop: "StartPoint", name: "StartPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "Size", name: "Size", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "Name", name: "Name", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "DisplayName", name: "DisplayName", anonymous: false, exported: true, typ: $Bool, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "nums", name: "nums", anonymous: false, exported: false, typ: sliceType$1, tag: ""}, {prop: "aIndex", name: "aIndex", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "bIndex", name: "bIndex", anonymous: false, exported: false, typ: $Int, tag: ""}]);
+	Rectangle.init("github.com/lei-cao/programming/code/visualizer/ui", [{prop: "Element", name: "Element", anonymous: true, exported: true, typ: ptrType$2, tag: ""}, {prop: "StartPoint", name: "StartPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "DestPoint", name: "DestPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "Color", name: "Color", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "V", name: "V", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "Index", name: "Index", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "ToIndex", name: "ToIndex", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "isA", name: "isA", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "isB", name: "isB", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "OnFinished", name: "OnFinished", anonymous: false, exported: true, typ: funcType, tag: ""}, {prop: "OnDrawing", name: "OnDrawing", anonymous: false, exported: true, typ: funcType, tag: ""}]);
+	RectSlice.init("github.com/lei-cao/programming/code/visualizer/ui", [{prop: "Element", name: "Element", anonymous: true, exported: true, typ: ptrType$2, tag: ""}, {prop: "Rectangles", name: "Rectangles", anonymous: false, exported: true, typ: sliceType$1, tag: ""}, {prop: "StartPoint", name: "StartPoint", anonymous: false, exported: true, typ: Point, tag: ""}, {prop: "Size", name: "Size", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "aIndex", name: "aIndex", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "bIndex", name: "bIndex", anonymous: false, exported: false, typ: $Int, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		$r = defaults.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = canvas.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = math.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = basicsort.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = visualizer.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = defaults.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = canvas.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = math.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.$init = $init;
+	return $pkg;
+})();
+$packages["github.com/lei-cao/programming/code/visualizer/sorting"] = (function() {
+	var $pkg = {}, $init, visualizer, defaults, ui, canvas, BaseScreen, ptrType, ptrType$1, ptrType$2;
+	visualizer = $packages["github.com/lei-cao/programming/code/visualizer"];
+	defaults = $packages["github.com/lei-cao/programming/code/visualizer/defaults"];
+	ui = $packages["github.com/lei-cao/programming/code/visualizer/ui"];
+	canvas = $packages["github.com/oskca/gopherjs-canvas"];
+	BaseScreen = $pkg.BaseScreen = $newType(0, $kindStruct, "sorting.BaseScreen", true, "github.com/lei-cao/programming/code/visualizer/sorting", true, function(Id_, Size_, C_, Ctx_, Element_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Id = "";
+			this.Size = 0;
+			this.C = ptrType.nil;
+			this.Ctx = ptrType$1.nil;
+			this.Element = $ifaceNil;
+			return;
+		}
+		this.Id = Id_;
+		this.Size = Size_;
+		this.C = C_;
+		this.Ctx = Ctx_;
+		this.Element = Element_;
+	});
+	ptrType = $ptrType(canvas.Canvas);
+	ptrType$1 = $ptrType(canvas.Context2D);
+	ptrType$2 = $ptrType(BaseScreen);
+	BaseScreen.ptr.prototype.Ready = function() {
+		var _r, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		s = this;
+		_r = s.Element.Ready(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		$s = -1; return _r;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: BaseScreen.ptr.prototype.Ready }; } $f._r = _r; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	BaseScreen.prototype.Ready = function() { return this.$val.Ready(); };
+	BaseScreen.ptr.prototype.Clear = function() {
+		var _arg, _arg$1, _r, _r$1, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _r = $f._r; _r$1 = $f._r$1; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		s = this;
+		_r = s.Width(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_arg = _r;
+		_r$1 = s.Height(); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		_arg$1 = _r$1;
+		$r = s.Ctx.ClearRect(0, 0, _arg, _arg$1); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: BaseScreen.ptr.prototype.Clear }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._r = _r; $f._r$1 = _r$1; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	BaseScreen.prototype.Clear = function() { return this.$val.Clear(); };
+	BaseScreen.ptr.prototype.Width = function() {
+		var _r, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		s = this;
+		_r = s.Element.Width(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		$s = -1; return _r;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: BaseScreen.ptr.prototype.Width }; } $f._r = _r; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	BaseScreen.prototype.Width = function() { return this.$val.Width(); };
+	BaseScreen.ptr.prototype.Height = function() {
+		var _r, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		s = this;
+		_r = s.Element.Height(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		$s = -1; return _r;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: BaseScreen.ptr.prototype.Height }; } $f._r = _r; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	BaseScreen.prototype.Height = function() { return this.$val.Height(); };
+	BaseScreen.ptr.prototype.Draw = function(progress) {
+		var _arg, _arg$1, _r, _r$1, progress, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _r = $f._r; _r$1 = $f._r$1; progress = $f.progress; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		s = this;
+		s.Ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.BackgroundColor), $emptyInterface);
+		_r = s.Width(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_arg = _r;
+		_r$1 = s.Height(); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		_arg$1 = _r$1;
+		$r = s.Ctx.FillRect(0, 0, _arg, _arg$1); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = s.Element.Draw(progress); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: BaseScreen.ptr.prototype.Draw }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._r = _r; $f._r$1 = _r$1; $f.progress = progress; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	BaseScreen.prototype.Draw = function(progress) { return this.$val.Draw(progress); };
+	BaseScreen.ptr.prototype.Update = function(i) {
+		var i, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; i = $f.i; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		s = this;
+		$r = s.Element.Update(i); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: BaseScreen.ptr.prototype.Update }; } $f.i = i; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	BaseScreen.prototype.Update = function(i) { return this.$val.Update(i); };
+	ptrType$2.methods = [{prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Width", name: "Width", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "Height", name: "Height", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}];
+	BaseScreen.init("", [{prop: "Id", name: "Id", anonymous: false, exported: true, typ: $String, tag: ""}, {prop: "Size", name: "Size", anonymous: false, exported: true, typ: $Int, tag: ""}, {prop: "C", name: "C", anonymous: false, exported: true, typ: ptrType, tag: ""}, {prop: "Ctx", name: "Ctx", anonymous: false, exported: true, typ: ptrType$1, tag: ""}, {prop: "Element", name: "Element", anonymous: false, exported: true, typ: ui.Elementer, tag: ""}]);
+	$init = function() {
+		$pkg.$init = function() {};
+		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		$r = visualizer.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = defaults.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = ui.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = canvas.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.$init = $init;
@@ -11850,148 +12226,57 @@ $packages["strconv"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/lei-cao/programming/code/visualizer/sorting/basicsort"] = (function() {
-	var $pkg = {}, $init, js, basicsort, visualizer, defaults, ui, canvas, strconv, Screen, ptrType, ptrType$1, ptrType$2, ptrType$3, ptrType$4, mapType, NewScreen, createCanvas, canvasWidth, canvasHeight;
+	var $pkg = {}, $init, js, sorting, ui, canvas, strconv, Screen, ptrType, ptrType$1, NewScreen, createCanvas;
 	js = $packages["github.com/gopherjs/gopherjs/js"];
-	basicsort = $packages["github.com/lei-cao/programming/code/algorithms/sorting/basicsort"];
-	visualizer = $packages["github.com/lei-cao/programming/code/visualizer"];
-	defaults = $packages["github.com/lei-cao/programming/code/visualizer/defaults"];
+	sorting = $packages["github.com/lei-cao/programming/code/visualizer/sorting"];
 	ui = $packages["github.com/lei-cao/programming/code/visualizer/ui"];
 	canvas = $packages["github.com/oskca/gopherjs-canvas"];
 	strconv = $packages["strconv"];
-	Screen = $pkg.Screen = $newType(0, $kindStruct, "basicsort.Screen", true, "github.com/lei-cao/programming/code/visualizer/sorting/basicsort", true, function(id_, size_, c_, ctx_, rs_, finishedDrawing_, ready_, aIndex_, bIndex_) {
+	Screen = $pkg.Screen = $newType(0, $kindStruct, "basicsort.Screen", true, "github.com/lei-cao/programming/code/visualizer/sorting/basicsort", true, function(BaseScreen_) {
 		this.$val = this;
 		if (arguments.length === 0) {
-			this.id = "";
-			this.size = 0;
-			this.c = ptrType.nil;
-			this.ctx = ptrType$1.nil;
-			this.rs = ptrType$2.nil;
-			this.finishedDrawing = false;
-			this.ready = false;
-			this.aIndex = 0;
-			this.bIndex = 0;
+			this.BaseScreen = new sorting.BaseScreen.ptr("", 0, ptrType.nil, ptrType$1.nil, $ifaceNil);
 			return;
 		}
-		this.id = id_;
-		this.size = size_;
-		this.c = c_;
-		this.ctx = ctx_;
-		this.rs = rs_;
-		this.finishedDrawing = finishedDrawing_;
-		this.ready = ready_;
-		this.aIndex = aIndex_;
-		this.bIndex = bIndex_;
+		this.BaseScreen = BaseScreen_;
 	});
 	ptrType = $ptrType(canvas.Canvas);
 	ptrType$1 = $ptrType(canvas.Context2D);
-	ptrType$2 = $ptrType(ui.RectSlice);
-	ptrType$3 = $ptrType(basicsort.Step);
-	ptrType$4 = $ptrType(Screen);
-	mapType = $mapType($Int, $Bool);
 	NewScreen = function(id, size, nums) {
-		var id, nums, obj, pa, s, size;
-		s = new Screen.ptr("", 0, ptrType.nil, ptrType$1.nil, ptrType$2.nil, false, false, 0, 0);
-		s.id = id;
-		s.size = size;
-		obj = createCanvas(s.id, s.size);
-		s.c = canvas.New(obj);
-		s.ctx = s.c.GetContext2D();
+		var _r, id, nums, obj, pa, s, size, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; id = $f.id; nums = $f.nums; obj = $f.obj; pa = $f.pa; s = $f.s; size = $f.size; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		s = new Screen.ptr(new sorting.BaseScreen.ptr("", 0, ptrType.nil, ptrType$1.nil, $ifaceNil));
+		s.BaseScreen.Id = id;
+		s.BaseScreen.Size = size;
+		obj = createCanvas(s.BaseScreen.Id, s.BaseScreen.Size, ui.RectSliceWidth(size), ui.RectSliceHeight(size));
+		s.BaseScreen.C = canvas.New(obj);
+		s.BaseScreen.Ctx = s.BaseScreen.C.GetContext2D();
 		pa = new ui.Point.ptr(0, 0);
-		s.rs = ui.NewRectSlice(s.ctx, nums, $clone(pa, ui.Point), "a", false);
-		s.finishedDrawing = $makeMap($Int.keyFor, []);
-		return s;
+		_r = ui.NewRectSlice(s.BaseScreen.Ctx, nums, $clone(pa, ui.Point), "a", false); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		s.BaseScreen.Element = _r;
+		$s = -1; return s;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: NewScreen }; } $f._r = _r; $f.id = id; $f.nums = nums; $f.obj = obj; $f.pa = pa; $f.s = s; $f.size = size; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.NewScreen = NewScreen;
-	Screen.ptr.prototype.Ready = function() {
-		var s;
-		s = this;
-		return s.ready;
-	};
-	Screen.prototype.Ready = function() { return this.$val.Ready(); };
-	Screen.ptr.prototype.Clear = function() {
-		var s;
-		s = this;
-		s.ctx.ClearRect(0, 0, (canvasWidth(s.size)), (canvasHeight(s.size)));
-	};
-	Screen.prototype.Clear = function() { return this.$val.Clear(); };
-	Screen.ptr.prototype.Draw = function(progress) {
-		var progress, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; progress = $f.progress; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		s = this;
-		$r = s.draw(progress); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: Screen.ptr.prototype.Draw }; } $f.progress = progress; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	Screen.prototype.Draw = function(progress) { return this.$val.Draw(progress); };
-	Screen.ptr.prototype.Update = function(i) {
-		var _tuple, i, ok, s, step;
-		s = this;
-		_tuple = $assertType(i, ptrType$3, true);
-		step = _tuple[0];
-		ok = _tuple[1];
-		if (ok) {
-			if (step.DoSwap()) {
-				s.Swap(step.A(), step.B());
-			} else {
-				s.Pass(step.A(), step.B());
-			}
-		}
-	};
-	Screen.prototype.Update = function(i) { return this.$val.Update(i); };
-	Screen.ptr.prototype.Swap = function(ia, ib) {
-		var ia, ib, s;
-		s = this;
-		s.rs.Swap(ia, ib);
-	};
-	Screen.prototype.Swap = function(ia, ib) { return this.$val.Swap(ia, ib); };
-	Screen.ptr.prototype.Pass = function(ia, ib) {
-		var ia, ib, s;
-		s = this;
-		s.rs.Pass(ia, ib);
-	};
-	Screen.prototype.Pass = function(ia, ib) { return this.$val.Pass(ia, ib); };
-	Screen.ptr.prototype.draw = function(progress) {
-		var progress, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; progress = $f.progress; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		s = this;
-		s.ctx.Object.fillStyle = $externalize(new $String(defaults.DefaultColor.BackgroundColor), $emptyInterface);
-		s.ctx.FillRect(0, 0, (($parseInt(s.c.Element.Node.EventTarget.Object.width) >> 0)), (($parseInt(s.c.Element.Node.EventTarget.Object.height) >> 0)));
-		$r = s.rs.Draw(progress); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		s.ready = s.rs.Ready();
-		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: Screen.ptr.prototype.draw }; } $f.progress = progress; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	Screen.prototype.draw = function(progress) { return this.$val.draw(progress); };
-	createCanvas = function(id, size) {
-		var body, id, obj, size;
+	createCanvas = function(id, size, width, height) {
+		var body, height, id, obj, size, width;
 		body = $global.document.getElementById($externalize(id, $String));
 		obj = $global.document.createElement($externalize("canvas", $String));
-		obj.width = $externalize(strconv.Itoa(canvasWidth(size)), $String);
-		obj.height = $externalize(strconv.Itoa(canvasHeight(size)), $String);
+		obj.width = $externalize(strconv.Itoa(((width >> 0))), $String);
+		obj.height = $externalize(strconv.Itoa(((height >> 0))), $String);
 		body.innerHTML = $externalize("", $String);
 		body.appendChild(obj);
 		return obj;
 	};
-	canvasWidth = function(size) {
-		var size;
-		return ($imul(8, size)) + ($imul(((size - 1 >> 0)), 2)) >> 0;
-	};
-	canvasHeight = function(size) {
-		var size;
-		return $imul(size, 5);
-	};
-	ptrType$4.methods = [{prop: "Ready", name: "Ready", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Clear", name: "Clear", pkg: "", typ: $funcType([], [], false)}, {prop: "Draw", name: "Draw", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "Update", name: "Update", pkg: "", typ: $funcType([visualizer.Stepper], [], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "Pass", name: "Pass", pkg: "", typ: $funcType([$Int, $Int], [], false)}, {prop: "draw", name: "draw", pkg: "github.com/lei-cao/programming/code/visualizer/sorting/basicsort", typ: $funcType([$Float64], [], false)}];
-	Screen.init("github.com/lei-cao/programming/code/visualizer/sorting/basicsort", [{prop: "id", name: "id", anonymous: false, exported: false, typ: $String, tag: ""}, {prop: "size", name: "size", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "c", name: "c", anonymous: false, exported: false, typ: ptrType, tag: ""}, {prop: "ctx", name: "ctx", anonymous: false, exported: false, typ: ptrType$1, tag: ""}, {prop: "rs", name: "rs", anonymous: false, exported: false, typ: ptrType$2, tag: ""}, {prop: "finishedDrawing", name: "finishedDrawing", anonymous: false, exported: false, typ: mapType, tag: ""}, {prop: "ready", name: "ready", anonymous: false, exported: false, typ: $Bool, tag: ""}, {prop: "aIndex", name: "aIndex", anonymous: false, exported: false, typ: $Int, tag: ""}, {prop: "bIndex", name: "bIndex", anonymous: false, exported: false, typ: $Int, tag: ""}]);
+	Screen.init("", [{prop: "BaseScreen", name: "BaseScreen", anonymous: true, exported: true, typ: sorting.BaseScreen, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		$r = js.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = basicsort.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = visualizer.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = defaults.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = ui.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = canvas.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = strconv.$init(); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = sorting.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = ui.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = canvas.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = strconv.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.$init = $init;
@@ -12046,7 +12331,8 @@ $packages["github.com/lei-cao/programming/code/visualizer/sorting/mergesort"] = 
 	ptrType$5 = $ptrType(Screen);
 	mapType = $mapType($Int, $Bool);
 	NewScreen = function(id, size, nums) {
-		var id, nums, obj, pa, pb, s, size;
+		var _r, _r$1, id, nums, obj, pa, pb, s, size, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; id = $f.id; nums = $f.nums; obj = $f.obj; pa = $f.pa; pb = $f.pb; s = $f.s; size = $f.size; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		s = new Screen.ptr("", 0, ptrType.nil, ptrType$1.nil, ptrType$2.nil, ptrType$2.nil, "", "", false, false, 0, 0, 0);
 		s.id = id;
 		s.size = size;
@@ -12054,13 +12340,16 @@ $packages["github.com/lei-cao/programming/code/visualizer/sorting/mergesort"] = 
 		s.c = canvas.New(obj);
 		s.ctx = s.c.GetContext2D();
 		pa = new ui.Point.ptr(0, 0);
-		s.rsA = ui.NewRectSlice(s.ctx, nums, $clone(pa, ui.Point), "a", false);
+		_r = ui.NewRectSlice(s.ctx, nums, $clone(pa, ui.Point), "a", false); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		s.rsA = _r;
 		pb = new ui.Point.ptr(0, s.rsA.Height() + 30);
-		s.rsB = ui.NewRectSlice(s.ctx, nums, $clone(pb, ui.Point), "b", false);
+		_r$1 = ui.NewRectSlice(s.ctx, nums, $clone(pb, ui.Point), "b", false); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		s.rsB = _r$1;
 		s.aName = "a";
 		s.bName = "b";
 		s.finishedDrawing = $makeMap($Int.keyFor, []);
-		return s;
+		$s = -1; return s;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: NewScreen }; } $f._r = _r; $f._r$1 = _r$1; $f.id = id; $f.nums = nums; $f.obj = obj; $f.pa = pa; $f.pb = pb; $f.s = s; $f.size = size; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.NewScreen = NewScreen;
 	Screen.ptr.prototype.Ready = function() {
@@ -12085,61 +12374,75 @@ $packages["github.com/lei-cao/programming/code/visualizer/sorting/mergesort"] = 
 	};
 	Screen.prototype.Draw = function(progress) { return this.$val.Draw(progress); };
 	Screen.ptr.prototype.Update = function(i) {
-		var _tuple, i, ok, s, step;
+		var _tuple, i, ok, s, step, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _tuple = $f._tuple; i = $f.i; ok = $f.ok; s = $f.s; step = $f.step; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		s = this;
 		_tuple = $assertType(i, ptrType$3, true);
 		step = _tuple[0];
 		ok = _tuple[1];
-		if (ok) {
+		/* */ if (ok) { $s = 1; continue; }
+		/* */ $s = 2; continue;
+		/* if (ok) { */ case 1:
 			if (step.IsFirstStep()) {
 			}
 			if (step.IsSplitStep()) {
 				s.splitA(step);
 				s.splitB(step);
 			}
-			if (step.IsAssignStep()) {
-				s.assign(step);
-			}
-		}
+			/* */ if (step.IsAssignStep()) { $s = 3; continue; }
+			/* */ $s = 4; continue;
+			/* if (step.IsAssignStep()) { */ case 3:
+				$r = s.assign(step); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			/* } */ case 4:
+		/* } */ case 2:
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Screen.ptr.prototype.Update }; } $f._tuple = _tuple; $f.i = i; $f.ok = ok; $f.s = s; $f.step = step; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Screen.prototype.Update = function(i) { return this.$val.Update(i); };
 	Screen.ptr.prototype.assign = function(step) {
-		var dest, i, r, rCopy, rFrom, rTo, rsFrom, rsTo, s, start, step, x, x$1, x$2, x$3, x$4;
-		s = this;
+		var _r, dest, i, r, rCopy, rFrom, rTo, rsFrom, rsTo, s, start, step, x, x$1, x$2, x$3, x$4, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; dest = $f.dest; i = $f.i; r = $f.r; rCopy = $f.rCopy; rFrom = $f.rFrom; rTo = $f.rTo; rsFrom = $f.rsFrom; rsTo = $f.rsTo; s = $f.s; start = $f.start; step = $f.step; x = $f.x; x$1 = $f.x$1; x$2 = $f.x$2; x$3 = $f.x$3; x$4 = $f.x$4; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		rCopy = [rCopy];
+		s = [s];
+		step = [step];
+		s[0] = this;
 		rsFrom = ptrType$2.nil;
 		rsTo = ptrType$2.nil;
-		if (s.aName === step.From) {
-			rsFrom = s.rsA;
-			rsTo = s.rsB;
+		if (s[0].aName === step[0].From) {
+			rsFrom = s[0].rsA;
+			rsTo = s[0].rsB;
 		} else {
-			rsFrom = s.rsB;
-			rsTo = s.rsA;
+			rsFrom = s[0].rsB;
+			rsTo = s[0].rsA;
 		}
 		rFrom = rsFrom.Rectangles;
 		rTo = rsTo.Rectangles;
 		r = ptrType$4.nil;
 		i = 0;
-		if (step.Assign === "i") {
-			i = step.I;
-			r = (x = step.I, ((x < 0 || x >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x]));
-			(x$1 = step.I, ((x$1 < 0 || x$1 >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x$1] = r));
+		if (step[0].Assign === "i") {
+			i = step[0].I;
+			r = (x = step[0].I, ((x < 0 || x >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x]));
+			(x$1 = step[0].I, ((x$1 < 0 || x$1 >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x$1] = r));
 		} else {
-			i = step.J;
-			r = (x$2 = step.J, ((x$2 < 0 || x$2 >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x$2]));
-			(x$3 = step.J, ((x$3 < 0 || x$3 >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x$3] = r));
+			i = step[0].J;
+			r = (x$2 = step[0].J, ((x$2 < 0 || x$2 >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x$2]));
+			(x$3 = step[0].J, ((x$3 < 0 || x$3 >= rFrom.$length) ? ($throwRuntimeError("index out of range"), undefined) : rFrom.$array[rFrom.$offset + x$3] = r));
 		}
-		dest = $clone(rsTo.RectPoint(step.K, r.V), ui.Point);
+		dest = $clone(rsTo.RectPoint(step[0].K, r.V), ui.Point);
 		start = $clone(rsFrom.RectPoint(i, r.V), ui.Point);
-		rCopy = ui.NewRect(r.Ctx, $clone(start, ui.Point), r.Width, r.Height, r.Index, r.V);
-		ui.Point.copy(rCopy.DestPoint, dest);
-		rCopy.OnFinished = (function() {
-			if (s.aName === step.From) {
-				rCopy.Color = defaults.DefaultColor.BColor;
+		_r = ui.NewRect(r.Element.Ctx, $clone(start, ui.Point), r.Element.Width(), r.Element.Height(), r.Index, r.V); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		rCopy[0] = _r;
+		ui.Point.copy(rCopy[0].DestPoint, dest);
+		rCopy[0].OnFinished = (function(rCopy, s, step) { return function() {
+			if (s[0].aName === step[0].From) {
+				rCopy[0].Color = defaults.DefaultColor.BColor;
 			} else {
-				rCopy.Color = defaults.DefaultColor.AColor;
+				rCopy[0].Color = defaults.DefaultColor.AColor;
 			}
-		});
-		(x$4 = step.K, ((x$4 < 0 || x$4 >= rTo.$length) ? ($throwRuntimeError("index out of range"), undefined) : rTo.$array[rTo.$offset + x$4] = rCopy));
+		}; })(rCopy, s, step);
+		(x$4 = step[0].K, ((x$4 < 0 || x$4 >= rTo.$length) ? ($throwRuntimeError("index out of range"), undefined) : rTo.$array[rTo.$offset + x$4] = rCopy[0]));
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Screen.ptr.prototype.assign }; } $f._r = _r; $f.dest = dest; $f.i = i; $f.r = r; $f.rCopy = rCopy; $f.rFrom = rFrom; $f.rTo = rTo; $f.rsFrom = rsFrom; $f.rsTo = rsTo; $f.s = s; $f.start = start; $f.step = step; $f.x = x; $f.x$1 = x$1; $f.x$2 = x$2; $f.x$3 = x$3; $f.x$4 = x$4; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Screen.prototype.assign = function(step) { return this.$val.assign(step); };
 	Screen.ptr.prototype.splitA = function(step) {
@@ -12301,8 +12604,8 @@ $packages["github.com/lei-cao/programming/code/play"] = (function() {
 	};
 	Controller.prototype.UpdateConfig = function(config) { return this.$val.UpdateConfig(config); };
 	Controller.ptr.prototype.Init = function(config) {
-		var _r, c, config, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; c = $f.c; config = $f.config; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var _r, _r$1, c, config, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; c = $f.c; config = $f.config; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
 		c.config = config;
 		if (config.Size === 0) {
@@ -12312,12 +12615,13 @@ $packages["github.com/lei-cao/programming/code/play"] = (function() {
 		$r = c.animation.UpdateDuration(config.Duration); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		_r = utils.Shuffle(c.config.Size); /* */ $s = 2; case 2: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 		c.nums = _r;
-		s = basicsort.NewScreen(c.config.Id, c.config.Size, c.nums);
-		$r = c.animation.SetScreen(s); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = c.applyAlgorithm(config); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = c.animation.StartAnimating(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		_r$1 = basicsort.NewScreen(c.config.Id, c.config.Size, c.nums); /* */ $s = 3; case 3: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		s = _r$1;
+		$r = c.animation.SetScreen(s); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = c.applyAlgorithm(config); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = c.animation.StartAnimating(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.Init }; } $f._r = _r; $f.c = c; $f.config = config; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.Init }; } $f._r = _r; $f._r$1 = _r$1; $f.c = c; $f.config = config; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.Init = function(config) { return this.$val.Init(config); };
 	Controller.ptr.prototype.Stop = function() {
@@ -12348,39 +12652,44 @@ $packages["github.com/lei-cao/programming/code/play"] = (function() {
 	};
 	Controller.prototype.NextStep = function() { return this.$val.NextStep(); };
 	Controller.ptr.prototype.applyAlgorithm = function(config) {
-		var _1, _r, c, config, s, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _1 = $f._1; _r = $f._r; c = $f.c; config = $f.config; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var _1, _r, _r$1, c, config, s, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _1 = $f._1; _r = $f._r; _r$1 = $f._r$1; c = $f.c; config = $f.config; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
 			_1 = config.Id;
 			/* */ if (_1 === ("bubble")) { $s = 2; continue; }
 			/* */ if (_1 === ("selection")) { $s = 3; continue; }
 			/* */ if (_1 === ("insertion")) { $s = 4; continue; }
 			/* */ if (_1 === ("quick")) { $s = 5; continue; }
-			/* */ if (_1 === ("topDownMergeSort")) { $s = 6; continue; }
-			/* */ $s = 7; continue;
+			/* */ if (_1 === ("heap")) { $s = 6; continue; }
+			/* */ if (_1 === ("topDownMergeSort")) { $s = 7; continue; }
+			/* */ $s = 8; continue;
 			/* if (_1 === ("bubble")) { */ case 2:
 				c.sorter = basicsort$1.NewBubbleSort();
-				$s = 7; continue;
+				$s = 8; continue;
 			/* } else if (_1 === ("selection")) { */ case 3:
 				c.sorter = basicsort$1.NewSelectionSort();
-				$s = 7; continue;
+				$s = 8; continue;
 			/* } else if (_1 === ("insertion")) { */ case 4:
 				c.sorter = basicsort$1.NewInsertionSort();
-				$s = 7; continue;
+				$s = 8; continue;
 			/* } else if (_1 === ("quick")) { */ case 5:
 				c.sorter = basicsort$1.NewQuickSort();
-				$s = 7; continue;
-			/* } else if (_1 === ("topDownMergeSort")) { */ case 6:
-				s = mergesort.NewScreen(c.config.Id, c.config.Size, c.nums);
-				$r = c.animation.SetScreen(s); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = 8; continue;
+			/* } else if (_1 === ("heap")) { */ case 6:
+				c.sorter = basicsort$1.NewHeapSort();
+				$s = 8; continue;
+			/* } else if (_1 === ("topDownMergeSort")) { */ case 7:
+				_r = mergesort.NewScreen(c.config.Id, c.config.Size, c.nums); /* */ $s = 9; case 9: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+				s = _r;
+				$r = c.animation.SetScreen(s); /* */ $s = 10; case 10: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				c.sorter = mergesort$1.NewTopDownMergeSort();
-			/* } */ case 7:
+			/* } */ case 8:
 		case 1:
-		$r = c.sorter.Sort(c.nums); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		_r = c.sorter.Steps(); /* */ $s = 10; case 10: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		$r = c.animation.SetSteps(_r); /* */ $s = 11; case 11: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = c.sorter.Sort(c.nums); /* */ $s = 11; case 11: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		_r$1 = c.sorter.Steps(); /* */ $s = 12; case 12: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		$r = c.animation.SetSteps(_r$1); /* */ $s = 13; case 13: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.applyAlgorithm }; } $f._1 = _1; $f._r = _r; $f.c = c; $f.config = config; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Controller.ptr.prototype.applyAlgorithm }; } $f._1 = _1; $f._r = _r; $f._r$1 = _r$1; $f.c = c; $f.config = config; $f.s = s; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Controller.prototype.applyAlgorithm = function(config) { return this.$val.applyAlgorithm(config); };
 	ptrType.methods = [{prop: "SetDuration", name: "SetDuration", pkg: "", typ: $funcType([$Float64], [], false)}, {prop: "SetSize", name: "SetSize", pkg: "", typ: $funcType([$Int], [], false)}, {prop: "SetId", name: "SetId", pkg: "", typ: $funcType([$String], [], false)}];
