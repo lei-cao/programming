@@ -2,7 +2,7 @@ package ui
 
 import (
 	"github.com/oskca/gopherjs-canvas"
-	"github.com/lei-cao/programming/code/visualizer"
+	"github.com/lei-cao/programming/code/v2/visualizer"
 )
 
 func NewElement() *Element {

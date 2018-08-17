@@ -1,6 +1,6 @@
 package basicsort
 
-import "github.com/lei-cao/programming/code/visualizer"
+import "github.com/lei-cao/programming/code/v2/visualizer"
 
 func NewFirstStep() visualizer.Stepper {
 	s := &Step{}

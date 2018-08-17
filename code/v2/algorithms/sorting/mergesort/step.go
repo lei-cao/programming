@@ -1,6 +1,6 @@
 package mergesort
 
-import "github.com/lei-cao/programming/code/visualizer"
+import "github.com/lei-cao/programming/code/v2/visualizer"
 
 // Hold the operation steps queue
 type Step struct {

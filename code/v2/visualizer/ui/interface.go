@@ -1,6 +1,6 @@
 package ui
 
-import "github.com/lei-cao/programming/code/visualizer"
+import "github.com/lei-cao/programming/code/v2/visualizer"
 
 type Elementer interface {
 	Width() float64

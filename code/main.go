@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gopherjs/gopherjs/js"
-	v2 "github.com/lei-cao/programming/code/play"
+	v2 "github.com/lei-cao/programming/code/v2/play"
 	v1 "github.com/lei-cao/programming/code/v1/visualizer"
 )
 

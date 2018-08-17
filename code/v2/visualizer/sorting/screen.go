@@ -2,9 +2,9 @@ package sorting
 
 import (
 	"github.com/oskca/gopherjs-canvas"
-	"github.com/lei-cao/programming/code/visualizer"
-	"github.com/lei-cao/programming/code/visualizer/defaults"
-	"github.com/lei-cao/programming/code/visualizer/ui"
+	"github.com/lei-cao/programming/code/v2/visualizer"
+	"github.com/lei-cao/programming/code/v2/visualizer/defaults"
+	"github.com/lei-cao/programming/code/v2/visualizer/ui"
 )
 
 // The screen including the elements on the canvas

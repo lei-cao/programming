@@ -1,11 +1,11 @@
-package sorting_test
+package sorting
 
 import (
 	"testing"
-	"github.com/lei-cao/programming/code/algorithms/sorting/basicsort"
-	"github.com/lei-cao/programming/code/algorithms/sorting/heapsort"
-	"github.com/lei-cao/programming/code/algorithms/sorting/mergesort"
-	"github.com/lei-cao/programming/code/algorithms/sorting"
+	"github.com/lei-cao/programming/code/v2/algorithms/sorting/basicsort"
+	"github.com/lei-cao/programming/code/v2/algorithms/sorting/heapsort"
+	"github.com/lei-cao/programming/code/v2/algorithms/sorting/mergesort"
+	"github.com/lei-cao/programming/code/v2/algorithms/sorting"
 	"reflect"
 )
 

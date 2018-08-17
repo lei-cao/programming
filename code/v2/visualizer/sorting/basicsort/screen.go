@@ -4,8 +4,8 @@ import (
 	"github.com/gopherjs/gopherjs/js"
 	"strconv"
 	"github.com/oskca/gopherjs-canvas"
-	"github.com/lei-cao/programming/code/visualizer/ui"
-	"github.com/lei-cao/programming/code/visualizer/sorting"
+	"github.com/lei-cao/programming/code/v2/visualizer/ui"
+	"github.com/lei-cao/programming/code/v2/visualizer/sorting"
 )
 
 func NewScreen(id string, size int, nums []int) *Screen {
