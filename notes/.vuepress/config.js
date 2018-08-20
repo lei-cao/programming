@@ -9,7 +9,7 @@ module.exports = {
     },
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }],
-        ['script', { type: 'application/javascript', src: '/scripts/main.js?' + Date.now() }]
+        ['script', { type: 'application/javascript', src: 'https://pkg.jsgo.io/github.com/lei-cao/programming/code.d6f2627b0d2c3a0ffc07a8574f7705d841bb7f7f.js' }]
     ],
     themeConfig: {
         repo: 'lei-cao/programming',
@@ -26,7 +26,8 @@ module.exports = {
                     children: [
                         '',
                         'algorithm-visualization',
-                        'algorithm-visualization-refactoring'
+                        'algorithm-visualization-refactoring',
+                        'algoman'
                     ]
                 }
             ],

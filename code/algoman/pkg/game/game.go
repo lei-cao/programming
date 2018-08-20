@@ -18,7 +18,7 @@ func NewGame() *Game {
 	g := &Game{}
 	g.autoPlay = true
 
-	g.speed = 1000
+	g.speed = 300
 
 	g.steps = visualizer.NewFirstStep()
 
@@ -47,6 +47,8 @@ type Game struct {
 	autoPlay   bool
 	timing     func(progress float64) float64
 	speed      float64
+	finished   bool
+	finishedWait int
 }
 
 func (g *Game) Animate() error {
@@ -85,7 +87,9 @@ func (g *Game) Update(progress float64) error {
 
 // Draw draws the current game to the given screen.
 func (g *Game) Draw() {
-	g.Board.Draw()
+	if !(g.steps.Finished() && g.finishedWait > 100) {
+		g.Board.Draw()
+	}
 
 	g.Controller.Draw(g.Board.BoardImage)
 
@@ -99,6 +103,11 @@ func (g *Game) NextStep() {
 	if !g.Board.Ready() {
 		return
 	}
+	if g.steps.Finished() {
+		g.finishedWait ++
+		return
+	}
+
 	g.startTime = makeTimestamp()
 	g.Board.NextStep(g.steps.NextStep())
 }
@@ -112,7 +121,7 @@ func (g *Game) Resume() {
 }
 
 func (g *Game) SpeedUp() {
-	if g.speed > 100 && g.speed < 2000 {
+	if g.speed >= 100 && g.speed < 2000 {
 		g.speed -= 100
 	}
 	if g.speed <= 0 {

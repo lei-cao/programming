@@ -21,6 +21,7 @@ func NewBoard(values []int) *Board {
 
 type Board struct {
 	BoardImage *ebiten.Image
+	Finished bool
 	progress   float64
 	values     []int
 	rs         *shapes.RectSlice
