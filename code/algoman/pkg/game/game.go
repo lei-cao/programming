@@ -1,3 +1,17 @@
+// Copyright 2018 The Algoman Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package game
 
 import (
@@ -35,20 +49,21 @@ func NewGame() *Game {
 
 // Game represents a game state.
 type Game struct {
-	Board      *board.Board
-	Screen     *ebiten.Image
-	Controller *Controller
-	then       float64
-	now        float64
-	startTime  float64
-	steps      visualizer.Stepper
-	sorter     sorting.Sorter
-	values     []int
-	autoPlay   bool
-	timing     func(progress float64) float64
-	speed      float64
-	finished   bool
+	Board        *board.Board
+	Screen       *ebiten.Image
+	Controller   *Controller
+	then         float64
+	now          float64
+	startTime    float64
+	steps        visualizer.Stepper
+	sorter       sorting.Sorter
+	values       []int
+	autoPlay     bool
+	timing       func(progress float64) float64
+	speed        float64
+	finished     bool
 	finishedWait int
+	algorithm    string
 }
 
 func (g *Game) Animate() error {
@@ -87,7 +102,7 @@ func (g *Game) Update(progress float64) error {
 
 // Draw draws the current game to the given screen.
 func (g *Game) Draw() {
-	if !(g.steps.Finished() && g.finishedWait > 100) {
+	if !(g.steps.Finished() && g.finishedWait > 5000) {
 		g.Board.Draw()
 	}
 
@@ -140,11 +155,11 @@ func (g *Game) Restart() {
 }
 
 func (g *Game) initAlgorithm() {
-	g.values = utils.Shuffle(35)
+	g.values = utils.Shuffle(30)
 
 	g.Board = board.NewBoard(g.values)
 
-	g.applyAlgorithm("quick")
+	g.applyAlgorithm(g.algorithm)
 }
 
 func (g *Game) initController() {
@@ -173,6 +188,24 @@ func (g *Game) initController() {
 
 	g.Controller.RestartBtn.SetOnPressed(func(b *ui.ImageButton) {
 		g.Restart()
+	})
+
+	g.Controller.HeapSortCB.SetValue("heap")
+	g.Controller.HeapSortCB.Check()
+	g.algorithm = g.Controller.HeapSortCB.Value()
+	g.Controller.QuickSortCB.SetOnCheckChanged(func(c *ui.CheckBox) {
+		if c.Checked() {
+			g.Controller.HeapSortCB.UnCheck()
+			g.algorithm = "quick"
+			g.Restart()
+		}
+	})
+	g.Controller.HeapSortCB.SetOnCheckChanged(func(c *ui.CheckBox) {
+		if c.Checked() {
+			g.Controller.QuickSortCB.UnCheck()
+			g.algorithm = "heap"
+			g.Restart()
+		}
 	})
 }
 

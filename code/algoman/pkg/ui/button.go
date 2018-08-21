@@ -1,3 +1,17 @@
+// Copyright 2018 The Algoman Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package ui
 
 import (
@@ -12,6 +26,7 @@ import (
 	"github.com/hajimehoshi/ebiten/text"
 	"image/color"
 	"golang.org/x/image/font/gofont/gomono"
+	"github.com/lei-cao/programming/code/algoman/pkg/consts"
 )
 
 var (
@@ -54,23 +69,11 @@ type imageType int
 const (
 	imageTypeButton          imageType = iota
 	imageTypeButtonPressed
-	imageTypeTextBox
-	imageTypeVScollBarBack
-	imageTypeVScollBarFront
-	imageTypeCheckBox
-	imageTypeCheckBoxPressed
-	imageTypeCheckBoxMark
 )
 
 var imageSrcRects = map[imageType]image.Rectangle{
 	imageTypeButton:          image.Rect(0, 0, 16, 16),
 	imageTypeButtonPressed:   image.Rect(16, 0, 32, 16),
-	imageTypeTextBox:         image.Rect(0, 16, 16, 32),
-	imageTypeVScollBarBack:   image.Rect(16, 16, 24, 32),
-	imageTypeVScollBarFront:  image.Rect(24, 16, 32, 32),
-	imageTypeCheckBox:        image.Rect(0, 32, 16, 48),
-	imageTypeCheckBoxPressed: image.Rect(16, 32, 32, 48),
-	imageTypeCheckBoxMark:    image.Rect(32, 32, 48, 48),
 }
 
 type Input struct {
@@ -144,6 +147,8 @@ type Button struct {
 func (b *Button) Update() {
 	if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) {
 		x, y := ebiten.CursorPosition()
+		x -= consts.ScreenBorder
+		y -= consts.ScreenBorder
 		if b.Rect.Min.X <= x && x < b.Rect.Max.X && b.Rect.Min.Y <= y && y < b.Rect.Max.Y {
 			b.mouseDown = true
 		} else {
