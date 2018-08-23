@@ -189,23 +189,24 @@ func (g *Game) initController() {
 		g.Restart()
 	})
 
-	g.Controller.HeapSortCB.SetValue("heap")
-	g.Controller.HeapSortCB.Check()
-	g.algorithm = g.Controller.HeapSortCB.Value()
-	g.Controller.QuickSortCB.SetOnCheckChanged(func(c *ui.CheckBox) {
-		if c.Checked() {
-			g.Controller.HeapSortCB.UnCheck()
-			g.algorithm = "quick"
-			g.Restart()
+	for _, ss := range g.Controller.SortSelect {
+		ss.SetOnCheckChanged(func(c *ui.CheckBox) {
+			if c.Checked() {
+				for _, ss := range g.Controller.SortSelect {
+					ss.UnCheck()
+				}
+
+				c.Check()
+				g.algorithm = c.Value()
+				g.Restart()
+			}
+		})
+
+		if ss.Value() == "quick" {
+			ss.Check()
+			g.algorithm = ss.Value()
 		}
-	})
-	g.Controller.HeapSortCB.SetOnCheckChanged(func(c *ui.CheckBox) {
-		if c.Checked() {
-			g.Controller.QuickSortCB.UnCheck()
-			g.algorithm = "heap"
-			g.Restart()
-		}
-	})
+	}
 }
 
 func (g *Game) applyAlgorithm(id string) {

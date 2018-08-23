@@ -35,8 +35,8 @@ var cbImageSrcRects = map[imageType]image.Rectangle{
 }
 
 const (
-	checkboxWidth       = 16
-	checkboxHeight      = 16
+	checkboxWidth       = 36
+	checkboxHeight      = 36
 	checkboxPaddingLeft = 8
 )
 
@@ -59,23 +59,6 @@ func (c *CheckBox) width() int {
 }
 
 func (c *CheckBox) Update() {
-	if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) {
-		x, y := ebiten.CursorPosition()
-		if c.X <= x && x < c.X+c.width() && c.Y <= y && y < c.Y+checkboxHeight {
-			c.mouseDown = true
-		} else {
-			c.mouseDown = false
-		}
-	} else {
-		if c.mouseDown {
-			c.checked = !c.checked
-			if c.onCheckChanged != nil {
-				c.onCheckChanged(c)
-			}
-		}
-		c.mouseDown = false
-	}
-
 	if len(ebiten.TouchIDs()) > 0 {
 		for _, t := range ebiten.TouchIDs() {
 			x, y := ebiten.TouchPosition(t)
@@ -85,6 +68,13 @@ func (c *CheckBox) Update() {
 				c.mouseDown = false
 			}
 
+		}
+	} else if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) {
+		x, y := ebiten.CursorPosition()
+		if c.X <= x && x < c.X+c.width() && c.Y <= y && y < c.Y+checkboxHeight {
+			c.mouseDown = true
+		} else {
+			c.mouseDown = false
 		}
 	} else {
 		if c.mouseDown {
@@ -109,7 +99,7 @@ func (c *CheckBox) Draw(dst *ebiten.Image) {
 	}
 
 	x := c.X + checkboxWidth + checkboxPaddingLeft
-	y := (c.Y + 16) - (16-uiFontMHeight)/2
+	y := (c.Y + 32) - (32-uiFontMHeight)/2
 	text.Draw(dst, c.Text, uiFont, x, y, defaults.BarColor)
 }
 

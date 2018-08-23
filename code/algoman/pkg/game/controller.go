@@ -83,20 +83,36 @@ func NewController() *Controller {
 	c.RShuffleBtn = ui.NewButton(gamePlayBtnGroup.nextRect(), "ReShuffle")
 	gamePlayBtnGroup.addRect(c.RShuffleBtn.Rect)
 
-	c.QuickSortCB = &ui.CheckBox{
-		X:    10 * defaults.DeviceScale,
-		Y:    gamePlayBtnGroup.nextRect().Max.Y + 10*defaults.DeviceScale,
-		Text: "Quick Sort",
+	sorters := []struct {
+		k string
+		v string
+	}{
+		{
+			"bubble", "Bubble Sort",
+		},
+		{
+			"selection", "Selection Sort",
+		},
+		{
+			"insertion", "Insertion Sort",
+		},
+		{
+			"quick", "Quick Sort",
+		},
+		{
+			"heap", "Heap Sort",
+		},
 	}
 
-	c.QuickSortCB.SetValue("quick")
-
-	c.HeapSortCB = &ui.CheckBox{
-		X:    10 * defaults.DeviceScale,
-		Y:    gamePlayBtnGroup.nextRect().Max.Y + (10+10+15)*defaults.DeviceScale,
-		Text: "Heap Sort",
+	for k, v := range sorters {
+		cb := &ui.CheckBox{
+			X:    10 * defaults.DeviceScale,
+			Y:    gamePlayBtnGroup.nextRect().Max.Y + (20+35*k)*defaults.DeviceScale,
+			Text: v.v,
+		}
+		cb.SetValue(v.k)
+		c.SortSelect = append(c.SortSelect, cb)
 	}
-	c.HeapSortCB.SetValue("heap")
 
 	return c
 }
@@ -110,8 +126,7 @@ type Controller struct {
 	SpeedDownBtn *ui.Button
 	RShuffleBtn  *ui.Button
 
-	QuickSortCB *ui.CheckBox
-	HeapSortCB  *ui.CheckBox
+	SortSelect []*ui.CheckBox
 }
 
 func (c *Controller) Update() {
@@ -120,8 +135,10 @@ func (c *Controller) Update() {
 	c.SpeedDownBtn.Update()
 	c.SpeedUpBtn.Update()
 	c.RShuffleBtn.Update()
-	c.QuickSortCB.Update()
-	c.HeapSortCB.Update()
+
+	for _, v := range c.SortSelect {
+		v.Update()
+	}
 }
 
 func (c *Controller) Draw() {
@@ -130,6 +147,8 @@ func (c *Controller) Draw() {
 	c.SpeedDownBtn.Draw(c.Image)
 	c.SpeedUpBtn.Draw(c.Image)
 	c.RShuffleBtn.Draw(c.Image)
-	c.QuickSortCB.Draw(c.Image)
-	c.HeapSortCB.Draw(c.Image)
+
+	for _, v := range c.SortSelect {
+		v.Draw(c.Image)
+	}
 }
