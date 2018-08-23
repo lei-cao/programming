@@ -18,6 +18,21 @@
 
 //go:generate file2byteslice -package=images -input=./images/ui.png -output=./images/ui.go -var=UI_png
 
+//go:generate file2byteslice -package=pngs -input=./pngs/fast_forward_512.png -output=./pngs/fast_forward_512.go -var=FAST_FORWARD_512_png
+//go:generate file2byteslice -package=pngs -input=./pngs/fast_forward_512_active.png -output=./pngs/fast_forward_512_active.go -var=FAST_FORWARD_512_ACTIVE_png
+//go:generate file2byteslice -package=pngs -input=./pngs/pause_512.png -output=./pngs/pause_512.go -var=PAUSE_512_png
+//go:generate file2byteslice -package=pngs -input=./pngs/pause_512_active.png -output=./pngs/pause_512_active.go -var=PAUSE_512_ACTIVE_png
+//go:generate file2byteslice -package=pngs -input=./pngs/play_512.png -output=./pngs/play_512.go -var=PLAY_512_png
+//go:generate file2byteslice -package=pngs -input=./pngs/play_512_active.png -output=./pngs/play_512_active.go -var=PLAY_512_ACTIVE_png
+//go:generate file2byteslice -package=pngs -input=./pngs/play_next_512.png -output=./pngs/play_next_512.go -var=PLAY_NEXT_512_png
+//go:generate file2byteslice -package=pngs -input=./pngs/play_next_512_active.png -output=./pngs/play_next_512_active.go -var=PLAY_NEXT_512_ACTIVE_png
+//go:generate file2byteslice -package=pngs -input=./pngs/previous_track_512.png -output=./pngs/previous_track_512.go -var=PREVIOUS_TRACK_512_png
+//go:generate file2byteslice -package=pngs -input=./pngs/previous_track_512_active.png -output=./pngs/previous_track_512_active.go -var=PREVIOUS_TRACK_512_ACTIVE_png
+//go:generate file2byteslice -package=pngs -input=./pngs/replay_512.png -output=./pngs/replay_512.go -var=REPLAY_512_png
+//go:generate file2byteslice -package=pngs -input=./pngs/replay_512_active.png -output=./pngs/replay_512_active.go -var=REPLAY_512_active_png
+//go:generate file2byteslice -package=pngs -input=./pngs/rewind_512.png -output=./pngs/rewind_512.go -var=REWIND_512_png
+//go:generate file2byteslice -package=pngs -input=./pngs/rewind_512_active.png -output=./pngs/rewind_512_active.go -var=REWIND_512_active_png
+
 //go:generate ./svg2png -input=./images/backward_off -package=images
 //go:generate ./svg2png -input=./images/backward_on -package=images
 //go:generate ./svg2png -input=./images/forward_off -package=images

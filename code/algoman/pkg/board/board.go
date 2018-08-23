@@ -17,8 +17,8 @@ package board
 import (
 	"github.com/hajimehoshi/ebiten"
 	"github.com/lei-cao/programming/code/algoman/pkg/shapes"
-	"github.com/lei-cao/programming/code/algoman/pkg/consts"
 	"github.com/lei-cao/programming/code/v2/visualizer"
+	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
 )
 
 func init() {
@@ -27,15 +27,14 @@ func init() {
 func NewBoard(values []int) *Board {
 	b := &Board{values: values}
 	b.rs = shapes.NewRectSlice(b.values)
-	width, height := consts.ScreenWidth-consts.ScreenBorder*2, consts.ScreenHeight-consts.ScreenBorder*2
-	b.BoardImage, _ = ebiten.NewImage(width, height, ebiten.FilterDefault)
-	b.BoardImage.Fill(consts.BackgroundColor)
+	b.BoardImage, _ = ebiten.NewImage(defaults.ScreenWidth, defaults.ScreenHeight, ebiten.FilterDefault)
+	b.BoardImage.Fill(defaults.BackgroundColor)
 	return b
 }
 
 type Board struct {
 	BoardImage *ebiten.Image
-	Finished bool
+	Finished   bool
 	progress   float64
 	values     []int
 	rs         *shapes.RectSlice
@@ -43,7 +42,7 @@ type Board struct {
 
 func (b *Board) Draw() {
 	b.BoardImage.Clear()
-	b.BoardImage.Fill(consts.BackgroundColor)
+	b.BoardImage.Fill(defaults.BackgroundColor)
 	b.rs.Draw(b.BoardImage)
 }
 

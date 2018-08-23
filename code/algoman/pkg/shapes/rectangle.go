@@ -17,14 +17,14 @@ package shapes
 import (
 	"image"
 	"github.com/hajimehoshi/ebiten"
-	"github.com/lei-cao/programming/code/algoman/pkg/consts"
+	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
 )
 
 func NewRectangle(value int) *Rectangle {
 	r := new(Rectangle)
 	rect := image.Rect(0, 0, barWidth, value*barHeightUnit)
 	r.barImage, _ = ebiten.NewImage(barWidth, value*barHeightUnit, ebiten.FilterDefault)
-	r.barImage.Fill(consts.BarColor)
+	r.barImage.Fill(defaults.BarColor)
 	r.rect = &rect
 	r.V = value
 	return r

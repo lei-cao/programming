@@ -25,7 +25,6 @@ import (
 	"time"
 	"github.com/lei-cao/programming/code/algoman/pkg/ui"
 	"math"
-	"github.com/lei-cao/programming/code/algoman/pkg/consts"
 )
 
 func NewGame() *Game {
@@ -106,12 +105,11 @@ func (g *Game) Draw() {
 		g.Board.Draw()
 	}
 
-	g.Controller.Draw(g.Board.BoardImage)
+	g.Controller.Draw()
 
 	g.Screen.Fill(color.Gray16{0xaaaa})
-	op := &ebiten.DrawImageOptions{}
-	op.GeoM.Translate(float64(consts.ScreenBorder), float64(consts.ScreenBorder))
-	g.Screen.DrawImage(g.Board.BoardImage, op)
+	g.Screen.DrawImage(g.Board.BoardImage, nil)
+	g.Screen.DrawImage(g.Controller.Image, nil)
 }
 
 func (g *Game) NextStep() {
@@ -136,8 +134,8 @@ func (g *Game) Resume() {
 }
 
 func (g *Game) SpeedUp() {
-	if g.speed >= 100 && g.speed < 2000 {
-		g.speed -= 100
+	if g.speed >= 100 {
+		g.speed -= 10
 	}
 	if g.speed <= 0 {
 		g.speed = 10
@@ -146,7 +144,7 @@ func (g *Game) SpeedUp() {
 
 func (g *Game) SpeedDown() {
 	if g.speed < 2000 {
-		g.speed += 100
+		g.speed += 10
 	}
 }
 

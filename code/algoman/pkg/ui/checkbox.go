@@ -19,7 +19,7 @@ import (
 	"golang.org/x/image/font"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/text"
-	"github.com/lei-cao/programming/code/algoman/pkg/consts"
+	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
 )
 
 const (
@@ -46,7 +46,7 @@ type CheckBox struct {
 	Text string
 
 	checked   bool
-	value string
+	value     string
 	mouseDown bool
 
 	onCheckChanged func(c *CheckBox)
@@ -75,6 +75,26 @@ func (c *CheckBox) Update() {
 		}
 		c.mouseDown = false
 	}
+
+	if len(ebiten.TouchIDs()) > 0 {
+		for _, t := range ebiten.TouchIDs() {
+			x, y := ebiten.TouchPosition(t)
+			if c.X <= x && x < c.X+c.width() && c.Y <= y && y < c.Y+checkboxHeight {
+				c.mouseDown = true
+			} else {
+				c.mouseDown = false
+			}
+
+		}
+	} else {
+		if c.mouseDown {
+			c.checked = !c.checked
+			if c.onCheckChanged != nil {
+				c.onCheckChanged(c)
+			}
+		}
+		c.mouseDown = false
+	}
 }
 
 func (c *CheckBox) Draw(dst *ebiten.Image) {
@@ -90,7 +110,7 @@ func (c *CheckBox) Draw(dst *ebiten.Image) {
 
 	x := c.X + checkboxWidth + checkboxPaddingLeft
 	y := (c.Y + 16) - (16-uiFontMHeight)/2
-	text.Draw(dst, c.Text, uiFont, x, y, consts.BarColor)
+	text.Draw(dst, c.Text, uiFont, x, y, defaults.BarColor)
 }
 
 func (c *CheckBox) Checked() bool {
@@ -109,7 +129,7 @@ func (c *CheckBox) Value() string {
 	return c.value
 }
 
-func (c *CheckBox) SetValue(v string){
+func (c *CheckBox) SetValue(v string) {
 	c.value = v
 }
 

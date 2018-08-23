@@ -18,13 +18,13 @@ import (
 	"github.com/hajimehoshi/ebiten"
 	"github.com/lei-cao/programming/code/v2/visualizer"
 	"github.com/lei-cao/programming/code/v2/algorithms/sorting/basicsort"
-	"github.com/lei-cao/programming/code/algoman/pkg/consts"
+	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
 )
 
 var (
-	barWidth      = 8
-	barHeightUnit = 5
-	barMargin     = 2
+	barWidth      = 8 * defaults.DeviceScale
+	barHeightUnit = 5 * defaults.DeviceScale
+	barMargin     = 2 * defaults.DeviceScale
 )
 
 func NewRectSlice(values []int) *RectSlice {
@@ -33,7 +33,7 @@ func NewRectSlice(values []int) *RectSlice {
 	for k, v := range rs.values {
 		r := NewRectangle(v)
 		op := &ebiten.DrawImageOptions{}
-		op.GeoM.Translate(float64((k+1)*(barWidth+barMargin)), float64((len(rs.values)-r.V + 2)*barHeightUnit))
+		op.GeoM.Translate(float64((k+1)*(barWidth+barMargin)), float64((len(rs.values)-r.V+2)*barHeightUnit))
 		//op.SourceRect = r.rect
 		r.startOp = op
 		r.startIndex = k
@@ -56,7 +56,7 @@ func (rs *RectSlice) Update(progress float64) {
 		if r.endIndex != r.startIndex {
 			r.startOp.GeoM.Reset()
 			dx := float64((r.startIndex+1)*(barWidth+barMargin)) + progress*float64((r.endIndex-r.startIndex)*(barWidth+barMargin))
-			r.startOp.GeoM.Translate(dx, float64((len(rs.values)-r.V + 2)*barHeightUnit))
+			r.startOp.GeoM.Translate(dx, float64((len(rs.values)-r.V+2)*barHeightUnit))
 			if progress == 1 {
 				r.startIndex = r.endIndex
 			}
@@ -80,13 +80,13 @@ func (rs *RectSlice) Draw(image *ebiten.Image) {
 	for _, r := range rs.rectangles {
 		r.isB = false
 		r.isA = false
-		r.barImage.Fill(consts.BarColor)
+		r.barImage.Fill(defaults.BarColor)
 		if rs.aIndex == r.startIndex {
-			r.barImage.Fill(consts.ColorA)
+			r.barImage.Fill(defaults.ColorA)
 		}
 
 		if rs.bIndex == r.startIndex {
-			r.barImage.Fill(consts.ColorB)
+			r.barImage.Fill(defaults.ColorB)
 		}
 		image.DrawImage(r.barImage, r.startOp)
 	}

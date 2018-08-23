@@ -21,7 +21,7 @@ import (
 	"bytes"
 	"github.com/lei-cao/programming/code/algoman/resources/images"
 	"log"
-	"github.com/lei-cao/programming/code/algoman/pkg/consts"
+	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
 )
 
 var (
@@ -44,7 +44,6 @@ func init() {
 }
 
 func NewImageToggle(rect image.Rectangle) *ImageToggle {
-
 	playToggle := &ImageToggle{
 		Rect:   rect,
 		ImgOff: playImg,
@@ -68,8 +67,6 @@ type ImageToggle struct {
 func (b *ImageToggle) Update() {
 	if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) {
 		x, y := ebiten.CursorPosition()
-		x -= consts.ScreenBorder
-		y -= consts.ScreenBorder
 		if b.Rect.Min.X <= x && x < b.Rect.Max.X && b.Rect.Min.Y <= y && y < b.Rect.Max.Y {
 			b.mouseDown = true
 		} else {
@@ -88,7 +85,7 @@ func (b *ImageToggle) Update() {
 
 func (b *ImageToggle) Draw(dst *ebiten.Image) {
 	op := &ebiten.DrawImageOptions{}
-	op.GeoM.Scale(0.117, 0.117)
+	op.GeoM.Scale(float64(defaults.ImageBtnWidth/128), float64(defaults.ImageBtnHeight/128))
 	op.GeoM.Translate(float64(b.Rect.Min.X), float64(b.Rect.Min.Y))
 	//if b.mouseDown {
 	if b.On {

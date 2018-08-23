@@ -17,7 +17,7 @@ package main
 import (
 	"github.com/hajimehoshi/ebiten"
 	"github.com/lei-cao/programming/code/algoman/pkg/game"
-	"github.com/lei-cao/programming/code/algoman/pkg/consts"
+	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
 )
 
 var (
@@ -31,5 +31,6 @@ func update(screen *ebiten.Image) error {
 
 func main() {
 	algoman = game.NewGame()
-	ebiten.Run(update, consts.ScreenWidth, consts.ScreenHeight, 1.1, "Algoman")
+	s := ebiten.DeviceScaleFactor()
+	ebiten.Run(update, defaults.ScreenWidth, defaults.ScreenHeight, 1/s, "Algoman")
 }
