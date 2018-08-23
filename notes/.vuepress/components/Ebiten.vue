@@ -1,8 +1,8 @@
 <template>
     <div>
         <iframe
-                :id="id"
-                src="https://jsgo.io/lei-cao/programming/code/algoman"
+                id="ebitenIframe"
+                src="about:blank"
                 frameborder="0"
                 width="320"
                 height="580"
@@ -16,6 +16,9 @@ export default {
     name: "Ebiten",
     props: {
         id: String
+    },
+    mounted() {
+        window.loadEbiten()
     }
 }
 </script>

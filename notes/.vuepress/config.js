@@ -9,7 +9,8 @@ module.exports = {
     },
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }],
-        ['script', { type: 'application/javascript', src: '/scripts/main.js?' + Date.now() }]
+        ['script', { type: 'application/javascript', src: '/scripts/main.js?' + Date.now() }],
+        ['script', { type: 'application/javascript', src: '/scripts/loader.js?' + Date.now() }]
     ],
     themeConfig: {
         repo: 'lei-cao/programming',
