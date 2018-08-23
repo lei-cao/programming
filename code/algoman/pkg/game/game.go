@@ -25,13 +25,14 @@ import (
 	"time"
 	"github.com/lei-cao/programming/code/algoman/pkg/ui"
 	"math"
+	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
 )
 
 func NewGame() *Game {
 	g := &Game{}
 	g.autoPlay = true
 
-	g.speed = 300
+	g.speed = defaults.Speed
 
 	g.steps = visualizer.NewFirstStep()
 
@@ -59,7 +60,7 @@ type Game struct {
 	values       []int
 	autoPlay     bool
 	timing       func(progress float64) float64
-	speed        float64
+	speed        int
 	finished     bool
 	finishedWait int
 	algorithm    string
@@ -67,7 +68,7 @@ type Game struct {
 
 func (g *Game) Animate() error {
 	g.now = makeTimestamp()
-	var progress = (g.now - g.startTime) / g.speed
+	var progress = (g.now - g.startTime) / float64(g.speed)
 	if progress > 1 {
 		progress = 1
 	}
@@ -135,7 +136,7 @@ func (g *Game) Resume() {
 
 func (g *Game) SpeedUp() {
 	if g.speed >= 100 {
-		g.speed -= 10
+		g.speed -= 100
 	}
 	if g.speed <= 0 {
 		g.speed = 10
@@ -144,7 +145,7 @@ func (g *Game) SpeedUp() {
 
 func (g *Game) SpeedDown() {
 	if g.speed < 2000 {
-		g.speed += 10
+		g.speed += 100
 	}
 }
 
@@ -164,7 +165,7 @@ func (g *Game) initController() {
 	g.Controller = NewController()
 
 	g.Controller.PlayToggle.On = true
-	g.Controller.PlayToggle.SetOnPressed(func(b *ui.ImageToggle) {
+	g.Controller.PlayToggle.SetOnPressed(func(b *ui.ToggleButton) {
 		if b.On {
 			g.Resume()
 		} else {
@@ -172,19 +173,19 @@ func (g *Game) initController() {
 		}
 	})
 
-	g.Controller.NextStepBtn.SetOnPressed(func(b *ui.ImageButton) {
+	g.Controller.NextStepBtn.SetOnPressed(func(b *ui.Button) {
 		g.NextStep()
 	})
 
-	g.Controller.SpeedUpBtn.SetOnPressed(func(b *ui.ImageButton) {
+	g.Controller.SpeedUpBtn.SetOnPressed(func(b *ui.Button) {
 		g.SpeedUp()
 	})
 
-	g.Controller.SpeedDownBtn.SetOnPressed(func(b *ui.ImageButton) {
+	g.Controller.SpeedDownBtn.SetOnPressed(func(b *ui.Button) {
 		g.SpeedDown()
 	})
 
-	g.Controller.RestartBtn.SetOnPressed(func(b *ui.ImageButton) {
+	g.Controller.RShuffleBtn.SetOnPressed(func(b *ui.Button) {
 		g.Restart()
 	})
 

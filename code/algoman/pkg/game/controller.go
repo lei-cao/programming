@@ -18,70 +18,82 @@ import (
 	"image"
 	"github.com/lei-cao/programming/code/algoman/pkg/ui"
 	"github.com/hajimehoshi/ebiten"
-	"bytes"
-	"log"
-	"github.com/lei-cao/programming/code/algoman/resources/images"
+	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
 )
 
 var (
-	forwardOffImg      *ebiten.Image
-	forwardOnImg       *ebiten.Image
-	backwardOffImg     *ebiten.Image
-	backwardOnImg      *ebiten.Image
-	stepForwardOffImg  *ebiten.Image
-	stepForwardOnImg   *ebiten.Image
-	stepBackwardOffImg *ebiten.Image
-	stepBackwardOnImg  *ebiten.Image
-	redoOffImg         *ebiten.Image
-	redoOnImg          *ebiten.Image
+	controlX0 = 10 * defaults.DeviceScale
+	controlY0 = 175 * defaults.DeviceScale
 )
 
-var (
-	controlY0 = 175
-	controlY1 = 190
+type btnGroupDirection int
+
+const (
+	btnGroupDirectionRight btnGroupDirection = iota
+	btnGroupDirectionLeft
+	btnGroupDirectionDown
+	btnGroupDirectionUp
 )
 
-func init() {
-	forwardOffImg = imgFromByte(images.FORWARD_OFF_png)
-	forwardOnImg = imgFromByte(images.FORWARD_ON_png)
-	backwardOffImg = imgFromByte(images.BACKWARD_OFF_png)
-	backwardOnImg = imgFromByte(images.BACKWARD_ON_png)
-	stepForwardOffImg = imgFromByte(images.STEP_FORWARD_OFF_png)
-	stepForwardOnImg = imgFromByte(images.STEP_FORWARD_ON_png)
-	stepBackwardOffImg = imgFromByte(images.STEP_BACKWARD_OFF_png)
-	stepBackwardOnImg = imgFromByte(images.STEP_BACKWARD_ON_png)
-	redoOffImg = imgFromByte(images.REDO_OFF_png)
-	redoOnImg = imgFromByte(images.REDO_ON_png)
+var gamePlayBtnGroup = &BtnGroup{
+	x:         10 * defaults.DeviceScale,
+	y:         controlY0,
+	margin:    10 * defaults.DeviceScale,
+	height:    defaults.ButtonMinHeight,
+	direction: btnGroupDirectionRight,
+	rects:     []image.Rectangle{},
 }
 
-func imgFromByte(imgByte []byte) *ebiten.Image {
-	img, _, err := image.Decode(bytes.NewReader(imgByte))
-	if err != nil {
-		log.Fatal(err)
+type BtnGroup struct {
+	x         int
+	y         int
+	margin    int
+	height    int
+	width     int
+	direction btnGroupDirection
+	rects     []image.Rectangle
+}
+
+func (i *BtnGroup) nextRect() image.Rectangle {
+	var x0, y0, x1, y1 int
+	if i.direction == btnGroupDirectionRight {
+		x0 = i.x + i.width
+		y0 = i.y
+		x1 = x0
+		y1 = y0 + i.height
 	}
-	ebitenImg, _ := ebiten.NewImageFromImage(img, ebiten.FilterDefault)
-	return ebitenImg
+	return image.Rect(x0, y0, x1, y1)
+}
+
+func (i *BtnGroup) addRect(rect image.Rectangle) {
+	i.width += rect.Dx() + i.margin
 }
 
 func NewController() *Controller {
 	c := new(Controller)
-	c.PlayToggle = ui.NewImageToggle(image.Rect(10, controlY0, 25, controlY1))
-	c.NextStepBtn = ui.NewImageButton(image.Rect(35, controlY0, 50, controlY1), stepForwardOffImg, stepForwardOnImg)
-	c.SpeedDownBtn = ui.NewImageButton(image.Rect(60, controlY0, 75, controlY1), backwardOffImg, backwardOnImg)
-	c.SpeedUpBtn = ui.NewImageButton(image.Rect(85, controlY0, 100, controlY1), forwardOffImg, forwardOnImg)
-	c.RestartBtn = ui.NewImageButton(image.Rect(110, controlY0, 125, controlY1), redoOffImg, redoOnImg)
+	c.Image, _ = ebiten.NewImage(defaults.ScreenWidth, defaults.ScreenHeight, ebiten.FilterDefault)
+	c.PlayToggle = ui.NewToggleButton(gamePlayBtnGroup.nextRect(), "Pause", "Play", false)
+	gamePlayBtnGroup.addRect(c.PlayToggle.Rect)
+	c.NextStepBtn = ui.NewButton(gamePlayBtnGroup.nextRect(), "Next")
+	gamePlayBtnGroup.addRect(c.NextStepBtn.Rect)
+	c.SpeedDownBtn = ui.NewButton(gamePlayBtnGroup.nextRect(), "-")
+	gamePlayBtnGroup.addRect(c.SpeedDownBtn.Rect)
+	c.SpeedUpBtn = ui.NewButton(gamePlayBtnGroup.nextRect(), "+")
+	gamePlayBtnGroup.addRect(c.SpeedUpBtn.Rect)
+	c.RShuffleBtn = ui.NewButton(gamePlayBtnGroup.nextRect(), "ReShuffle")
+	gamePlayBtnGroup.addRect(c.RShuffleBtn.Rect)
 
 	c.QuickSortCB = &ui.CheckBox{
-		X:    10,
-		Y:    controlY1 + 10,
+		X:    10 * defaults.DeviceScale,
+		Y:    gamePlayBtnGroup.nextRect().Max.Y + 10*defaults.DeviceScale,
 		Text: "Quick Sort",
 	}
 
 	c.QuickSortCB.SetValue("quick")
 
 	c.HeapSortCB = &ui.CheckBox{
-		X:    10,
-		Y:    controlY1 + 10 + 25,
+		X:    10 * defaults.DeviceScale,
+		Y:    gamePlayBtnGroup.nextRect().Max.Y + (10+10+15)*defaults.DeviceScale,
 		Text: "Heap Sort",
 	}
 	c.HeapSortCB.SetValue("heap")
@@ -90,14 +102,16 @@ func NewController() *Controller {
 }
 
 type Controller struct {
-	PlayToggle   *ui.ImageToggle
-	NextStepBtn  *ui.ImageButton
-	SpeedUpBtn   *ui.ImageButton
-	SpeedDownBtn *ui.ImageButton
-	RestartBtn   *ui.ImageButton
+	Image *ebiten.Image
+
+	PlayToggle   *ui.ToggleButton
+	NextStepBtn  *ui.Button
+	SpeedUpBtn   *ui.Button
+	SpeedDownBtn *ui.Button
+	RShuffleBtn  *ui.Button
 
 	QuickSortCB *ui.CheckBox
-	HeapSortCB *ui.CheckBox
+	HeapSortCB  *ui.CheckBox
 }
 
 func (c *Controller) Update() {
@@ -105,17 +119,17 @@ func (c *Controller) Update() {
 	c.NextStepBtn.Update()
 	c.SpeedDownBtn.Update()
 	c.SpeedUpBtn.Update()
-	c.RestartBtn.Update()
+	c.RShuffleBtn.Update()
 	c.QuickSortCB.Update()
 	c.HeapSortCB.Update()
 }
 
-func (c *Controller) Draw(image *ebiten.Image) {
-	c.PlayToggle.Draw(image)
-	c.NextStepBtn.Draw(image)
-	c.SpeedDownBtn.Draw(image)
-	c.SpeedUpBtn.Draw(image)
-	c.RestartBtn.Draw(image)
-	c.QuickSortCB.Draw(image)
-	c.HeapSortCB.Draw(image)
+func (c *Controller) Draw() {
+	c.PlayToggle.Draw(c.Image)
+	c.NextStepBtn.Draw(c.Image)
+	c.SpeedDownBtn.Draw(c.Image)
+	c.SpeedUpBtn.Draw(c.Image)
+	c.RShuffleBtn.Draw(c.Image)
+	c.QuickSortCB.Draw(c.Image)
+	c.HeapSortCB.Draw(c.Image)
 }

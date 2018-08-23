@@ -26,7 +26,7 @@ import (
 	"github.com/hajimehoshi/ebiten/text"
 	"image/color"
 	"golang.org/x/image/font/gofont/gomono"
-	"github.com/lei-cao/programming/code/algoman/pkg/consts"
+	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
 )
 
 var (
@@ -56,7 +56,7 @@ func init() {
 		log.Fatal(err)
 	}
 	uiFont = truetype.NewFace(tt, &truetype.Options{
-		Size:    12,
+		Size:    float64(12 * defaults.DeviceScale),
 		DPI:     72,
 		Hinting: font.HintingFull,
 	})
@@ -67,13 +67,13 @@ func init() {
 type imageType int
 
 const (
-	imageTypeButton          imageType = iota
+	imageTypeButton        imageType = iota
 	imageTypeButtonPressed
 )
 
 var imageSrcRects = map[imageType]image.Rectangle{
-	imageTypeButton:          image.Rect(0, 0, 16, 16),
-	imageTypeButtonPressed:   image.Rect(16, 0, 32, 16),
+	imageTypeButton:        image.Rect(0, 0, 16, 16),
+	imageTypeButtonPressed: image.Rect(16, 0, 32, 16),
 }
 
 type Input struct {
@@ -135,6 +135,20 @@ func drawNinePatches(dst *ebiten.Image, dstRect image.Rectangle, srcRect image.R
 	}
 }
 
+func NewButton(rect image.Rectangle, text string) *Button {
+	bounds, _ := font.BoundString(uiFont, text)
+	w := (bounds.Max.X - bounds.Min.X).Ceil()
+	if w < defaults.ButtonMinWidth {
+		w = defaults.ButtonMinWidth
+	}
+	rect.Max.X = rect.Min.X + w + defaults.ButtonPadding
+	btn := &Button{
+		Rect: rect,
+		Text: text,
+	}
+	return btn
+}
+
 type Button struct {
 	Rect image.Rectangle
 	Text string
@@ -145,10 +159,17 @@ type Button struct {
 }
 
 func (b *Button) Update() {
-	if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) {
+	if len(ebiten.TouchIDs()) > 0 {
+		for _, t := range ebiten.TouchIDs() {
+			x, y := ebiten.TouchPosition(t)
+			if b.Rect.Min.X <= x && x < b.Rect.Max.X && b.Rect.Min.Y <= y && y < b.Rect.Max.Y {
+				b.mouseDown = true
+			} else {
+				b.mouseDown = false
+			}
+		}
+	} else if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) {
 		x, y := ebiten.CursorPosition()
-		x -= consts.ScreenBorder
-		y -= consts.ScreenBorder
 		if b.Rect.Min.X <= x && x < b.Rect.Max.X && b.Rect.Min.Y <= y && y < b.Rect.Max.Y {
 			b.mouseDown = true
 		} else {

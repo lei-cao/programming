@@ -18,32 +18,51 @@ import (
 	"github.com/hajimehoshi/ebiten"
 	"image"
 	_ "image/png"
+	"golang.org/x/image/font"
+	"github.com/hajimehoshi/ebiten/text"
+	"image/color"
 	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
 )
 
-func NewImageButton(rect image.Rectangle, imgOn *ebiten.Image, imgOff *ebiten.Image) *ImageButton {
-
-	stopBtn := &ImageButton{
-		Rect:      rect,
-		Img:       imgOff,
-		ImgActive: imgOn,
+func NewToggleButton(rect image.Rectangle, textOn string, textOff string, isOn bool) *ToggleButton {
+	var text = textOn
+	if len(textOff) > len(textOn) {
+		text = textOff
 	}
-	return stopBtn
-
+	bounds, _ := font.BoundString(uiFont, text)
+	w := (bounds.Max.X - bounds.Min.X).Ceil()
+	rect.Max.X = rect.Min.X + w + defaults.ButtonPadding
+	btn := &ToggleButton{
+		Rect:    rect,
+		TextOn:  textOn,
+		TextOff: textOff,
+		On:      isOn,
+	}
+	return btn
 }
 
-type ImageButton struct {
-	ImgActive *ebiten.Image
-	Img       *ebiten.Image
-	Rect      image.Rectangle
+type ToggleButton struct {
+	Rect    image.Rectangle
+	TextOn  string
+	TextOff string
+	On      bool
 
 	mouseDown bool
 
-	onPressed func(b *ImageButton)
+	onPressed func(b *ToggleButton)
 }
 
-func (b *ImageButton) Update() {
-	if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) {
+func (b *ToggleButton) Update() {
+	if len(ebiten.TouchIDs()) > 0 {
+		for _, t := range ebiten.TouchIDs() {
+			x, y := ebiten.TouchPosition(t)
+			if b.Rect.Min.X <= x && x < b.Rect.Max.X && b.Rect.Min.Y <= y && y < b.Rect.Max.Y {
+				b.mouseDown = true
+			} else {
+				b.mouseDown = false
+			}
+		}
+	} else if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) {
 		x, y := ebiten.CursorPosition()
 		if b.Rect.Min.X <= x && x < b.Rect.Max.X && b.Rect.Min.Y <= y && y < b.Rect.Max.Y {
 			b.mouseDown = true
@@ -53,6 +72,7 @@ func (b *ImageButton) Update() {
 	} else {
 		if b.mouseDown {
 			if b.onPressed != nil {
+				b.On = !b.On
 				b.onPressed(b)
 			}
 		}
@@ -68,7 +88,6 @@ func (b *ImageButton) Update() {
 			} else {
 				b.mouseDown = false
 			}
-
 		}
 	} else {
 		if b.mouseDown {
@@ -81,24 +100,26 @@ func (b *ImageButton) Update() {
 	*/
 }
 
-func (b *ImageButton) Draw(dst *ebiten.Image) {
+func (b *ToggleButton) Draw(dst *ebiten.Image) {
 	t := imageTypeButton
 	if b.mouseDown {
 		t = imageTypeButtonPressed
 	}
-	op := &ebiten.DrawImageOptions{}
-	x, y := b.ImgActive.Size()
-	op.GeoM.Scale(float64(defaults.ImageBtnWidth)/float64(x), float64(defaults.ImageBtnHeight)/float64(y))
-	op.GeoM.Scale(0.5, 0.5)
-	//op.GeoM.Scale(ebiten.DeviceScaleFactor(), ebiten.DeviceScaleFactor())
-	op.GeoM.Translate(float64(b.Rect.Min.X), float64(b.Rect.Min.Y))
-	if t == imageTypeButtonPressed {
-		dst.DrawImage(b.ImgActive, op)
+	drawNinePatches(dst, b.Rect, imageSrcRects[t])
+	var currentText string
+	if b.On {
+		currentText = b.TextOn
 	} else {
-		dst.DrawImage(b.Img, op)
+		currentText = b.TextOff
 	}
+
+	bounds, _ := font.BoundString(uiFont, currentText)
+	w := (bounds.Max.X - bounds.Min.X).Ceil()
+	x := b.Rect.Min.X + (b.Rect.Dx()-w)/2
+	y := b.Rect.Max.Y - (b.Rect.Dy()-uiFontMHeight)/2
+	text.Draw(dst, currentText, uiFont, x, y, color.Black)
 }
 
-func (b *ImageButton) SetOnPressed(f func(b *ImageButton)) {
+func (b *ToggleButton) SetOnPressed(f func(b *ToggleButton)) {
 	b.onPressed = f
 }
