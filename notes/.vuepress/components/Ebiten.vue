@@ -4,8 +4,8 @@
                 :id="id"
                 src="https://jsgo.io/lei-cao/programming/code/algoman"
                 frameborder="0"
-                width="572"
-                height="352"
+                width="320"
+                height="580"
                 allowtransparency
         ></iframe>
     </div>
