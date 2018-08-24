@@ -35,14 +35,6 @@ const (
 	btnGroupDirectionUp
 )
 
-var gamePlayBtnGroup = &BtnGroup{
-	x:         10 * defaults.DeviceScale,
-	y:         controlY0,
-	margin:    10 * defaults.DeviceScale,
-	height:    defaults.ButtonMinHeight,
-	direction: btnGroupDirectionRight,
-	rects:     []image.Rectangle{},
-}
 
 type BtnGroup struct {
 	x         int
@@ -69,9 +61,19 @@ func (i *BtnGroup) addRect(rect image.Rectangle) {
 	i.width += rect.Dx() + i.margin
 }
 
-func NewController() *Controller {
+func NewController() Controllerable {
 	c := new(Controller)
-	c.Image, _ = ebiten.NewImage(defaults.ScreenWidth, defaults.ScreenHeight, ebiten.FilterDefault)
+
+	var gamePlayBtnGroup = &BtnGroup{
+		x:         10 * defaults.DeviceScale,
+		y:         controlY0,
+		margin:    10 * defaults.DeviceScale,
+		height:    defaults.ButtonMinHeight,
+		direction: btnGroupDirectionRight,
+		rects:     []image.Rectangle{},
+	}
+
+	c.image, _ = ebiten.NewImage(defaults.ScreenWidth, defaults.ScreenHeight, ebiten.FilterDefault)
 	c.PlayToggle = ui.NewToggleButton(gamePlayBtnGroup.nextRect(), "Pause", "Play", false)
 	gamePlayBtnGroup.addRect(c.PlayToggle.Rect)
 	c.NextStepBtn = ui.NewButton(gamePlayBtnGroup.nextRect(), "Next")
@@ -118,7 +120,7 @@ func NewController() *Controller {
 }
 
 type Controller struct {
-	Image *ebiten.Image
+	image *ebiten.Image
 
 	PlayToggle   *ui.ToggleButton
 	NextStepBtn  *ui.Button
@@ -142,13 +144,16 @@ func (c *Controller) Update() {
 }
 
 func (c *Controller) Draw() {
-	c.PlayToggle.Draw(c.Image)
-	c.NextStepBtn.Draw(c.Image)
-	c.SpeedDownBtn.Draw(c.Image)
-	c.SpeedUpBtn.Draw(c.Image)
-	c.RShuffleBtn.Draw(c.Image)
+	c.PlayToggle.Draw(c.image)
+	c.NextStepBtn.Draw(c.image)
+	c.SpeedDownBtn.Draw(c.image)
+	c.SpeedUpBtn.Draw(c.image)
+	c.RShuffleBtn.Draw(c.image)
 
 	for _, v := range c.SortSelect {
-		v.Draw(c.Image)
+		v.Draw(c.image)
 	}
+}
+func (c *Controller) Image() *ebiten.Image {
+	return c.image
 }

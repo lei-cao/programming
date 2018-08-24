@@ -24,40 +24,48 @@ import (
 func init() {
 }
 
-func NewBoard(values []int) *Board {
-	b := &Board{values: values}
+func NewHeapBoard(values []int) *HeapBoard {
+	b := &HeapBoard{values: values}
 	b.rs = shapes.NewRectSlice(b.values)
-	b.BoardImage, _ = ebiten.NewImage(defaults.ScreenWidth, defaults.ScreenHeight, ebiten.FilterDefault)
-	b.BoardImage.Fill(defaults.BackgroundColor)
+	b.image, _ = ebiten.NewImage(defaults.ScreenWidth, defaults.ScreenHeight, ebiten.FilterDefault)
+	b.image.Fill(defaults.BackgroundColor)
 	return b
 }
 
-type Board struct {
-	BoardImage *ebiten.Image
-	Finished   bool
-	progress   float64
-	values     []int
-	rs         *shapes.RectSlice
+type HeapBoard struct {
+	image    *ebiten.Image
+	Finished bool
+	progress float64
+	values   []int
+	rs       *shapes.RectSlice
 }
 
-func (b *Board) Draw() {
-	b.BoardImage.Clear()
-	b.BoardImage.Fill(defaults.BackgroundColor)
-	b.rs.Draw(b.BoardImage)
+func (b *HeapBoard) Draw() {
+	b.image.Clear()
+	b.image.Fill(defaults.BackgroundColor)
+	b.rs.Draw(b.image)
 }
 
-func (b *Board) Update(progress float64) {
+func (b *HeapBoard) Update(progress float64) {
 	b.progress = progress
 	b.rs.Update(progress)
 }
 
-func (b *Board) NextStep(step visualizer.Stepper) {
+func (b *HeapBoard) NextStep(step visualizer.Stepper) {
 	b.rs.NextStep(step)
 }
 
-func (b *Board) Ready() bool {
+func (b *HeapBoard) Ready() bool {
 	if b.progress == 1 {
 		return true
 	}
 	return false
+}
+
+func (b *HeapBoard) Image() *ebiten.Image {
+	return b.image
+}
+
+func (b *HeapBoard) Steps(id string) visualizer.Stepper {
+	return visualizer.NewFirstStep()
 }

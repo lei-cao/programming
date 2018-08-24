@@ -16,10 +16,7 @@ package game
 
 import (
 	"github.com/hajimehoshi/ebiten"
-	"image/color"
 	"github.com/lei-cao/programming/code/algoman/pkg/board"
-	"github.com/lei-cao/programming/code/v2/algorithms/sorting/basicsort"
-	"github.com/lei-cao/programming/code/v2/algorithms/sorting"
 	"github.com/lei-cao/programming/code/utils"
 	"github.com/lei-cao/programming/code/v2/visualizer"
 	"time"
@@ -41,22 +38,22 @@ func NewGame() *Game {
 		return math.Pow(progress, 2) * ((x+1)*progress - x)
 	}
 
-	g.initController()
-	g.initAlgorithm()
+	g.initSortingBoard()
+	g.initMenu()
 
 	return g
 }
 
 // Game represents a game state.
 type Game struct {
-	Board        *board.Board
+	Board        board.Boarder
 	Screen       *ebiten.Image
-	Controller   *Controller
+	Controller   Controllerable
+	Menu         *Menu
 	then         float64
 	now          float64
 	startTime    float64
 	steps        visualizer.Stepper
-	sorter       sorting.Sorter
 	values       []int
 	autoPlay     bool
 	timing       func(progress float64) float64
@@ -89,6 +86,7 @@ func (g *Game) Animate() error {
 func (g *Game) Update(progress float64) error {
 	g.Board.Update(progress)
 	g.Controller.Update()
+	g.Menu.Update(progress)
 	if progress == 1 {
 		if g.autoPlay {
 			g.NextStep()
@@ -107,10 +105,11 @@ func (g *Game) Draw() {
 	}
 
 	g.Controller.Draw()
+	g.Menu.Draw()
 
-	g.Screen.Fill(color.Gray16{0xaaaa})
-	g.Screen.DrawImage(g.Board.BoardImage, nil)
-	g.Screen.DrawImage(g.Controller.Image, nil)
+	g.Screen.DrawImage(g.Board.Image(), nil)
+	g.Screen.DrawImage(g.Controller.Image(), nil)
+	g.Screen.DrawImage(g.Menu.Image, nil)
 }
 
 func (g *Game) NextStep() {
@@ -150,84 +149,99 @@ func (g *Game) SpeedDown() {
 }
 
 func (g *Game) Restart() {
-	g.initAlgorithm()
+	g.startSortingBoard()
 }
 
-func (g *Game) initAlgorithm() {
-	g.values = utils.Shuffle(30)
-
-	g.Board = board.NewBoard(g.values)
-
-	g.applyAlgorithm(g.algorithm)
-}
-
-func (g *Game) initController() {
+func (g *Game) initSortingController() {
 	g.Controller = NewController()
 
-	g.Controller.PlayToggle.On = true
-	g.Controller.PlayToggle.SetOnPressed(func(b *ui.ToggleButton) {
-		if b.On {
-			g.Resume()
-		} else {
-			g.Stop()
-		}
-	})
+	if c, ok := g.Controller.(*Controller); ok {
 
-	g.Controller.NextStepBtn.SetOnPressed(func(b *ui.Button) {
-		g.NextStep()
-	})
-
-	g.Controller.SpeedUpBtn.SetOnPressed(func(b *ui.Button) {
-		g.SpeedUp()
-	})
-
-	g.Controller.SpeedDownBtn.SetOnPressed(func(b *ui.Button) {
-		g.SpeedDown()
-	})
-
-	g.Controller.RShuffleBtn.SetOnPressed(func(b *ui.Button) {
-		g.Restart()
-	})
-
-	for _, ss := range g.Controller.SortSelect {
-		ss.SetOnCheckChanged(func(c *ui.CheckBox) {
-			if c.Checked() {
-				for _, ss := range g.Controller.SortSelect {
-					ss.UnCheck()
-				}
-
-				c.Check()
-				g.algorithm = c.Value()
-				g.Restart()
+		c.PlayToggle.On = true
+		c.PlayToggle.SetOnPressed(func(b *ui.ToggleButton) {
+			if b.On {
+				g.Resume()
+			} else {
+				g.Stop()
 			}
 		})
 
-		if ss.Value() == "quick" {
-			ss.Check()
-			g.algorithm = ss.Value()
+		c.NextStepBtn.SetOnPressed(func(b *ui.Button) {
+			g.NextStep()
+		})
+
+		c.SpeedUpBtn.SetOnPressed(func(b *ui.Button) {
+			g.SpeedUp()
+		})
+
+		c.SpeedDownBtn.SetOnPressed(func(b *ui.Button) {
+			g.SpeedDown()
+		})
+
+		c.RShuffleBtn.SetOnPressed(func(b *ui.Button) {
+			g.Restart()
+		})
+
+		for _, ss := range c.SortSelect {
+			ss.SetOnCheckChanged(func(cb *ui.CheckBox) {
+				if cb.Checked() {
+					for _, ss := range c.SortSelect {
+						ss.UnCheck()
+					}
+
+					cb.Check()
+					g.algorithm = cb.Value()
+					g.Restart()
+				}
+			})
+
+			if ss.Value() == "quick" {
+				ss.Check()
+				g.algorithm = ss.Value()
+			}
 		}
 	}
 }
 
-func (g *Game) applyAlgorithm(id string) {
-	switch id {
-	case "bubble":
-		g.sorter = basicsort.NewBubbleSort()
-	case "selection":
-		g.sorter = basicsort.NewSelectionSort()
-	case "insertion":
-		g.sorter = basicsort.NewInsertionSort()
-	case "quick":
-		g.sorter = basicsort.NewQuickSort()
-	case "heap":
-		g.sorter = basicsort.NewHeapSort()
-		//case "topDownMergeSort":
-		//	s := merge.NewScreen(c.config.Id, c.config.Size, c.nums)
-		//	c.animation.SetScreen(s)
-		//	c.sorter = mergesort.NewTopDownMergeSort()
-	}
-	g.sorter.Sort(g.values)
-	g.steps = g.sorter.Steps()
+func (g *Game) initHeapController() {
+	g.Controller = NewHeapController()
+}
+
+func (g *Game) initMenu() {
+	g.Menu = NewMenu()
+	g.Menu.SortingButton.SetOnPressed(func(b *ui.Button) {
+		g.initSortingBoard()
+	})
+
+	g.Menu.HeapButton.SetOnPressed(func(b *ui.Button) {
+		g.initHeapBoard()
+	})
+}
+
+func (g *Game) initSortingBoard() {
+	g.initSortingController()
+	g.startSortingBoard()
+}
+
+func (g *Game) startSortingBoard() {
+	g.values = utils.Shuffle(30)
+
+	g.Board = board.NewSortingBoard(g.values)
+
+	g.steps = g.Board.Steps(g.algorithm)
+}
+
+func (g *Game) initHeapBoard() {
+	g.initHeapController()
+	g.startHeapBoard()
+}
+
+func (g *Game) startHeapBoard() {
+	g.values = utils.Shuffle(30)
+
+	g.Board = board.NewHeapBoard(g.values)
+
+	g.steps = g.Board.Steps(g.algorithm)
 }
 
 func makeTimestamp() float64 {
