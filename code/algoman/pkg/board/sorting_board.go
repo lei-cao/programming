@@ -28,7 +28,7 @@ func init() {
 
 func NewSortingBoard(values []int) *SortingBoard {
 	b := &SortingBoard{values: values}
-	b.rs = shapes.NewRectSlice(b.values)
+	b.rs = shapes.NewRectSlice(b.values, 0, 0)
 	b.image, _ = ebiten.NewImage(defaults.ScreenWidth, defaults.ScreenHeight, ebiten.FilterDefault)
 	b.image.Fill(defaults.BackgroundColor)
 	return b

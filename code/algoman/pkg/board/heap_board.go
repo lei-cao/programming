@@ -19,6 +19,8 @@ import (
 	"github.com/lei-cao/programming/code/algoman/pkg/shapes"
 	"github.com/lei-cao/programming/code/v2/visualizer"
 	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
+	"github.com/lei-cao/programming/code/v2/algorithms/sorting/basicsort"
+	"github.com/lei-cao/programming/code/v2/algorithms/sorting"
 )
 
 func init() {
@@ -26,33 +28,39 @@ func init() {
 
 func NewHeapBoard(values []int) *HeapBoard {
 	b := &HeapBoard{values: values}
-	b.rs = shapes.NewRectSlice(b.values)
-	b.image, _ = ebiten.NewImage(defaults.ScreenWidth, defaults.ScreenHeight, ebiten.FilterDefault)
-	b.image.Fill(defaults.BackgroundColor)
+	b.tree, b.dts = shapes.NewDrawTree(b.values)
+	image, _ := ebiten.NewImage(defaults.ScreenWidth, defaults.ScreenHeight, ebiten.FilterDefault)
+	image.Fill(defaults.BackgroundColor)
+	b.egg = shapes.NewEbitenGG(image)
+	b.tree.Draw(b.egg, 0)
+	b.dts.Draw(b.egg)
+	b.egg.FlushImage()
 	return b
 }
 
 type HeapBoard struct {
-	image    *ebiten.Image
+	egg      *shapes.EbitenGG
 	Finished bool
 	progress float64
 	values   []int
-	rs       *shapes.RectSlice
+	tree     *shapes.DrawTree
+	dts      *shapes.DrawTreeSlice
+	sorter   sorting.Sorter
 }
 
 func (b *HeapBoard) Draw() {
-	b.image.Clear()
-	b.image.Fill(defaults.BackgroundColor)
-	b.rs.Draw(b.image)
+	b.tree.Draw(b.egg, 0)
+	b.dts.Draw(b.egg)
+	b.egg.FlushImage()
 }
 
 func (b *HeapBoard) Update(progress float64) {
 	b.progress = progress
-	b.rs.Update(progress)
+	b.dts.Update(progress)
 }
 
 func (b *HeapBoard) NextStep(step visualizer.Stepper) {
-	b.rs.NextStep(step)
+	b.dts.NextStep(step)
 }
 
 func (b *HeapBoard) Ready() bool {
@@ -63,9 +71,11 @@ func (b *HeapBoard) Ready() bool {
 }
 
 func (b *HeapBoard) Image() *ebiten.Image {
-	return b.image
+	return b.egg.Image()
 }
 
 func (b *HeapBoard) Steps(id string) visualizer.Stepper {
-	return visualizer.NewFirstStep()
+	b.sorter = basicsort.NewHeapSort()
+	b.sorter.Sort(b.values)
+	return b.sorter.Steps()
 }

@@ -21,19 +21,14 @@ import (
 	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
 )
 
-var (
-	barWidth      = 8 * defaults.DeviceScale
-	barHeightUnit = 5 * defaults.DeviceScale
-	barMargin     = 2 * defaults.DeviceScale
-)
-
-func NewRectSlice(values []int) *RectSlice {
+func NewRectSlice(values []int, offsetX, offsetY float64) *RectSlice {
 	rs := new(RectSlice)
 	rs.values = values
+	rs.offsetX, rs.offsetY = offsetX, offsetY
 	for k, v := range rs.values {
 		r := NewRectangle(v)
 		op := &ebiten.DrawImageOptions{}
-		op.GeoM.Translate(float64((k+1)*(barWidth+barMargin)), float64((len(rs.values)-r.V+2)*barHeightUnit))
+		op.GeoM.Translate(offsetX+float64((k+1)*(defaults.BarWidth+defaults.BarMargin)), offsetY+float64((len(rs.values)-r.V+2)*defaults.BarHeightUnit))
 		//op.SourceRect = r.rect
 		r.startOp = op
 		r.startIndex = k
@@ -49,14 +44,16 @@ type RectSlice struct {
 	rectangles []*Rectangle
 	aIndex     int
 	bIndex     int
+	offsetX    float64
+	offsetY    float64
 }
 
 func (rs *RectSlice) Update(progress float64) {
 	for _, r := range rs.rectangles {
 		if r.endIndex != r.startIndex {
 			r.startOp.GeoM.Reset()
-			dx := float64((r.startIndex+1)*(barWidth+barMargin)) + progress*float64((r.endIndex-r.startIndex)*(barWidth+barMargin))
-			r.startOp.GeoM.Translate(dx, float64((len(rs.values)-r.V+2)*barHeightUnit))
+			dx := float64((r.startIndex+1)*(defaults.BarWidth+defaults.BarMargin)) + progress*float64((r.endIndex-r.startIndex)*(defaults.BarWidth+defaults.BarMargin))
+			r.startOp.GeoM.Translate(rs.offsetX+dx, rs.offsetY+float64((len(rs.values)-r.V+2)*defaults.BarHeightUnit))
 			if progress == 1 {
 				r.startIndex = r.endIndex
 			}
@@ -121,8 +118,8 @@ func (rs *RectSlice) pass(ia, ib int) {
 }
 
 func rectSliceWidth(size int) int {
-	return size*barWidth + (size-1)*barMargin
+	return size*defaults.BarWidth + (size-1)*defaults.BarMargin
 }
 func rectSliceHeight(size int) int {
-	return size * barHeightUnit
+	return size * defaults.BarHeightUnit
 }

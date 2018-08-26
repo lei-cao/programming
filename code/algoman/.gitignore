@@ -1,0 +1,8 @@
+# Font
+resources/fonts/wqy-zenhei
+
+# Temp Trash Files
+pkg/trash
+
+# pprof
+*.prof

@@ -237,7 +237,7 @@ func (g *Game) initHeapBoard() {
 }
 
 func (g *Game) startHeapBoard() {
-	g.values = utils.Shuffle(30)
+	g.values = utils.Shuffle(20)
 
 	g.Board = board.NewHeapBoard(g.values)
 

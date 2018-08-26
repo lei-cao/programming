@@ -22,8 +22,8 @@ import (
 
 func NewRectangle(value int) *Rectangle {
 	r := new(Rectangle)
-	rect := image.Rect(0, 0, barWidth, value*barHeightUnit)
-	r.barImage, _ = ebiten.NewImage(barWidth, value*barHeightUnit, ebiten.FilterDefault)
+	rect := image.Rect(0, 0, defaults.BarWidth, value*defaults.BarHeightUnit)
+	r.barImage, _ = ebiten.NewImage(defaults.BarWidth, value*defaults.BarHeightUnit, ebiten.FilterDefault)
 	r.barImage.Fill(defaults.BarColor)
 	r.rect = &rect
 	r.V = value

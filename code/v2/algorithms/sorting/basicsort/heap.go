@@ -48,7 +48,7 @@ func (h *HeapSort) Sort(a []int) {
 procedure heapify(a, count) is
 	(start is assigned the index in 'a' of the last parent node)
 	(the last element in a 0-based array is at index count-1; find the parent of that element)
-	start ← iParent(count-1)
+	start ← IParent(count-1)
 
 	while start ≥ 0 do
 		(sift down the node at index 'start' to the proper place such that all nodes below
@@ -59,7 +59,7 @@ procedure heapify(a, count) is
 	(after sifting down the root all nodes/elements are in heap order)
 */
 func (h *HeapSort) heapify(a []int) {
-	for start := h.iParent(len(a) - 1); start >= 0; start-- {
+	for start := h.IParent(len(a) - 1); start >= 0; start-- {
 		h.shiftDown(a, start, len(a)-1)
 	}
 }
@@ -69,8 +69,8 @@ func (h *HeapSort) heapify(a []int) {
 procedure siftDown(a, start, end) is
     root ← start
 
-    while iLeftChild(root) ≤ end do    (While the root has at least one child)
-        child ← iLeftChild(root)   (Left child of root)
+    while ILeftChild(root) ≤ end do    (While the root has at least one child)
+        child ← ILeftChild(root)   (Left child of root)
         swap ← root                (Keeps track of child to swap with)
 
         if a[swap] < a[child]
@@ -87,8 +87,8 @@ procedure siftDown(a, start, end) is
             root ← swap            (repeat to continue sifting down the child now)
 */
 func (h *HeapSort) shiftDown(a []int, start, end int) {
-	for root := start; h.iLeftChild(root) <= end; {
-		child := h.iLeftChild(root)
+	for root := start; h.ILeftChild(root) <= end; {
+		child := h.ILeftChild(root)
 		swap := root
 
 		if a[swap] < a[child] {
@@ -106,14 +106,14 @@ func (h *HeapSort) shiftDown(a []int, start, end int) {
 	}
 }
 
-func (h *HeapSort) iParent(i int) int {
+func (h *HeapSort) IParent(i int) int {
 	return int(math.Floor(float64((i - 1) / 2)))
 }
 
-func (h *HeapSort) iLeftChild(i int) int {
+func (h *HeapSort) ILeftChild(i int) int {
 	return i*2 + 1
 }
 
-func (h *HeapSort) iRightChild(i int) int {
+func (h *HeapSort) IRightChild(i int) int {
 	return i*2 + 2
 }
