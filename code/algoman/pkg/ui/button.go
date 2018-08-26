@@ -19,20 +19,16 @@ import (
 	"image"
 	_ "image/png"
 	"bytes"
-	"github.com/golang/freetype/truetype"
 	"golang.org/x/image/font"
 	"github.com/lei-cao/programming/code/algoman/resources/images"
 	"log"
-	"github.com/hajimehoshi/ebiten/text"
 	"image/color"
-	"golang.org/x/image/font/gofont/gomono"
 	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
+	"github.com/lei-cao/programming/code/algoman/utils"
 )
 
 var (
-	uiImage       *ebiten.Image
-	uiFont        font.Face
-	uiFontMHeight int
+	uiImage *ebiten.Image
 )
 
 func init() {
@@ -51,17 +47,6 @@ func init() {
 	}
 	uiImage, _ = ebiten.NewImageFromImage(img, ebiten.FilterDefault)
 
-	tt, err := truetype.Parse(gomono.TTF)
-	if err != nil {
-		log.Fatal(err)
-	}
-	uiFont = truetype.NewFace(tt, &truetype.Options{
-		Size:    float64(12 * defaults.DeviceScale),
-		DPI:     72,
-		Hinting: font.HintingFull,
-	})
-	b, _, _ := uiFont.GlyphBounds('M')
-	uiFontMHeight = (b.Max.Y - b.Min.Y).Ceil()
 }
 
 type imageType int
@@ -136,7 +121,7 @@ func drawNinePatches(dst *ebiten.Image, dstRect image.Rectangle, srcRect image.R
 }
 
 func NewButton(rect image.Rectangle, text string) *Button {
-	bounds, _ := font.BoundString(uiFont, text)
+	bounds, _ := font.BoundString(utils.UiFont, text)
 	w := (bounds.Max.X - bounds.Min.X).Ceil()
 	if w < defaults.ButtonMinWidth {
 		w = defaults.ButtonMinWidth
@@ -192,11 +177,14 @@ func (b *Button) Draw(dst *ebiten.Image) {
 	}
 	drawNinePatches(dst, b.Rect, imageSrcRects[t])
 
-	bounds, _ := font.BoundString(uiFont, b.Text)
+	/*
+	bounds, _ := font.BoundString(utils.UiFont, b.Text)
 	w := (bounds.Max.X - bounds.Min.X).Ceil()
 	x := b.Rect.Min.X + (b.Rect.Dx()-w)/2
-	y := b.Rect.Max.Y - (b.Rect.Dy()-uiFontMHeight)/2
-	text.Draw(dst, b.Text, uiFont, x, y, color.Black)
+	y := b.Rect.Max.Y - (b.Rect.Dy()-utils.UiFontMHeight)/2
+	text.Draw(dst, b.Text, utils.UiFont, x, y, color.Black)
+	*/
+	utils.DrawString(dst, b.Text, b.Rect, color.Black)
 }
 
 func (b *Button) SetOnPressed(f func(b *Button)) {

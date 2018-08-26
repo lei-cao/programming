@@ -20,6 +20,7 @@ import (
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/text"
 	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
+	"github.com/lei-cao/programming/code/algoman/utils"
 )
 
 const (
@@ -53,7 +54,7 @@ type CheckBox struct {
 }
 
 func (c *CheckBox) width() int {
-	b, _ := font.BoundString(uiFont, c.Text)
+	b, _ := font.BoundString(utils.UiFont, c.Text)
 	w := (b.Max.X - b.Min.X).Ceil()
 	return checkboxWidth + checkboxPaddingLeft + w
 }
@@ -99,8 +100,8 @@ func (c *CheckBox) Draw(dst *ebiten.Image) {
 	}
 
 	x := c.X + checkboxWidth + checkboxPaddingLeft
-	y := (c.Y + 32) - (32-uiFontMHeight)/2
-	text.Draw(dst, c.Text, uiFont, x, y, defaults.BarColor)
+	y := (c.Y + 32) - (32-utils.UiFontMHeight)/2
+	text.Draw(dst, c.Text, utils.UiFont, x, y, defaults.BarColor)
 }
 
 func (c *CheckBox) Checked() bool {

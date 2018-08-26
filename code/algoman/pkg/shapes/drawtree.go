@@ -20,7 +20,9 @@ import (
 	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
 	"github.com/lei-cao/programming/code/v2/algorithms/sorting/basicsort"
 	"math"
-	"strconv"
+	"image/color"
+	"github.com/hajimehoshi/ebiten"
+	"github.com/hajimehoshi/ebiten/ebitenutil"
 )
 
 func NewDrawTree(values []int) (root *DrawTree, drawTreeSlice *DrawTreeSlice) {
@@ -44,6 +46,7 @@ func NewDrawTree(values []int) (root *DrawTree, drawTreeSlice *DrawTreeSlice) {
 			dts[heap.ILeftChild(k)] = dt
 			parent.children = append(parent.children, dt)
 		}
+		// right child
 		if heap.IRightChild(k) < len(values) {
 			dt := NewDrawTreeNode(parent, parent.y+1, 2, values[heap.IRightChild(k)])
 			dts[heap.IRightChild(k)] = dt
@@ -51,6 +54,7 @@ func NewDrawTree(values []int) (root *DrawTree, drawTreeSlice *DrawTreeSlice) {
 		}
 	}
 	drawTreeSlice.dts = dts
+	drawTreeSlice.tree = root
 	depth := math.Floor(math.Log2(float64(len(values))))
 	drawTreeSlice.rs = NewRectSlice(values, 0, float64(depth+1)*rh)
 	root = buchheim(root)
@@ -70,6 +74,8 @@ func NewDrawTreeNode(parent *DrawTree, depth int, number int, value int) *DrawTr
 	t.change = 0
 	t.shift = 0
 	t.number = number
+
+	t.color = defaults.BarColor
 
 	return t
 }
@@ -93,44 +99,45 @@ type DrawTree struct {
 
 	DestX int
 	DestY int
+	color color.Color
 }
 
 var (
 	rw    = float64(defaults.CircleRadius) * 2.8
 	rh    = float64(defaults.CircleRadius) * 2.8
-	halfR = float64(defaults.CircleRadius) / 2.0
+	halfR = float64(defaults.CircleRadius)
 )
 
-func (t *DrawTree) Draw(egg *EbitenGG, depth int) {
+func (t *DrawTree) Update(progress float64) {
+	dx, dy := progress*float64(t.DestX-t.x), progress*float64(t.DestY-t.y)
+	t.x += int(dx)
+	t.y += int(dy)
+	if progress == 1 {
+		t.x = t.DestX
+		t.y = t.DestY
+	}
+}
+
+func (t *DrawTree) Draw(img *ebiten.Image, depth int) {
 	if t.Image == nil {
 		return
 	}
-	//op := &ebiten.DrawImageOptions{}
 	offsetX := float64(t.x) * rw
 	offsetY := float64(depth) * rh
-	//op.GeoM.Translate(offsetX, offsetY)
-	//egg.img.DrawImage(t.Image.CircleImage, op)
 
 	for _, c := range t.children {
 		offsetX1 := float64(c.x) * rw
 		offsetY1 := float64(depth+1) * rh
-		egg.dc.DrawLine(offsetX+halfR, offsetY+halfR, offsetX1+halfR, offsetY1+halfR)
-		egg.dc.Stroke()
 
-		c.Draw(egg, depth+1)
+		ebitenutil.DrawLine(img, offsetX+halfR, offsetY+halfR, offsetX1+halfR , offsetY1+halfR, defaults.ColorC)
+
+		c.Draw(img, depth+1)
 	}
+	op := &ebiten.DrawImageOptions{}
+	op.GeoM.Translate(offsetX, offsetY)
+	//op.GeoM.Scale(0.8, 0.8)
+	img.DrawImage(t.Image.Img, op)
 
-	egg.dc.SetColor(defaults.BarColor)
-	//egg.dc.DrawCircle(offsetX1+halfR, offsetY1+halfR, 24)
-	//egg.dc.Fill()
-	//
-	egg.dc.DrawCircle(offsetX+halfR, offsetY+halfR, 24)
-	egg.dc.Fill()
-	//egg.dc.SetColor(defaults.ColorA)
-	egg.dc.SetColor(defaults.ColorB)
-
-	egg.dc.SetFontFace(face)
-	egg.dc.DrawString(strconv.Itoa(t.V), offsetX, offsetY+2*halfR)
 }
 
 func (t *DrawTree) Depth() int {

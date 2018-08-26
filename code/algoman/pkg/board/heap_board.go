@@ -28,30 +28,25 @@ func init() {
 
 func NewHeapBoard(values []int) *HeapBoard {
 	b := &HeapBoard{values: values}
-	b.tree, b.dts = shapes.NewDrawTree(b.values)
+	_, b.dts = shapes.NewDrawTree(b.values)
 	image, _ := ebiten.NewImage(defaults.ScreenWidth, defaults.ScreenHeight, ebiten.FilterDefault)
 	image.Fill(defaults.BackgroundColor)
-	b.egg = shapes.NewEbitenGG(image)
-	b.tree.Draw(b.egg, 0)
-	b.dts.Draw(b.egg)
-	b.egg.FlushImage()
+	b.img = image
+	b.dts.Draw(b.img)
 	return b
 }
 
 type HeapBoard struct {
-	egg      *shapes.EbitenGG
+	img      *ebiten.Image
 	Finished bool
 	progress float64
 	values   []int
-	tree     *shapes.DrawTree
 	dts      *shapes.DrawTreeSlice
 	sorter   sorting.Sorter
 }
 
 func (b *HeapBoard) Draw() {
-	b.tree.Draw(b.egg, 0)
-	b.dts.Draw(b.egg)
-	b.egg.FlushImage()
+	b.dts.Draw(b.img)
 }
 
 func (b *HeapBoard) Update(progress float64) {
@@ -71,7 +66,7 @@ func (b *HeapBoard) Ready() bool {
 }
 
 func (b *HeapBoard) Image() *ebiten.Image {
-	return b.egg.Image()
+	return b.img
 }
 
 func (b *HeapBoard) Steps(id string) visualizer.Stepper {

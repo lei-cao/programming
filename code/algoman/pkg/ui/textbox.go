@@ -22,6 +22,7 @@ import (
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/inpututil"
 	"github.com/hajimehoshi/ebiten/text"
+	"github.com/lei-cao/programming/code/algoman/utils"
 )
 
 const (
@@ -197,14 +198,14 @@ func (t *TextBox) Draw(dst *ebiten.Image) {
 	t.contentBuf.Clear()
 	for i, line := range strings.Split(t.Text, "\n") {
 		x := -t.offsetX + textBoxPaddingLeft
-		y := -t.offsetY + i*lineHeight + lineHeight - (lineHeight-uiFontMHeight)/2
+		y := -t.offsetY + i*lineHeight + lineHeight - (lineHeight-utils.UiFontMHeight)/2
 		if y < -lineHeight {
 			continue
 		}
 		if _, h := t.viewSize(); y >= h+lineHeight {
 			continue
 		}
-		text.Draw(t.contentBuf, line, uiFont, x, y, color.Black)
+		text.Draw(t.contentBuf, line, utils.UiFont, x, y, color.Black)
 	}
 	op := &ebiten.DrawImageOptions{}
 	op.GeoM.Translate(float64(t.Rect.Min.X), float64(t.Rect.Min.Y))

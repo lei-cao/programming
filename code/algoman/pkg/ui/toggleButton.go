@@ -19,9 +19,9 @@ import (
 	"image"
 	_ "image/png"
 	"golang.org/x/image/font"
-	"github.com/hajimehoshi/ebiten/text"
 	"image/color"
 	"github.com/lei-cao/programming/code/algoman/pkg/defaults"
+	"github.com/lei-cao/programming/code/algoman/utils"
 )
 
 func NewToggleButton(rect image.Rectangle, textOn string, textOff string, isOn bool) *ToggleButton {
@@ -29,7 +29,7 @@ func NewToggleButton(rect image.Rectangle, textOn string, textOff string, isOn b
 	if len(textOff) > len(textOn) {
 		text = textOff
 	}
-	bounds, _ := font.BoundString(uiFont, text)
+	bounds, _ := font.BoundString(utils.UiFont, text)
 	w := (bounds.Max.X - bounds.Min.X).Ceil()
 	rect.Max.X = rect.Min.X + w + defaults.ButtonPadding
 	btn := &ToggleButton{
@@ -113,11 +113,7 @@ func (b *ToggleButton) Draw(dst *ebiten.Image) {
 		currentText = b.TextOff
 	}
 
-	bounds, _ := font.BoundString(uiFont, currentText)
-	w := (bounds.Max.X - bounds.Min.X).Ceil()
-	x := b.Rect.Min.X + (b.Rect.Dx()-w)/2
-	y := b.Rect.Max.Y - (b.Rect.Dy()-uiFontMHeight)/2
-	text.Draw(dst, currentText, uiFont, x, y, color.Black)
+	utils.DrawString(dst, currentText, b.Rect, color.Black)
 }
 
 func (b *ToggleButton) SetOnPressed(f func(b *ToggleButton)) {

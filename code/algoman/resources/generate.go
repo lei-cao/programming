@@ -33,6 +33,8 @@
 //go:generate file2byteslice -package=pngs -input=./pngs/rewind_512.png -output=./pngs/rewind_512.go -var=REWIND_512_png
 //go:generate file2byteslice -package=pngs -input=./pngs/rewind_512_active.png -output=./pngs/rewind_512_active.go -var=REWIND_512_active_png
 
+//go:generate file2byteslice -package=pngs -input=./pngs/filled_circle_48.png -output=./pngs/filled_circle_48.go -var=FILLED_CIRCLE_48_png
+
 //go:generate ./svg2png -input=./images/backward_off -package=images
 //go:generate ./svg2png -input=./images/backward_on -package=images
 //go:generate ./svg2png -input=./images/forward_off -package=images
