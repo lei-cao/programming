@@ -2,6 +2,7 @@ var fs    = require("fs")
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -12,7 +13,10 @@ module.exports = {
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             title: 'Output Management'
-        })
+        }),
+        new CopyWebpackPlugin([
+            { from: 'src/.well-known', to: '.well-known' }
+        ])
     ],
     output: {
         filename: '[name].bundle.js',
@@ -26,7 +30,8 @@ module.exports = {
                 res.sendFile('/Users/l.cao/programming/cert/localhost+4-key.pem');
             });
         },
-        host: 'lei.dev',
+        host: 'lei.io',
+        port: '443',
         https: {
             key: fs.readFileSync('/Users/l.cao/programming/cert/localhost+4-key.pem'),
             cert: fs.readFileSync('/Users/l.cao/programming/cert/localhost+4.pem')
