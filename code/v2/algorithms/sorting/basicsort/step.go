@@ -17,11 +17,20 @@ func NewStep(a int, b int, doSwap bool) visualizer.Stepper {
 	return s
 }
 
+func NewPopStep(a int, b int, doPop bool) visualizer.Stepper {
+	s := &Step{}
+	s.a = a
+	s.b = b
+	s.doPop = doPop
+	return s
+}
+
 // Hold the operation steps queue
 type Step struct {
 	a       int
 	b       int
 	doSwap  bool
+	doPop  bool
 	next    *Step
 	last    *Step
 	current *Step
@@ -59,5 +68,9 @@ func (s *Step) B() int {
 	return s.b
 }
 func (s *Step) DoSwap() bool {
+	return s.doSwap
+}
+
+func (s *Step) DoPop() bool {
 	return s.doSwap
 }

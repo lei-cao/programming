@@ -37,7 +37,7 @@ func (h *HeapSort) Sort(a []int) {
 	h.heapify(a)
 
 	for end := len(a) - 1; end > 0; {
-		h.swap(a, end, 0)
+		h.pop(a, end, 0)
 		end --
 		h.shiftDown(a, 0, end)
 	}

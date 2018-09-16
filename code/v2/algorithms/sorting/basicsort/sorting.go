@@ -48,6 +48,12 @@ func (s *BasicSort) swap(a []int, ia, ib int) {
 	a[ia], a[ib] = a[ib], a[ia]
 }
 
+func (s *BasicSort) pop(a []int, ia, ib int) {
+	step := NewPopStep(ia, ib, true)
+	s.steps.AddStep(step)
+	a[ia], a[ib] = a[ib], a[ia]
+}
+
 func (s *BasicSort) pass(a, b int) {
 	step := NewStep(a, b, false)
 	s.steps.AddStep(step)

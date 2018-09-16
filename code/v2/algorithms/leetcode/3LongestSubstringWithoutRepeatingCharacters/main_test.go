@@ -25,7 +25,7 @@ func test(t *testing.T, f func(s string) int) {
 
 	for _, table := range tables {
 		result := f(table.s)
-		if table.result != f(table.s) {
+		if table.result != result {
 			t.Errorf("incorrect %v. Got: %v", table, result)
 		}
 	}
