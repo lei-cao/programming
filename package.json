@@ -6,6 +6,7 @@
   "devDependencies": {},
   "dependencies": {
     "global": "^4.3.2",
+    "vue-pixi": "^0.1.1",
     "vue-slider-component": "^2.7.6",
     "vuepress": "^0.14.1"
   }
