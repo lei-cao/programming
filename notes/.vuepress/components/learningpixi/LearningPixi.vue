@@ -1,22 +1,9 @@
 <template>
     <div class="learning-pixi">
-
     </div>
 </template>
 
 <script>
-    //Aliases
-    let Application = PIXI.Application,
-        Container = PIXI.Container,
-        loader = PIXI.loader,
-        resources = PIXI.loader.resources,
-        TextureCache = PIXI.utils.TextureCache,
-        Sprite = PIXI.Sprite,
-        Rectangle = PIXI.Rectangle,
-        utils = PIXI.utils,
-        TextStyle = PIXI.TextStyle,
-        Text = PIXI.Text
-
     export default {
         name: "LearningPixi",
         props: {},
@@ -37,22 +24,22 @@
             }
         },
         methods: {
-            initGameScene() {
+            setupGameScene() {
                 let dungeon, door, id
                 //Create an alias for the texture atlas frame ids
-                id = resources["/images/learningpixi/treasureHunter.json"].textures;
+                id = PIXI.loader.resources["/images/learningpixi/treasureHunter.json"].textures;
 
                 //Dungeon
-                this.dungeon = new Sprite(id["dungeon.png"]);
+                this.dungeon = new PIXI.Sprite(id["dungeon.png"]);
                 this.gameScene.addChild(this.dungeon);
 
                 //Door
-                this.door = new Sprite(id["door.png"]);
+                this.door = new PIXI.Sprite(id["door.png"]);
                 this.door.position.set(32, 0);
                 this.gameScene.addChild(this.door);
 
                 //Explorer
-                this.explorer = new Sprite(id["explorer.png"]);
+                this.explorer = new PIXI.Sprite(id["explorer.png"]);
                 this.explorer.x = 68;
                 this.explorer.y = this.gameScene.height / 2 - this.explorer.height / 2;
                 this.explorer.vx = 0;
@@ -61,7 +48,7 @@
                 this.setupExplorer()
 
                 //Treasure
-                this.treasure = new Sprite(id["treasure.png"]);
+                this.treasure = new PIXI.Sprite(id["treasure.png"]);
                 this.treasure.x = this.gameScene.width - this.treasure.width - 48;
                 this.treasure.y = this.gameScene.height / 2 - this.treasure.height / 2;
                 this.gameScene.addChild(this.treasure);
@@ -79,7 +66,7 @@
                 for (let i = 0; i < numberOfBlobs; i++) {
 
                     //Make a blob
-                    let blob = new Sprite(id["blob.png"]);
+                    let blob = new PIXI.Sprite(id["blob.png"]);
 
                     //Space each blob horizontally according to the `spacing` value.
                     //`xOffset` determines the point from the left of the screen
@@ -132,12 +119,12 @@
 
             },
             initGameOverScene() {
-                let style = new TextStyle({
+                let style = new PIXI.TextStyle({
                     fontFamily: "Futura",
                     fontSize: 64,
                     fill: "white"
                 });
-                this.message = new Text("The End!", style);
+                this.message = new PIXI.Text("The End!", style);
                 this.message.x = 120;
                 this.message.y = this.app.stage.height / 2 - 32;
                 this.gameOverScene.addChild(this.message);
@@ -288,7 +275,8 @@
             },
             // Loading images into the texture cache
             loader() {
-                loader
+                PIXI.loader.reset()
+                PIXI.loader
                     .add([
                         "/images/learningpixi/cat.png",
                         "/images/learningpixi/blob.png"
@@ -300,7 +288,7 @@
             // This code will run when the loader has finished loading the image
             setup() {
                 // this.setupAtlas()
-                this.initGameScene()
+                this.setupGameScene()
                 this.initGameOverScene()
 
                 this.state = this.play;
@@ -408,7 +396,7 @@
         },
         mounted() {
             // Creating the Pixi Application
-            this.app = new Application({
+            this.app = new PIXI.Application({
                 width: 256,         // default: 800
                 height: 256,        // default: 600
                 antialias: true,    // default: false
@@ -426,10 +414,10 @@
             this.app.renderer.autoResize = true;
             this.app.renderer.resize(512, 512);
 
-            this.gameScene = new Container();
+            this.gameScene = new PIXI.Container();
             this.app.stage.addChild(this.gameScene);
 
-            this.gameOverScene = new Container();
+            this.gameOverScene = new PIXI.Container();
             this.app.stage.addChild(this.gameOverScene);
             this.gameOverScene.visible = false;
 

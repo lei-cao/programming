@@ -15,4 +15,11 @@ Found this binding [https://github.com/Granipouss/vue-pixi](https://github.com/G
 Still new to `pixi`, learnt the basics by following [Learning Pixi](https://github.com/kittykatattack/learningPixi) 
 <LearningPixi/>
 
+## Algoman first try with PIXI
+
+<AlgomanDemo/>
+
+## Resources
+
+- [https://opengameart.org](https://opengameart.org)
 
