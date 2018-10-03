@@ -5,8 +5,9 @@
 
 
 <script>
-    import SorterFactory from "./algorithms/sorting";
-    import {SortingAlgorithms} from "./algorithms/sorting";
+    import SorterFactory from './algorithms/sorting'
+    import {SortingAlgorithms} from './algorithms/sorting'
+    import {powerEasing} from './utils/easing'
 
     export default {
         name: "Algoman",
@@ -18,11 +19,13 @@
                 app: null,
                 gameScene: null,
                 sortingScene: null,
-                size: 15,
+                size: 25,
                 array: [],
                 sorters: new SorterFactory(),
                 sorter: null,
-                currentStep: 0
+                currentStep: 0,
+                swapTime: 300,
+                lastTimestamp: null
             }
         },
         methods: {
@@ -86,25 +89,36 @@
 
                 this.sorter.sort(array)
             },
+            now() {
+                return performance.now()
+            },
             play(delta) {
+                let current = this.now()
+                let elapsed = current - this.lastTimestamp
+                let process = elapsed / this.swapTime
+                process = powerEasing(process)
+                if (process > 1) {
+                    process = 1
+                }
+
                 let rectangles = this.sortingScene.children
                 let done = []
                 for (var i = 0; i < rectangles.length; i++) {
-                    if (rectangles[i].destination.x > rectangles[i].x) {
-                        rectangles[i].x += 1
-                    } else if (rectangles[i].destination.x < rectangles[i].x) {
-                        rectangles[i].x -= 1
-                    } else {
+                    let distance = rectangles[i].destination.x - rectangles[i].x
+                    rectangles[i].x += distance * process
+                    if (process == 1) {
                         done.push(true)
                     }
                 }
 
+                // next step
                 if (done.length === rectangles.length && this.currentStep < this.sorter.commands.length) {
                     let step = this.sorter.commands[this.currentStep]
 
                     let cmdA = this.makeSwapCommand(rectangles, step.a, step.b)
                     cmdA.execute()
                     this.currentStep++
+                    this.lastTimestamp = this.now()
                 }
             },
             load() {
@@ -116,6 +130,7 @@
                 this.setupGameScene()
 
                 this.state = this.play;
+                this.lastTimestamp = this.now()
                 this.app.ticker.add(delta => this.gameLoop(delta));
             },
             gameLoop(delta) {
