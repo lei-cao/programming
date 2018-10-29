@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/stack" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/queue" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/sort" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/collinearpoints" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

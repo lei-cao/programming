@@ -8,7 +8,7 @@ import edu.princeton.cs.algs4.StdOut;
 
 public class LinkedStackOfStrings {
 
-    private class Node {
+    private static class Node {
         String item;
         Node next;
 

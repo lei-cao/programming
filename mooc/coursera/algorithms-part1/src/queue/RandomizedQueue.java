@@ -27,6 +27,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
         @Override
         public Item next() {
+            if (copyN<=0) {
+                throw (new NoSuchElementException());
+            }
             int i = StdRandom.uniform(0, copyN);
             Item item = copy[i];
             copy[i] = copy[copyN-1];

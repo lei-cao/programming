@@ -1,6 +1,7 @@
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class Stack<Item> implements Iterable<Item> {
     private Node first;
@@ -20,6 +21,9 @@ public class Stack<Item> implements Iterable<Item> {
 
         @Override
         public Item next() {
+            if (current == null) {
+                throw (new NoSuchElementException());
+            }
             Item item = current.item;
             current = current.next;
             return item;
@@ -69,7 +73,7 @@ public class Stack<Item> implements Iterable<Item> {
         stack.push("c");
 
         Iterator<String> i = stack.iterator();
-        while(i.hasNext()) {
+        while (i.hasNext()) {
             String s = i.next();
             StdOut.println(s);
         }

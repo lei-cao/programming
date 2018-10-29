@@ -59,9 +59,9 @@ public class PercolationStats {
 
         PercolationStats stats = new PercolationStats(n, trials);
 
-        System.out.printf("mean = %f\n", stats.mean());
-        System.out.printf("stddev = %f\n", stats.stddev());
-        System.out.printf("95%% confidence interval = [%f, %f]\n", stats.confidenceLo(), stats.confidenceHi());
+        System.out.printf("mean = %f%n", stats.mean());
+        System.out.printf("stddev = %f%n", stats.stddev());
+        System.out.printf("95%% confidence interval = [%f, %f]%n", stats.confidenceLo(), stats.confidenceHi());
     }
 
 }

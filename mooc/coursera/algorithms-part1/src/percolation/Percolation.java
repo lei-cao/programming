@@ -109,10 +109,7 @@ public class Percolation {
     }
 
     private boolean inRange(int row, int col) {
-        if (row < 1 || col < 1 || row > size || col > size) {
-            return false;
-        }
-        return true;
+        return row >= 1 && col >= 1 && row <= size && col <= size;
     }
 }
 

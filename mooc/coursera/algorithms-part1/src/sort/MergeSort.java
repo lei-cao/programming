@@ -24,7 +24,8 @@ public class MergeSort {
         // The mid index between two indexes
         // 4,5 -> 4
         // 6,7,8 -> 7
-        int mid = (low + high) / 2;
+//        int mid = low + (high-low) / 2;
+        int mid = (low + high) >>> 1;
 
         mergeSort(to, low, mid, from);
         mergeSort(to, mid + 1, high, from);
