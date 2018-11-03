@@ -5,6 +5,20 @@ public class QuickSort {
     threeWaySort(a, 0, a.length - 1);
   }
 
+  /**
+   * lo_________lt_______i________gt____hi;
+   * lo is the index of the pivot. lt is the first index where the element == pivot
+   * i is the first index where the element haven't checked
+   * gt is the last index where the element haven't checked
+   * i <-> gt are the elements haven't partitioned.
+   * if a[i] > pivot, swap a[i] with a[gt], gt--; only do gt-- because that was a[i] who is checked.
+   *    don't do i++ because a[i] (a[gt] is not checked after swap
+   * if a[i] < pivot, swap a[i] with a[lt], i++, lt++; a[lt] == pivot, so swap a[i] with a[lt] then do lt++, i++
+   * if a[i] == pivot, i++, check next i.
+   * @param a
+   * @param lo
+   * @param hi
+   */
   private static void threeWaySort(int[] a, int lo, int hi) {
     if (lo >= hi) {
       return;
