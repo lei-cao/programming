@@ -5,8 +5,7 @@ module.exports = {
     lastUpdated: 'Last Updated', // string | boolean
     ga: 'UA-81346198-2',
     serviceWorker: true,
-    markdown: {
-    },
+    extendMarkdown(md) {},
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }],
         ['script', { type: 'application/javascript', src: '/scripts/main.js?' + Date.now() }],

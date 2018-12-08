@@ -3,11 +3,13 @@
     "notes:dev": "vuepress dev notes",
     "notes:build": "vuepress build notes"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "vuepress": "^1.0.0-alpha.27"
+  },
   "dependencies": {
     "global": "^4.3.2",
+    "vue": "^2.5.18",
     "vue-pixi": "^0.1.1",
-    "vue-slider-component": "^2.7.6",
-    "vuepress": "^1.0.0-alpha.2"
+    "vue-slider-component": "^2.7.6"
   }
 }
