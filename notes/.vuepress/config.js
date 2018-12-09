@@ -16,6 +16,7 @@ module.exports = {
         repo: 'lei-cao/programming',
         nav: [
             {text: 'Home', link: '/'},
+            {text: 'About', link: '/about/'},
             {text: 'Blog', link: '/blog/'},
             {text: 'System Design', link: '/system-design/'}
         ],
