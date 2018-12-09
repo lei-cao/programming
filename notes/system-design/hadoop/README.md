@@ -1,13 +1,13 @@
 # Hadoop: Hello World
 
-I am totally new to Hadoop. After google it quickly, I got the basic idea that it's a set of tools of big-data storage (HDFS) and computing (MapReduce).
-Well, the official document is long and quite user unfriendly. In order to deep dive it quicker, I am going to install it on my Mac as a start.
+Hadoop is a set of tools of big-data storage (HDFS), computing (MapReduce) and resource management (Yarn)
+Well, the official document is long and quite user unfriendly. In order to deep dive it quicker, docker is the way to go.
 
 ## Install
 
 The easiest way to run Hadoop right away on my Mac of course is using Docker. Assuming you have docker installed.
 
-I found this really good [repo https://github.com/HariSekhon/Dockerfiles](https://github.com/HariSekhon/Dockerfiles) for many big-data Dockerfiles. 
+Here is a really good place [repo https://github.com/HariSekhon/Dockerfiles](https://github.com/HariSekhon/Dockerfiles) for many big-data Dockerfiles. 
 
 1. Clone it 
 
