@@ -268,24 +268,24 @@
   green = #859900
 
   rebase(rebase03, rebase02, rebase01, rebase00, rebase0, rebase1, rebase2, rebase3)
-  background-color rebase03
-  color rebase0
-  *
+    background-color rebase03
     color rebase0
+    *
+      color rebase0
 
-  h1, h2, h3, h4, h5, h6
-    color rebase1
-    border-color rebase0
+    h1, h2, h3, h4, h5, h6
+      color rebase1
+      border-color rebase0
 
-  a, a:active, a:visited
-    color rebase1
+    a, a:active, a:visited
+      color rebase1
 
   accentize(accent)
-  a, a:active, a:visited, code.url
-    color accent
+    a, a:active, a:visited, code.url
+      color accent
 
-  h1, h2, h3, h4, h5, h6
-    color accent
+    h1, h2, h3, h4, h5, h6
+      color accent
 
   html, .light
     rebase(base3, base2, base1, base0, base00, base01, base02, base03)
