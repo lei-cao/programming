@@ -8,7 +8,7 @@
 
       <nav>
         <h3>
-          Contact
+          Contacts
         </h3>
 
         <ul>
@@ -44,38 +44,36 @@
 
         <ul>
           <li>
-            Javascript
+            Javascript, Vue, React
           </li>
           <li>
-            Vue
+            Go, Docker
           </li>
           <li>
-            React
+            Java, Android, Flutter
           </li>
           <li>
-            Go
-          </li>
-          <li>
-            Python
-          </li>
-          <li>
-            Flask
+            Python, Flask
           </li>
           <li>
             PHP
           </li>
-          <li>
-            Android
-          </li>
-          <li>
-            SQL
-          </li>
-          <li>
-            Redis
-          </li>
         </ul>
 
       </section>
+
+      <section class="links">
+        <h3>Projects</h3>
+
+        <ul>
+          <li>
+            <div>
+              <a href="https://remember.gifts" target="_blank">Countdown App</a>
+            </div>
+          </li>
+        </ul>
+      </section>
+
 
       <section class="links hide-print">
         <h3>Links</h3>
@@ -93,7 +91,7 @@
     <main>
       <section>
         <h2>
-          Experience
+          Experiences
         </h2>
 
         <article>
@@ -117,26 +115,21 @@
                   team.
                 </div>
                 <div>
-                  Tech stacks used: Go, Vue, FramerJS, WebSocket, MySQL, Protobuf, Metabase, Python, Mitmproxy.
+                  Tech stack: Go, Vue, WebSocket, MySQL, Protobuf, Metabase, Python, Mitmproxy.
                 </div>
               </li>
               <li>
-                Providing feedback and improvements ideas to Product Team and R&D for products and features owned by
-                them.
+                Working with Product Team and R&D for product improvements.
               </li>
               <li>
-                Working with Mobile Measurement Partners such as AppsFlyer, Adjust, Tune, Branch, being the technical
+                Working with Mobile Measurement Partners such as AppsFlyer, Adjust, Tune and Branch, being the internal technical
                 expert for these partners.
               </li>
               <li>
-                Being the technical expert for App in APAC region and supporting Local TS engineers in their daily work.
+                Being the technical expert and reference for App products in APAC region. Building documentations and training materials, conducting trainings to TS, commercial team and clients.
               </li>
               <li>
-                Building documentations and training materials, conducting trainings to TS, commercial team and clients.
-              </li>
-              <li>
-                Joined SEA team as the first App TS, managed App integrations of top clients in SEA such as Lazada,
-                Shopee, Zalora, Hotels, Agoda, Traveloka.
+                Managed App integrations of top clients in SEA such as Lazada, Shopee, Zalora, Hotels, Agoda, Traveloka. Worked with Sales and AE through whole customer journeys.
               </li>
             </ul>
           </summary>
@@ -161,7 +154,7 @@
                   The API was used by iOS and Android app, React native and mobile web app.
                 </div>
                 <div>
-                  Tech stacks used in this project: Go, RabbitMQ, Couchbase, ElasticSearch, InfluxDB, MySQL, Thrift.
+                  Tech stack: Go, RabbitMQ, Couchbase, ElasticSearch, InfluxDB, MySQL, Thrift, Docker.
                 </div>
               </li>
               <li>
@@ -177,7 +170,7 @@
                   Maintained Zalora desktop and mobile e-commerce websites.
                 </div>
                 <div>
-                  Tech stacks used: PHP, Yii, Zend, JQuery, AngularJS, MySQL, Solr, Couchbase, Selenium, PhantomJS
+                  Tech stack: PHP, Yii, Zend, JQuery, AngularJS, MySQL, Solr, Couchbase, Selenium, PhantomJS
                 </div>
               </li>
             </ul>
@@ -203,14 +196,13 @@
                   community. Designed the product and built the whole web app from scratch.
                 </div>
                 <div>
-                  Tech stacks used: Python, Flask, JQuery, Solr, Redis, MySQL.
+                  Tech stack: Python, Flask, JQuery, Solr, Redis, MySQL.
                 </div>
               </li>
 
               <li>
                 <div>
-                  Another product built in the start-up is a consumer products recommendation and review platform.
-                  Users can search the product's details and post reviews by searching or scanning the barcode.
+                  Built a consumer products recommendation and review platform.
                 </div>
                 <div>
                   Worked as the sole Android Developer and built the Android app from scratch.

@@ -3,9 +3,13 @@ module.exports = {
     title: 'Programming Lei',
     description: 'All about Programming',
     lastUpdated: 'Last Updated', // string | boolean
-    ga: 'UA-81346198-2',
     serviceWorker: true,
     extendMarkdown(md) {},
+    plugins: [
+      ['@vuepress/google-analytics', {
+        ga: 'UA-81346198-2'
+      }]
+    ],
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }],
         ['script', { type: 'application/javascript', src: '/scripts/main.js?' + Date.now() }],
