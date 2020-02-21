@@ -2,7 +2,7 @@
   <div class="about light">
     <aside>
       <header>
-        <h1>Lei Cao</h1>
+        <h1>Lei CAO</h1>
         <h2>Solutions Engineer</h2>
       </header>
 
@@ -47,16 +47,16 @@
             Javascript, Vue, React
           </li>
           <li>
+            Firebase
+          </li>
+          <li>
             Go, Docker
           </li>
           <li>
             Java, Android, Flutter
           </li>
           <li>
-            Python, Flask
-          </li>
-          <li>
-            PHP
+            Python, PHP
           </li>
         </ul>
 
@@ -97,10 +97,45 @@
         <article>
           <header>
             <h4>
+              Senior Solutions Engineer @ Remerge
+            </h4>
+            <time>
+              since May 2019
+            </time>
+          </header>
+
+          <summary>
+            <ul>
+              <li>
+                Being the technical expert and reference, working closely with sales, account managers and clients,
+                managing the tech integrations for APAC clients such as Shopee, Oyorooms, Sendo, Traveloka, Grab, Clubfactory, Firecraft, etc.
+              </li>
+              <li>
+                <div>
+                  Built Template Manager which is used by designers and solutions engineers to create ads banner templates.
+                  It streamlined the dynamic template creation process and improved efficiency significantly.
+                </div>
+                <div>
+                  Tech stack: Go, ReactJS, Firebase
+                </div>
+              </li>
+              <li>
+                Maintain and improve the integrations with partners such as AppsFlyer, Adjust, Branch.
+              </li>
+              <li>
+                Working part-time as a product manager leading the operation efficiency project.
+              </li>
+            </ul>
+          </summary>
+        </article>
+
+        <article>
+          <header>
+            <h4>
               Senior Solutions Engineer @ Criteo
             </h4>
             <time>
-              since March 2016
+              March 2016 - April 2019
             </time>
           </header>
 
@@ -108,28 +143,29 @@
             <ul>
               <li>
                 <div>
-                  Leading the App integration efficiency project by creating automated processes and tools.
-                  Digging into the details of the processes to find the bottlenecks, building the products that solve
+                  Led the App integration efficiency project by creating automated processes and tools.
+                  Dug into the details of the processes to find the bottlenecks, built the products that solve
                   the problems in scale.
-                  As the main developer, leading the team of 3 engineers for coding and delivery the products to the TS
-                  team.
+                  As the main developer, leading the team of 3 engineers for coding and delivery the tools.
                 </div>
                 <div>
                   Tech stack: Go, Vue, WebSocket, MySQL, Protobuf, Metabase, Python, Mitmproxy.
                 </div>
               </li>
               <li>
-                Working with Product Team and R&D for product improvements.
+                Worked with Product Team and R&D closely for product improvements.
               </li>
               <li>
-                Working with Mobile Measurement Partners such as AppsFlyer, Adjust, Tune and Branch, being the internal technical
+                Worked with Mobile Measurement Partners such as AppsFlyer, Adjust, Tune and Branch, being the internal technical
                 expert for these partners.
               </li>
               <li>
-                Being the technical expert and reference for App products in APAC region. Building documentations and training materials, conducting trainings to TS, commercial team and clients.
+                Been the technical expert and reference for App products in the APAC region.
+                Built documentation and training materials, conducted training to TS, commercial team and clients.
               </li>
               <li>
-                Managed App integrations of top clients in SEA such as Lazada, Shopee, Zalora, Hotels, Agoda, Traveloka. Worked with Sales and AE through whole customer journeys.
+                Managed App integrations of top clients in SEA such as Lazada, Shopee, Zalora, Hotels, Agoda, Traveloka.
+                Worked with sales and account managers through whole customer journeys.
               </li>
             </ul>
           </summary>
@@ -159,18 +195,18 @@
               </li>
               <li>
                 Contributed to open source project Beego, internationalized the official documentation in English.
-                Advocated the project by creating articles and video tutorials.
+                Advocated for the project by creating articles and video tutorials.
               </li>
               <li>
                 As the sole developer, designed and developed a Zendesk App to connect the customers with profile and
-                order information for customer service team.
+                order information for the customer service team.
               </li>
               <li>
                 <div>
                   Maintained Zalora desktop and mobile e-commerce websites.
                 </div>
                 <div>
-                  Tech stack: PHP, Yii, Zend, JQuery, AngularJS, MySQL, Solr, Couchbase, Selenium, PhantomJS
+                  Tech stack: PHP, JQuery, AngularJS, MySQL, Solr, Selenium
                 </div>
               </li>
             </ul>
@@ -202,10 +238,7 @@
 
               <li>
                 <div>
-                  Built a consumer products recommendation and review platform.
-                </div>
-                <div>
-                  Worked as the sole Android Developer and built the Android app from scratch.
+                  Built a consumer product recommendation and review platform. Worked as the sole Android Developer and built the Android app from scratch.
                 </div>
               </li>
             </ul>
@@ -222,7 +255,7 @@
         <article>
           <header>
             <h4>
-              B.E. in Automation @ Sun Yat-Sen University
+              B.E. in Automation @ Sun Yat-Sen University, Guangzhou
             </h4>
             <time>
               September 2005 - January 2009
@@ -396,17 +429,17 @@
       font-size: 11px
 
       aside
-        width 300px
+        width 250px
         margin-right 20px
         h2
-          font-size 16px
+          font-size 14px
           margin-bottom 42px
 
         ul li
           font-size 12px
 
       main
-        width 800px
+        width 900px
 
     .hide-print
       display none
