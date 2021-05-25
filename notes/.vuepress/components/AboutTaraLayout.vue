@@ -2,8 +2,7 @@
   <div class="about light">
     <aside>
       <header>
-        <h1>Lei CAO</h1>
-        <h2>Solutions Engineer</h2>
+        <h1>Tong ZHANG</h1>
       </header>
 
       <nav>
@@ -15,25 +14,19 @@
           <li>
             <div>
               <font-awesome-icon icon="phone"></font-awesome-icon>
-              +65 81321483
+              +65 9668 6834
             </div>
           </li>
           <li>
             <div>
               <font-awesome-icon icon="at"></font-awesome-icon>
-              lei.cao.life@gmail.com
+              taracheung729@gmail.com
             </div>
           </li>
           <li>
             <div>
-              <font-awesome-icon :icon="['fab', 'github']"/>
-              <a href="https://github.com/lei-cao" target="_blank">github.com/lei-cao</a>
-            </div>
-          </li>
-          <li>
-            <div>
-              <font-awesome-icon icon="globe"></font-awesome-icon>
-              <a href="https://lei-cao.github.io" target="_blank">lei-cao.github.io</a>
+              <img class="svg-icon" src="/icons/linkedin.svg"/>
+              <a href="https://www.linkedin.com/in/zhang-tong-0aa04a112" target="_blank">@zhang-tong-0aa04a112</a>
             </div>
           </li>
         </ul>
@@ -44,46 +37,22 @@
 
         <ul>
           <li>
-            Javascript, Vue, React
+            Social Media
           </li>
           <li>
-            Firebase
+            Digital Marketing
           </li>
           <li>
-            Go, Docker
+            Google Ads
           </li>
           <li>
-            Android, Flutter
+            Google Analytics
           </li>
           <li>
-            Python, PHP
+            MS Office
           </li>
         </ul>
 
-      </section>
-
-      <section class="links">
-        <h3>Projects</h3>
-
-        <ul>
-          <li>
-            <div>
-              <a href="https://remember.gifts" target="_blank">Countdown App</a>
-            </div>
-          </li>
-        </ul>
-      </section>
-
-
-      <section class="links hide-print">
-        <h3>Links</h3>
-
-        <ul>
-          <li>
-            <font-awesome-icon icon="file-download"></font-awesome-icon>
-            <a href="/files/lei-cao-resume.pdf">Download Resume</a>
-          </li>
-        </ul>
       </section>
 
     </aside>
@@ -97,33 +66,37 @@
         <article>
           <header>
             <h4>
-              Senior Solutions Engineer @ Remerge
+              Social Media Manager @ Self-employed
             </h4>
             <time>
-              since May 2019
+              since Jun 2019
             </time>
           </header>
 
           <summary>
             <ul>
               <li>
-                Being the technical expert and reference, working closely with sales, account managers and clients,
-                managing the tech integrations for APAC clients such as Shopee, Oyorooms, Sendo, Traveloka, Grab, Clubfactory, Firecraft, etc.
-              </li>
-              <li>
+                Managing and growing personal Instagram account
                 <div>
-                  Built Template Manager which is used by designers and solutions engineers to create ads banner templates.
-                  It streamlined the dynamic template creation process and improved efficiency significantly.
+                  - Building and managing the content.
                 </div>
                 <div>
-                  Tech stack: Go, ReactJS, Firebase
+                  - Monitoring an engaging with the audiences daily.
+                </div>
+                <div>
+                  - Studying the audiences and choosing the best niches.
+                </div>
+                <div>
+                  - Performing the marketing research, finding the best tagging and growing strategies.
+                </div>
+                <div>
+                  - Grow the account from 0 to 1K followers in just 2 months.
                 </div>
               </li>
+            </ul>
+            <ul>
               <li>
-                Maintain and improve the integrations with partners such as AppsFlyer, Adjust, Branch.
-              </li>
-              <li>
-                Working part-time as a product manager leading the operation efficiency project.
+                Managing and growing 2 personal Youtube accounts
               </li>
             </ul>
           </summary>
@@ -132,10 +105,10 @@
         <article>
           <header>
             <h4>
-              Senior Solutions Engineer @ Criteo
+              Financial Services Consultant @ AIA
             </h4>
             <time>
-              March 2016 - April 2019
+              Mar 2016 - Oct 2018
             </time>
           </header>
 
@@ -143,29 +116,28 @@
             <ul>
               <li>
                 <div>
-                  Led the App integration efficiency project by creating automated processes and tools.
-                  Dug into the details of the processes to find the bottlenecks, built the products that solve
-                  the problems in scale.
-                  As the main developer, leading the team of 3 engineers for coding and delivery the tools.
+                  Professional financial executive in managing and supporting sales of insurance products and services.
                 </div>
+              </li>
+              <li>
                 <div>
-                  Tech stack: Go, Vue, WebSocket, MySQL, Protobuf, Metabase, Python, Mitmproxy.
+                  Managed more than 200 high net worth Singapore-based and overseas clients.
                 </div>
               </li>
               <li>
-                Worked with Product Team and R&D closely for product improvements.
+                <div>
+                  Achieved twice MDRT, Top Financial Services Consultant in 2016 and 2017.
+                </div>
               </li>
               <li>
-                Worked with Mobile Measurement Partners such as AppsFlyer, Adjust, Tune and Branch, being the internal technical
-                expert for these partners.
+                <div>
+                  Outstanding success in growing revenues for organisation in managing through effective leads generation and training junior financial consultants, able to exceed sales target up to 150% for the second year running.
+                </div>
               </li>
               <li>
-                Been the technical expert and reference for App products in the APAC region.
-                Built documentation and training materials, conducted training to TS, commercial team and clients.
-              </li>
-              <li>
-                Managed App integrations of top clients in SEA such as Lazada, Shopee, Zalora, Hotels, Agoda, Traveloka.
-                Worked with sales and account managers through whole customer journeys.
+                <div>
+                  Strong organisational skills with ability to meet deadlines and communicate with key stakeholders and excellent interpersonal and communication skills.
+                </div>
               </li>
             </ul>
           </summary>
@@ -174,10 +146,10 @@
         <article>
           <header>
             <h4>
-              Senior Software Engineer @ Zalora
+              Educational Consultant @ EIC Group
             </h4>
             <time>
-              February 2013 - February 2016
+              Mar 2012 – Jul 2016
             </time>
           </header>
 
@@ -185,64 +157,27 @@
             <ul>
               <li>
                 <div>
-                  Led the Mobile API project. Redesigned and built the Mobile API in Go. Improved the API performance
-                  and stability significantly.
-                  The API was used by iOS and Android app, React native and mobile web app.
-                </div>
-                <div>
-                  Tech stack: Go, RabbitMQ, Couchbase, ElasticSearch, InfluxDB, MySQL, Thrift, Docker.
+                  Closed over 1000 deals, won the top monthly sales reward in almost all 4 years.
                 </div>
               </li>
               <li>
-                Contributed to open source project Beego, internationalized the official documentation in English.
-                Advocated for the project by creating articles and video tutorials.
-              </li>
-              <li>
-                As the sole developer, designed and developed a Zendesk App to connect the customers with profile and
-                order information for the customer service team.
-              </li>
-              <li>
                 <div>
-                  Maintained Zalora desktop and mobile e-commerce websites.
+                  Provided personalised advices to the clients for preparing the university applications.
                 </div>
+              </li>
+              <li>
                 <div>
-                  Tech stack: PHP, JQuery, AngularJS, MySQL, Solr, Selenium
+                  Provided end-to-end supports to the clients from preparation to the successful applications.
+                </div>
+              </li>
+              <li>
+                <div>
+                  Provided ongoing training and sharing to other team members.
                 </div>
               </li>
             </ul>
           </summary>
 
-        </article>
-
-        <article>
-          <header>
-            <h4>
-              Software Engineer, co-founder @ Baygle
-            </h4>
-            <time>
-              September 2009 - January 2013
-            </time>
-          </header>
-
-          <summary>
-            <ul>
-              <li>
-                <div>
-                  As one of the 2 developers, with another 3 co-founders, we created a knowledge collecting and sharing
-                  community. Designed the product and built the whole web app from scratch.
-                </div>
-                <div>
-                  Tech stack: Python, Flask, JQuery, Solr, Redis, MySQL.
-                </div>
-              </li>
-
-              <li>
-                <div>
-                  Built a consumer product recommendation and review platform. Worked as the sole Android Developer and built the Android app from scratch.
-                </div>
-              </li>
-            </ul>
-          </summary>
         </article>
 
       </section>
@@ -254,11 +189,11 @@
 
         <article>
           <header>
-            <h4>
-              B.E. in Automation @ Sun Yat-Sen University, Guangzhou
-            </h4>
+            <h5>
+              B.A. in Business Administration and Management @ Geely University of Beijing
+            </h5>
             <time>
-              September 2005 - January 2009
+              Sep 2009 - Jan 2013
             </time>
           </header>
         </article>
@@ -334,6 +269,10 @@
     display flex
     justify-content center
 
+    .svg-icon
+      width 16px
+      height 16px
+
     a
       color base00
     a:visited
@@ -345,6 +284,9 @@
       text-transform uppercase
 
     aside
+      header
+        h1
+          text-align left
 
       nav
         margin-bottom 35px
@@ -396,12 +338,14 @@
           padding 8px
 
         article
+          margin-bottom 40px
           padding-left 10px
           header
             display flex
             align-items center
             justify-content space-between
-
+            h4
+              margin 0
           time
             color base1
 
@@ -429,10 +373,12 @@
       font-size: 11px
 
       aside
-        width 250px
+        width 380px
         margin-right 20px
+        h1
+          font-size 25px
         h2
-          font-size 14px
+          font-size 16px
           margin-bottom 42px
 
         ul li
@@ -440,6 +386,13 @@
 
       main
         width 900px
+        ul li
+            font-size 12px
+        h4
+          font-size 16px
+        time
+          text-align right
+          min-width 115px
 
     .hide-print
       display none

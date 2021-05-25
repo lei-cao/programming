@@ -3,7 +3,7 @@
     <aside>
       <header>
         <h1>Lei CAO</h1>
-        <h2>Solutions Engineer</h2>
+        <h2>Product Manager</h2>
       </header>
 
       <nav>

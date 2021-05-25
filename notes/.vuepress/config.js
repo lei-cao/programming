@@ -21,6 +21,7 @@ module.exports = {
         nav: [
             {text: 'Home', link: '/'},
             {text: 'About', link: '/about/'},
+            {text: 'AboutPM', link: '/about-pm/'},
             {text: 'Blog', link: '/blog/'},
             {text: 'System Design', link: '/system-design/'}
         ],
