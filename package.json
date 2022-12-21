@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "notes:dev": "vuepress dev notes",
+    "notes:dev": "NODE_OPTIONS=--openssl-legacy-provider vuepress dev notes",
     "notes:build": "vuepress build notes"
   },
   "devDependencies": {

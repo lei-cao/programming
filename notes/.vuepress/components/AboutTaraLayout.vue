@@ -25,8 +25,14 @@
           </li>
           <li>
             <div>
+              <img class="svg-icon" src="/icons/youtube-480.svg"/>
+              <a href="https://www.youtube.com/@TaraCooking" target="_blank">@TaraCooking</a>
+            </div>
+          </li>
+          <li>
+            <div>
               <img class="svg-icon" src="/icons/linkedin.svg"/>
-              <a href="https://www.linkedin.com/in/zhang-tong-0aa04a112" target="_blank">@zhang-tong-0aa04a112</a>
+              <a href="https://www.linkedin.com/in/tara-zhang-0aa04a112" target="_blank">@tara-zhang-0aa04a112</a>
             </div>
           </li>
         </ul>
@@ -66,19 +72,20 @@
         <article>
           <header>
             <h4>
-              Social Media Manager @ Self-employed
+             <img class="svg-icon" src="/icons/youtube-480.svg"/> Content Creator  
+              <a href="https://www.youtube.com/@TaraCooking" target="_blank">@TaraCooking</a>
             </h4>
             <time>
-              since Jun 2019
+              since April 2022
             </time>
           </header>
 
           <summary>
             <ul>
               <li>
-                Managing and growing personal Instagram account
+                Managing My Personal Youtube Cooking Channel
                 <div>
-                  - Building and managing the content.
+                  - Filming and editing the cooking videos
                 </div>
                 <div>
                   - Monitoring an engaging with the audiences daily.
@@ -86,17 +93,36 @@
                 <div>
                   - Studying the audiences and choosing the best niches.
                 </div>
-                <div>
-                  - Performing the marketing research, finding the best tagging and growing strategies.
-                </div>
-                <div>
-                  - Grow the account from 0 to 1K followers in just 2 months.
-                </div>
               </li>
             </ul>
+          </summary>
+        </article>
+
+
+        <article>
+          <header>
+            <h4>
+              BUSINESS DEVELOPMENT MANAGER @ LIVE EXPRESS PLATFORM 
+            </h4>
+            <time>
+              Jan 2021 - July 2021
+            </time>
+          </header>
+
+          <summary>
+            Live Express is an online food and grocery delivery platform, which is headquartered in Singapore and operates in SEA countries.
             <ul>
               <li>
-                Managing and growing 2 personal Youtube accounts
+                Overachieved the targets at 180% in the first quarter.
+              </li>
+              <li>
+              Closed 60+ new clients which have 120+ branches in total.
+              </li>
+              <li>
+                Monitoring the accounts closely daily and making sure successful onboardings.
+              </li>
+              <li>
+                Upselling the promotions and ads to existing clients and generating more revenues.
               </li>
             </ul>
           </summary>
