@@ -3,7 +3,7 @@
     <aside>
       <header>
         <h1>Lei CAO</h1>
-        <h2>Solutions Engineer</h2>
+        <h2>Solutions Engineer Lead</h2>      
       </header>
 
       <nav>
@@ -30,6 +30,12 @@
               <a href="https://github.com/lei-cao" target="_blank">github.com/lei-cao</a>
             </div>
           </li>
+          <li>
+            <div>
+              <img class="svg-icon" src="/icons/linkedin.svg"/>
+              <a href="https://www.linkedin.com/in/leicaogo/" target="_blank">@leicaogo</a>
+            </div>
+          </li>
         </ul>
       </nav>
 
@@ -50,7 +56,7 @@
             Android, Flutter
           </li>
           <li>
-            Python, PHP
+            Python, PHP, SQL
           </li>
         </ul>
 
@@ -62,7 +68,12 @@
         <ul>
           <li>
             <div>
-              <a href="https://remember.gifts" target="_blank">Countdown App</a>
+              <a href="https://pro.thinking.poker" target="_blank">Poker Tools</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <a href="https://www.youtube.com/@realThinkingPoker" target="_blank">Youtube Channel</a>
             </div>
           </li>
         </ul>
@@ -75,7 +86,7 @@
         <ul>
           <li>
             <font-awesome-icon icon="file-download"></font-awesome-icon>
-            <a href="/files/lei-cao-resume.pdf">Download Resume</a>
+            <a href="/files/lei-cao-resume-2023.pdf">Download Resume</a>
           </li>
         </ul>
       </section>
@@ -91,33 +102,50 @@
         <article>
           <header>
             <h4>
-              Senior Solutions Engineer @ Remerge
+              Senior Parter Product Manager @ AppLovin
             </h4>
             <time>
-              since May 2019
+              since June 2022
             </time>
           </header>
 
           <summary>
             <ul>
               <li>
-                Being the technical expert and reference, working closely with sales, account managers and clients,
-                managing the tech integrations for APAC clients such as Shopee, Oyorooms, Sendo, Traveloka, Grab, Clubfactory, Firecraft, etc.
+                Collaborate with sales, product, engineering, and partners to manage the entire product life cycle
+              </li>
+              <li>
+                Work with top mobile device OEMs and carriers to integrate AppLovin products into their devices
+              </li>
+              <li>
+                Utilize BigQuery, Looker, and App Scripts to monitor product performance and for custom reporting
+              </li>
+            </ul>
+          </summary>
+        </article>
+
+        <article>
+          <header>
+            <h4>
+              Solutions Engineer Lead @ Remerge
+            </h4>
+            <time>
+              May 2019 - June 2022
+            </time>
+          </header>
+
+          <summary>
+            <ul>
+              <li>
+                Successfully led a team of three professionals, driving success for complex tech integrations for APAC-based clients including Shopee, Grab, GSShop, Firecraft, AliExpress, Mytona
               </li>
               <li>
                 <div>
-                  Built Template Manager which is used by designers and solutions engineers to create ads banner templates.
-                  It streamlined the dynamic template creation process and improved efficiency significantly.
+                  Led the development of Template Manager, streamlining the dynamic template creation process and enabling efficient creation of high-quality ad banners    
                 </div>
                 <div>
                   Tech stack: Go, ReactJS, Firebase
                 </div>
-              </li>
-              <li>
-                Maintain and improve the integrations with partners such as AppsFlyer, Adjust, Branch.
-              </li>
-              <li>
-                Working part-time as a product manager leading the operation efficiency project.
               </li>
             </ul>
           </summary>
@@ -137,29 +165,20 @@
             <ul>
               <li>
                 <div>
-                  Led the App integration efficiency project by creating automated processes and tools.
-                  Dug into the details of the processes to find the bottlenecks, built the products that solve
-                  the problems in scale.
-                  As the main developer, leading the team of 3 engineers for coding and delivery the tools.
+                  Developed a dashboard for improving app integration efficiency, utilizing ElasticSearch logs with a user-friendly UI, fast speed, and monitoring/alerting capabilities. Widely adopted by solutions engineers as a daily-use tool
                 </div>
                 <div>
-                  Tech stack: Go, Vue, WebSocket, MySQL, Protobuf, Metabase, Python, Mitmproxy.
+                  Tech stack: Go, Vue, WebSocket, ElasticSearch, Kibana, MySQL, Metabase, Mitmproxy
                 </div>
               </li>
               <li>
-                Worked with Product Team and R&D closely for product improvements.
+                Collaborated closely with product team and R&D to drive product improvements
               </li>
               <li>
-                Worked with Mobile Measurement Partners such as AppsFlyer, Adjust, Tune and Branch, being the internal technical
-                expert for these partners.
+                Served as internal technical expert for Mobile Measurement Partners including Adjust, AppsFlyer, Kochava, Singular
               </li>
               <li>
-                Been the technical expert and reference for App products in the APAC region.
-                Built documentation and training materials, conducted training to TS, commercial team and clients.
-              </li>
-              <li>
-                Managed App integrations of top clients in SEA such as Lazada, Shopee, Zalora, Hotels, Agoda, Traveloka.
-                Worked with sales and account managers through whole customer journeys.
+                Built documentation and conducted training sessions for clients and team members
               </li>
             </ul>
           </summary>
@@ -179,28 +198,21 @@
             <ul>
               <li>
                 <div>
-                  Led the Mobile API project. Redesigned and built the Mobile API in Go. Improved the API performance
-                  and stability significantly.
-                  The API was used by iOS and Android app, React native and mobile web app.
-                </div>
-                <div>
-                  Tech stack: Go, RabbitMQ, Couchbase, ElasticSearch, InfluxDB, MySQL, Thrift, Docker.
+                  Rebuilt Mobile API in Go, improving performance and stability
                 </div>
               </li>
               <li>
-                Contributed to open source project Beego, internationalized the official documentation in English.
-                Advocated for the project by creating articles and video tutorials.
+                Contributed to open-source project Beego by internationalizing official documentation
               </li>
               <li>
-                As the sole developer, designed and developed a Zendesk App to connect the customers with profile and
-                order information for the customer service team.
+                Developed Zendesk app to connect customers with customer service team with detailed order information
               </li>
               <li>
                 <div>
-                  Maintained Zalora desktop and mobile e-commerce websites.
+                  Responsible for maintaining Zalora e-commerce websites, both desktop and mobile versions
                 </div>
                 <div>
-                  Tech stack: PHP, JQuery, AngularJS, MySQL, Solr, Selenium
+                  Tech stack: Go, PHP, JQuery, MySQL, RabbitMQ, Docker, Solr, Selenium
                 </div>
               </li>
             </ul>
@@ -222,23 +234,17 @@
             <ul>
               <li>
                 <div>
-                  As one of the 2 developers, with another 3 co-founders, we created a knowledge collecting and sharing
-                  community. Designed the product and built the whole web app from scratch.
+                  Co-created a knowledge collecting and sharing community with 3 co-founders
                 </div>
                 <div>
-                  Tech stack: Python, Flask, JQuery, Solr, Redis, MySQL.
-                </div>
-              </li>
-
-              <li>
-                <div>
-                  Built a consumer product recommendation and review platform. Worked as the sole Android Developer and built the Android app from scratch.
+                  Designed and built the whole web app from scratch using Python, Flask, JQuery, Solr, Redis, MySQL
                 </div>
               </li>
             </ul>
           </summary>
         </article>
 
+        
       </section>
 
       <section>
@@ -328,6 +334,10 @@
     display flex
     justify-content center
 
+    .svg-icon
+      width 16px
+      height 16px
+
     a
       color base00
     a:visited
@@ -347,7 +357,7 @@
         text-align center
 
       h1
-        font-size 42px
+        font-size 38px
         color base01
 
       h2
